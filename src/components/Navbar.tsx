@@ -2,7 +2,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import flower from "@/../public/flower.svg";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
