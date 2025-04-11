@@ -1,18 +1,27 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 
-const Hero = () => {
+export default function Hero() {
+  let mobile = false;
+
+  useEffect(() => {
+    // Check if the viewport width is less than 768px
+    if (window.innerWidth < 768) {
+      // Mobile-specific code
+      mobile = true;
+    }
+  }, []);
   return (
     <div className="flex flex-col h-[982px] w-full overflow-hidden items-center bg-background-brand pt-[120px] ">
       {/* Content */}
-      <div className="flex flex-col font-acumin-pro-condensed items-center w-[80%] my-[var(--spacing-xl)] mx-[var(--spacing-l)]">
+      <div className="flex flex-col items-center w-[80%] m-[var(--spacing-lg)]">
         <div className="w-auto">
-          <h1 className="hero-heading text-white mb-l font-acumin-pro-condensed">
+          <h1 className="text-white line-height-[112px] sm:text-[72px] lg:text-[104px] font-[var(--font-weight-extrabold)]">
             WE PAINT MURALS
           </h1>
 
-          <p className="text-3xl self-start text-white">
+          <p className="text-[42px] self-start text-white">
             on graffiti walls of Jackson Heights, Queens
           </p>
         </div>
@@ -23,11 +32,14 @@ const Hero = () => {
           muted
           playsInline
         >
-          <source src="/hero-video.mp4" type="video/mp4" />
+          <source
+            src={
+              mobile == false ? "/hero-video-web.mp4" : "/hero-video-mobile.mp4"
+            }
+            type="video/mp4"
+          />
         </video>
       </div>
     </div>
   );
-};
-
-export default Hero;
+}

@@ -53,7 +53,7 @@ export default function Navbar() {
         isScrolled ? "bg-white shadow-md" : "bg-background-brand"
       } ${isVisible ? "translate-y-0" : "-translate-y-full"}`}
     >
-      <div className="flex items-center justify-between h-full mx-[var(--spacing-xl)]">
+      <div className="flex items-center justify-between h-full m-[var(--spacing-lg)]">
         {/* Left side - Logo and Nav Items */}
         <div className="flex items-center gap-12">
           {/* Logo */}
@@ -68,15 +68,15 @@ export default function Navbar() {
           </Link>
 
           {/* Nav Items */}
-          <div className="hidden md:flex items-center gap-12">
+          <div className="hidden md:flex items-center gap-[48px]">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className={`transition-colors duration-300 text-2xl ${
+                className={`transition-colors duration-300  text-2xl ${
                   isScrolled
                     ? "text-primary hover:text-primary-dark"
-                    : "text-white hover:text-primary"
+                    : "text-white"
                 }`}
               >
                 {item.name}
@@ -88,10 +88,10 @@ export default function Navbar() {
         {/* Right side - Donate Button */}
         <Link
           href="/donate"
-          className={`btn text-lg px-6 py-2 rounded-lg transition-colors duration-300 flex items-center gap-2 ${
+          className={`btn text-lg px-3 py-2 rounded-[8px] transition-colors duration-300 flex items-center gap-2 ${
             isScrolled
-              ? "bg-primary text-white hover:bg-primary-dark"
-              : "bg-white text-primary hover:bg-primary-dark hover:text-white"
+              ? "bg-primary text-[var(--color-primary-inverse)] hover:bg-primary-dark "
+              : "bg-[var(--color-background)] text-[var(--color-content-secondary)] hover:bg-[var(--color-background-hover)] hover:text-[var(--color-content-primary)]"
           }`}
         >
           Donate
