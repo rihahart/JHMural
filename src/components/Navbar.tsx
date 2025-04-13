@@ -98,8 +98,8 @@ export default function Navbar() {
           <Image
             src="/flower.svg"
             alt="Logo"
-            width={25}
-            height={15}
+            width={24}
+            height={24}
             className="cursor-pointer"
           />
         </Link>
