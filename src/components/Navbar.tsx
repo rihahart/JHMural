@@ -87,7 +87,7 @@ export default function Navbar() {
 
         {/* Right side - Donate Button */}
         <Link
-          href="/donate"
+          href="https://www.gofundme.com/f/donate-to-help-us-put-a-beautiful-mural-in-jackson-heights"
           className={`btn text-lg px-3 py-2 rounded-[8px] transition-colors duration-300 flex items-center gap-2 ${
             isScrolled
               ? "bg-primary text-[var(--color-primary-inverse)] hover:bg-primary-dark "
