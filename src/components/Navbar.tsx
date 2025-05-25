@@ -1,7 +1,8 @@
 "use client";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import Button from "./Button";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -12,26 +13,14 @@ export default function Navbar() {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      // Update scrolled state for color changes - make this more sensitive
-      if (currentScrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(currentScrollY > 10);
 
-      // Handle navbar visibility on mobile
-      if (window.innerWidth < 768) {
-        // md breakpoint
-        if (currentScrollY > lastScrollY && currentScrollY > 100) {
-          // Scrolling down and past threshold
-          setIsVisible(false);
-        } else {
-          // Scrolling up or near top
-          setIsVisible(true);
-        }
-      } else {
-        // Always visible on desktop
+      if (currentScrollY < lastScrollY) {
+        // Scrolling up
         setIsVisible(true);
+      } else if (currentScrollY > 100) {
+        // Scrolling down past a threshold
+        setIsVisible(false);
       }
 
       setLastScrollY(currentScrollY);
@@ -48,35 +37,39 @@ export default function Navbar() {
   ];
 
   return (
-    <nav
-      className={`w-full absolute top-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white shadow-md" : "bg-background-brand"
-      } ${isVisible ? "translate-y-0" : "-translate-y-full"}`}
-    >
-      <div className="flex items-center justify-between h-full m-[var(--spacing-lg)]">
-        {/* Left side - Logo and Nav Items */}
-        <div className="flex items-center gap-12">
-          {/* Logo */}
+    <div
+    className={`
+      w-full
+      sticky top-0
+      transition-transform duration-300 ease-in-out
+      ${isVisible ? "translate-y-0" : "-translate-y-full"}
+      ${isScrolled ? "shadow-md bg-white" : "bg-[var(--color-background-brand)]"}
+      z-50
+    `}
+  >
+    
+      <div className="w-full max-w-[1280px] mx-auto flex items-center justify-between py-[var(--spacing-m)]">
+        {/* Logo and Nav Links */}
+        <div className="flex items-center gap-[var(--spacing-3xl)]">
           <Link href="/" className="flex items-center">
             <Image
               src={isScrolled ? "/logo.svg" : "/Secondary Logo.svg"}
               alt="Logo"
-              width={120}
-              height={40}
+              width={95}
+              height={66}
               className="cursor-pointer transition-opacity duration-300"
             />
           </Link>
 
-          {/* Nav Items */}
-          <div className="hidden md:flex items-center gap-[48px]">
+          <div className="hidden md:flex items-center gap-[var(--spacing-4xl)]">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className={`transition-colors duration-300  text-2xl ${
+                className={`transition-colors duration-300 text-xl ${
                   isScrolled
-                    ? "text-primary hover:text-primary-dark"
-                    : "text-white"
+                    ? "text-[var(--color-content-primary)] hover:text-[var(--color-content-link-hover)]"
+                    : "text-[var(--color-content-primary-inverse)]"
                 }`}
               >
                 {item.name}
@@ -85,25 +78,17 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Right side - Donate Button */}
-        <Link
+        <Button
           href="https://www.gofundme.com/f/donate-to-help-us-put-a-beautiful-mural-in-jackson-heights"
-          className={`btn text-lg px-3 py-2 rounded-[8px] transition-colors duration-300 flex items-center gap-2 ${
-            isScrolled
-              ? "bg-primary text-[var(--color-primary-inverse)] hover:bg-primary-dark "
-              : "bg-[var(--color-background)] text-[var(--color-content-secondary)] hover:bg-[var(--color-background-hover)] hover:text-[var(--color-content-primary)]"
-          }`}
+          target="_blank"
+          rel="noopener noreferrer"
+          variant={isScrolled ? "primary" : "tertiary"}
+          size="large"
+          trailingIcon="/flower.svg"
         >
           Donate
-          <Image
-            src="/flower.svg"
-            alt="Logo"
-            width={24}
-            height={24}
-            className="cursor-pointer"
-          />
-        </Link>
+        </Button>
       </div>
-    </nav>
+    </div>
   );
 }

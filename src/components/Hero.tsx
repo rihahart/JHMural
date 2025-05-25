@@ -1,44 +1,110 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useRef } from "react";
+import { motion, useAnimate } from "framer-motion";
 
 export default function Hero() {
-  let mobile = false;
+  const [isMobile, setIsMobile] = useState(false);
+  const [scope, animate] = useAnimate();
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const heroRef = useRef<HTMLDivElement>(null); // ✅ For scrolling
+
+  const words = ["WE", "PAINT", "MURALS"];
 
   useEffect(() => {
-    // Check if the viewport width is less than 768px
-    if (window.innerWidth < 768) {
-      // Mobile-specific code
-      mobile = true;
-    }
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      // ✅ Use heroRef for scroll
+      heroRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+
+      // ✅ Start video
+      if (videoRef.current) {
+        videoRef.current.play().catch(() => {
+          // handle autoplay restrictions silently
+        });
+      }
+    }, 1550);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="flex flex-col h-[982px] w-full overflow-hidden items-center bg-background-brand pt-[120px] ">
-      {/* Content */}
-      <div className="flex flex-col items-center w-[80%] m-[var(--spacing-lg)]">
-        <div className="w-auto">
-          <h1 className="text-white line-height-[112px] sm:text-[72px] lg:text-[104px] font-[var(--font-weight-extrabold)]">
-            WE PAINT MURALS
+    <div
+  ref={heroRef}
+  className="flex flex-col w-full min-h-[calc(100vh-4rem)] pt-[4rem] items-center justify-center bg-[var(--color-background-brand)] px-[var(--spacing-4xl)] py-[var(--spacing-2xl)] md:py-[var(--spacing-4xl)]"
+>
+      <div
+        ref={scope} // ✅ animation scope
+        className="flex flex-col items-center w-full gap-[var(--spacing-xl)] max-w-[1280px]"
+      >
+        {/* Text Section */}
+        <div className="w-full text-start">
+          <h1 className="text-[clamp(2.5rem,8vw,11rem)] font-bold leading-none tracking-[0.005em] text-[var(--color-content-primary-inverse)] transition-all duration-300 ease-in-out">
+            {words.map((word, i) => (
+              <motion.span
+                key={i}
+                initial={{ y: 100, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{
+                  delay: 0.3 + i * 0.2,
+                  duration: 0.5,
+                  ease: [0.33, 1, 0.68, 1],
+                }}
+                className="inline-block"
+              >
+                {word}&nbsp;
+              </motion.span>
+            ))}
           </h1>
 
-          <p className="text-[42px] self-start text-white">
-            on graffiti walls of Jackson Heights, Queens
-          </p>
+          <motion.p
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{
+              delay: 0.9,
+              duration: 0.5,
+              ease: [0.33, 1, 0.68, 1],
+            }}
+            className="text-[clamp(1.5rem,3vw,2.5rem)] text-[var(--color-content-primary-inverse)] mt-[var(--spacing-m)] transition-all duration-300 ease-in-out"
+          >
+            on lonely walls of Jackson Heights, Queens
+          </motion.p>
         </div>
-        <video
-          className="w-auto h-[578px] object-cover pt-16"
-          autoPlay
-          loop
-          muted
-          playsInline
-        >
-          <source
-            src={
-              mobile == false ? "/hero-video-web.mp4" : "/hero-video-mobile.mp4"
-            }
-            type="video/mp4"
-          />
-        </video>
+
+        {/* Video Section */}
+        <div className="w-full">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{
+              delay: 1.5,
+              duration: 0.5,
+              ease: [0.33, 1, 0.68, 1],
+            }}
+          >
+            <video
+              ref={videoRef}
+              className="w-full h-full object-cover rounded-lg"
+              muted
+              loop
+              playsInline
+            >
+              <source
+                src={isMobile ? "/hero-video-mobile.mp4" : "/hero-video-web.mp4"}
+                type="video/mp4"
+              />
+            </video>
+          </motion.div>
+        </div>
       </div>
     </div>
   );
