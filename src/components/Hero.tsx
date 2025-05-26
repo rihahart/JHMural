@@ -1,14 +1,12 @@
 "use client";
 
 import React, { useEffect, useState, useRef } from "react";
-import { motion, useAnimate } from "framer-motion";
+import { motion} from "framer-motion";
 
 export default function Hero() {
   const [isMobile, setIsMobile] = useState(false);
-  const [scope, animate] = useAnimate();
   const videoRef = useRef<HTMLVideoElement>(null);
-  const heroRef = useRef<HTMLDivElement>(null); // ✅ For scrolling
-
+  const heroRef = useRef<HTMLDivElement>(null); 
   const words = ["WE", "PAINT", "MURALS"];
 
   useEffect(() => {
@@ -23,10 +21,9 @@ export default function Hero() {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      // ✅ Use heroRef for scroll
+     
       heroRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
 
-      // ✅ Start video
       if (videoRef.current) {
         videoRef.current.play().catch(() => {
           // handle autoplay restrictions silently
@@ -43,7 +40,6 @@ export default function Hero() {
   className="flex flex-col w-full min-h-[calc(100vh-4rem)] pt-[4rem] items-center justify-center bg-[var(--color-background-brand)] px-[var(--spacing-4xl)] py-[var(--spacing-2xl)] md:py-[var(--spacing-4xl)]"
 >
       <div
-        ref={scope} // ✅ animation scope
         className="flex flex-col items-center w-full gap-[var(--spacing-xl)] max-w-[1280px]"
       >
         {/* Text Section */}

@@ -6,7 +6,7 @@ interface ButtonProps {
   variant?: 'primary' | 'primary-inverse' | 'secondary' | 'tertiary' | 'tertiary-mono' | 'tertiary-inverse';
   size?: 'small' | 'large';
   href?: string;
-  target?: string; // ✅ add this
+  target?: string; // 
   rel?: string; 
   disabled?: boolean;
   className?: string;
