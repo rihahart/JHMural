@@ -32,7 +32,7 @@ export default function Navbar() {
 
   const navItems = [
     { name: "About", href: "/about" },
-    { name: "Support Us", href: "/supportus" },
+    { name: "Support us", href: "/supportus" },
   ];
 
   return (
@@ -47,15 +47,15 @@ export default function Navbar() {
         px-[var(--spacing-4xl)]
       `}
     >
-      <div className="w-full max-w-[1280px] mx-auto flex items-center justify-between py-[var(--spacing-m)]">
+      <div className="w-full max-w-[1000px] mx-auto flex items-center justify-between py-[var(--spacing-s)]">
         {/* Logo and Nav Links */}
-        <div className="flex items-center gap-[var(--spacing-3xl)]">
+        <div className="flex items-center gap-[var(--spacing-4xl)]">
           <Link href="/" className="flex items-center">
             <Image
               src={isScrolled ? "/logo.svg" : "/Secondary Logo.svg"}
               alt="Logo"
-              width={95}
-              height={66}
+              width={70}
+              height={50}
               className="cursor-pointer transition-opacity duration-300"
             />
           </Link>
@@ -65,7 +65,7 @@ export default function Navbar() {
               <Link
                 key={item.name}
                 href={item.href}
-                className={`transition-colors duration-300 text-xl ${
+                className={`transition-colors duration-300 heading-s ${
                   isScrolled
                     ? "text-[var(--color-content-primary)] hover:text-[var(--color-content-link-hover)]"
                     : "text-[var(--color-content-primary-inverse)]"
