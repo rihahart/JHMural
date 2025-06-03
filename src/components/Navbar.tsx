@@ -32,22 +32,21 @@ export default function Navbar() {
 
   const navItems = [
     { name: "About", href: "/about" },
-    { name: "Projects", href: "/projects" },
-    { name: "Contact", href: "/contact" },
+    { name: "Support Us", href: "/supportus" },
   ];
 
   return (
     <div
-    className={`
-      w-full
-      sticky top-0
-      transition-transform duration-300 ease-in-out
-      ${isVisible ? "translate-y-0" : "-translate-y-full"}
-      ${isScrolled ? "shadow-md bg-white" : "bg-[var(--color-background-brand)]"}
-      z-50
-    `}
-  >
-    
+      className={`
+        w-full
+        sticky top-0
+        transition-transform duration-300 ease-in-out
+        ${isVisible ? "translate-y-0" : "-translate-y-full"}
+        ${isScrolled ? "shadow-md bg-white" : "bg-[var(--color-background-brand)]"}
+        z-50
+        px-[var(--spacing-4xl)]
+      `}
+    >
       <div className="w-full max-w-[1280px] mx-auto flex items-center justify-between py-[var(--spacing-m)]">
         {/* Logo and Nav Links */}
         <div className="flex items-center gap-[var(--spacing-3xl)]">

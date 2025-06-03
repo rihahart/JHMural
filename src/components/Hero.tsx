@@ -72,7 +72,7 @@ export default function Hero() {
             }}
             className="text-[clamp(1.5rem,3vw,2.5rem)] text-[var(--color-content-primary-inverse)] mt-[var(--spacing-m)] transition-all duration-300 ease-in-out"
           >
-            on lonely walls of Jackson Heights, Queens
+            on lonely walls of Jackson Heights, Queens.
           </motion.p>
         </div>
 
@@ -87,15 +87,16 @@ export default function Hero() {
               ease: [0.33, 1, 0.68, 1],
             }}
           >
+  
             <video
               ref={videoRef}
-              className="w-full h-full object-cover rounded-lg"
+              className="w-full h-full object-cover"
               muted
               loop
               playsInline
             >
               <source
-                src={isMobile ? "/hero-video-mobile.mp4" : "/hero-video-web.mp4"}
+                src={isMobile ? "/hero-video-mobile.mp4" : "/MainAnimation.mp4"}
                 type="video/mp4"
               />
             </video>
