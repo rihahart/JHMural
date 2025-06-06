@@ -47,7 +47,7 @@ export default function Navbar() {
         px-[var(--spacing-4xl)]
       `}
     >
-      <div className="w-full max-w-[1000px] mx-auto flex items-center justify-between py-[var(--spacing-s)]">
+      <div className="w-full max-w-[1000px] mx-auto flex items-center justify-between py-[var(--spacing-m)]">
         {/* Logo and Nav Links */}
         <div className="flex items-center gap-[var(--spacing-4xl)]">
           <Link href="/" className="flex items-center">
