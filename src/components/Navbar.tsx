@@ -50,7 +50,7 @@ export default function Navbar() {
       `}
     >
       <div className="w-full max-w-[1000px] mx-auto flex items-center justify-between py-[var(--spacing-m)]">
-        <div className="flex items-center gap-[var(--spacing-xl)]">
+        <div className="flex items-center gap-[var(--spacing-xl)] lg:gap-[var(--spacing-2xl)]">
           <Link href="/" className="flex items-center">
             <Image
               src={isScrolled ? "/logo.svg" : "/Secondary Logo.svg"}
@@ -62,7 +62,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Nav Links */}
-          <div className="hidden lg:flex items-center gap-[var(--spacing-xl)]">
+          <div className="hidden lg:flex items-center gap-[var(--spacing-2xl)]">
             {navItems.map((item) => (
               <Link
                 key={item.name}

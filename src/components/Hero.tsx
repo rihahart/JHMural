@@ -40,7 +40,7 @@ export default function Hero() {
         {/* Text Section */}
         <div className="w-[90%] lg:w-full flex justify-start lg:justify-center">
           <div className="lg:max-w-[1080px] text-start">
-            <h1 className="hero-heading font-black leading-none tracking-[0.005em] text-[var(--color-content-primary-inverse)] transition-all duration-300 ease-in-out">
+            <h1 className="text-[4.5rem] lg:text-[clamp(6rem,8rem,10rem)] font-black leading-none tracking-[0.005em] text-[var(--color-content-primary-inverse)] transition-all duration-300 ease-in-out">
               {words.map((word, i) => (
                 <motion.span
                   key={i}
@@ -66,7 +66,7 @@ export default function Hero() {
                 duration: 0.5,
                 ease: [0.33, 1, 0.68, 1],
               }}
-              className="text-m font-semibold text-[var(--color-content-primary-inverse)] mt-[var(--spacing-m)] transition-all duration-300 ease-in-out"
+              className="text-[1.125rem] lg:text-[clamp(1.5rem,3vw,2.5rem)] font-semibold text-[var(--color-content-primary-inverse)] mt-[var(--spacing-m)] transition-all duration-300 ease-in-out"
             >
               on lonely walls of Jackson Heights, Queens.
             </motion.p>
