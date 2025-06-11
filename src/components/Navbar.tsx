@@ -3,11 +3,13 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Button from "./Button";
+import HamburgerMenu from "./HamburgerMenu";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,12 +46,11 @@ export default function Navbar() {
         ${isVisible ? "translate-y-0" : "-translate-y-full"}
         ${isScrolled ? "shadow-md bg-white" : "bg-[var(--color-background-brand)]"}
         z-50
-        px-[var(--spacing-4xl)]
+        px-[var(--spacing-lg)] sm:px-[var(--spacing-xl)] md:px-[var(--spacing-2xl)] lg:px-[var(--spacing-4xl)]
       `}
     >
       <div className="w-full max-w-[1000px] mx-auto flex items-center justify-between py-[var(--spacing-m)]">
-        {/* Logo and Nav Links */}
-        <div className="flex items-center gap-[var(--spacing-4xl)]">
+        <div className="flex items-center gap-[var(--spacing-xl)]">
           <Link href="/" className="flex items-center">
             <Image
               src={isScrolled ? "/logo.svg" : "/Secondary Logo.svg"}
@@ -60,7 +61,8 @@ export default function Navbar() {
             />
           </Link>
 
-          <div className="hidden md:flex items-center gap-[var(--spacing-4xl)]">
+          {/* Desktop Nav Links */}
+          <div className="hidden lg:flex items-center gap-[var(--spacing-xl)]">
             {navItems.map((item) => (
               <Link
                 key={item.name}
@@ -77,16 +79,51 @@ export default function Navbar() {
           </div>
         </div>
 
-        <Button
-          href="https://www.gofundme.com/f/donate-to-help-us-put-a-beautiful-mural-in-jackson-heights"
-          target="_blank"
-          rel="noopener noreferrer"
-          variant={isScrolled ? "primary" : "tertiary"}
-          size="large"
-          trailingIcon="/flower.svg"
-        >
-          Donate
-        </Button>
+        <div className="flex items-center gap-[var(--spacing-m)]">
+          <Button
+            href="https://www.gofundme.com/f/donate-to-help-us-put-a-beautiful-mural-in-jackson-heights"
+            target="_blank"
+            rel="noopener noreferrer"
+            variant={isScrolled ? "primary" : "tertiary"}
+            size="large"
+            trailingIcon="/flower.svg"
+          >
+            Donate
+          </Button>
+
+          <div className="lg:hidden">
+            <HamburgerMenu
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              isScrolled={isScrolled}
+            />
+          </div>
+        </div>
+
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div
+            className={`
+              lg:hidden
+              absolute top-full left-0 right-0
+              bg-white
+              py-[var(--spacing-m)]
+              px-[var(--spacing-lg)] sm:px-[var(--spacing-xl)] md:px-[var(--spacing-2xl)] lg:px-[var(--spacing-4xl)]
+              flex flex-col gap-[var(--spacing-m)]
+              shadow-md
+            `}
+          >
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="transition-colors duration-300 heading-s text-[var(--color-content-primary)] hover:text-[var(--color-content-link-hover)]"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

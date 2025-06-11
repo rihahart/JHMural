@@ -1,17 +1,17 @@
 "use client";
 
 import React, { useEffect, useState, useRef } from "react";
-import { motion} from "framer-motion";
+import { motion } from "framer-motion";
 
 export default function Hero() {
   const [isMobile, setIsMobile] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const heroRef = useRef<HTMLDivElement>(null); 
+  const heroRef = useRef<HTMLDivElement>(null);
   const words = ["WE", "PAINT", "MURALS"];
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
+      setIsMobile(window.innerWidth < 1024);
     };
 
     checkMobile();
@@ -21,13 +21,10 @@ export default function Hero() {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-     
       heroRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
 
       if (videoRef.current) {
-        videoRef.current.play().catch(() => {
-          // handle autoplay restrictions silently
-        });
+        videoRef.current.play().catch(() => {});
       }
     }, 1550);
 
@@ -36,16 +33,14 @@ export default function Hero() {
 
   return (
     <div
-  ref={heroRef}
-  className="flex flex-col w-full min-h-[calc(100vh-4rem)] pt-[4rem] items-center justify-center bg-[var(--color-background-brand)] px-[var(--spacing-4xl)] py-[var(--spacing-2xl)] md:py-[var(--spacing-4xl)]"
->
-      <div
-        className="flex flex-col items-center w-full gap-[var(--spacing-xl)] max-w-[1080px]"
-      >
+      ref={heroRef}
+      className="flex flex-col w-full min-h-[calc(100vh-4rem)] pt-[4rem] items-center justify-center bg-[var(--color-background-brand)] px-[var(--spacing-lg)] py-[var(--spacing-2xl)] md:py-[var(--spacing-4xl)]"
+    >
+      <div className="flex flex-col items-center w-full gap-[var(--spacing-xl)] max-w-[1080px]">
         {/* Text Section */}
-        <div className="w-full flex justify-center">
-          <div className="max-w-[1080px] text-start">
-            <h1 className="text-[clamp(6rem,8rem,10rem)] font-bold leading-none tracking-[0.005em] text-[var(--color-content-primary-inverse)] transition-all duration-300 ease-in-out text-start">
+        <div className="w-[90%] lg:w-full flex justify-start lg:justify-center">
+          <div className="lg:max-w-[1080px] text-start">
+            <h1 className="hero-heading font-black leading-none tracking-[0.005em] text-[var(--color-content-primary-inverse)] transition-all duration-300 ease-in-out">
               {words.map((word, i) => (
                 <motion.span
                   key={i}
@@ -71,7 +66,7 @@ export default function Hero() {
                 duration: 0.5,
                 ease: [0.33, 1, 0.68, 1],
               }}
-              className="text-[clamp(1.5rem,3vw,2.5rem)] text-[var(--color-content-primary-inverse)] mt-[var(--spacing-m)] transition-all duration-300 ease-in-out text-start"
+              className="text-m font-semibold text-[var(--color-content-primary-inverse)] mt-[var(--spacing-m)] transition-all duration-300 ease-in-out"
             >
               on lonely walls of Jackson Heights, Queens.
             </motion.p>
@@ -92,10 +87,12 @@ export default function Hero() {
           >
             <video
               ref={videoRef}
+              key={isMobile ? 'mobile' : 'desktop'}
               className="w-full h-full object-cover"
               muted
               loop
               playsInline
+              autoPlay
             >
               <source
                 src={isMobile ? "/hero-video-mobile.mp4" : "/MainAnimation.mp4"}
