@@ -33,7 +33,8 @@ export default function Navbar() {
   }, [lastScrollY]);
 
   const navItems = [
-    { name: "About", href: "/about" },
+    { name: "Mural", href: "/mural" },
+    { name: "About us", href: "/about" },
     { name: "Support us", href: "/supportus" },
   ];
 
@@ -41,20 +42,20 @@ export default function Navbar() {
     <div
       className={`
         w-full
-        sticky top-0
+        fixed top-0 left-0 right-0
         transition-transform duration-300 ease-in-out
         ${isVisible ? "translate-y-0" : "-translate-y-full"}
-        bg-white
+        ${isScrolled ? "bg-[#f9fbfc]" : ""}
         z-50`}
     >
-      <div className="w-full mx-auto flex items-center justify-between py-[var(--spacing-lg)] px-[var(--spacing-8xl)]">
+      <div className="w-full mx-auto flex items-center justify-between py-[var(--spacing-lg)] px-[var(--spacing-8xl)] max-w-[1600px]">
         <div className="flex items-center gap-[var(--spacing-2xl)]">
           <Link href="/" className="flex items-center">
             <Image
               src="/logo.svg"
               alt="Logo"
-              width={80}
-              height={60}
+              width={60}
+              height={50}
               className="cursor-pointer transition-opacity duration-300 p-[var(--spacing-2xs)]"
             />
           </Link>
