@@ -34,13 +34,13 @@ export default function Hero() {
   return (
     <div
       ref={heroRef}
-      className="flex flex-col w-full min-h-[calc(100vh-4rem)] pt-[4rem] items-center justify-center bg-[var(--color-background-brand)] px-[var(--spacing-lg)] py-[var(--spacing-2xl)] md:py-[var(--spacing-4xl)]"
+      className="flex flex-col items-center justify-center bg-[var(--color-background-primary)] px-[var(--spacing-8xl)] py-[var(--spacing-6xl)]"
     >
-      <div className="flex flex-col items-center w-full gap-[var(--spacing-xl)] max-w-[1080px]">
+      <div className="flex flex-col items-center w-full gap-[var(--spacing-6xl)] max-w-[1200px]">
         {/* Text Section */}
         <div className="w-[90%] lg:w-full flex justify-start lg:justify-center">
-          <div className="lg:max-w-[1080px] text-start">
-            <h1 className="text-[4.5rem] lg:text-[clamp(6rem,8rem,10rem)] font-black leading-none tracking-[0.005em] text-[var(--color-content-primary-inverse)] transition-all duration-300 ease-in-out">
+          <div className="lg:max-w-[1000px] text-start">
+            <h1 className="text-[5rem] lg:text-[clamp(4rem,8vw,8.5rem)] font-black leading-none tracking-[0.005em] text-[var(--color-content-primary)] transition-all duration-300 ease-in-out">
               {words.map((word, i) => (
                 <motion.span
                   key={i}
@@ -66,7 +66,7 @@ export default function Hero() {
                 duration: 0.5,
                 ease: [0.33, 1, 0.68, 1],
               }}
-              className="text-[1.125rem] lg:text-[clamp(1.5rem,3vw,2.5rem)] font-semibold text-[var(--color-content-primary-inverse)] mt-[var(--spacing-m)] transition-all duration-300 ease-in-out"
+              className="text-[2rem] lg:text-[clamp(2rem,4vw,2.5rem)] font-semibold text-[var(--color-content-primary)] mt-[var(--spacing-m)] transition-all duration-300 ease-in-out"
             >
               on lonely walls of Jackson Heights, Queens.
             </motion.p>
@@ -83,7 +83,7 @@ export default function Hero() {
               duration: 0.5,
               ease: [0.33, 1, 0.68, 1],
             }}
-            className="w-[95%] max-w-[1000px]"
+            className="w-[clamp(300px,60vw,1000px)]"
           >
             <video
               ref={videoRef}

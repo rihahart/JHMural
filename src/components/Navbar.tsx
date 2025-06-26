@@ -44,34 +44,28 @@ export default function Navbar() {
         sticky top-0
         transition-transform duration-300 ease-in-out
         ${isVisible ? "translate-y-0" : "-translate-y-full"}
-        ${isScrolled ? "shadow-md bg-white" : "bg-[var(--color-background-brand)]"}
-        z-50
-        px-[var(--spacing-lg)] sm:px-[var(--spacing-xl)] md:px-[var(--spacing-2xl)] lg:px-[var(--spacing-4xl)]
-      `}
+        bg-white
+        z-50`}
     >
-      <div className="w-full max-w-[1000px] mx-auto flex items-center justify-between py-[var(--spacing-m)]">
-        <div className="flex items-center gap-[var(--spacing-xl)] lg:gap-[var(--spacing-2xl)]">
+      <div className="w-full mx-auto flex items-center justify-between py-[var(--spacing-lg)] px-[var(--spacing-8xl)]">
+        <div className="flex items-center gap-[var(--spacing-2xl)]">
           <Link href="/" className="flex items-center">
             <Image
-              src={isScrolled ? "/logo.svg" : "/Secondary Logo.svg"}
+              src="/logo.svg"
               alt="Logo"
-              width={70}
-              height={50}
-              className="cursor-pointer transition-opacity duration-300"
+              width={80}
+              height={60}
+              className="cursor-pointer transition-opacity duration-300 p-[var(--spacing-2xs)]"
             />
           </Link>
 
           {/* Desktop Nav Links */}
-          <div className="hidden lg:flex items-center gap-[var(--spacing-2xl)]">
+          <div className="hidden lg:flex items-center p-[var(--spacing-lg)] gap-[var(--spacing-4xl)]">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className={`transition-colors duration-300 heading-s ${
-                  isScrolled
-                    ? "text-[var(--color-content-primary)] hover:text-[var(--color-content-link-hover)]"
-                    : "text-[var(--color-content-primary-inverse)]"
-                }`}
+                className="transition-colors duration-300 text-lg-medium text-[var(--color-content-primary)]"
               >
                 {item.name}
               </Link>
@@ -84,7 +78,7 @@ export default function Navbar() {
             href="https://www.gofundme.com/f/donate-to-help-us-put-a-beautiful-mural-in-jackson-heights"
             target="_blank"
             rel="noopener noreferrer"
-            variant={isScrolled ? "primary" : "tertiary"}
+            variant="primary"
             size="large"
             trailingIcon="/flower.svg"
           >
