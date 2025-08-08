@@ -33,7 +33,7 @@ export default function Navbar() {
   }, [lastScrollY]);
 
   const navItems = [
-    { name: "Home", href: "/" },
+    { name: "Projects", href: "/projects" },
     { name: "About", href: "/about" },
     { name: "Get involved", href: "/getinvolved" },
   ];
@@ -50,12 +50,12 @@ export default function Navbar() {
     >
       <div className="w-full mx-auto flex items-center justify-between py-[var(--spacing-lg)] px-[var(--spacing-8xl)] max-w-[1600px]">
         <div className="flex items-center gap-[var(--spacing-2xl)]">
-          <Link href="/" className="flex items-center">
+          <Link href="/" className="flex items-center" aria-label="Home">
             <Image
               src="/logo.svg"
               alt="Logo"
-              width={60}
-              height={50}
+              width={80}
+              height={60}
               className="cursor-pointer transition-opacity duration-300 p-[var(--spacing-2xs)]"
             />
           </Link>
