@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function About() {
   return (
-    <div className="flex w-[var(--breakpoint-xl)] pt-[var(--spacing-7xl)] pb-[var(--spacing-7xl)] flex-col items-center gap-[var(--spacing-7xl)]">
+    <div className="flex w-[var(--breakpoint-xl)] pt-[var(--spacing-4xl)] pb-[var(--spacing-7xl)] flex-col items-center gap-[var(--spacing-7xl)]">
       <div className="flex p-[var(--spacing-xl)] flex-col justify-center items-center gap-[var(--spacing-xs)]">
         <Image
           src="/Suz&Riha.jpg"
