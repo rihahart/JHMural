@@ -33,9 +33,9 @@ export default function Navbar() {
   }, [lastScrollY]);
 
   const navItems = [
-    { name: "Mural", href: "/mural" },
-    { name: "About us", href: "/about" },
-    { name: "Support us", href: "/supportus" },
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
+    { name: "Get involved", href: "/getinvolved" },
   ];
 
   return (
