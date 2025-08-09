@@ -12,6 +12,10 @@ export default function MeetOurFounders() {
       />
       <div className="flex w-full py-[var(--spacing-lg)] sm:py-[var(--spacing-2xl)] px-[var(--spacing-m)] sm:px-[var(--spacing-lg)] flex-col items-center gap-[var(--spacing-lg)] sm:gap-[var(--spacing-xl)]">
         <h1 className="flex justify-center items-center gap-[var(--spacing-s)]">
+          <Image 
+          src="/Tulip64.svg"
+           alt="JH Mural Tulip logo" 
+           width={64} height={64} />
           <p className="text-[var(--color-content-primary)] text-center heading-3xl-bold tracking-[var(--letter-spacing-none)]">Meet our founders</p>
         </h1>
         <p className="text-lg-regular sm:text-xl-regular text-[var(--color-content-primary)] tracking-[var(--letter-spacing-none)]">
