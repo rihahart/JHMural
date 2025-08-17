@@ -34,13 +34,12 @@ export default function Hero() {
   return (
     <div
       ref={heroRef}
-      className="flex flex-col items-center justify-center bg-[var(--color-background-primary)] px-[var(--spacing-8xl)] py-[var(--spacing-6xl)]"
+      className="flex flex-col items-center justify-center bg-[var(--color-brand-600)] px-6 pt-20 pb-16 lg:px-[var(--spacing-8xl)] lg:py-[var(--spacing-6xl)]"
     >
-      <div className="flex flex-col items-center w-full gap-[var(--spacing-6xl)] max-w-[1200px]">
-        {/* Text Section */}
-        <div className="w-[90%] lg:w-full flex justify-start lg:justify-center">
-          <div className="lg:max-w-[1000px] text-start">
-            <h1 className="text-[5rem] lg:text-[clamp(4rem,8vw,8.5rem)] font-black leading-none tracking-[0.005em] text-[var(--color-content-primary)] transition-all duration-300 ease-in-out">
+      <div className="flex flex-col items-center w-full gap-8 max-w-[1200px]">
+        <div className="w-full flex justify-center">
+          <div className="text-center">
+            <h1 className="text-4xl md:text-6xl lg:text-[clamp(4rem,8vw,8.5rem)] font-black leading-none tracking-[0.005em] text-white transition-all duration-300 ease-in-out">
               {words.map((word, i) => (
                 <motion.span
                   key={i}
@@ -66,9 +65,9 @@ export default function Hero() {
                 duration: 0.5,
                 ease: [0.33, 1, 0.68, 1],
               }}
-              className="text-[2rem] lg:text-[clamp(2rem,4vw,2.5rem)] font-semibold text-[var(--color-content-primary)] mt-[var(--spacing-m)] transition-all duration-300 ease-in-out"
+              className="text-lg md:text-xl lg:text-2xl font-medium text-white mt-2"
             >
-              on lonely walls of Jackson Heights, Queens.
+              on graffiti walls of Jackson Heights, Queens.
             </motion.p>
           </div>
         </div>
@@ -88,7 +87,7 @@ export default function Hero() {
             <video
               ref={videoRef}
               key={isMobile ? 'mobile' : 'desktop'}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover rounded-lg"
               muted
               loop
               playsInline

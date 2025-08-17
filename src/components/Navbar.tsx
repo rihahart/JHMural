@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Button from "./Button";
 import HamburgerMenu from "./HamburgerMenu";
 
@@ -10,6 +11,7 @@ export default function Navbar() {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,6 +37,7 @@ export default function Navbar() {
   const navItems = [
     { name: "Projects", href: "/projects" },
     { name: "About", href: "/about" },
+    { name: "Supporters", href: "/supporters" },
     { name: "Get involved", href: "/getinvolved" },
   ];
 
@@ -48,9 +51,9 @@ export default function Navbar() {
         ${isScrolled ? "bg-[#f9fbfc]" : ""}
         z-50`}
     >
-      <div className="w-full mx-auto flex items-center justify-between py-[var(--spacing-lg)] px-[var(--spacing-8xl)] max-w-[1600px]">
+      <div className="w-full mx-auto flex items-center justify-between py-[var(--spacing-lg)] px-6 lg:px-[var(--spacing-8xl)] max-w-[1600px]">
         <div className="flex items-center gap-[var(--spacing-2xl)]">
-          <Link href="/" className="flex items-center" aria-label="Home">
+          <Link href="/" className="flex items-center flex-shrink-0" aria-label="Home">
             <Image
               src="/logo.svg"
               alt="Logo"
@@ -62,31 +65,67 @@ export default function Navbar() {
 
           {/* Desktop Nav Links */}
           <div className="hidden lg:flex items-center p-[var(--spacing-lg)] gap-[var(--spacing-4xl)]">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="transition-colors duration-300 text-lg-medium text-[var(--color-content-primary)]"
-              >
-                {item.name}
-              </Link>
-            ))}
+            {navItems.map((item) => {
+              const isActive = pathname === item.href || (pathname === '/' && item.href === '/');
+              
+              return (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="group flex items-center gap-2 transition-all duration-200 text-lg-medium text-[var(--color-content-primary)] hover:text-[var(--color-brand-600)] relative"
+                >
+                  <span>{item.name}</span>
+                  
+                  {/* Flower icon - always visible when active, shows on hover when inactive */}
+                  <div className={`transition-all duration-200 ease-in-out ${
+                    isActive 
+                      ? 'opacity-100 scale-100' 
+                      : 'opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100'
+                  }`}>
+                    <Image
+                      src="/flower-red.svg"
+                      alt=""
+                      width={20}
+                      height={20}
+                      className="w-5 h-5 transition-all duration-200 ease-in-out group-hover:scale-110 group-hover:brightness-[1.2] group-hover:saturate-150"
+                    />
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </div>
 
-        <div className="flex items-center gap-[var(--spacing-m)]">
-          <Button
-            href="https://www.gofundme.com/f/donate-to-help-us-put-a-beautiful-mural-in-jackson-heights"
-            target="_blank"
-            rel="noopener noreferrer"
-            variant="primary"
-            size="large"
-            trailingIcon="/flower.svg"
-          >
-            Donate
-          </Button>
+        <div className="flex items-center gap-3 lg:gap-[var(--spacing-m)]">
+          {/* Desktop Donate Button */}
+          <div className="hidden sm:block">
+            <Button
+              href="https://www.gofundme.com/f/donate-to-help-us-put-a-beautiful-mural-in-jackson-heights"
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="primary"
+              size="large"
+              trailingIcon="/flower.svg"
+            >
+              Donate
+            </Button>
+          </div>
 
-          <div className="lg:hidden">
+          {/* Mobile Donate Button - Smaller */}
+          <div className="sm:hidden">
+            <Button
+              href="https://www.gofundme.com/f/donate-to-help-us-put-a-beautiful-mural-in-jackson-heights"
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="primary"
+              size="small"
+              trailingIcon="/flower.svg"
+            >
+              Donate
+            </Button>
+          </div>
+
+          <div className="lg:hidden flex-shrink-0">
             <HamburgerMenu
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               isScrolled={isScrolled}
@@ -107,16 +146,35 @@ export default function Navbar() {
               shadow-md
             `}
           >
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="transition-colors duration-300 heading-s text-[var(--color-content-primary)] hover:text-[var(--color-content-link-hover)]"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {item.name}
-              </Link>
-            ))}
+            {navItems.map((item) => {
+              const isActive = pathname === item.href || (pathname === '/' && item.href === '/');
+              
+              return (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="group flex items-center justify-between transition-all duration-200 heading-s text-[var(--color-content-primary)] hover:text-[var(--color-content-link-hover)]"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <span>{item.name}</span>
+                  
+                  {/* Flower icon - always visible when active, shows on hover when inactive */}
+                  <div className={`transition-all duration-200 ease-in-out ${
+                    isActive 
+                      ? 'opacity-100 scale-100' 
+                      : 'opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100'
+                  }`}>
+                    <Image
+                      src="/flower-red.svg"
+                      alt=""
+                      width={20}
+                      height={20}
+                      className="w-5 h-5 transition-all duration-200 ease-in-out group-hover:scale-110 group-hover:brightness-[1.2] group-hover:saturate-150"
+                    />
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         )}
       </div>
