@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Button from "../Button";
 import { donationConfig, getProgressPercentage, formatCurrency } from "../../config/donations";
 
 export default function DonationSection() {
@@ -52,14 +53,17 @@ export default function DonationSection() {
           </p>
         </div>
 
-        <a 
+        <Button
           href={donationConfig.campaignUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="block w-full bg-[var(--color-brand-600)] text-white py-4 rounded-lg text-lg font-semibold hover:bg-[var(--color-brand-700)] transition-colors duration-200 text-center"
+          variant="primary"
+          size="large"
+          trailingIcon="/flower.svg"
+          className="w-full"
         >
           Donate
-        </a>
+        </Button>
       </div>
     </div>
   );

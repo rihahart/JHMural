@@ -50,18 +50,18 @@ export default function Navbar() {
         { name: "84th St Mural", href: "/projects#84th-st-mural" }
       ]
     },
+    { name: "Get Involved", href: "/getinvolved" },
+    { name: "Supporters", href: "/supporters" },
     { 
-      name: "About", 
+      name: "About Us", 
       href: "/about",
       hasDropdown: true,
-              submenu: [
-          { name: "Mission", href: "/about#mission" },
-          { name: "Our Vision", href: "/about#our-vision" },
-          { name: "Meet our Founders", href: "/about#meet-our-founders" }
-        ]
+      submenu: [
+        { name: "Mission", href: "/about#mission" },
+        { name: "Our Vision", href: "/about#our-vision" },
+        { name: "Meet our Founders", href: "/about#meet-our-founders" }
+      ]
     },
-    { name: "Supporters", href: "/supporters" },
-    { name: "Get involved", href: "/getinvolved" },
   ];
 
   return (
@@ -99,14 +99,14 @@ export default function Navbar() {
                     onMouseEnter={() => {
                       if (item.name === "Projects") {
                         setIsProjectsDropdownOpen(true);
-                      } else if (item.name === "About") {
+                      } else if (item.name === "About Us") {
                         setIsAboutDropdownOpen(true);
                       }
                     }}
                     onMouseLeave={() => {
                       if (item.name === "Projects") {
                         setIsProjectsDropdownOpen(false);
-                      } else if (item.name === "About") {
+                      } else if (item.name === "About Us") {
                         setIsAboutDropdownOpen(false);
                       }
                     }}
@@ -129,7 +129,7 @@ export default function Navbar() {
                       
                       <Link
                         href={item.href}
-                        className={`group flex items-center gap-2 transition-all duration-200 text-lg-medium hover:text-[var(--color-brand-600)] relative ${
+                        className={`group flex items-center gap-2 transition-all duration-200 text-lg font-semibold hover:text-[var(--color-brand-600)] relative ${
                           isActive ? 'text-[var(--color-brand-600)]' : 'text-[var(--color-content-primary)]'
                         }`}
                       >
@@ -150,15 +150,15 @@ export default function Navbar() {
                     </div>
 
                     {/* Dropdown Menu */}
-                    {((item.name === "Projects" && isProjectsDropdownOpen) || (item.name === "About" && isAboutDropdownOpen)) && (
-                      <div className="absolute top-full left-0 mt-0 w-48 bg-white rounded-lg shadow-lg border border-[var(--color-neutral-300)] py-2 z-50">
+                    {((item.name === "Projects" && isProjectsDropdownOpen) || (item.name === "About Us" && isAboutDropdownOpen)) && (
+                      <div className="absolute top-full left-[12px] mt-0 w-56 bg-white rounded-md shadow-lg border border-[var(--color-neutral-300)] py-1 z-50">
                         {item.submenu?.map((subItem) => (
                           <Link
                             key={subItem.name}
                             href={subItem.href}
-                            className="block px-4 py-3 text-[var(--color-content-primary)] hover:bg-[var(--color-neutral-200)] hover:text-[var(--color-brand-600)] transition-all duration-200"
+                            className="block px-4 py-3 text-base font-normal text-[var(--color-content-primary)] hover:bg-[var(--color-neutral-200)] hover:text-[var(--color-brand-600)] transition-all duration-200"
                           >
-                            <span className="text-base">{subItem.name}</span>
+                            <span>{subItem.name}</span>
                           </Link>
                         ))}
                       </div>
@@ -186,7 +186,7 @@ export default function Navbar() {
                   
                   <Link
                     href={item.href}
-                    className={`group flex items-center transition-all duration-200 text-lg-medium hover:text-[var(--color-brand-600)] relative ${
+                    className={`group flex items-center transition-all duration-200 text-lg font-semibold hover:text-[var(--color-brand-600)] relative ${
                       isActive ? 'text-[var(--color-brand-600)]' : 'text-[var(--color-content-primary)]'
                     }`}
                   >
@@ -207,7 +207,7 @@ export default function Navbar() {
               rel="noopener noreferrer"
               variant="primary"
               size="large"
-              trailingIcon="/flower.svg"
+              leadingIcon="/flower.svg"
             >
               Donate
             </Button>
@@ -221,7 +221,7 @@ export default function Navbar() {
               rel="noopener noreferrer"
               variant="primary"
               size="small"
-              trailingIcon="/flower.svg"
+              leadingIcon="/flower.svg"
             >
               Donate
             </Button>
@@ -278,7 +278,7 @@ export default function Navbar() {
                       
                       <Link
                         href={item.href}
-                        className={`group flex-1 transition-all duration-200 heading-s hover:text-[var(--color-brand-600)] ${
+                        className={`group flex-1 transition-all duration-200 text-lg font-semibold hover:text-[var(--color-brand-600)] ${
                           isActive ? 'text-[var(--color-brand-600)]' : 'text-[var(--color-content-primary)]'
                         }`}
                         onClick={() => setIsMobileMenuOpen(false)}
@@ -291,7 +291,7 @@ export default function Navbar() {
                         onClick={() => {
                           if (item.name === "Projects") {
                             setIsMobileProjectsExpanded(!isMobileProjectsExpanded);
-                          } else if (item.name === "About") {
+                          } else if (item.name === "About Us") {
                             setIsMobileAboutExpanded(!isMobileAboutExpanded);
                           }
                         }}
@@ -312,13 +312,13 @@ export default function Navbar() {
                     </div>
                     
                     {/* Mobile Submenu - Only show when expanded */}
-                    {((item.name === "Projects" && isMobileProjectsExpanded) || (item.name === "About" && isMobileAboutExpanded)) && (
+                    {((item.name === "Projects" && isMobileProjectsExpanded) || (item.name === "About Us" && isMobileAboutExpanded)) && (
                       <div className="ml-8 mt-2 flex flex-col gap-1 pl-4 border-l-2 border-[var(--color-neutral-300)]">
                         {item.submenu?.map((subItem) => (
                           <Link
                             key={subItem.name}
                             href={subItem.href}
-                            className="block py-2 text-sm text-[var(--color-content-secondary)] hover:text-[var(--color-brand-600)] transition-all duration-200"
+                            className="block py-3 text-base font-normal text-[var(--color-content-primary)] hover:text-[var(--color-brand-600)] transition-all duration-200"
                             onClick={() => {
                               setIsMobileMenuOpen(false);
                               setIsMobileProjectsExpanded(false);
@@ -353,7 +353,7 @@ export default function Navbar() {
                   
                   <Link
                     href={item.href}
-                    className={`group transition-all duration-200 heading-s hover:text-[var(--color-brand-600)] ${
+                    className={`group transition-all duration-200 text-lg font-semibold hover:text-[var(--color-brand-600)] ${
                       isActive ? 'text-[var(--color-brand-600)]' : 'text-[var(--color-content-primary)]'
                     }`}
                     onClick={() => setIsMobileMenuOpen(false)}
