@@ -14,7 +14,7 @@ export default function Projects() {
                 84th St Mural
               </h2>
               <h1 className="text-3xl lg:text-4xl font-black text-[var(--color-content-primary)]">
-                "Welcome to Jackson Heights: a Celebration of Diversity, Solidarity and Community"
+                &ldquo;Welcome to Jackson Heights: a Celebration of Diversity, Solidarity and Community&rdquo;
               </h1>
               <p className="text-lg text-[var(--color-content-secondary)]">
                 by Eli Salome-Diaz and Benny Guerra

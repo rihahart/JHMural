@@ -40,7 +40,7 @@ export default function CoFounderInfo() {
         <div className="flex flex-col justify-center gap-4 lg:gap-6 p-6 lg:p-8 lg:w-1/2">
           <h3 className="text-[var(--color-content-primary)] text-2xl lg:text-3xl font-black">Riha Hart</h3>
           <p className="text-[var(--color-content-primary)] text-base lg:text-xl leading-relaxed">
-            Riha is a proud Queens native and currently lives in Jackson Heights. She is the founding tech and design lead for Everest Federal Credit Union (EFCU), the first Nepalese-American credit union. There, she oversees the bank's tech team and leads the brand strategy.
+            Riha is a proud Queens native and currently lives in Jackson Heights. She is the founding tech and design lead for Everest Federal Credit Union (EFCU), the first Nepalese-American credit union. There, she oversees the bank&apos;s tech team and leads the brand strategy.
           </p>
         </div>
       </div>

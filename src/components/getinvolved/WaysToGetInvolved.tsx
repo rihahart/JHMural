@@ -80,7 +80,7 @@ export default function WaysToGetInvolved() {
             Ways to Get Involved
           </h2>
           <p className="text-lg text-[var(--color-content-secondary)] max-w-2xl mx-auto">
-            Whether you're an artist, property owner, volunteer, or community supporter, there's a place for you in our mission.
+            Whether you&apos;re an artist, property owner, volunteer, or community supporter, there&apos;s a place for you in our mission.
           </p>
         </div>
         

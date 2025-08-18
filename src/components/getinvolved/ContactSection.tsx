@@ -11,7 +11,7 @@ export default function ContactSection() {
         </h2>
         
         <p className="text-lg text-[var(--color-content-secondary)] mb-8">
-          We'd love to hear from you! Reach out to us with any questions, ideas, or to discuss how you can get involved with the Jackson Heights Mural Project.
+          We&apos;d love to hear from you! Reach out to us with any questions, ideas, or to discuss how you can get involved with the Jackson Heights Mural Project.
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
