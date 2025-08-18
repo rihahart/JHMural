@@ -7,7 +7,7 @@ export default function GetInvolved() {
 
   if (windowWidth > 768) {
     return (
-      <div className="flex w-full max-w-[var(--breakpoint-xl)] px-4 sm:px-6 lg:px-8 pt-[var(--spacing-7xl)] pb-[var(--spacing-7xl)] flex-col items-center gap-[var(--spacing-7xl)]">
+      <div className="flex w-full max-w-[1600px] px-4 sm:px-6 lg:px-8 pt-[var(--spacing-7xl)] pb-[var(--spacing-7xl)] flex-col items-center gap-[var(--spacing-7xl)] min-h-screen">
         <div className="text-xl-regular text-[var(--color-content-primary)] text-center">
           Coming soon
         </div>
@@ -17,7 +17,7 @@ export default function GetInvolved() {
 
   // Mobile layout
   return (
-    <div className="flex w-full px-4 pt-[var(--spacing-4xl)] pb-[var(--spacing-4xl)] flex-col items-center gap-[var(--spacing-4xl)]">
+    <div className="flex w-full px-4 pt-[var(--spacing-4xl)] pb-[var(--spacing-4xl)] flex-col items-center gap-[var(--spacing-4xl)] min-h-screen">
       <div className="text-lg-regular text-[var(--color-content-primary)] text-center">
         Coming soon
       </div>

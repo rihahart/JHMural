@@ -17,7 +17,7 @@ export default function OrganizationSupporters() {
     {
       name: "Francisco and Charlie from A.R.T.",
       description: "Local artists and community advocates",
-      logoNeeded: false
+      logoNeeded: true
     }
   ];
 

@@ -3,7 +3,7 @@ interface HamburgerMenuProps {
   isScrolled: boolean;
 }
 
-export default function HamburgerMenu({ onClick, isScrolled }: HamburgerMenuProps) {
+export default function HamburgerMenu({ onClick }: HamburgerMenuProps) {
   return (
     <button
       onClick={onClick}
@@ -13,11 +13,7 @@ export default function HamburgerMenu({ onClick, isScrolled }: HamburgerMenuProp
       {[...Array(4)].map((_, index) => (
         <div
           key={index}
-          className={`w-[var(--spacing-xl)] h-[2px] transition-colors duration-300 ${
-            isScrolled
-              ? "bg-[var(--color-content-primary)]"
-              : "bg-[var(--color-content-primary-inverse)]"
-          }`}
+          className="w-[var(--spacing-xl)] h-[3px] bg-[var(--color-neutral-800)] rounded-sm transition-all duration-300"
         />
       ))}
     </button>

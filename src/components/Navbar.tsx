@@ -11,6 +11,10 @@ export default function Navbar() {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isProjectsDropdownOpen, setIsProjectsDropdownOpen] = useState(false);
+  const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
+  const [isMobileProjectsExpanded, setIsMobileProjectsExpanded] = useState(false);
+  const [isMobileAboutExpanded, setIsMobileAboutExpanded] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -38,8 +42,24 @@ export default function Navbar() {
   }, [lastScrollY]);
 
   const navItems = [
-    { name: "Projects", href: "/projects" },
-    { name: "About", href: "/about" },
+    { 
+      name: "Projects", 
+      href: "/projects",
+      hasDropdown: true,
+      submenu: [
+        { name: "84th St Mural", href: "/projects#84th-st-mural" }
+      ]
+    },
+    { 
+      name: "About", 
+      href: "/about",
+      hasDropdown: true,
+              submenu: [
+          { name: "Mission", href: "/about#mission" },
+          { name: "Our Vision", href: "/about#our-vision" },
+          { name: "Meet our Founders", href: "/about#meet-our-founders" }
+        ]
+    },
     { name: "Supporters", href: "/supporters" },
     { name: "Get involved", href: "/getinvolved" },
   ];
@@ -71,14 +91,84 @@ export default function Navbar() {
             {navItems.map((item) => {
               const isActive = pathname === item.href || (pathname === '/' && item.href === '/');
               
+              if (item.hasDropdown) {
+                return (
+                  <div 
+                    key={item.name}
+                    className="relative group/dropdown"
+                    onMouseEnter={() => {
+                      if (item.name === "Projects") {
+                        setIsProjectsDropdownOpen(true);
+                      } else if (item.name === "About") {
+                        setIsAboutDropdownOpen(true);
+                      }
+                    }}
+                    onMouseLeave={() => {
+                      if (item.name === "Projects") {
+                        setIsProjectsDropdownOpen(false);
+                      } else if (item.name === "About") {
+                        setIsAboutDropdownOpen(false);
+                      }
+                    }}
+                  >
+                    <div className="flex items-center gap-2">
+                      {/* Flower icon - always visible when active, shows on hover when inactive */}
+                      <div className={`transition-all duration-200 ease-in-out ${
+                        isActive 
+                          ? 'opacity-100 scale-100' 
+                          : 'opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100'
+                      }`}>
+                        <Image
+                          src="/flower-red.svg"
+                          alt=""
+                          width={20}
+                          height={20}
+                          className="w-5 h-5 transition-all duration-200 ease-in-out group-hover:scale-110 group-hover:brightness-[1.2] group-hover:saturate-150"
+                        />
+                      </div>
+                      
+                      <Link
+                        href={item.href}
+                        className={`group flex items-center gap-2 transition-all duration-200 text-lg-medium hover:text-[var(--color-brand-600)] relative ${
+                          isActive ? 'text-[var(--color-brand-600)]' : 'text-[var(--color-content-primary)]'
+                        }`}
+                      >
+                        <span>{item.name}</span>
+                        
+                        {/* Dropdown Arrow */}
+                        <svg 
+                          className={`w-4 h-4 transition-transform duration-200 ${
+                            (item.name === "Projects" && isProjectsDropdownOpen) || (item.name === "About" && isAboutDropdownOpen) ? 'rotate-180' : ''
+                          }`}
+                          fill="none" 
+                          stroke="currentColor" 
+                          viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </Link>
+                    </div>
+
+                    {/* Dropdown Menu */}
+                    {((item.name === "Projects" && isProjectsDropdownOpen) || (item.name === "About" && isAboutDropdownOpen)) && (
+                      <div className="absolute top-full left-0 mt-0 w-48 bg-white rounded-lg shadow-lg border border-[var(--color-neutral-300)] py-2 z-50">
+                        {item.submenu?.map((subItem) => (
+                          <Link
+                            key={subItem.name}
+                            href={subItem.href}
+                            className="block px-4 py-3 text-[var(--color-content-primary)] hover:bg-[var(--color-neutral-200)] hover:text-[var(--color-brand-600)] transition-all duration-200"
+                          >
+                            <span className="text-base">{subItem.name}</span>
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+              
               return (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="group flex items-center gap-2 transition-all duration-200 text-lg-medium text-[var(--color-content-primary)] hover:text-[var(--color-brand-600)] relative"
-                >
-                  <span>{item.name}</span>
-                  
+                <div key={item.name} className="flex items-center gap-2">
                   {/* Flower icon - always visible when active, shows on hover when inactive */}
                   <div className={`transition-all duration-200 ease-in-out ${
                     isActive 
@@ -93,7 +183,16 @@ export default function Navbar() {
                       className="w-5 h-5 transition-all duration-200 ease-in-out group-hover:scale-110 group-hover:brightness-[1.2] group-hover:saturate-150"
                     />
                   </div>
-                </Link>
+                  
+                  <Link
+                    href={item.href}
+                    className={`group flex items-center transition-all duration-200 text-lg-medium hover:text-[var(--color-brand-600)] relative ${
+                      isActive ? 'text-[var(--color-brand-600)]' : 'text-[var(--color-content-primary)]'
+                    }`}
+                  >
+                    <span>{item.name}</span>
+                  </Link>
+                </div>
               );
             })}
           </div>
@@ -130,7 +229,13 @@ export default function Navbar() {
 
           <div className="lg:hidden flex-shrink-0">
             <HamburgerMenu
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              onClick={() => {
+                setIsMobileMenuOpen(!isMobileMenuOpen);
+                if (isMobileMenuOpen) {
+                  setIsMobileProjectsExpanded(false);
+                  setIsMobileAboutExpanded(false);
+                }
+              }}
               isScrolled={isScrolled}
             />
           </div>
@@ -152,15 +257,85 @@ export default function Navbar() {
             {navItems.map((item) => {
               const isActive = pathname === item.href || (pathname === '/' && item.href === '/');
               
+              if (item.hasDropdown) {
+                return (
+                  <div key={item.name} className="flex flex-col">
+                    <div className="flex items-center gap-2">
+                      {/* Flower icon - always visible when active, shows on hover when inactive */}
+                      <div className={`transition-all duration-200 ease-in-out ${
+                        isActive 
+                          ? 'opacity-100 scale-100' 
+                          : 'opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100'
+                      }`}>
+                        <Image
+                          src="/flower-red.svg"
+                          alt=""
+                          width={20}
+                          height={20}
+                          className="w-5 h-5 transition-all duration-200 ease-in-out group-hover:scale-110 group-hover:brightness-[1.2] group-hover:saturate-150"
+                        />
+                      </div>
+                      
+                      <Link
+                        href={item.href}
+                        className={`group flex-1 transition-all duration-200 heading-s hover:text-[var(--color-brand-600)] ${
+                          isActive ? 'text-[var(--color-brand-600)]' : 'text-[var(--color-content-primary)]'
+                        }`}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        <span>{item.name}</span>
+                      </Link>
+                      
+                      {/* Expand/Collapse Button */}
+                      <button
+                        onClick={() => {
+                          if (item.name === "Projects") {
+                            setIsMobileProjectsExpanded(!isMobileProjectsExpanded);
+                          } else if (item.name === "About") {
+                            setIsMobileAboutExpanded(!isMobileAboutExpanded);
+                          }
+                        }}
+                        className="p-2 hover:bg-[var(--color-neutral-200)] rounded-md transition-colors duration-200 flex-shrink-0"
+                        aria-label={`Toggle ${item.name} submenu`}
+                      >
+                        <svg 
+                          className={`w-4 h-4 text-[var(--color-content-secondary)] transition-transform duration-200 ${
+                            (item.name === "Projects" && isMobileProjectsExpanded) || (item.name === "About" && isMobileAboutExpanded) ? 'rotate-180' : ''
+                          }`}
+                          fill="none" 
+                          stroke="currentColor" 
+                          viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </button>
+                    </div>
+                    
+                    {/* Mobile Submenu - Only show when expanded */}
+                    {((item.name === "Projects" && isMobileProjectsExpanded) || (item.name === "About" && isMobileAboutExpanded)) && (
+                      <div className="ml-8 mt-2 flex flex-col gap-1 pl-4 border-l-2 border-[var(--color-neutral-300)]">
+                        {item.submenu?.map((subItem) => (
+                          <Link
+                            key={subItem.name}
+                            href={subItem.href}
+                            className="block py-2 text-sm text-[var(--color-content-secondary)] hover:text-[var(--color-brand-600)] transition-all duration-200"
+                            onClick={() => {
+                              setIsMobileMenuOpen(false);
+                              setIsMobileProjectsExpanded(false);
+                              setIsMobileAboutExpanded(false);
+                            }}
+                          >
+                            <span>{subItem.name}</span>
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+              
               return (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="group flex items-center justify-between transition-all duration-200 heading-s text-[var(--color-content-primary)] hover:text-[var(--color-content-link-hover)]"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  <span>{item.name}</span>
-                  
+                <div key={item.name} className="flex items-center gap-2">
                   {/* Flower icon - always visible when active, shows on hover when inactive */}
                   <div className={`transition-all duration-200 ease-in-out ${
                     isActive 
@@ -175,7 +350,17 @@ export default function Navbar() {
                       className="w-5 h-5 transition-all duration-200 ease-in-out group-hover:scale-110 group-hover:brightness-[1.2] group-hover:saturate-150"
                     />
                   </div>
-                </Link>
+                  
+                  <Link
+                    href={item.href}
+                    className={`group transition-all duration-200 heading-s hover:text-[var(--color-brand-600)] ${
+                      isActive ? 'text-[var(--color-brand-600)]' : 'text-[var(--color-content-primary)]'
+                    }`}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <span>{item.name}</span>
+                  </Link>
+                </div>
               );
             })}
           </div>
