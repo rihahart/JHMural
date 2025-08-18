@@ -198,6 +198,8 @@
 @layer base {
   html {
     font-family: var(--font-family-base);
+    /* Always show vertical scrollbar to prevent layout shifts */
+    overflow-y: scroll;
   }
 
   body {
