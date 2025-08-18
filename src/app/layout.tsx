@@ -6,6 +6,9 @@ export const metadata = {
   title: "JH Mural Project",
   description:
     "We collaborate with independent artists, paint murals, and create an outdoor art gallery.",
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({

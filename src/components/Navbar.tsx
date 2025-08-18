@@ -19,11 +19,14 @@ export default function Navbar() {
 
       setIsScrolled(currentScrollY > 10);
 
-      if (currentScrollY < lastScrollY) {
+      if (currentScrollY === 0) {
+        // At the very top - always show navbar
+        setIsVisible(true);
+      } else if (currentScrollY < lastScrollY) {
         // Scrolling up
         setIsVisible(true);
-      } else if (currentScrollY > 100) {
-        // Scrolling down past a threshold
+      } else if (currentScrollY > 80) {
+        // Scrolling down past navbar height
         setIsVisible(false);
       }
 
@@ -48,7 +51,7 @@ export default function Navbar() {
         fixed top-0 left-0 right-0
         transition-transform duration-300 ease-in-out
         ${isVisible ? "translate-y-0" : "-translate-y-full"}
-        ${isScrolled ? "bg-[#f9fbfc]" : ""}
+        bg-[#f9fbfc]
         z-50`}
     >
       <div className="w-full mx-auto flex items-center justify-between py-[var(--spacing-lg)] px-6 lg:px-[var(--spacing-8xl)] max-w-[1600px]">

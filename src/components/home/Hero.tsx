@@ -21,7 +21,11 @@ export default function Hero() {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      heroRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      // Scroll just enough to hide navbar but keep all blue content visible
+      window.scrollTo({ 
+        top: 85, // Just past navbar height (~80px) to hide it cleanly
+        behavior: "smooth" 
+      });
 
       if (videoRef.current) {
         videoRef.current.play().catch(() => {});
@@ -34,7 +38,7 @@ export default function Hero() {
   return (
     <div
       ref={heroRef}
-      className="flex flex-col items-center justify-center bg-[var(--color-brand-600)] px-6 pt-20 pb-16 lg:px-[var(--spacing-8xl)] lg:py-[var(--spacing-6xl)]"
+      className="flex flex-col items-center justify-center bg-[#01519a] px-6 pt-12 pb-16 md:pt-16 lg:px-[var(--spacing-8xl)] lg:py-[var(--spacing-6xl)]"
     >
       <div className="flex flex-col items-center w-full gap-8 max-w-[1200px]">
         <div className="w-full flex justify-center">
@@ -65,9 +69,9 @@ export default function Hero() {
                 duration: 0.5,
                 ease: [0.33, 1, 0.68, 1],
               }}
-              className="text-lg md:text-xl lg:text-2xl font-medium text-white mt-2"
+              className="text-xl md:text-2xl lg:text-3xl font-medium text-white mt-2"
             >
-              on graffiti walls of Jackson Heights, Queens.
+              on lonely walls of Jackson Heights, Queens.
             </motion.p>
           </div>
         </div>
