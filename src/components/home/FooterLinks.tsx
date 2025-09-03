@@ -56,7 +56,7 @@ export default function FooterLinks() {
     }
   ];
 
-  const getButtonClasses = (variant) => {
+  const getButtonClasses = (variant: string) => {
     const baseClasses = "group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg";
     
     switch (variant) {

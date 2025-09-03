@@ -9,7 +9,7 @@ import { donationConfig as fallbackConfig, formatCurrency } from "../../config/d
 export default function DonationSectionAuto() {
   const [donationData, setDonationData] = useState(fallbackConfig);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     fetchGoFundMeData();
@@ -40,7 +40,7 @@ export default function DonationSectionAuto() {
       setError(null);
     } catch (err) {
       console.error('Error fetching GoFundMe data:', err);
-      setError(err.message);
+      setError((err as Error).message);
       // Fall back to manual config if API fails
       setDonationData(fallbackConfig);
     } finally {
