@@ -1,9 +1,9 @@
 "use client";
 
 import React from "react";
-import DonationSection from "../../components/home/DonationSection";
+import DonationSection from "../../../components/home/DonationSection";
 
-export default function Donation() {
+export default function MakeADonation() {
   return (
     <div className="min-h-screen bg-white">
       <DonationSection />

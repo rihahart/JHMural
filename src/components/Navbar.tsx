@@ -46,27 +46,27 @@ export default function Navbar() {
   const navItems = [
     { 
       name: "Projects", 
-      href: "/projects",
       hasDropdown: true,
       submenu: [
-        { name: "84th St Mural", href: "/projects#84th-st-mural" }
+        { name: "84th St Mural", href: "/projects/84th-street-mural" }
       ]
     },
     { 
       name: "Get to know us", 
+      href: "/get-to-know-us",
       hasDropdown: true,
       submenu: [
-        { name: "What inspires us", href: "/whatinspiresus" },
-        { name: "Meet JH Mural Team", href: "/meettheteam" }
+        { name: "What inspires us", href: "/get-to-know-us/what-inspires-us" },
+        { name: "Meet JH Mural Team", href: "/get-to-know-us/meet-jh-mural-team" }
       ]
     },
     { 
       name: "Get Involved", 
       hasDropdown: true,
       submenu: [
-        { name: "Make a donation", href: "/donation" },
-      { name: "Partner & Supporters", href: "/partnersandsupporters" },
-      { name: "Volunteer with us", href: "/volunteer" },
+        { name: "Make a donation", href: "/get-involved/make-a-donation" },
+      { name: "Partners & Supporters", href: "/get-involved/partners-and-supporters" },
+      { name: "Volunteer with us", href: "/get-involved/volunteer-with-us" },
       ]
     }
    
