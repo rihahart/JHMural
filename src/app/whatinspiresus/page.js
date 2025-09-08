@@ -1,9 +1,8 @@
 "use client";
 
-import MeetOurFounders from "../../components/about/meetOurFounders";
-import CoFounderInfo from "../../components/about/coFounderInfo";
+import React from "react";
 
-export default function About() {
+export default function WhatInspiresUs() {
   return (
     <div className="flex w-full max-w-[1600px] px-4 sm:px-6 lg:px-8 pt-[var(--spacing-xl)] pb-[var(--spacing-7xl)] flex-col items-center gap-12 lg:gap-20 min-h-screen mx-auto">
       {/* Mission and Vision Sections */}
@@ -28,9 +27,6 @@ export default function About() {
           </p>
         </div>
       </div>
-
-      <MeetOurFounders />
-      <CoFounderInfo />
     </div>
   );
 }

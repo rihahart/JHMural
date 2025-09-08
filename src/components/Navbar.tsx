@@ -12,8 +12,10 @@ export default function Navbar() {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProjectsDropdownOpen, setIsProjectsDropdownOpen] = useState(false);
+  const [isGetInvolvedDropdownOpen, setIsGetInvolvedDropdownOpen] = useState(false);
   const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
   const [isMobileProjectsExpanded, setIsMobileProjectsExpanded] = useState(false);
+  const [isMobileGetInvolvedExpanded, setIsMobileGetInvolvedExpanded] = useState(false);
   const [isMobileAboutExpanded, setIsMobileAboutExpanded] = useState(false);
   const pathname = usePathname();
 
@@ -50,18 +52,24 @@ export default function Navbar() {
         { name: "84th St Mural", href: "/projects#84th-st-mural" }
       ]
     },
-    { name: "Get Involved", href: "/getinvolved" },
-    { name: "Supporters", href: "/supporters" },
     { 
-      name: "About Us", 
-      href: "/about",
+      name: "Get to know us", 
       hasDropdown: true,
       submenu: [
-        { name: "Mission", href: "/about#mission" },
-        { name: "Our Vision", href: "/about#our-vision" },
-        { name: "Meet our Founders", href: "/about#meet-our-founders" }
+        { name: "What inspires us", href: "/whatinspiresus" },
+        { name: "Meet JH Mural Team", href: "/meettheteam" }
       ]
     },
+    { 
+      name: "Get Involved", 
+      hasDropdown: true,
+      submenu: [
+        { name: "Make a donation", href: "/donation" },
+      { name: "Partner & Supporters", href: "/partnersandsupporters" },
+      { name: "Volunteer with us", href: "/volunteer" },
+      ]
+    }
+   
   ];
 
   return (
@@ -89,7 +97,7 @@ export default function Navbar() {
           {/* Desktop Nav Links */}
           <div className="hidden lg:flex items-center p-[var(--spacing-lg)] gap-[var(--spacing-4xl)]">
             {navItems.map((item) => {
-              const isActive = pathname === item.href || (pathname === '/' && item.href === '/');
+              const isActive = item.href ? (pathname === item.href || (pathname === '/' && item.href === '/')) : false;
               
               if (item.hasDropdown) {
                 return (
@@ -99,14 +107,18 @@ export default function Navbar() {
                     onMouseEnter={() => {
                       if (item.name === "Projects") {
                         setIsProjectsDropdownOpen(true);
-                      } else if (item.name === "About Us") {
+                      } else if (item.name === "Get Involved") {
+                        setIsGetInvolvedDropdownOpen(true);
+                      } else if (item.name === "Get to know us") {
                         setIsAboutDropdownOpen(true);
                       }
                     }}
                     onMouseLeave={() => {
                       if (item.name === "Projects") {
                         setIsProjectsDropdownOpen(false);
-                      } else if (item.name === "About Us") {
+                      } else if (item.name === "Get Involved") {
+                        setIsGetInvolvedDropdownOpen(false);
+                      } else if (item.name === "Get to know us") {
                         setIsAboutDropdownOpen(false);
                       }
                     }}
@@ -127,30 +139,50 @@ export default function Navbar() {
                         />
                       </div>
                       
-                      <Link
-                        href={item.href}
-                        className={`group flex items-center gap-2 transition-all duration-200 text-lg font-semibold hover:text-[var(--color-brand-600)] relative ${
-                          isActive ? 'text-[var(--color-brand-600)]' : 'text-[var(--color-content-primary)]'
-                        }`}
-                      >
-                        <span>{item.name}</span>
-                        
-                        {/* Dropdown Arrow */}
-                        <svg 
-                          className={`w-4 h-4 transition-transform duration-200 ${
-                            (item.name === "Projects" && isProjectsDropdownOpen) || (item.name === "About" && isAboutDropdownOpen) ? 'rotate-180' : ''
+                      {item.href ? (
+                        <Link
+                          href={item.href!}
+                          className={`group flex items-center gap-2 transition-all duration-200 text-lg font-semibold hover:text-[var(--color-brand-600)] relative ${
+                            isActive ? 'text-[var(--color-brand-600)]' : 'text-[var(--color-content-primary)]'
                           }`}
-                          fill="none" 
-                          stroke="currentColor" 
-                          viewBox="0 0 24 24"
                         >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      </Link>
+                          <span>{item.name}</span>
+                          
+                          {/* Dropdown Arrow */}
+                          <svg 
+                            className={`w-4 h-4 transition-transform duration-200 ${
+                              (item.name === "Projects" && isProjectsDropdownOpen) || (item.name === "Get Involved" && isGetInvolvedDropdownOpen) || (item.name === "Get to know us" && isAboutDropdownOpen) ? 'rotate-180' : ''
+                            }`}
+                            fill="none" 
+                            stroke="currentColor" 
+                            viewBox="0 0 24 24"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </Link>
+                      ) : (
+                        <div className={`group flex items-center gap-2 transition-all duration-200 text-lg font-semibold hover:text-[var(--color-brand-600)] relative cursor-pointer ${
+                          isActive ? 'text-[var(--color-brand-600)]' : 'text-[var(--color-content-primary)]'
+                        }`}>
+                          <span>{item.name}</span>
+                          
+                          {/* Dropdown Arrow */}
+                          <svg 
+                            className={`w-4 h-4 transition-transform duration-200 ${
+                              (item.name === "Projects" && isProjectsDropdownOpen) || (item.name === "Get Involved" && isGetInvolvedDropdownOpen) || (item.name === "Get to know us" && isAboutDropdownOpen) ? 'rotate-180' : ''
+                            }`}
+                            fill="none" 
+                            stroke="currentColor" 
+                            viewBox="0 0 24 24"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </div>
+                      )}
                     </div>
 
                     {/* Dropdown Menu */}
-                    {((item.name === "Projects" && isProjectsDropdownOpen) || (item.name === "About Us" && isAboutDropdownOpen)) && (
+                    {((item.name === "Projects" && isProjectsDropdownOpen) || (item.name === "Get Involved" && isGetInvolvedDropdownOpen) || (item.name === "Get to know us" && isAboutDropdownOpen)) && (
                       <div className="absolute top-full left-[12px] mt-0 w-56 bg-white rounded-md shadow-lg border border-[var(--color-neutral-300)] py-1 z-50">
                         {item.submenu?.map((subItem) => (
                           <Link
@@ -184,14 +216,22 @@ export default function Navbar() {
                     />
                   </div>
                   
-                  <Link
-                    href={item.href}
-                    className={`group flex items-center transition-all duration-200 text-lg font-semibold hover:text-[var(--color-brand-600)] relative ${
+                  {item.href ? (
+                    <Link
+                      href={item.href!}
+                      className={`group flex items-center transition-all duration-200 text-lg font-semibold hover:text-[var(--color-brand-600)] relative ${
+                        isActive ? 'text-[var(--color-brand-600)]' : 'text-[var(--color-content-primary)]'
+                      }`}
+                    >
+                      <span>{item.name}</span>
+                    </Link>
+                  ) : (
+                    <div className={`group flex items-center transition-all duration-200 text-lg font-semibold hover:text-[var(--color-brand-600)] relative cursor-pointer ${
                       isActive ? 'text-[var(--color-brand-600)]' : 'text-[var(--color-content-primary)]'
-                    }`}
-                  >
-                    <span>{item.name}</span>
-                  </Link>
+                    }`}>
+                      <span>{item.name}</span>
+                    </div>
+                  )}
                 </div>
               );
             })}
@@ -233,6 +273,7 @@ export default function Navbar() {
                 setIsMobileMenuOpen(!isMobileMenuOpen);
                 if (isMobileMenuOpen) {
                   setIsMobileProjectsExpanded(false);
+                  setIsMobileGetInvolvedExpanded(false);
                   setIsMobileAboutExpanded(false);
                 }
               }}
@@ -255,7 +296,7 @@ export default function Navbar() {
             `}
           >
             {navItems.map((item) => {
-              const isActive = pathname === item.href || (pathname === '/' && item.href === '/');
+              const isActive = item.href ? (pathname === item.href || (pathname === '/' && item.href === '/')) : false;
               
               if (item.hasDropdown) {
                 return (
@@ -276,22 +317,32 @@ export default function Navbar() {
                         />
                       </div>
                       
-                      <Link
-                        href={item.href}
-                        className={`group flex-1 transition-all duration-200 text-lg font-semibold hover:text-[var(--color-brand-600)] ${
+                      {item.href ? (
+                        <Link
+                          href={item.href!}
+                          className={`group flex-1 transition-all duration-200 text-lg font-semibold hover:text-[var(--color-brand-600)] ${
+                            isActive ? 'text-[var(--color-brand-600)]' : 'text-[var(--color-content-primary)]'
+                          }`}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          <span>{item.name}</span>
+                        </Link>
+                      ) : (
+                        <div className={`group flex-1 transition-all duration-200 text-lg font-semibold hover:text-[var(--color-brand-600)] cursor-pointer ${
                           isActive ? 'text-[var(--color-brand-600)]' : 'text-[var(--color-content-primary)]'
-                        }`}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                      >
-                        <span>{item.name}</span>
-                      </Link>
+                        }`}>
+                          <span>{item.name}</span>
+                        </div>
+                      )}
                       
                       {/* Expand/Collapse Button */}
                       <button
                         onClick={() => {
                           if (item.name === "Projects") {
                             setIsMobileProjectsExpanded(!isMobileProjectsExpanded);
-                          } else if (item.name === "About Us") {
+                          } else if (item.name === "Get Involved") {
+                            setIsMobileGetInvolvedExpanded(!isMobileGetInvolvedExpanded);
+                          } else if (item.name === "Get to know us") {
                             setIsMobileAboutExpanded(!isMobileAboutExpanded);
                           }
                         }}
@@ -300,7 +351,7 @@ export default function Navbar() {
                       >
                         <svg 
                           className={`w-4 h-4 text-[var(--color-content-secondary)] transition-transform duration-200 ${
-                            (item.name === "Projects" && isMobileProjectsExpanded) || (item.name === "About" && isMobileAboutExpanded) ? 'rotate-180' : ''
+                            (item.name === "Projects" && isMobileProjectsExpanded) || (item.name === "Get Involved" && isMobileGetInvolvedExpanded) || (item.name === "Get to know us" && isMobileAboutExpanded) ? 'rotate-180' : ''
                           }`}
                           fill="none" 
                           stroke="currentColor" 
@@ -312,7 +363,7 @@ export default function Navbar() {
                     </div>
                     
                     {/* Mobile Submenu - Only show when expanded */}
-                    {((item.name === "Projects" && isMobileProjectsExpanded) || (item.name === "About Us" && isMobileAboutExpanded)) && (
+                    {((item.name === "Projects" && isMobileProjectsExpanded) || (item.name === "Get Involved" && isMobileGetInvolvedExpanded) || (item.name === "Get to know us" && isMobileAboutExpanded)) && (
                       <div className="ml-8 mt-2 flex flex-col gap-1 pl-4 border-l-2 border-[var(--color-neutral-300)]">
                         {item.submenu?.map((subItem) => (
                           <Link
@@ -322,6 +373,7 @@ export default function Navbar() {
                             onClick={() => {
                               setIsMobileMenuOpen(false);
                               setIsMobileProjectsExpanded(false);
+                              setIsMobileGetInvolvedExpanded(false);
                               setIsMobileAboutExpanded(false);
                             }}
                           >
@@ -351,15 +403,23 @@ export default function Navbar() {
                     />
                   </div>
                   
-                  <Link
-                    href={item.href}
-                    className={`group transition-all duration-200 text-lg font-semibold hover:text-[var(--color-brand-600)] ${
+                  {item.href ? (
+                    <Link
+                      href={item.href!}
+                      className={`group transition-all duration-200 text-lg font-semibold hover:text-[var(--color-brand-600)] ${
+                        isActive ? 'text-[var(--color-brand-600)]' : 'text-[var(--color-content-primary)]'
+                      }`}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      <span>{item.name}</span>
+                    </Link>
+                  ) : (
+                    <div className={`group transition-all duration-200 text-lg font-semibold hover:text-[var(--color-brand-600)] cursor-pointer ${
                       isActive ? 'text-[var(--color-brand-600)]' : 'text-[var(--color-content-primary)]'
-                    }`}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    <span>{item.name}</span>
-                  </Link>
+                    }`}>
+                      <span>{item.name}</span>
+                    </div>
+                  )}
                 </div>
               );
             })}
