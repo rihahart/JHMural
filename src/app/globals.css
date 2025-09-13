@@ -240,6 +240,11 @@
 @layer base {
   html {
     font-family: var(--font-family-base);
+    /* Font smoothing for better readability */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-smooth: always;
     /* Always show vertical scrollbar to prevent layout shifts */
     overflow-y: scroll;
   }
@@ -249,6 +254,8 @@
     color: var(--color-content-primary);
     font-family: var(--font-family-base);
     font-weight: var(--font-weight-regular);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   /* Typography classes */
@@ -300,7 +307,7 @@
       font-weight: var(--font-weight-semibold);
     }
 
-  .heading-2xl-bold{
+  .heading-2xl-bold {
     font-size: var(--font-size-heading-2xl);
     line-height: var(--line-height-heading-2xl);
     font-weight: var(--font-weight-bold);
@@ -348,7 +355,7 @@
     font-weight: var(--font-weight-semibold);
   }
 
-  .heading-s-bold{
+  .heading-s-bold {
     font-size: var(--font-size-heading-s);
     line-height: var(--line-height-heading-s);
     font-weight: var(--font-weight-bold);
@@ -409,7 +416,7 @@
     font-weight: var(--font-weight-regular);
   }
 
-  .text-xl-semibold-semibold {
+  .text-xl-semibold {
     font-size: var(--font-size-text-xl);
     line-height: var(--line-height-text-xl);
     font-weight: var(--font-weight-semibold);
@@ -447,6 +454,7 @@
   .text-m-semibold {
     font-size: var(--font-size-text-m);
     line-height: var(--line-height-text-m);
+    font-weight: var(--font-weight-semibold);
   }
 
   .text-m-medium {
@@ -634,7 +642,7 @@
       font-weight: var(--font-weight-regular);
     }
 
-    .text-lg-semibold{
+    .text-lg-semibold {
       font-size: 18px;
       line-height: 26px;
       font-weight: var(--font-weight-semibold);

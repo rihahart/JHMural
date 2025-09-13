@@ -3,11 +3,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 interface ButtonProps {
-  variant?: 'primary' | 'primary-inverse' | 'secondary' | 'tertiary' | 'tertiary-mono' | 'tertiary-inverse';
+  variant?: 'primary' | 'primary-inverse' | 'secondary' | 'tertiary';
   size?: 'small' | 'large';
   href?: string;
-  target?: string; // 
-  rel?: string; 
+  target?: string;
+  rel?: string;
   disabled?: boolean;
   className?: string;
   leadingIcon?: string;
@@ -43,30 +43,30 @@ export default function Button({
     transition-all duration-200 ease-in-out
     font-[var(--font-weight-semibold)]
     rounded-[var(--radius-s)]
+    gap-[var(--spacing-xs)]
     ${fullWidth ? 'w-full' : ''}
     ${disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer hover:shadow-lg hover:-translate-y-0.5'}
     transform
     active:scale-[0.95] active:translate-y-0
   `;
 
-
-  // Size classes
+  // Size classes: large uses text-3xl, small uses text-lg
   const sizeClasses = {
     small: `
-      px-[var(--spacing-s)] py-[var(--spacing-xs)]
-      text-[var(--font-size-text-s)]
-      leading-[var(--line-height-text-s)]
+      px-[var(--spacing-m)] py-[var(--spacing-m)]
+      text-lg
+      leading-[var(--line-height-text-lg)]
       rounded-[var(--radius-s)]
     `,
     large: `
-      px-[var(--spacing-lg)] py-[var(--spacing-m)]
-      text-[var(--font-size-text-lg)]
+      px-[var(--spacing-lg)] py-[var(--spacing-lg)]
+      text-3xl
       leading-[var(--line-height-text-lg)]
-      rounded-[var(--radius-m)]
+      rounded-[var(--radius-s)]
     `,
   };
 
-  // Variant classes with enhanced hover effects
+  // Variant classes
   const variantClasses = {
     primary: `
       bg-[var(--color-background-brand)]
@@ -80,7 +80,6 @@ export default function Button({
       text-[var(--color-content-brand)]
       hover:bg-[var(--color-background-hover)]
       hover:shadow-[0_4px_15px_rgba(0,0,0,0.1)]
-      hover:text-[var(--color-content-brand-hover)]
       active:text-[var(--color-content-primary)]
     `,
     secondary: `
@@ -90,29 +89,12 @@ export default function Button({
       hover:bg-[var(--color-background-hover)]
       hover:border-[var(--color-border-focus)]
       hover:shadow-[0_4px_15px_rgba(25,120,216,0.15)]
-      active:text-[var(--color-content-primary)]
     `,
     tertiary: `
       bg-[var(--color-background-primary)]
       text-[var(--color-content-secondary)]
       hover:bg-[var(--color-background-hover)]
-      hover:text-[var(--color-content-primary)]
       hover:shadow-[0_2px_10px_rgba(0,0,0,0.08)]
-      active:text-[var(--color-content-primary)]
-    `,
-    'tertiary-mono': `
-      bg-[var(--color-background-primary)]
-      text-[var(--color-content-primary)]
-      hover:bg-[var(--color-background-hover)]
-      hover:shadow-[0_2px_10px_rgba(0,0,0,0.08)]
-      active:text-[var(--color-content-secondary)]
-    `,
-    'tertiary-inverse': `
-      bg-transparent
-      text-[var(--color-content-primary-inverse)]
-      hover:bg-[rgba(255,255,255,0.1)]
-      hover:shadow-[0_2px_10px_rgba(255,255,255,0.2)]
-      active:bg-[rgba(0,0,0,0.1)]
     `,
   };
 
@@ -124,7 +106,7 @@ export default function Button({
     ${className}
   `.trim();
 
-  // Icon elements with enhanced hover effects
+  // Icon elements
   const LeadingIcon = leadingIcon && showLeadingIcon && (
     <Image
       src={leadingIcon}
@@ -133,9 +115,10 @@ export default function Button({
       height={24}
       className={`
         ${size === 'small' ? 'w-4 h-4' : 'w-6 h-6'}
-        mr-[var(--spacing-xs)]
+        mr-[var(--spacing-s)]
         transition-all duration-200 ease-in-out
-        ${variant === 'primary' ? 'brightness-0 invert group-hover:scale-110' : 'group-hover:scale-110'}
+        align-middle
+        ${variant === 'primary' && trailingIcon !== '/flower.svg' && leadingIcon !== '/flower.svg' ? 'brightness-0 invert group-hover:scale-110' : 'group-hover:scale-110'}
         ${trailingIcon === '/flower.svg' || leadingIcon === '/flower.svg' ? 'group-hover:brightness-[1.2] group-hover:saturate-150' : ''}
       `}
     />
@@ -151,7 +134,7 @@ export default function Button({
         ${size === 'small' ? 'w-4 h-4' : 'w-6 h-6'}
         ml-[var(--spacing-xs)]
         transition-all duration-200 ease-in-out
-        ${variant === 'primary' ? 'brightness-0 invert group-hover:scale-110' : 'group-hover:scale-110'}
+        ${variant === 'primary' && trailingIcon !== '/flower.svg' && leadingIcon !== '/flower.svg' ? 'brightness-0 invert group-hover:scale-110' : 'group-hover:scale-110'}
         ${trailingIcon === '/flower.svg' || leadingIcon === '/flower.svg' ? 'group-hover:brightness-[1.2] group-hover:saturate-150' : ''}
       `}
     />
@@ -167,9 +150,11 @@ export default function Button({
           rel={rel}
           onClick={!disabled ? onClick : undefined}
         >
-          {LeadingIcon}
-          {children}
-          {TrailingIcon}
+          <div className="flex justify-center items-center gap-[var(--spacing-xs)]">
+            {LeadingIcon}
+            {children}
+            {TrailingIcon}
+          </div>
         </a>
       </Link>
     );
@@ -183,9 +168,11 @@ export default function Button({
       onClick={!disabled ? onClick : undefined}
       disabled={disabled}
     >
-      {LeadingIcon}
-      {children}
-      {TrailingIcon}
+      <div className="flex justify-center items-center gap-[var(--spacing-xs)]">
+        {LeadingIcon}
+        {children}
+        {TrailingIcon}
+      </div>
     </button>
   );
-} 
+}

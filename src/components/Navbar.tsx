@@ -247,7 +247,7 @@ export default function Navbar() {
               rel="noopener noreferrer"
               variant="primary"
               size="large"
-              leadingIcon="/flower.svg"
+              trailingIcon="/flower.svg"
             >
               Donate
             </Button>
@@ -261,7 +261,7 @@ export default function Navbar() {
               rel="noopener noreferrer"
               variant="primary"
               size="small"
-              leadingIcon="/flower.svg"
+              trailingIcon="/flower.svg"
             >
               Donate
             </Button>

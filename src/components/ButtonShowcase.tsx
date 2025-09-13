@@ -37,7 +37,7 @@ export default function ButtonShowcase() {
         <Button
           variant="secondary"
           size="large"
-          leadingIcon="/flower.svg"
+          trailingIcon="/flower.svg"
           className="w-full"
         >
           Get Involved
