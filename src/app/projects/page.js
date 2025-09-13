@@ -13,7 +13,7 @@ export default function Projects() {
               Our Projects
             </h1>
             <p className="text-lg text-[var(--color-content-secondary)]">
-              Discover the murals and community art projects we're bringing to Jackson Heights
+              Discover the murals and community art projects we&apos;re bringing to Jackson Heights
             </p>
           </div>
 
@@ -23,7 +23,7 @@ export default function Projects() {
                 84th St Mural
               </h2>
               <p className="text-lg text-[var(--color-content-primary)] mb-4">
-                "Welcome to Jackson Heights: a Celebration of Diversity, Solidarity and Community"
+                &ldquo;Welcome to Jackson Heights: a Celebration of Diversity, Solidarity and Community&rdquo;
               </p>
               <p className="text-[var(--color-content-secondary)] mb-4">
                 by Eli Salome-Diaz and Benny Guerra

@@ -28,7 +28,7 @@ export default function JoinSupporters() {
           </Button>
           
           <Button
-            variant="tertiary-inverse"
+            variant="tertiary"
             size="large"
             href="/getinvolved"
           >
