@@ -42,7 +42,7 @@ export default function Button({
     group inline-flex items-center justify-center
     transition-all duration-200 ease-in-out
     font-[var(--font-weight-semibold)]
-    rounded-[var(--radius-s)]
+    rounded-none
     gap-[var(--spacing-xs)]
     ${fullWidth ? 'w-full' : ''}
     ${disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer hover:shadow-lg hover:-translate-y-0.5'}
@@ -56,13 +56,13 @@ export default function Button({
       px-[var(--spacing-m)] py-[var(--spacing-m)]
       text-lg
       leading-[var(--line-height-text-lg)]
-      rounded-[var(--radius-s)]
+      rounded-none
     `,
     large: `
       px-[var(--spacing-lg)] py-[var(--spacing-lg)]
       text-3xl
       leading-[var(--line-height-text-lg)]
-      rounded-[var(--radius-s)]
+      rounded-none
     `,
   };
 

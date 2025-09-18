@@ -10,6 +10,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProjectsDropdownOpen, setIsProjectsDropdownOpen] = useState(false);
   const [isGetInvolvedDropdownOpen, setIsGetInvolvedDropdownOpen] = useState(false);
@@ -36,12 +37,25 @@ export default function Navbar() {
         setIsVisible(false);
       }
 
+      // Switch to original styling after auto-scroll (around 85px)
+      if (isInitialLoad && currentScrollY > 80) {
+        setIsInitialLoad(false);
+      }
+
       setLastScrollY(currentScrollY);
     };
 
+    // Set a timer to switch to original styling after the Hero's auto-scroll
+    const switchTimer = setTimeout(() => {
+      setIsInitialLoad(false);
+    }, 2000); // After Hero's 1550ms auto-scroll + buffer
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(switchTimer);
+    };
+  }, [lastScrollY, isInitialLoad]);
 
   const navItems = [
     { 
@@ -79,17 +93,17 @@ export default function Navbar() {
         fixed top-0 left-0 right-0
         transition-transform duration-300 ease-in-out
         ${isVisible ? "translate-y-0" : "-translate-y-full"}
-        bg-[#f9fbfc]
+        ${isInitialLoad ? "bg-[var(--color-brand-700)]" : "bg-[#f9fbfc]"}
         z-50`}
     >
       <div className="w-full mx-auto flex items-center justify-between py-[var(--spacing-lg)] px-6 lg:px-[var(--spacing-8xl)] max-w-[1600px]">
         <div className="flex items-center gap-[var(--spacing-2xl)]">
           <Link href="/" className="flex items-center flex-shrink-0" aria-label="Home">
             <Image
-              src="/logo.svg"
+              src={isInitialLoad ? "/Secondary Logo.svg" : "/logo.svg"}
               alt="Logo"
-              width={80}
-              height={60}
+              width={88}
+              height={66}
               className="cursor-pointer transition-opacity duration-300 p-[var(--spacing-2xs)]"
             />
           </Link>
@@ -142,8 +156,10 @@ export default function Navbar() {
                       {item.href ? (
                         <Link
                           href={item.href!}
-                          className={`group flex items-center gap-2 transition-all duration-200 text-lg font-semibold hover:text-[var(--color-brand-600)] relative ${
-                            isActive ? 'text-[var(--color-brand-600)]' : 'text-[var(--color-content-primary)]'
+                          className={`group flex items-center gap-2 transition-all duration-200 text-lg font-semibold relative ${
+                            isInitialLoad 
+                              ? 'text-white hover:text-white' 
+                              : `hover:text-[var(--color-brand-600)] ${isActive ? 'text-[var(--color-brand-600)]' : 'text-[var(--color-content-primary)]'}`
                           }`}
                         >
                           <span>{item.name}</span>
@@ -161,8 +177,10 @@ export default function Navbar() {
                           </svg>
                         </Link>
                       ) : (
-                        <div className={`group flex items-center gap-2 transition-all duration-200 text-lg font-semibold hover:text-[var(--color-brand-600)] relative cursor-pointer ${
-                          isActive ? 'text-[var(--color-brand-600)]' : 'text-[var(--color-content-primary)]'
+                        <div className={`group flex items-center gap-2 transition-all duration-200 text-lg font-semibold relative cursor-pointer ${
+                          isInitialLoad 
+                            ? 'text-white hover:text-white' 
+                            : `hover:text-[var(--color-brand-600)] ${isActive ? 'text-[var(--color-brand-600)]' : 'text-[var(--color-content-primary)]'}`
                         }`}>
                           <span>{item.name}</span>
                           
@@ -183,12 +201,20 @@ export default function Navbar() {
 
                     {/* Dropdown Menu */}
                     {((item.name === "Projects" && isProjectsDropdownOpen) || (item.name === "Get Involved" && isGetInvolvedDropdownOpen) || (item.name === "Get to know us" && isAboutDropdownOpen)) && (
-                      <div className="absolute top-full left-[12px] mt-0 w-56 bg-white rounded-md shadow-lg border border-[var(--color-neutral-300)] py-1 z-50">
+                      <div className={`absolute top-full left-[12px] mt-0 w-56 rounded-md shadow-lg py-1 z-50 ${
+                        isInitialLoad 
+                          ? 'bg-[var(--color-brand-600)] border border-[var(--color-brand-500)]' 
+                          : 'bg-white border border-[var(--color-neutral-300)]'
+                      }`}>
                         {item.submenu?.map((subItem) => (
                           <Link
                             key={subItem.name}
                             href={subItem.href}
-                            className="block px-4 py-3 text-base font-normal text-[var(--color-content-primary)] hover:bg-[var(--color-neutral-200)] hover:text-[var(--color-brand-600)] transition-all duration-200"
+                            className={`block px-4 py-3 text-base font-normal transition-all duration-200 ${
+                              isInitialLoad 
+                                ? 'text-white hover:bg-[var(--color-brand-500)] hover:text-white' 
+                                : 'text-[var(--color-content-primary)] hover:bg-[var(--color-neutral-200)] hover:text-[var(--color-brand-600)]'
+                            }`}
                           >
                             <span>{subItem.name}</span>
                           </Link>
@@ -219,15 +245,19 @@ export default function Navbar() {
                   {item.href ? (
                     <Link
                       href={item.href!}
-                      className={`group flex items-center transition-all duration-200 text-lg font-semibold hover:text-[var(--color-brand-600)] relative ${
-                        isActive ? 'text-[var(--color-brand-600)]' : 'text-[var(--color-content-primary)]'
+                      className={`group flex items-center transition-all duration-200 text-lg font-semibold relative ${
+                        isInitialLoad 
+                          ? 'text-white hover:text-white' 
+                          : `hover:text-[var(--color-brand-600)] ${isActive ? 'text-[var(--color-brand-600)]' : 'text-[var(--color-content-primary)]'}`
                       }`}
                     >
                       <span>{item.name}</span>
                     </Link>
                   ) : (
-                    <div className={`group flex items-center transition-all duration-200 text-lg font-semibold hover:text-[var(--color-brand-600)] relative cursor-pointer ${
-                      isActive ? 'text-[var(--color-brand-600)]' : 'text-[var(--color-content-primary)]'
+                    <div className={`group flex items-center transition-all duration-200 text-lg font-semibold relative cursor-pointer ${
+                      isInitialLoad 
+                        ? 'text-white hover:text-white' 
+                        : `hover:text-[var(--color-brand-600)] ${isActive ? 'text-[var(--color-brand-600)]' : 'text-[var(--color-content-primary)]'}`
                     }`}>
                       <span>{item.name}</span>
                     </div>
@@ -288,7 +318,7 @@ export default function Navbar() {
             className={`
               lg:hidden
               absolute top-full left-0 right-0
-              bg-white
+              ${isInitialLoad ? "bg-[var(--color-brand-700)]" : "bg-white"}
               py-[var(--spacing-m)]
               px-[var(--spacing-lg)] sm:px-[var(--spacing-xl)] md:px-[var(--spacing-2xl)] lg:px-[var(--spacing-4xl)]
               flex flex-col gap-[var(--spacing-m)]
@@ -320,16 +350,20 @@ export default function Navbar() {
                       {item.href ? (
                         <Link
                           href={item.href!}
-                          className={`group flex-1 transition-all duration-200 text-lg font-semibold hover:text-[var(--color-brand-600)] ${
-                            isActive ? 'text-[var(--color-brand-600)]' : 'text-[var(--color-content-primary)]'
+                          className={`group flex-1 transition-all duration-200 text-lg font-semibold ${
+                            isInitialLoad 
+                              ? 'text-white hover:text-white' 
+                              : `hover:text-[var(--color-brand-600)] ${isActive ? 'text-[var(--color-brand-600)]' : 'text-[var(--color-content-primary)]'}`
                           }`}
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
                           <span>{item.name}</span>
                         </Link>
                       ) : (
-                        <div className={`group flex-1 transition-all duration-200 text-lg font-semibold hover:text-[var(--color-brand-600)] cursor-pointer ${
-                          isActive ? 'text-[var(--color-brand-600)]' : 'text-[var(--color-content-primary)]'
+                        <div className={`group flex-1 transition-all duration-200 text-lg font-semibold cursor-pointer ${
+                          isInitialLoad 
+                            ? 'text-white hover:text-white' 
+                            : `hover:text-[var(--color-brand-600)] ${isActive ? 'text-[var(--color-brand-600)]' : 'text-[var(--color-content-primary)]'}`
                         }`}>
                           <span>{item.name}</span>
                         </div>
@@ -346,11 +380,19 @@ export default function Navbar() {
                             setIsMobileAboutExpanded(!isMobileAboutExpanded);
                           }
                         }}
-                        className="p-2 hover:bg-[var(--color-neutral-200)] rounded-md transition-colors duration-200 flex-shrink-0"
+                        className={`p-2 rounded-md transition-colors duration-200 flex-shrink-0 ${
+                          isInitialLoad 
+                            ? 'hover:bg-[var(--color-brand-600)]' 
+                            : 'hover:bg-[var(--color-neutral-200)]'
+                        }`}
                         aria-label={`Toggle ${item.name} submenu`}
                       >
                         <svg 
-                          className={`w-4 h-4 text-[var(--color-content-secondary)] transition-transform duration-200 ${
+                          className={`w-4 h-4 transition-transform duration-200 ${
+                            isInitialLoad 
+                              ? 'text-white' 
+                              : 'text-[var(--color-content-secondary)]'
+                          } ${
                             (item.name === "Projects" && isMobileProjectsExpanded) || (item.name === "Get Involved" && isMobileGetInvolvedExpanded) || (item.name === "Get to know us" && isMobileAboutExpanded) ? 'rotate-180' : ''
                           }`}
                           fill="none" 
@@ -364,12 +406,20 @@ export default function Navbar() {
                     
                     {/* Mobile Submenu - Only show when expanded */}
                     {((item.name === "Projects" && isMobileProjectsExpanded) || (item.name === "Get Involved" && isMobileGetInvolvedExpanded) || (item.name === "Get to know us" && isMobileAboutExpanded)) && (
-                      <div className="ml-8 mt-2 flex flex-col gap-1 pl-4 border-l-2 border-[var(--color-neutral-300)]">
+                      <div className={`ml-8 mt-2 flex flex-col gap-1 pl-4 border-l-2 ${
+                        isInitialLoad 
+                          ? 'border-[var(--color-brand-500)]' 
+                          : 'border-[var(--color-neutral-300)]'
+                      }`}>
                         {item.submenu?.map((subItem) => (
                           <Link
                             key={subItem.name}
                             href={subItem.href}
-                            className="block py-3 text-base font-normal text-[var(--color-content-primary)] hover:text-[var(--color-brand-600)] transition-all duration-200"
+                            className={`block py-3 text-base font-normal transition-all duration-200 ${
+                              isInitialLoad 
+                                ? 'text-white hover:text-white' 
+                                : 'text-[var(--color-content-primary)] hover:text-[var(--color-brand-600)]'
+                            }`}
                             onClick={() => {
                               setIsMobileMenuOpen(false);
                               setIsMobileProjectsExpanded(false);
@@ -406,16 +456,20 @@ export default function Navbar() {
                   {item.href ? (
                     <Link
                       href={item.href!}
-                      className={`group transition-all duration-200 text-lg font-semibold hover:text-[var(--color-brand-600)] ${
-                        isActive ? 'text-[var(--color-brand-600)]' : 'text-[var(--color-content-primary)]'
+                      className={`group transition-all duration-200 text-lg font-semibold ${
+                        isInitialLoad 
+                          ? 'text-white hover:text-white' 
+                          : `hover:text-[var(--color-brand-600)] ${isActive ? 'text-[var(--color-brand-600)]' : 'text-[var(--color-content-primary)]'}`
                       }`}
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       <span>{item.name}</span>
                     </Link>
                   ) : (
-                    <div className={`group transition-all duration-200 text-lg font-semibold hover:text-[var(--color-brand-600)] cursor-pointer ${
-                      isActive ? 'text-[var(--color-brand-600)]' : 'text-[var(--color-content-primary)]'
+                    <div className={`group transition-all duration-200 text-lg font-semibold cursor-pointer ${
+                      isInitialLoad 
+                        ? 'text-white hover:text-white' 
+                        : `hover:text-[var(--color-brand-600)] ${isActive ? 'text-[var(--color-brand-600)]' : 'text-[var(--color-content-primary)]'}`
                     }`}>
                       <span>{item.name}</span>
                     </div>
