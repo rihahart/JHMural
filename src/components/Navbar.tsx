@@ -203,7 +203,6 @@ export default function Navbar() {
                     {/* Dropdown Menu */}
                     <WebMenu
                       isOpen={(item.name === "Projects" && isProjectsDropdownOpen) || (item.name === "Get Involved" && isGetInvolvedDropdownOpen) || (item.name === "Get to know us" && isAboutDropdownOpen)}
-                      isInitialLoad={isInitialLoad}
                       submenu={item.submenu || []}
                     />
                   </div>

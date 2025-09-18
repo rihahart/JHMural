@@ -4,14 +4,13 @@ import Link from "next/link";
 
 interface WebMenuProps {
   isOpen: boolean;
-  isInitialLoad: boolean;
   submenu: Array<{
     name: string;
     href: string;
   }>;
 }
 
-export default function WebMenu({ isOpen, isInitialLoad, submenu }: WebMenuProps) {
+export default function WebMenu({ isOpen, submenu }: WebMenuProps) {
   if (!isOpen) return null;
 
   return (
