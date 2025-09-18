@@ -60,8 +60,8 @@ export default function Button({
     `,
     large: `
       px-[var(--spacing-lg)] py-[var(--spacing-lg)]
-      text-3xl
-      leading-[var(--line-height-text-lg)]
+      text-xl
+      leading-[var(--line-height-text-xl)]
       rounded-none
     `,
   };
@@ -131,7 +131,7 @@ export default function Button({
       width={24}
       height={24}
       className={`
-        ${size === 'small' ? 'w-4 h-4' : 'w-6 h-6'}
+        ${size === 'small' ? 'w-4 h-4' : 'w-4 h-4'}
         ml-[var(--spacing-xs)]
         transition-all duration-200 ease-in-out
         ${variant === 'primary' && trailingIcon !== '/flower.svg' && leadingIcon !== '/flower.svg' ? 'brightness-0 invert group-hover:scale-110' : 'group-hover:scale-110'}

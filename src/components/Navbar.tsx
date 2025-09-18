@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Button from "./Button";
 import HamburgerMenu from "./HamburgerMenu";
+import WebMenu from "./WebMenu";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -109,7 +110,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Nav Links */}
-          <div className="hidden lg:flex items-center p-[var(--spacing-lg)] gap-[var(--spacing-4xl)]">
+          <div className="hidden lg:flex items-center p-[var(--spacing-lg)] gap-[var(--spacing-2xl)]">
             {navItems.map((item) => {
               const isActive = item.href ? (pathname === item.href || (pathname === '/' && item.href === '/')) : false;
               
@@ -200,27 +201,11 @@ export default function Navbar() {
                     </div>
 
                     {/* Dropdown Menu */}
-                    {((item.name === "Projects" && isProjectsDropdownOpen) || (item.name === "Get Involved" && isGetInvolvedDropdownOpen) || (item.name === "Get to know us" && isAboutDropdownOpen)) && (
-                      <div className={`absolute top-full left-[12px] mt-0 w-56 rounded-md shadow-lg py-1 z-50 ${
-                        isInitialLoad 
-                          ? 'bg-[var(--color-brand-600)] border border-[var(--color-brand-500)]' 
-                          : 'bg-white border border-[var(--color-neutral-300)]'
-                      }`}>
-                        {item.submenu?.map((subItem) => (
-                          <Link
-                            key={subItem.name}
-                            href={subItem.href}
-                            className={`block px-4 py-3 text-base font-normal transition-all duration-200 ${
-                              isInitialLoad 
-                                ? 'text-white hover:bg-[var(--color-brand-500)] hover:text-white' 
-                                : 'text-[var(--color-content-primary)] hover:bg-[var(--color-neutral-200)] hover:text-[var(--color-brand-600)]'
-                            }`}
-                          >
-                            <span>{subItem.name}</span>
-                          </Link>
-                        ))}
-                      </div>
-                    )}
+                    <WebMenu
+                      isOpen={(item.name === "Projects" && isProjectsDropdownOpen) || (item.name === "Get Involved" && isGetInvolvedDropdownOpen) || (item.name === "Get to know us" && isAboutDropdownOpen)}
+                      isInitialLoad={isInitialLoad}
+                      submenu={item.submenu || []}
+                    />
                   </div>
                 );
               }
