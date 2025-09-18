@@ -178,11 +178,22 @@ export default function Navbar() {
                           </svg>
                         </Link>
                       ) : (
-                        <div className={`group flex items-center gap-2 transition-all duration-200 text-lg font-semibold relative cursor-pointer ${
-                          isInitialLoad 
-                            ? 'text-white hover:text-white' 
-                            : `hover:text-[var(--color-brand-600)] ${isActive ? 'text-[var(--color-brand-600)]' : 'text-[var(--color-content-primary)]'}`
-                        }`}>
+                        <div 
+                          className={`group flex items-center gap-2 transition-all duration-200 text-lg font-semibold relative cursor-pointer ${
+                            isInitialLoad 
+                              ? 'text-white hover:text-white' 
+                              : `hover:text-[var(--color-brand-600)] ${isActive ? 'text-[var(--color-brand-600)]' : 'text-[var(--color-content-primary)]'}`
+                          }`}
+                          onClick={() => {
+                            if (item.name === "Projects") {
+                              setIsProjectsDropdownOpen(!isProjectsDropdownOpen);
+                            } else if (item.name === "Get Involved") {
+                              setIsGetInvolvedDropdownOpen(!isGetInvolvedDropdownOpen);
+                            } else if (item.name === "Get to know us") {
+                              setIsAboutDropdownOpen(!isAboutDropdownOpen);
+                            }
+                          }}
+                        >
                           <span>{item.name}</span>
                           
                           {/* Dropdown Arrow */}
