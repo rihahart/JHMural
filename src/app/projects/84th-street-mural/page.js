@@ -23,7 +23,7 @@ export default function EightyFourthStreetMural() {
         <div className="space-y-4 text-lg leading-relaxed text-[var(--color-content-primary)]">
           <p>
             84th Street at Roosevelt Avenue is an area in front of the CitiBike station with a long blank wall. 
-            It is a place where people often dump garbage urinate publicly and solicit prostitution. This 
+            It is a place where people often dump garbage, urinate publicly and solicit prostitution. This 
             neglected space has a constant graffiti problem so it is the perfect spot for some uplifting, public art!
           </p>
 
