@@ -14,7 +14,7 @@ export default function GetInvolvedSection() {
           </h2>
           
           <p className="text-lg md:text-xl text-white/90 mb-8 max-w-4xl mx-auto leading-relaxed">
-            We are always looking for volunteers with good vibes! Our main concerns right now are spreading awareness and raising money for future projects. If you have any ideas or want to pitch in, please reach out to us by DM&apos;ing us on our socials or by emailing{" "}
+            We are always looking for volunteers with good vibes. Our main concerns right now are spreading awareness and raising money for future projects. If you have any ideas or want to pitch in, please reach out to us by DM&apos;ing us on our socials or by emailing{" "}
             <a 
               href="mailto:jhmuralproject@gmail.com" 
               className="text-white underline hover:text-white/90 transition-colors duration-200"
