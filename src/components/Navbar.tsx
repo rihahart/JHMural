@@ -197,17 +197,18 @@ export default function Navbar() {
         transition-transform duration-300 ease-in-out
         ${isHome ? (isVisible ? "translate-y-0" : "-translate-y-full") : "translate-y-0"}
         ${isHome && isInitialLoad ? "bg-[var(--color-background-brand)]" : "bg-[var(--color-background-primary)]"}
+        ${isHome && isInitialLoad ? "" : "shadow-lg"}
         z-50
       `}
     >
-      <div className="w-full mx-auto flex items-center justify-between py-[var(--spacing-lg)] px-6 lg:px-[var(--spacing-8xl)] max-w-[1600px]">
-        <div className="flex items-center gap-[var(--spacing-2xl)]">
+      <div className="w-full mx-auto flex items-center justify-between py-[var(--spacing-m)] px-6 lg:px-[var(--spacing-4xl)] max-w-[1600px]">
+        <div className="flex items-end gap-[var(--spacing-2xl)]">
           <Link href="/" className="flex items-center flex-shrink-0" aria-label="Home">
             <Image
               src={isHome && isInitialLoad ? "/Secondary Logo.svg" : "/logo.svg"}
               alt="Logo"
-              width={88}
-              height={66}
+              width={108}
+              height={81}
               className="cursor-pointer transition-opacity duration-300 p-[var(--spacing-2xs)]"
             />
           </Link>
@@ -215,7 +216,7 @@ export default function Navbar() {
           {/* Desktop Nav */}
           <div
             ref={desktopNavRef}
-            className="hidden lg:flex items-center p-[var(--spacing-lg)] gap-[var(--spacing-2xl)]"
+            className="hidden lg:flex items-center p-[var(--spacing-m)] gap-[var(--spacing-xl)]"
           >
             {navItems.map((item) => {
               const active = sectionIsActive(item);
@@ -278,7 +279,7 @@ export default function Navbar() {
         </div>
 
         {/* Right cluster */}
-        <div className="flex items-center gap-3 lg:gap-[var(--spacing-m)]">
+        <div className="flex items-end gap-[var(--spacing-m)]">
           <div className="hidden sm:block">
             <Button
               href="https://www.gofundme.com/f/donate-to-help-us-put-a-beautiful-mural-in-jackson-heights"
@@ -287,6 +288,7 @@ export default function Navbar() {
               variant="primary"
               size="large"
               trailingIcon="/flower.svg"
+              className="py-[var(--spacing-lg)] text-xl"
             >
               Donate
             </Button>
@@ -299,6 +301,7 @@ export default function Navbar() {
               variant="primary"
               size="small"
               trailingIcon="/flower.svg"
+              className="py-[var(--spacing-m)] text-lg"
             >
               Donate
             </Button>
@@ -318,7 +321,7 @@ export default function Navbar() {
               lg:hidden absolute top-full left-0 right-0
               ${isHome && isInitialLoad ? "bg-[var(--color-background-brand)]" : "bg-[var(--color-background-primary)]"}
               py-[var(--spacing-m)]
-              px-[var(--spacing-lg)] sm:px-[var(--spacing-xl)] md:px-[var(--spacing-2xl)] lg:px-[var(--spacing-4xl)]
+              px-[var(--spacing-lg)] sm:px-[var(--spacing-xl)] md:px-[var(--spacing-xl)] lg:px-[var(--spacing-2xl)]
               flex flex-col gap-[var(--spacing-m)] shadow-md
             `}
           >
