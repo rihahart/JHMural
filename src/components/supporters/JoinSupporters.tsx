@@ -8,7 +8,7 @@ export default function JoinSupporters() {
     <div className="bg-[var(--color-brand-600)] px-6 py-16 lg:px-[var(--spacing-8xl)] lg:py-[var(--spacing-6xl)]">
       <div className="max-w-[800px] mx-auto text-center">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-          Join our list of supporters!
+          Join our list of supporters.
         </h2>
         
         <p className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto">
