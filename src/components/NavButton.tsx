@@ -16,7 +16,6 @@ interface NavButtonProps {
   children: React.ReactNode;
   onClick?: () => void;
   type?: 'button' | 'submit' | 'reset';
-  fullWidth?: boolean;
   isActive?: boolean;
   isInitialLoad?: boolean;
 }
@@ -35,7 +34,6 @@ export default function NavButton({
   children,
   onClick,
   type = 'button',
-  fullWidth = false,
   isActive = false,
   isInitialLoad = false,
 }: NavButtonProps) {

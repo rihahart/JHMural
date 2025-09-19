@@ -14,7 +14,6 @@ const WebMenu = forwardRef<HTMLDivElement, WebMenuProps>(function WebMenu(
   ref
 ) {
   const localRef = useRef<HTMLDivElement | null>(null);
-  const [showButtons, setShowButtons] = useState(false);
 
   // forward the ref
   useEffect(() => {
@@ -24,11 +23,6 @@ const WebMenu = forwardRef<HTMLDivElement, WebMenuProps>(function WebMenu(
       localRef.current;
   }, [ref, isOpen]);
 
-  // fade-in for items
-  useEffect(() => {
-    if (isOpen) setTimeout(() => setShowButtons(true), 150);
-    else setShowButtons(false);
-  }, [isOpen]);
 
   if (!isOpen) return null;
 
