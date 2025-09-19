@@ -2,13 +2,11 @@ import React from "react";
 
 interface HamburgerMenuProps {
   onClick: () => void;
-  isScrolled?: boolean;
   initialWhite?: boolean; // show white bars on initial load (homepage)
 }
 
 export default function HamburgerMenu({
   onClick,
-  isScrolled,
   initialWhite = false,
 }: HamburgerMenuProps) {
   const barColorClass = initialWhite ? "bg-white" : "bg-[var(--color-neutral-800)]";

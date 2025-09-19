@@ -27,7 +27,6 @@ export default function Navbar() {
   }, [isInitialLoad, isHome]);
 
   // Visual state (hero/scroll only for home)
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
 
   // Menus
@@ -86,14 +85,12 @@ export default function Navbar() {
     if (!isHome) {
       // Ensure regular navbar elsewhere
       setIsVisible(true);
-      setIsScrolled(false);
       setIsInitialLoad(false);
       return;
     }
 
     const onScroll = () => {
       const y = window.scrollY;
-      setIsScrolled(y > 10);
       if (y === 0 || y < lastYRef.current) setIsVisible(true);
       else if (y > 80) setIsVisible(false);
       if (isInitialLoad && y > 80) setIsInitialLoad(false);
@@ -105,10 +102,9 @@ export default function Navbar() {
     const t = setTimeout(() => setIsInitialLoad(false), 2000);
 
     return () => {
-      window.removeEventListener("scroll", onScroll as any, opts);
+      window.removeEventListener("scroll", onScroll, opts);
       clearTimeout(t);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isHome, isInitialLoad]);
 
   // Close all menus on route change
@@ -135,7 +131,7 @@ export default function Navbar() {
       setIsAboutDropdownOpen(false);
     };
     document.addEventListener("pointerdown", handleOutside, { passive: true });
-    return () => document.removeEventListener("pointerdown", handleOutside as any);
+    return () => document.removeEventListener("pointerdown", handleOutside);
   }, []);
 
   // Escape closes everything
