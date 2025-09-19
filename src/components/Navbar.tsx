@@ -73,8 +73,10 @@ export default function Navbar() {
     },
   ];
 
-  const sectionIsActive = (item: { submenu?: { href: string }[] }) =>
-    item.submenu?.some((s) => pathname?.startsWith(s.href)) ?? false;
+  const sectionIsActive = (item: { submenu?: { href: string }[] }) => {
+    if (!pathname || typeof window === 'undefined') return false;
+    return item.submenu?.some((s) => s.href && pathname.startsWith(s.href)) ?? false;
+  };
 
   // Scroll show/hide + hero color: ONLY on home
   useEffect(() => {

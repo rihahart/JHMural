@@ -30,7 +30,7 @@ export default function Hero() {
       if (videoRef.current) {
         videoRef.current.play().catch(() => {});
       }
-    }, 1550);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, []);

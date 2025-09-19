@@ -46,8 +46,10 @@ const MobileMenu = forwardRef<HTMLDivElement, MobileMenuProps>(function MobileMe
       localRef.current;
   }, [ref, isOpen]);
 
-  const sectionIsActive = (item: { submenu?: { href: string }[] }) =>
-    item.submenu?.some((s) => pathname?.startsWith(s.href)) ?? false;
+  const sectionIsActive = (item: { submenu?: { href: string }[] }) => {
+    if (!pathname || typeof window === 'undefined') return false;
+    return item.submenu?.some((s) => s.href && pathname.startsWith(s.href)) ?? false;
+  };
 
   if (!isOpen) return null;
 
