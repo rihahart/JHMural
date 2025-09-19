@@ -1,40 +1,33 @@
 "use client";
-import React, { forwardRef, useEffect, useRef } from "react";
-import Link from "next/link";
+import React, { forwardRef, useEffect, useRef, useState } from "react";
+import NavButton from "./NavButton";
 
 interface WebMenuProps {
   isOpen: boolean;
   submenu: Array<{ name: string; href: string }>;
-  onMenuEnter?: () => void; // keep open while hovered
-  onMenuLeave?: () => void; // schedule close when leaving
+  onMenuEnter?: () => void;
+  onMenuLeave?: () => void;
 }
 
-/**
- * Forward the menu DOM node to the parent so it can check outside-click
- * with `menuRef.contains(event.target)`. Also exposes hover callbacks.
- */
 const WebMenu = forwardRef<HTMLDivElement, WebMenuProps>(function WebMenu(
   { isOpen, submenu, onMenuEnter, onMenuLeave },
   ref
 ) {
   const localRef = useRef<HTMLDivElement | null>(null);
+  const [showButtons, setShowButtons] = useState(false);
 
-  // Wire up the forwarded ref
+  // forward the ref
   useEffect(() => {
     if (!ref) return;
-    if (typeof ref === "function") {
-      ref(localRef.current);
-    } else {
-      (ref as React.MutableRefObject<HTMLDivElement | null>).current = localRef.current;
-    }
+    if (typeof ref === "function") ref(localRef.current);
+    else (ref as React.MutableRefObject<HTMLDivElement | null>).current =
+      localRef.current;
   }, [ref, isOpen]);
 
-  // Autofocus first item when opened (nice for keyboard)
-  const firstItemRef = useRef<HTMLAnchorElement | null>(null);
+  // fade-in for items
   useEffect(() => {
-    if (!isOpen) return;
-    const id = requestAnimationFrame(() => firstItemRef.current?.focus());
-    return () => cancelAnimationFrame(id);
+    if (isOpen) setTimeout(() => setShowButtons(true), 150);
+    else setShowButtons(false);
   }, [isOpen]);
 
   if (!isOpen) return null;
@@ -44,43 +37,41 @@ const WebMenu = forwardRef<HTMLDivElement, WebMenuProps>(function WebMenu(
       ref={localRef}
       role="menu"
       aria-label="Section menu"
-      data-dropdown-menu
-      className="fixed top-[80px] left-0 right-0 w-screen z-[9999] bg-[#f9fbfc] shadow-lg"
+      className={`
+        fixed left-0 right-0 top-[80px] w-screen z-40
+        bg-[#f9fbfc] shadow-lg
+        transition-all duration-300 ease-out
+      `}
       onMouseEnter={onMenuEnter}
       onMouseLeave={onMenuLeave}
     >
-      <div className="px-8 grid grid-cols-3 gap-x-6">
-        {/* Items column (2/3 width) */}
-        <div
-          className="grid pt-[var(--spacing-4xl)] pb-[var(--spacing-4xl)] col-span-2 relative"
-          style={{ height: "350px" }}
-        >
-          <div className="flex flex-col gap-y-4 w-fit gap-x-16">
-            {submenu.map((s, i) => (
-              <Link
-                key={s.name}
-                href={s.href}
-                role="menuitem"
-                ref={i === 0 ? firstItemRef : undefined}
-                className="block rounded-full w-fit px-4 py-2 outline-none transition-all duration-200
-                           text-[var(--color-content-primary)]
-                           hover:bg-[var(--color-background-hover)]
-                           focus-visible:ring-2 focus-visible:ring-[var(--color-brand-500)] focus-visible:ring-offset-2"
-              >
-                {s.name}
-              </Link>
-            ))}
-          </div>
+       <div className="w-full mx-auto px-6 lg:px-[var(--spacing-8xl)] max-w-[1600px]">
+        {/* Row with fixed 350px height and vertical padding */}
+        <div className="flex gap-[32px] h-[350px] py-[var(--spacing-4xl)]">
+           {/* LEFT: 360px wide, height hugs its content */}
+           <div className="w-[360px] border-t-4 border-t-gray-800 flex flex-col gap-y-4">
+             {submenu.map((s) => (
+               <NavButton
+                 key={s.name}
+                 href={s.href}
+                 variant="secondary"
+                 className="w-full"
+                 trailingIcon="/flower.svg"
+               >
+                 {s.name}
+               </NavButton>
+             ))}
+           </div>
 
-          {/* Divider */}
-          <div className="absolute right-0 w-px h-3/4 translate-y-1/8 bg-[var(--color-content-secondary-inverse)]" />
+           {/* RIGHT: flexible area */}
+           <div className="flex-1 self-stretch">
+             {/* Add your right-side content here */}
+           </div>
         </div>
-
-        {/* Right column (optional) */}
-        <div className="pt-[var(--spacing-4xl)] pb-[var(--spacing-4xl)]" />
       </div>
     </div>
   );
 });
 
 export default WebMenu;
+
