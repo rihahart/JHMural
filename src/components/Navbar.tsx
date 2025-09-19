@@ -190,14 +190,17 @@ export default function Navbar() {
     }
   };
 
+  // Check if any menu is open
+  const isAnyMenuOpen = isProjectsDropdownOpen || isGetInvolvedDropdownOpen || isAboutDropdownOpen;
+
   return (
     <div
       className={`
         w-full fixed top-0 left-0 right-0
-        transition-transform duration-300 ease-in-out
+        transition-all duration-300 ease-in-out
         ${isHome ? (isVisible ? "translate-y-0" : "-translate-y-full") : "translate-y-0"}
-        ${isHome && isInitialLoad ? "bg-[var(--color-background-brand)]" : "bg-[var(--color-background-primary)]"}
-        ${isHome && isInitialLoad ? "" : "shadow-lg"}
+        ${isAnyMenuOpen ? "bg-[var(--color-background-hover)]" : (isHome && isInitialLoad ? "bg-[var(--color-background-brand)]" : "bg-[var(--color-background-primary)]")}
+        ${isHome && isInitialLoad && !isAnyMenuOpen ? "" : "shadow-lg"}
         z-50
       `}
     >

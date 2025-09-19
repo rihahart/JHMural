@@ -23,7 +23,6 @@ const WebMenu = forwardRef<HTMLDivElement, WebMenuProps>(function WebMenu(
       localRef.current;
   }, [ref, isOpen]);
 
-
   if (!isOpen) return null;
 
   return (
@@ -32,10 +31,14 @@ const WebMenu = forwardRef<HTMLDivElement, WebMenuProps>(function WebMenu(
       role="menu"
       aria-label="Section menu"
       className={`
-        fixed left-0 right-0 top-[80px] w-screen z-40
-        bg-[var(--color-background-primary)] shadow-lg
-        transition-all duration-300 ease-out
+        fixed left-0 right-0 w-screen z-50
+        bg-[var(--color-background-hover)] shadow-lg
+        ${isOpen ? 'animate-down-in' : 'animate-down-out'}
       `}
+      style={{
+        top: 'calc(81px + var(--spacing-m) * 2 - 1px)',
+        transform: isOpen ? 'translateY(0)' : 'translateY(-100vh)'
+      }}
       onMouseEnter={onMenuEnter}
       onMouseLeave={onMenuLeave}
     >
