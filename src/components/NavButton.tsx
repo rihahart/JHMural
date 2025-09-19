@@ -149,6 +149,7 @@ export default function NavButton({
         className={`
           w-3 h-[0.5425rem]
           flex-shrink-0
+          mt-[var(--spacing-xs)]
           transition-all duration-300 ease-in-out
           ${isActive ? 'opacity-100' : 'opacity-0'}
         `}

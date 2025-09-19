@@ -143,19 +143,18 @@ export default function Button({
   // Render as link if href is provided
   if (href) {
     return (
-      <Link href={href} passHref legacyBehavior>
-        <a
-          className={buttonClasses}
-          target={target}
-          rel={rel}
-          onClick={!disabled ? onClick : undefined}
-        >
-          <div className="flex justify-center items-center gap-[var(--spacing-xs)]">
-            {LeadingIcon}
-            {children}
-            {TrailingIcon}
-          </div>
-        </a>
+      <Link
+        href={href}
+        className={buttonClasses}
+        target={target}
+        rel={rel}
+        onClick={!disabled ? onClick : undefined}
+      >
+        <div className="flex justify-center items-center gap-[var(--spacing-xs)]">
+          {LeadingIcon}
+          {children}
+          {TrailingIcon}
+        </div>
       </Link>
     );
   }

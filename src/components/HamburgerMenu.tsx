@@ -20,7 +20,7 @@ export default function HamburgerMenu({
       {[...Array(4)].map((_, index) => (
         <div
           key={index}
-          className={`w-[var(--spacing-xl)] h-[3px] ${barColorClass} rounded-sm transition-all duration-300`}
+          className={`w-[var(--spacing-2xl)] h-[3px] ${barColorClass} rounded-sm transition-all duration-300`}
         />
       ))}
     </button>

@@ -31,13 +31,9 @@ export default function Navbar() {
   const [isVisible, setIsVisible] = useState(true);
 
   // Menus
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProjectsDropdownOpen, setIsProjectsDropdownOpen] = useState(false);
   const [isGetInvolvedDropdownOpen, setIsGetInvolvedDropdownOpen] = useState(false);
   const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
-  const [isMobileProjectsExpanded, setIsMobileProjectsExpanded] = useState(false);
-  const [isMobileGetInvolvedExpanded, setIsMobileGetInvolvedExpanded] = useState(false);
-  const [isMobileAboutExpanded, setIsMobileAboutExpanded] = useState(false);
 
   const lastYRef = useRef(0);
   const desktopNavRef = useRef<HTMLDivElement | null>(null);
@@ -113,10 +109,6 @@ export default function Navbar() {
     setIsProjectsDropdownOpen(false);
     setIsGetInvolvedDropdownOpen(false);
     setIsAboutDropdownOpen(false);
-    setIsMobileMenuOpen(false);
-    setIsMobileProjectsExpanded(false);
-    setIsMobileGetInvolvedExpanded(false);
-    setIsMobileAboutExpanded(false);
   }, [pathname]);
 
   // Outside click: check triggers container AND dropdown menu
@@ -142,10 +134,6 @@ export default function Navbar() {
         setIsProjectsDropdownOpen(false);
         setIsGetInvolvedDropdownOpen(false);
         setIsAboutDropdownOpen(false);
-        setIsMobileMenuOpen(false);
-        setIsMobileProjectsExpanded(false);
-        setIsMobileGetInvolvedExpanded(false);
-        setIsMobileAboutExpanded(false);
       }
     };
     document.addEventListener("keydown", onKey);
@@ -201,7 +189,7 @@ export default function Navbar() {
         ${isHome ? (isVisible ? "translate-y-0" : "-translate-y-full") : "translate-y-0"}
         ${isAnyMenuOpen ? "bg-[var(--color-background-hover)]" : (isHome && isInitialLoad ? "bg-[var(--color-background-brand)]" : "bg-[var(--color-background-primary)]")}
         ${isHome && isInitialLoad && !isAnyMenuOpen ? "" : "shadow-lg"}
-        z-50
+        z-50 hidden lg:block
       `}
     >
       <div className="w-full mx-auto flex items-center justify-between py-[var(--spacing-m)] px-6 lg:px-[var(--spacing-4xl)] max-w-[1600px]">
@@ -282,8 +270,8 @@ export default function Navbar() {
         </div>
 
         {/* Right cluster */}
-        <div className="flex items-end gap-[var(--spacing-m)]">
-          <div className="hidden sm:block">
+        <div className="flex items-stretch gap-[var(--spacing-m)] h-full">
+          <div className="hidden sm:block h-full">
             <Button
               href="https://www.gofundme.com/f/donate-to-help-us-put-a-beautiful-mural-in-jackson-heights"
               target="_blank"
@@ -291,130 +279,13 @@ export default function Navbar() {
               variant="primary"
               size="large"
               trailingIcon="/flower.svg"
-              className="py-[var(--spacing-lg)] text-xl"
+              className="h-full px-[var(--spacing-lg)] text-xl flex items-center"
             >
               Donate
             </Button>
-          </div>
-          <div className="sm:hidden">
-            <Button
-              href="https://www.gofundme.com/f/donate-to-help-us-put-a-beautiful-mural-in-jackson-heights"
-              target="_blank"
-              rel="noopener noreferrer"
-              variant="primary"
-              size="small"
-              trailingIcon="/flower.svg"
-              className="py-[var(--spacing-m)] text-lg"
-            >
-              Donate
-            </Button>
-          </div>
-          <div className="lg:hidden flex-shrink-0">
-            <HamburgerMenu
-              onClick={() => setIsMobileMenuOpen(v => !v)}
-              initialWhite={isHome && isInitialLoad} // <-- pass prop here
-            />
           </div>
         </div>
 
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div
-            className={`
-              lg:hidden absolute top-full left-0 right-0
-              ${isHome && isInitialLoad ? "bg-[var(--color-background-brand)]" : "bg-[var(--color-background-primary)]"}
-              py-[var(--spacing-m)]
-              px-[var(--spacing-lg)] sm:px-[var(--spacing-xl)] md:px-[var(--spacing-xl)] lg:px-[var(--spacing-2xl)]
-              flex flex-col gap-[var(--spacing-m)] shadow-md
-            `}
-          >
-            {navItems.map((item) => {
-              const active = sectionIsActive(item);
-              const expanded =
-                (item.name === "Projects" && isMobileProjectsExpanded) ||
-                (item.name === "Get Involved" && isMobileGetInvolvedExpanded) ||
-                (item.name === "Get to know us" && isMobileAboutExpanded);
-
-              return (
-                <div key={item.name} className="flex flex-col">
-                  <div className="flex items-center gap-2">
-                    <Image
-                      src="/flower-red.svg"
-                      alt=""
-                      width={24}
-                      height={24}
-                      className={`w-6 h-6 transition-all duration-200 ${
-                        active ? "opacity-100 scale-100" : "opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100"
-                      }`}
-                    />
-                    <div
-                      className={`group flex-1 transition-all duration-200 text-lg font-semibold cursor-pointer ${
-                        isHome && isInitialLoad
-                          ? "text-white hover:text-white"
-                          : `hover:text-[var(--color-content-brand)] ${
-                              active ? "text-[var(--color-content-brand)]" : "text-[var(--color-content-primary)]"
-                            }`
-                      }`}
-                    >
-                      <span>{item.name}</span>
-                    </div>
-                    <button
-                      onClick={() => {
-                        if (item.name === "Projects") setIsMobileProjectsExpanded((v) => !v);
-                        else if (item.name === "Get Involved") setIsMobileGetInvolvedExpanded((v) => !v);
-                        else if (item.name === "Get to know us") setIsMobileAboutExpanded((v) => !v);
-                      }}
-                      className={`p-2 rounded-md transition-colors duration-200 flex-shrink-0 ${
-                        isHome && isInitialLoad ? "hover:bg-[var(--color-background-brand-hover)]" : "hover:bg-[var(--color-background-hover)]"
-                      }`}
-                      aria-label={`Toggle ${item.name} submenu`}
-                    >
-                      <svg
-                        className={`w-4 h-4 transition-transform duration-200 ${
-                          isHome && isInitialLoad ? "text-white" : "text-[var(--color-content-secondary)]"
-                        } ${expanded ? "rotate-180" : ""}`}
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </button>
-                  </div>
-
-                  {expanded && (
-                    <div
-                      className={`ml-8 mt-2 flex flex-col gap-1 pl-4 border-l-2 ${
-                        isHome && isInitialLoad ? "border-[var(--color-background-brand)]" : "border-[var(--color-neutral-300)]"
-                      }`}
-                    >
-                      {item.submenu.map((sub) => (
-                        <Link
-                          key={sub.name}
-                          href={sub.href}
-                          className={`block py-3 text-base font-normal transition-all duration-200 ${
-                            isHome && isInitialLoad
-                              ? "text-white hover:text-white"
-                              : "text-[var(--color-content-primary)] hover:text-[var(--color-brand-600)]"
-                          }`}
-                          onClick={() => {
-                            setIsMobileMenuOpen(false);
-                            setIsMobileProjectsExpanded(false);
-                            setIsMobileGetInvolvedExpanded(false);
-                            setIsMobileAboutExpanded(false);
-                          }}
-                        >
-                          {sub.name}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        )}
       </div>
     </div>
   );
