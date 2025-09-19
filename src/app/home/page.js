@@ -6,7 +6,6 @@ import CollaborationSection from "../../components/home/CollaborationSection";
 import MissionSection from "../../components/home/MissionSection";
 import DonationSection from "../../components/home/DonationSection";
 import ContentSections from "../../components/home/ContentSections";
-import FooterLinks from "../../components/home/FooterLinks";
 
 export default function Home() {
   return (
@@ -16,7 +15,6 @@ export default function Home() {
       <MissionSection />
       <DonationSection />
       <ContentSections />
-      <FooterLinks />
     </div>
   );
 } 
