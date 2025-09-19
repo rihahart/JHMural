@@ -1,5 +1,5 @@
 "use client";
-import React, { forwardRef, useEffect, useRef, useState } from "react";
+import React, { forwardRef, useEffect, useRef } from "react";
 import NavButton from "./NavButton";
 
 interface WebMenuProps {
