@@ -1,12 +1,10 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Button from "./Button";
 import HamburgerMenu from "./HamburgerMenu";
-
-const HOVER_CLOSE_DELAY = 150; // ms
 
 export default function MobileNavbar() {
   const pathname = usePathname();
@@ -25,8 +23,6 @@ export default function MobileNavbar() {
     return () => clearTimeout(t);
   }, [isInitialLoad, isHome]);
 
-  // Visual state (hero/scroll only for home)
-  const [isVisible, setIsVisible] = useState(true);
 
   // Mobile menu state
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -34,7 +30,6 @@ export default function MobileNavbar() {
   const [isMobileGetInvolvedExpanded, setIsMobileGetInvolvedExpanded] = useState(false);
   const [isMobileAboutExpanded, setIsMobileAboutExpanded] = useState(false);
 
-  const lastYRef = useRef(0);
 
   const navItems: Array<{
     name: "Projects" | "Get to know us" | "Get Involved";
@@ -68,32 +63,6 @@ export default function MobileNavbar() {
   const sectionIsActive = (item: { submenu?: { href: string }[] }) =>
     item.submenu?.some((s) => pathname?.startsWith(s.href)) ?? false;
 
-  // Scroll show/hide + hero color: ONLY on home
-  useEffect(() => {
-    if (!isHome) {
-      // Ensure regular navbar elsewhere
-      setIsVisible(true);
-      setIsInitialLoad(false);
-      return;
-    }
-
-    const onScroll = () => {
-      const y = window.scrollY;
-      if (y === 0 || y < lastYRef.current) setIsVisible(true);
-      else if (y > 80) setIsVisible(false);
-      if (isInitialLoad && y > 80) setIsInitialLoad(false);
-      lastYRef.current = y;
-    };
-
-    const opts: AddEventListenerOptions = { passive: true };
-    window.addEventListener("scroll", onScroll, opts);
-    const t = setTimeout(() => setIsInitialLoad(false), 2000);
-
-    return () => {
-      window.removeEventListener("scroll", onScroll, opts);
-      clearTimeout(t);
-    };
-  }, [isHome, isInitialLoad]);
 
   // Close all menus on route change
   useEffect(() => {

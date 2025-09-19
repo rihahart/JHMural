@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Button from "./Button";
 import NavButton from "./NavButton";
-import HamburgerMenu from "./HamburgerMenu";
 import WebMenu from "./WebMenu";
 
 const HOVER_CLOSE_DELAY = 150; // ms
