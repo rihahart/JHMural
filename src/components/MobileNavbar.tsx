@@ -1,27 +1,15 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Button from "./Button";
 import HamburgerMenu from "./HamburgerMenu";
+import MobileMenu from "./MobileMenu";
 
 export default function MobileNavbar() {
   const pathname = usePathname();
   const isHome = pathname === "/";
-
-  const [isInitialLoad, setIsInitialLoad] = useState(isHome);
-
-  // ensure initial-load styling only for homepage and clear after a short delay
-  useEffect(() => {
-    if (!isInitialLoad) return;
-    if (!isHome) {
-      setIsInitialLoad(false);
-      return;
-    }
-    const t = setTimeout(() => setIsInitialLoad(false), 1500);
-    return () => clearTimeout(t);
-  }, [isInitialLoad, isHome]);
 
 
   // Mobile menu state
@@ -29,6 +17,8 @@ export default function MobileNavbar() {
   const [isMobileProjectsExpanded, setIsMobileProjectsExpanded] = useState(false);
   const [isMobileGetInvolvedExpanded, setIsMobileGetInvolvedExpanded] = useState(false);
   const [isMobileAboutExpanded, setIsMobileAboutExpanded] = useState(false);
+  
+  const mobileMenuRef = useRef<HTMLDivElement | null>(null);
 
 
   const navItems: Array<{
@@ -60,26 +50,31 @@ export default function MobileNavbar() {
     },
   ];
 
-  const sectionIsActive = (item: { submenu?: { href: string }[] }) =>
-    item.submenu?.some((s) => pathname?.startsWith(s.href)) ?? false;
+  // Handler functions for mobile menu
+  const handleToggleExpanded = (itemName: "Projects" | "Get to know us" | "Get Involved") => {
+    if (itemName === "Projects") setIsMobileProjectsExpanded((v) => !v);
+    else if (itemName === "Get Involved") setIsMobileGetInvolvedExpanded((v) => !v);
+    else if (itemName === "Get to know us") setIsMobileAboutExpanded((v) => !v);
+  };
 
-
-  // Close all menus on route change
-  useEffect(() => {
+  const handleCloseAll = () => {
     setIsMobileMenuOpen(false);
     setIsMobileProjectsExpanded(false);
     setIsMobileGetInvolvedExpanded(false);
     setIsMobileAboutExpanded(false);
+  };
+
+
+  // Close all menus on route change
+  useEffect(() => {
+    handleCloseAll();
   }, [pathname]);
 
   // Escape closes everything
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        setIsMobileMenuOpen(false);
-        setIsMobileProjectsExpanded(false);
-        setIsMobileGetInvolvedExpanded(false);
-        setIsMobileAboutExpanded(false);
+        handleCloseAll();
       }
     };
     document.addEventListener("keydown", onKey);
@@ -92,15 +87,15 @@ export default function MobileNavbar() {
         w-full fixed top-0 left-0 right-0
         transition-all duration-300 ease-in-out
         translate-y-0
-        ${isHome && isInitialLoad ? "bg-[var(--color-background-brand)]" : "bg-[var(--color-background-primary)]"}
-        ${isHome && isInitialLoad ? "" : "shadow-lg"}
+        bg-[var(--color-background-primary)]
+        shadow-lg
         z-50 block lg:hidden
       `}
     >
       <div className="w-full flex justify-between items-center self-stretch py-[var(--spacing-s)] px-[var(--spacing-lg)]">
           <Link href="/" aria-label="Home">
             <Image
-              src={isHome && isInitialLoad ? "/Secondary Logo.svg" : "/logo.svg"}
+              src="/logo.svg"
               alt="Logo"
               width={90}
               height={68}
@@ -127,109 +122,26 @@ export default function MobileNavbar() {
             <div className="flex-shrink-0 scale-115">
               <HamburgerMenu
                 onClick={() => setIsMobileMenuOpen(v => !v)}
-                initialWhite={isHome && isInitialLoad}
+                initialWhite={false}
               />
             </div>
         </div>
 
         {/* Mobile Menu */}
-        <div
-          className={`
-            absolute top-full left-0 right-0
-            ${isHome && isInitialLoad ? "bg-[var(--color-background-brand)]" : "bg-[var(--color-background-primary)]"}
-            py-[var(--spacing-m)]
-            px-[var(--spacing-lg)] sm:px-[var(--spacing-xl)] md:px-[var(--spacing-xl)] lg:px-[var(--spacing-2xl)]
-            flex flex-col gap-[var(--spacing-m)] shadow-md
-            ${isMobileMenuOpen ? 'animate-down-in' : 'animate-down-out'}
-            ${!isMobileMenuOpen ? 'hidden' : ''}
-          `}
-        >
-          {navItems.map((item) => {
-            const active = sectionIsActive(item);
-            const expanded =
-              (item.name === "Projects" && isMobileProjectsExpanded) ||
-              (item.name === "Get Involved" && isMobileGetInvolvedExpanded) ||
-              (item.name === "Get to know us" && isMobileAboutExpanded);
-
-            return (
-              <div key={item.name} className="flex flex-col">
-                <div className="flex items-center gap-2">
-                  <Image
-                    src="/flower-red.svg"
-                    alt=""
-                    width={24}
-                    height={24}
-                    className={`w-6 h-6 transition-all duration-200 ${
-                      active ? "opacity-100 scale-100" : "opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100"
-                    }`}
-                  />
-                  <div
-                    className={`group flex-1 transition-all duration-200 text-lg font-semibold cursor-pointer ${
-                      isHome && isInitialLoad
-                        ? "text-white hover:text-white"
-                        : `hover:text-[var(--color-content-brand)] ${
-                            active ? "text-[var(--color-content-brand)]" : "text-[var(--color-content-primary)]"
-                          }`
-                    }`}
-                  >
-                    <span>{item.name}</span>
-                  </div>
-                  <button
-                    onClick={() => {
-                      if (item.name === "Projects") setIsMobileProjectsExpanded((v) => !v);
-                      else if (item.name === "Get Involved") setIsMobileGetInvolvedExpanded((v) => !v);
-                      else if (item.name === "Get to know us") setIsMobileAboutExpanded((v) => !v);
-                    }}
-                    className={`p-2 rounded-md transition-colors duration-200 flex-shrink-0 ${
-                      isHome && isInitialLoad ? "hover:bg-[var(--color-background-brand-hover)]" : "hover:bg-[var(--color-background-hover)]"
-                    }`}
-                    aria-label={`Toggle ${item.name} submenu`}
-                  >
-                    <svg
-                      className={`w-4 h-4 transition-transform duration-200 ${
-                        isHome && isInitialLoad ? "text-white" : "text-[var(--color-content-secondary)]"
-                      } ${expanded ? "rotate-180" : ""}`}
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </button>
-                </div>
-
-                {expanded && (
-                  <div
-                    className={`ml-8 mt-2 flex flex-col gap-1 pl-4 border-l-2 ${
-                      isHome && isInitialLoad ? "border-[var(--color-background-brand)]" : "border-[var(--color-neutral-300)]"
-                    }`}
-                  >
-                    {item.submenu.map((sub) => (
-                      <Link
-                        key={sub.name}
-                        href={sub.href}
-                        className={`block py-3 text-base font-normal transition-all duration-200 ${
-                          isHome && isInitialLoad
-                            ? "text-white hover:text-white"
-                            : "text-[var(--color-content-primary)] hover:text-[var(--color-brand-600)]"
-                        }`}
-                        onClick={() => {
-                          setIsMobileMenuOpen(false);
-                          setIsMobileProjectsExpanded(false);
-                          setIsMobileGetInvolvedExpanded(false);
-                          setIsMobileAboutExpanded(false);
-                        }}
-                      >
-                        {sub.name}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
+        <MobileMenu
+          ref={mobileMenuRef}
+          isOpen={isMobileMenuOpen}
+          navItems={navItems}
+          expandedStates={{
+            isMobileProjectsExpanded,
+            isMobileGetInvolvedExpanded,
+            isMobileAboutExpanded,
+          }}
+          onToggleExpanded={handleToggleExpanded}
+          onCloseAll={handleCloseAll}
+          isInitialLoad={false}
+          isHome={isHome}
+        />
       </div>
     </div>
   );
