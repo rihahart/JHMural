@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Button from "./Button";
+import NavButton from "./NavButton";
 import HamburgerMenu from "./HamburgerMenu";
 import WebMenu from "./WebMenu";
 
@@ -195,7 +196,7 @@ export default function Navbar() {
         w-full fixed top-0 left-0 right-0
         transition-transform duration-300 ease-in-out
         ${isHome ? (isVisible ? "translate-y-0" : "-translate-y-full") : "translate-y-0"}
-        ${isHome && isInitialLoad ? "bg-[var(--color-brand-700)]" : "bg-[#f9fbfc]"}
+        ${isHome && isInitialLoad ? "bg-[var(--color-background-brand)]" : "bg-[var(--color-background-primary)]"}
         z-50
       `}
     >
@@ -225,25 +226,12 @@ export default function Navbar() {
 
               return (
                 <div key={item.name} className="relative">
-                  <div
-                    role="button"
-                    tabIndex={0}
-                    aria-haspopup="menu"
-                    aria-expanded={isOpen}
-                    className={`group flex items-center gap-2 transition-all duration-200 text-lg font-semibold relative cursor-pointer ${
-                      isHome && isInitialLoad
-                        ? "text-white hover:text-white"
-                        : `hover:text-[var(--color-brand-600)] ${
-                            active ? "text-[var(--color-brand-600)]" : "text-[var(--color-content-primary)]"
-                          }`
-                    }`}
+                  <NavButton
+                    variant="tertiary"
+                    isActive={active}
+                    isInitialLoad={isHome && isInitialLoad}
+                    trailingIcon="/flower.svg"
                     onClick={() => toggleMenu(item.name)}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" || e.key === " ") {
-                        e.preventDefault();
-                        toggleMenu(item.name);
-                      }
-                    }}
                     onMouseEnter={() => {
                       if (!hoverEnabled) return;
                       clearCloseTimer();
@@ -253,27 +241,20 @@ export default function Navbar() {
                       if (!hoverEnabled) return;
                       scheduleClose();
                     }}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        toggleMenu(item.name);
+                      }
+                    }}
+                    role="button"
+                    tabIndex={0}
+                    aria-haspopup="menu"
+                    aria-expanded={isOpen}
+                    className="group"
                   >
-                    <Image
-                      src="/flower-red.svg"
-                      alt=""
-                      width={24}
-                      height={24}
-                      className={`w-6 h-6 transition-all duration-200 ease-in-out
-                        ${active ? "opacity-100 scale-100" : "opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100"}
-                        group-hover:scale-110 group-hover:brightness-[1.2] group-hover:saturate-150`}
-                    />
-                    <span>{item.name}</span>
-                    <svg
-                      className={`w-4 h-4 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </div>
+                    {item.name}
+                  </NavButton>
 
                   {/* Fixed, full-width dropdown */}
                   <WebMenu
@@ -335,7 +316,7 @@ export default function Navbar() {
           <div
             className={`
               lg:hidden absolute top-full left-0 right-0
-              ${isHome && isInitialLoad ? "bg-[var(--color-brand-700)]" : "bg-white"}
+              ${isHome && isInitialLoad ? "bg-[var(--color-background-brand)]" : "bg-[var(--color-background-primary)]"}
               py-[var(--spacing-m)]
               px-[var(--spacing-lg)] sm:px-[var(--spacing-xl)] md:px-[var(--spacing-2xl)] lg:px-[var(--spacing-4xl)]
               flex flex-col gap-[var(--spacing-m)] shadow-md
@@ -364,8 +345,8 @@ export default function Navbar() {
                       className={`group flex-1 transition-all duration-200 text-lg font-semibold cursor-pointer ${
                         isHome && isInitialLoad
                           ? "text-white hover:text-white"
-                          : `hover:text-[var(--color-brand-600)] ${
-                              active ? "text-[var(--color-brand-600)]" : "text-[var(--color-content-primary)]"
+                          : `hover:text-[var(--color-content-brand)] ${
+                              active ? "text-[var(--color-content-brand)]" : "text-[var(--color-content-primary)]"
                             }`
                       }`}
                     >
@@ -378,7 +359,7 @@ export default function Navbar() {
                         else if (item.name === "Get to know us") setIsMobileAboutExpanded((v) => !v);
                       }}
                       className={`p-2 rounded-md transition-colors duration-200 flex-shrink-0 ${
-                        isHome && isInitialLoad ? "hover:bg-[var(--color-brand-600)]" : "hover:bg-[var(--color-neutral-200)]"
+                        isHome && isInitialLoad ? "hover:bg-[var(--color-background-brand-hover)]" : "hover:bg-[var(--color-background-hover)]"
                       }`}
                       aria-label={`Toggle ${item.name} submenu`}
                     >
@@ -399,7 +380,7 @@ export default function Navbar() {
                   {expanded && (
                     <div
                       className={`ml-8 mt-2 flex flex-col gap-1 pl-4 border-l-2 ${
-                        isHome && isInitialLoad ? "border-[var(--color-brand-500)]" : "border-[var(--color-neutral-300)]"
+                        isHome && isInitialLoad ? "border-[var(--color-background-brand)]" : "border-[var(--color-neutral-300)]"
                       }`}
                     >
                       {item.submenu.map((sub) => (

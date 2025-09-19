@@ -71,11 +71,11 @@ export default function DonationSectionAuto() {
           </button>
         </div>
 
-        <div className="bg-gray-100 p-6 rounded-lg mb-6">
+        <div className="bg-[var(--color-background-secondary)] p-6 rounded-lg mb-6">
           <div className="text-center mb-4">
-            <p className="text-sm text-gray-600 mb-2">Before and after animation</p>
-            <div className="bg-gray-300 h-32 rounded flex items-center justify-center">
-              <span className="text-gray-500">Animation placeholder</span>
+            <p className="text-sm text-[var(--color-content-secondary)] mb-2">Before and after animation</p>
+            <div className="bg-[var(--color-background-tertiary)] h-32 rounded flex items-center justify-center">
+              <span className="text-[var(--color-content-tertiary)]">Animation placeholder</span>
             </div>
           </div>
         </div>
@@ -84,23 +84,23 @@ export default function DonationSectionAuto() {
           <div className="flex justify-between items-center mb-2">
             <span className="text-2xl font-bold text-[var(--color-brand-600)]">
               {loading ? (
-                <span className="animate-pulse bg-gray-200 rounded px-2 py-1">Loading...</span>
+                <span className="animate-pulse bg-[var(--color-background-secondary)] rounded px-2 py-1">Loading...</span>
               ) : (
                 formatCurrency(donationData.currentAmount)
               )}
             </span>
-            <span className="text-sm text-gray-600">
+            <span className="text-sm text-[var(--color-content-secondary)]">
               raised of {formatCurrency(donationData.goalAmount)} goal
-              {error && <span className="text-red-500 block text-xs">(Using cached data)</span>}
+              {error && <span className="text-[var(--color-content-negative)] block text-xs">(Using cached data)</span>}
             </span>
           </div>
-          <div className="w-full bg-gray-200 rounded-full h-3">
+          <div className="w-full bg-[var(--color-background-secondary)] rounded-full h-3">
             <div 
-              className="bg-[var(--color-brand-600)] h-3 rounded-full transition-all duration-500 ease-in-out" 
+              className="bg-[var(--color-background-brand)] h-3 rounded-full transition-all duration-500 ease-in-out" 
               style={{ width: loading ? '0%' : `${getProgressPercentage()}%` }}
             ></div>
           </div>
-          <p className="text-sm text-gray-600 mt-2">
+          <p className="text-sm text-[var(--color-content-secondary)] mt-2">
             {loading ? 'Loading...' : `${donationData.donationCount} Donation${donationData.donationCount !== 1 ? 's' : ''}`}
           </p>
           
@@ -108,7 +108,7 @@ export default function DonationSectionAuto() {
           <button 
             onClick={fetchGoFundMeData}
             disabled={loading}
-            className="text-xs text-gray-500 hover:text-gray-700 mt-2 disabled:opacity-50"
+            className="text-xs text-[var(--color-content-tertiary)] hover:text-[var(--color-content-primary)] mt-2 disabled:opacity-50"
           >
             🔄 {loading ? 'Updating...' : 'Refresh data'}
           </button>

@@ -19,7 +19,7 @@ const WebMenu = forwardRef<HTMLDivElement, WebMenuProps>(function WebMenu(
   useEffect(() => {
     if (!ref) return;
     if (typeof ref === "function") ref(localRef.current);
-    else (ref as React.MutableRefObject<HTMLDivElement | null>).current =
+    else (ref as React.RefObject<HTMLDivElement | null>).current =
       localRef.current;
   }, [ref, isOpen]);
 
@@ -33,7 +33,7 @@ const WebMenu = forwardRef<HTMLDivElement, WebMenuProps>(function WebMenu(
       aria-label="Section menu"
       className={`
         fixed left-0 right-0 top-[80px] w-screen z-40
-        bg-[#f9fbfc] shadow-lg
+        bg-[var(--color-background-primary)] shadow-lg
         transition-all duration-300 ease-out
       `}
       onMouseEnter={onMenuEnter}
@@ -43,13 +43,12 @@ const WebMenu = forwardRef<HTMLDivElement, WebMenuProps>(function WebMenu(
         {/* Row with fixed 350px height and vertical padding */}
         <div className="flex gap-[32px] h-[350px] py-[var(--spacing-4xl)]">
            {/* LEFT: 360px wide, height hugs its content */}
-           <div className="w-[360px] border-t-4 border-t-gray-800 flex flex-col gap-y-4">
+           <div className="w-[360px] border-t-4 border-t-[var(--color-content-secondary)] flex flex-col gap-y-4">
              {submenu.map((s) => (
                <NavButton
                  key={s.name}
                  href={s.href}
                  variant="secondary"
-                 className="w-full"
                  trailingIcon="/flower.svg"
                >
                  {s.name}

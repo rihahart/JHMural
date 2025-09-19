@@ -38,7 +38,7 @@ export default function Hero() {
   return (
     <div
       ref={heroRef}
-      className="flex flex-col items-center justify-center bg-[#01519a] px-6 pt-12 pb-16 md:pt-16 lg:px-[var(--spacing-8xl)] lg:py-[var(--spacing-6xl)]"
+      className="flex flex-col items-center justify-center bg-[var(--color-background-brand)] px-6 pt-12 pb-16 md:pt-16 lg:px-[var(--spacing-8xl)] lg:py-[var(--spacing-6xl)]"
     >
       <div className="flex flex-col items-center w-full gap-8 max-w-[1200px]">
         <div className="w-full flex justify-center">

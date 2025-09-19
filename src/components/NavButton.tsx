@@ -15,9 +15,16 @@ interface NavButtonProps {
   showTrailingIcon?: boolean;
   children: React.ReactNode;
   onClick?: () => void;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
+  onKeyDown?: (e: React.KeyboardEvent) => void;
   type?: 'button' | 'submit' | 'reset';
   isActive?: boolean;
   isInitialLoad?: boolean;
+  role?: string;
+  tabIndex?: number;
+  'aria-haspopup'?: boolean | 'menu' | 'listbox' | 'tree' | 'grid' | 'dialog';
+  'aria-expanded'?: boolean;
 }
 
 export default function NavButton({
@@ -33,9 +40,16 @@ export default function NavButton({
   showTrailingIcon = true,
   children,
   onClick,
+  onMouseEnter,
+  onMouseLeave,
+  onKeyDown,
   type = 'button',
   isActive = false,
   isInitialLoad = false,
+  role,
+  tabIndex,
+  'aria-haspopup': ariaHaspopup,
+  'aria-expanded': ariaExpanded,
 }: NavButtonProps) {
   // Base classes - using exact same pattern as Button component
   const baseClasses = `
@@ -64,7 +78,7 @@ export default function NavButton({
     `,
     secondary: `
       text-[var(--color-content-primary)]
-      font-[var(--font-weight-regular)]
+      font-[var(--font-weight-semibold)]
       text-2xl
       flex
       w-[360px]
@@ -73,21 +87,26 @@ export default function NavButton({
       active:text-[var(--color-content-brand-pressed)]
     `,
     tertiary: `
-      bg-[var(--color-background-primary)]
-      text-[var(--color-content-secondary)]
-      hover:bg-[var(--color-background-hover)]
-      hover:shadow-[0_2px_10px_rgba(0,0,0,0.08)]
+      text-[var(--color-content-primary)]
+      font-[var(--font-weight-semibold)]
+      text-2xl
+      inline-flex
+      px-[var(--spacing-m)]
+      flex-col
+      justify-center
+      items-center
+      hover:text-[var(--color-content-brand)]
+      active:text-[var(--color-content-brand-pressed)]
     `,
   };
 
   // Active state classes for navigation
   const activeClasses = isActive ? `
-    text-[var(--color-brand-600)]
-    ${variant === 'tertiary' ? 'bg-[var(--color-background-hover)]' : ''}
+    text-[var(--color-content-brand)]
   ` : '';
 
-  // Initial load classes (for homepage hero state)
-  const initialLoadClasses = isInitialLoad ? `
+  // Initial load classes (for homepage hero state) - for primary and tertiary variants
+  const initialLoadClasses = isInitialLoad && (variant === 'primary' || variant === 'tertiary') ? `
     text-white
     hover:text-white
   ` : '';
@@ -121,39 +140,73 @@ export default function NavButton({
   );
 
   const TrailingIcon = trailingIcon && showTrailingIcon && (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
-      stroke="currentColor"
-      className={`
-        w-6 h-6
-        ml-[var(--spacing-xs)]
-        transition-all duration-300 ease-in-out
-        group-hover:scale-110
-        ${isActive ? 'rotate-90' : 'rotate-0'}
-      `}
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
-        className="transition-all duration-300 ease-in-out"
+    variant === 'tertiary' ? (
+      <Image
+        src={trailingIcon}
+        alt=""
+        width={12}
+        height={8.68}
+        className={`
+          w-3 h-[0.5425rem]
+          flex-shrink-0
+          mt-[var(--spacing-xs)]
+          transition-all duration-300 ease-in-out
+          ${isActive ? 'opacity-100' : 'opacity-0'}
+        `}
+        style={{ 
+          filter: 'brightness(0) saturate(100%) invert(20%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%)'
+        }}
       />
-    </svg>
+    ) : (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth="1.5"
+        stroke="currentColor"
+        className={`
+          w-6 h-6
+          ml-[var(--spacing-xs)]
+          transition-all duration-300 ease-in-out
+          group-hover:scale-110
+          ${isActive ? 'rotate-90' : 'rotate-0'}
+        `}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
+          className="transition-all duration-300 ease-in-out"
+        />
+      </svg>
+    )
   );
 
   // Render as link if href is provided
   if (href) {
     return (
-      <Link href={href} passHref legacyBehavior>
-        <a
-          className={buttonClasses}
-          target={target}
-          rel={rel}
-          onClick={!disabled ? onClick : undefined}
-        >
+      <Link
+        href={href}
+        className={buttonClasses}
+        target={target}
+        rel={rel}
+        onClick={!disabled ? onClick : undefined}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+        onKeyDown={onKeyDown}
+        role={role}
+        tabIndex={tabIndex}
+        aria-haspopup={ariaHaspopup}
+        aria-expanded={ariaExpanded}
+      >
+        {variant === 'tertiary' ? (
+          <div className="flex flex-col items-center">
+            <div className="text-center">
+              {children}
+            </div>
+            {TrailingIcon}
+          </div>
+        ) : (
           <div className="flex items-center w-full">
             {LeadingIcon}
             <div className="flex-1 text-left">
@@ -161,7 +214,7 @@ export default function NavButton({
             </div>
             {TrailingIcon}
           </div>
-        </a>
+        )}
       </Link>
     );
   }
@@ -172,15 +225,31 @@ export default function NavButton({
       type={type}
       className={buttonClasses}
       onClick={!disabled ? onClick : undefined}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      onKeyDown={onKeyDown}
       disabled={disabled}
+      role={role}
+      tabIndex={tabIndex}
+      aria-haspopup={ariaHaspopup}
+      aria-expanded={ariaExpanded}
     >
-      <div className="flex items-center w-full">
-        {LeadingIcon}
-        <div className="flex-1 text-left">
-          {children}
+      {variant === 'tertiary' ? (
+        <div className="flex flex-col items-center">
+          <div className="text-center">
+            {children}
+          </div>
+          {TrailingIcon}
         </div>
-        {TrailingIcon}
-      </div>
+      ) : (
+        <div className="flex items-center w-full">
+          {LeadingIcon}
+          <div className="flex-1 text-left">
+            {children}
+          </div>
+          {TrailingIcon}
+        </div>
+      )}
     </button>
   );
 }
