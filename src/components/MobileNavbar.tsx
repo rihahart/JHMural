@@ -127,18 +127,17 @@ export default function MobileNavbar() {
       </div>
 
       {/* Full-screen mobile menu overlay (sibling, sits above navbar) */}
-      <MobileMenu
-        ref={mobileMenuRef}
-        isOpen={isMobileMenuOpen}
-        navItems={navItems}
-        expandedStates={{
-          isMobileProjectsExpanded,
-          isMobileGetInvolvedExpanded,
-          isMobileAboutExpanded,
-        }}
-        onToggleExpanded={handleToggleExpanded}
-        onCloseAll={handleCloseAll}
-      />
+        <MobileMenu
+          ref={mobileMenuRef}
+          isOpen={isMobileMenuOpen}
+          expandedStates={{
+            isMobileProjectsExpanded,
+            isMobileGetInvolvedExpanded,
+            isMobileAboutExpanded,
+          }}
+          onToggleExpanded={handleToggleExpanded}
+          onCloseAll={handleCloseAll}
+        />
     </>
   );
 }

@@ -4,19 +4,17 @@ import React, { forwardRef } from "react";
 import Image from "next/image";       
 import NavButton from "./NavButton";
 import ExitButton from "./ExitButton";
-import { usePathname } from "next/navigation";
 
 
 interface MobileMenuProps {
   isOpen: boolean;
-  navItems: { name: string; hasDropdown?: boolean; submenu: { name: string; href: string }[] }[];
   expandedStates: { isMobileProjectsExpanded: boolean; isMobileGetInvolvedExpanded: boolean; isMobileAboutExpanded: boolean };
   onToggleExpanded: (itemName: "Projects" | "Get to know us" | "Get Involved") => void;
   onCloseAll: () => void;
 }
 
 const MobileMenu = forwardRef<HTMLDivElement, MobileMenuProps>(
-  ({ isOpen, navItems, expandedStates, onToggleExpanded, onCloseAll }, ref) => {
+  ({ isOpen, expandedStates, onToggleExpanded, onCloseAll }, ref) => {
     if (!isOpen) return null;
 
     return (
@@ -136,5 +134,7 @@ const MobileMenu = forwardRef<HTMLDivElement, MobileMenuProps>(
     );
   }
 );
+
+MobileMenu.displayName = "MobileMenu";
 
 export default MobileMenu;
