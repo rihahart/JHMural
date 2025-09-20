@@ -18,30 +18,6 @@ export default function MobileNavbar() {
 
   const mobileMenuRef = useRef<HTMLDivElement | null>(null);
 
-  const navItems: Array<{
-    name: "Projects" | "Get to know us" | "Get Involved";
-    hasDropdown?: boolean;
-    submenu: { name: string; href: string }[];
-  }> = [
-    { name: "Projects", hasDropdown: true, submenu: [{ name: "84th St Mural", href: "/projects/84th-street-mural" }] },
-    {
-      name: "Get to know us",
-      hasDropdown: true,
-      submenu: [
-        { name: "What inspires us", href: "/get-to-know-us/what-inspires-us" },
-        { name: "Meet JH Mural Team", href: "/get-to-know-us/meet-jh-mural-team" },
-      ],
-    },
-    {
-      name: "Get Involved",
-      hasDropdown: true,
-      submenu: [
-        { name: "Make a donation", href: "/get-involved/make-a-donation" },
-        { name: "Partners & Supporters", href: "/get-involved/partners-and-supporters" },
-        { name: "Volunteer with us", href: "/get-involved/volunteer-with-us" },
-      ],
-    },
-  ];
 
   const handleToggleExpanded = (itemName: "Projects" | "Get to know us" | "Get Involved") => {
     // Close all other sections first
