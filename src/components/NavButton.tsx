@@ -71,10 +71,10 @@ export default function NavButton({
       font-[var(--font-weight-semibold)]
       text-3xl
       flex
-      w-[360px]
-      py-[var(--spacing-m)] px-[var(--spacing-s)]
+      py-[var(--spacing-lg)] px-[var(--spacing-m)]
       hover:bg-[var(--color-background-hover)]
       active:bg-[var(--color-background-hover)]
+
     `,
     secondary: `
       text-[var(--color-content-primary)]
@@ -103,6 +103,7 @@ export default function NavButton({
   // Active state classes for navigation
   const activeClasses = isActive ? `
     text-[var(--color-content-brand)]
+    bg-[var(--color-background-hover)]
   ` : '';
 
   // Initial load classes (for homepage hero state) - for primary and tertiary variants
