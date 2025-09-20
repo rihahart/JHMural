@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Button from "./Button";
+import NavButton from "./NavButton";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -100,11 +101,11 @@ const MobileMenu = forwardRef<HTMLDivElement, MobileMenuProps>(function MobileMe
           <div className="flex-shrink-0">
             <button
               onClick={onCloseAll}
-              className="p-2 rounded-md transition-colors duration-200 hover:bg-[var(--color-background-hover)]"
+              className="p-[var(--spacing-s)] rounded-md transition-colors duration-200 hover:bg-[var(--color-background-hover)]"
               aria-label="Close menu"
             >
               <svg
-                className="w-6 h-6 text-[var(--color-content-secondary)]"
+                className="w-[var(--spacing-2xl)] h-[var(--spacing-2xl)] text-[var(--color-content-primary)]"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -117,24 +118,6 @@ const MobileMenu = forwardRef<HTMLDivElement, MobileMenuProps>(function MobileMe
         </div>
       </div>
 
-      {/* Close button */}
-      <div className="flex justify-end mb-4">
-        <button
-          onClick={onCloseAll}
-          className="p-2 rounded-md transition-colors duration-200 hover:bg-[var(--color-background-hover)]"
-          aria-label="Close menu"
-        >
-          <svg
-            className="w-6 h-6 text-[var(--color-content-secondary)]"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-      </div>
 
       {navItems.map((item) => {
         const active = sectionIsActive(item);
@@ -146,41 +129,29 @@ const MobileMenu = forwardRef<HTMLDivElement, MobileMenuProps>(function MobileMe
         return (
           <div key={item.name} className="flex flex-col">
             <div className="flex items-center gap-2">
-              <Image
-                src="/flower-red.svg"
-                alt=""
-                width={24}
-                height={24}
-                className={`w-6 h-6 transition-all duration-200 ${
-                  active ? "opacity-100 scale-100" : "opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100"
-                }`}
-              />
-              <Link
-                href={item.submenu[0]?.href || '#'}
-                className={`group flex-1 transition-all duration-200 text-lg font-semibold cursor-pointer hover:text-[var(--color-content-brand)] ${
-                  active ? "text-[var(--color-content-brand)]" : "text-[var(--color-content-primary)]"
-                }`}
-                onClick={onCloseAll}
-              >
-                <span>{item.name}</span>
-              </Link>
-              <button
-                onClick={() => onToggleExpanded(item.name)}
-                className="p-2 rounded-md transition-colors duration-200 flex-shrink-0 hover:bg-[var(--color-background-hover)]"
-                aria-label={`Toggle ${item.name} submenu`}
-              >
-                <svg
-                  className={`w-4 h-4 transition-transform duration-200 text-[var(--color-content-secondary)] ${
-                    expanded ? "rotate-180" : ""
-                  }`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
+              <div className="flex-1">
+                <NavButton
+                  variant="primary"
+                  onClick={() => onToggleExpanded(item.name)}
+                  className="w-full justify-start"
+                  isActive={active}
+                  trailingIcon="/flower.svg"
+                  onMouseEnter={() => {}}
+                  onMouseLeave={() => {}}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      onToggleExpanded(item.name);
+                    }
+                  }}
+                  role="button"
+                  tabIndex={0}
+                  aria-haspopup="menu"
+                  aria-expanded={expanded}
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
+                  {item.name}
+                </NavButton>
+              </div>
             </div>
 
             {expanded && (
