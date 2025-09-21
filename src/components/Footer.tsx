@@ -60,12 +60,6 @@ export default function Footer() {
             </a>
           </div>
 
-          {/* Copyright */}
-          <div className="text-center">
-            <p className="text-[var(--color-content-primary-inverse)] text-sm">
-              2025 © Riha Hart, Abdul Malek
-            </p>
-          </div>
         </div>
       </div>
     </footer>
