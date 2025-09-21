@@ -9,6 +9,10 @@ import MobileMenu from "./MobileMenu";
 
 export default function MobileNavbar() {
   const pathname = usePathname();
+  const isHome = pathname === "/";
+
+  // Initial load state for homepage
+  const [isInitialLoad, setIsInitialLoad] = useState(isHome);
 
   // Mobile menu state
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -17,7 +21,30 @@ export default function MobileNavbar() {
   const [isMobileAboutExpanded, setIsMobileAboutExpanded] = useState(false);
 
   const mobileMenuRef = useRef<HTMLDivElement | null>(null);
+  const lastYRef = useRef(0);
 
+  // Scroll detection and initial load state management
+  useEffect(() => {
+    if (!isHome) {
+      setIsInitialLoad(false);
+      return;
+    }
+
+    const onScroll = () => {
+      const y = window.scrollY;
+      if (isInitialLoad && y > 80) setIsInitialLoad(false);
+      lastYRef.current = y;
+    };
+
+    const opts: AddEventListenerOptions = { passive: true };
+    window.addEventListener("scroll", onScroll, opts);
+    const t = setTimeout(() => setIsInitialLoad(false), 2000);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll, opts);
+      clearTimeout(t);
+    };
+  }, [isHome, isInitialLoad]);
 
   const handleToggleExpanded = (itemName: "Projects" | "Get to know us" | "Get Involved") => {
     // Check if the clicked section is already open
@@ -64,19 +91,19 @@ export default function MobileNavbar() {
     <>
       {/* Navbar shell */}
       <div
-        className="
+        className={`
           w-full fixed top-0 left-0 right-0
           transition-all duration-300 ease-in-out
           translate-y-0
-          bg-[var(--color-background-primary)]
-          shadow-lg
+          ${isHome && isInitialLoad ? "bg-[var(--color-background-brand)]" : "bg-[var(--color-background-primary)]"}
+          ${isHome && isInitialLoad ? "" : "shadow-lg"}
           z-50 block lg:hidden
-        "
+        `}
       >
         <div className="w-full flex justify-between items-center self-stretch py-[var(--spacing-s)] px-[var(--spacing-lg)]">
           <Link href="/" aria-label="Home">
             <Image
-              src="/logo.svg"
+              src={isHome && isInitialLoad ? "/Secondary Logo.svg" : "/logo.svg"}
               alt="Logo"
               width={90}
               height={68}
@@ -103,7 +130,7 @@ export default function MobileNavbar() {
             <div className="flex-shrink-0 scale-115">
               <HamburgerMenu
                 onClick={() => setIsMobileMenuOpen(v => !v)}
-                initialWhite={false}
+                initialWhite={isHome && isInitialLoad}
               />
             </div>
           </div>

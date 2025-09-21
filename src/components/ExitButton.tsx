@@ -7,7 +7,7 @@ interface ExitButtonProps {
 export default function ExitButton({
   onClick,
 }: ExitButtonProps) {
-  const barColorClass = "bg-[var(--color-neutral-800)]";
+  const barColorClass = "bg-[var(--color-content-primary)]";
 
   return (
     <button

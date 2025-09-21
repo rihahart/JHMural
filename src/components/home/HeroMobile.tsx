@@ -3,7 +3,7 @@
 import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
-export default function Hero() {
+export default function HeroMobile() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
   const words = ["WE", "PAINT", "MURALS"];
@@ -27,12 +27,12 @@ export default function Hero() {
   return (
     <div
       ref={heroRef}
-      className="flex flex-col items-center justify-center bg-[var(--color-background-brand)]"
+      className="flex flex-col items-center justify-center bg-[var(--color-background-brand)] px-6 pt-12 pb-16 md:pt-16"
     >
-      <div className="flex flex-col items-center w-full gap-[var(--spacing-xl)] py-[var(--spacing-6xl)] px-[var(--spacing-xl)] max-w-[1600px]">
-        <div className="w-full flex justify-center items-left">
-          <div className="flex flex-col items-start gap-[var(--spacing-s)]">
-            <h1 className="text-[clamp(100px,calc(100px+(50*(100vw-1025px)/415)),200px)] font-black leading-none tracking-[0.005em] text-white transition-all duration-300 ease-in-out">
+      <div className="flex flex-col items-center w-full gap-8 max-w-[1200px]">
+        <div className="w-full flex justify-center">
+          <div className="text-center">
+            <h1 className="text-4xl md:text-6xl font-black leading-none tracking-[0.005em] text-white transition-all duration-300 ease-in-out">
               {words.map((word, i) => (
                 <motion.span
                   key={i}
@@ -58,9 +58,9 @@ export default function Hero() {
                 duration: 0.5,
                 ease: [0.33, 1, 0.68, 1],
               }}
-              className="text-[clamp(32px,calc(32px+(16*(100vw-1025px)/415)),64px)] font-semibold text-[var(--color-content-primary-inverse)] mt-2"
+              className="text-xl md:text-2xl font-medium text-white mt-2"
             >
-              on lonely walls of Jackson Heights, Queens
+              on lonely walls of Jackson Heights, Queens.
             </motion.p>
           </div>
         </div>
@@ -86,7 +86,7 @@ export default function Hero() {
               autoPlay
             >
               <source
-                src="/MainAnimation.mp4"
+                src="/hero-video-mobile.mp4"
                 type="video/mp4"
               />
             </video>

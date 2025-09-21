@@ -193,11 +193,11 @@ export default function Navbar() {
         z-50 hidden lg:block
       `}
     >
-      <div className="w-full mx-auto flex items-center justify-between py-[var(--spacing-m)] px-6 lg:px-[var(--spacing-4xl)] max-w-[1600px]">
+      <div className="w-full mx-auto flex items-center justify-between py-[var(--spacing-m)] px-[var(--spacing-xl)] lg:px-[var(--spacing-4xl)]" style={{ maxWidth: 'clamp(1000px, calc(1250px + (100vw - 1440px) * 0.7), 1600px)' }}>
         <div className="flex items-end gap-[var(--spacing-2xl)]">
           <Link href="/" className="flex items-center flex-shrink-0" aria-label="Home">
             <Image
-              src={isHome && isInitialLoad ? "/Secondary Logo.svg" : "/logo.svg"}
+              src={isHome && isInitialLoad && !isAnyMenuOpen ? "/Secondary Logo.svg" : "/logo.svg"}
               alt="Logo"
               width={108}
               height={81}
@@ -222,7 +222,7 @@ export default function Navbar() {
                   <NavButton
                     variant="tertiary"
                     isActive={active}
-                    isInitialLoad={isHome && isInitialLoad}
+                    isInitialLoad={isHome && isInitialLoad && !isAnyMenuOpen}
                     trailingIcon="/flower.svg"
                     onClick={() => toggleMenu(item.name)}
                     onMouseEnter={() => {
@@ -286,7 +286,6 @@ export default function Navbar() {
             </Button>
           </div>
         </div>
-
       </div>
     </div>
   );
