@@ -75,7 +75,7 @@ export default function HeroMobile() {
               duration: 0.5,
               ease: [0.33, 1, 0.68, 1],
             }}
-            className="w-[clamp(345px,calc(345px+(100vw-345px)),645px)]"
+            className="w-[clamp(345px, calc(345px + 530*(100vw - 345px)/655), 875px)]"
           >
             <video
               ref={videoRef}

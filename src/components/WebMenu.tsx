@@ -42,7 +42,7 @@ const WebMenu = forwardRef<HTMLDivElement, WebMenuProps>(function WebMenu(
       onMouseEnter={onMenuEnter}
       onMouseLeave={onMenuLeave}
     >
-       <div className="w-full mx-auto px-6 lg:px-[var(--spacing-4xl)] max-w-[1600px]">
+       <div className="w-full mx-auto px-[var(--spacing-xl)] lg:px-[var(--spacing-4xl)]" style={{ maxWidth: 'clamp(1000px, calc(1250px + (100vw - 1440px) * 0.7), 1600px)' }}>
         {/* Row with fixed 350px height and vertical padding */}
         <div className="flex gap-[32px] h-[350px] py-[var(--spacing-4xl)]">
            {/* LEFT: 360px wide, height hugs its content */}
