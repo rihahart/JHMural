@@ -33,9 +33,38 @@ export default function Hero() {
         }
       }, 1000);
 
+      // Set up video loop for last 3 seconds
+      const setupVideoLoop = () => {
+        if (videoRef.current) {
+          const video = videoRef.current;
+          
+          const handleEnded = () => {
+            // Jump to 1 second before the end and play
+            if (video.duration) {
+              video.currentTime = Math.max(0, video.duration - 1);
+              video.play().catch(() => {});
+            }
+          };
+
+          video.addEventListener('ended', handleEnded);
+        }
+      };
+
+      // Set up the loop after video loads
+      if (videoRef.current) {
+        if (videoRef.current.readyState >= 3) {
+          setupVideoLoop();
+        } else {
+          videoRef.current.addEventListener('loadeddata', setupVideoLoop);
+        }
+      }
+
       return () => {
         clearTimeout(scrollTimer);
         clearTimeout(videoTimer);
+        if (videoRef.current) {
+          videoRef.current.removeEventListener('loadeddata', setupVideoLoop);
+        }
       };
     }
   }, []);
@@ -106,7 +135,6 @@ export default function Hero() {
               ref={videoRef}
               className="w-full h-full object-cover rounded-lg opacity-0 transition-opacity duration-500"
               muted
-              loop
               playsInline
             >
               <source

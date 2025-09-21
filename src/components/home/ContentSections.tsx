@@ -73,42 +73,6 @@ export default function ContentSections() {
           </div>
         </div>
 
-        {/* Mobile-only sections */}
-        <div className="lg:hidden mt-8 space-y-8">
-          {/* Murals around Jackson Heights */}
-          <div>
-            <h3 className="text-xl font-bold text-[var(--color-content-primary)] mb-4">
-              Murals around Jackson Heights
-            </h3>
-            <div className="bg-gray-300 h-48 rounded-lg flex items-center justify-center">
-              <span className="text-gray-500">Mural gallery placeholder</span>
-            </div>
-          </div>
-
-          {/* Jackson Heights Events */}
-          <div>
-            <h3 className="text-xl font-bold text-[var(--color-content-primary)] mb-4">
-              Jackson Heights Events.
-            </h3>
-            <div className="space-y-3">
-              {[1, 2, 3].map((_, index) => (
-                <div key={index} className="border border-gray-300 p-3 rounded">
-                  <div className="flex gap-3">
-                    <div className="text-center">
-                      <div className="text-lg font-bold text-[var(--color-content-primary)]">12</div>
-                      <div className="text-sm text-gray-600">Oct</div>
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="font-semibold text-[var(--color-content-primary)]">Title</h4>
-                      <p className="text-sm text-gray-600">5:30pm - 6:30pm</p>
-                      <p className="text-sm text-gray-600">Location: XXXXXXX</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );

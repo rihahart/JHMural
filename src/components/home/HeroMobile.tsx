@@ -21,7 +21,38 @@ export default function HeroMobile() {
       }
     }, 1000);
 
-    return () => clearTimeout(timer);
+    // Set up video loop for last 3 seconds
+    const setupVideoLoop = () => {
+      if (videoRef.current) {
+        const video = videoRef.current;
+        
+        const handleEnded = () => {
+          // Jump to 1 second before the end and play
+          if (video.duration) {
+            video.currentTime = Math.max(0, video.duration - 1);
+            video.play().catch(() => {});
+          }
+        };
+
+        video.addEventListener('ended', handleEnded);
+      }
+    };
+
+    // Set up the loop after video loads
+    if (videoRef.current) {
+      if (videoRef.current.readyState >= 3) {
+        setupVideoLoop();
+      } else {
+        videoRef.current.addEventListener('loadeddata', setupVideoLoop);
+      }
+    }
+
+    return () => {
+      clearTimeout(timer);
+      if (videoRef.current) {
+        videoRef.current.removeEventListener('loadeddata', setupVideoLoop);
+      }
+    };
   }, []);
 
   return (
@@ -81,7 +112,6 @@ export default function HeroMobile() {
               ref={videoRef}
               className="w-full h-full object-cover"
               muted
-              loop
               playsInline
               autoPlay
             >
