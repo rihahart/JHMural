@@ -9,19 +9,28 @@ export default function Hero() {
   const words = ["WE", "PAINT", "MURALS"];
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      // Scroll just enough to hide navbar but keep all blue content visible
+    const scrollTimer = setTimeout(() => {
+      // Scroll a bit higher to show more content
       window.scrollTo({ 
-        top: 85, // Just past navbar height (~80px) to hide it cleanly
+        top: 280, // Scroll higher to show more content
         behavior: "smooth" 
       });
+    }, 1000);
 
+    // Start video 1 second earlier (at 1s instead of 2s)
+    const videoTimer = setTimeout(() => {
       if (videoRef.current) {
-        videoRef.current.play().catch(() => {});
+        videoRef.current.play().then(() => {
+          // Fade in video when it starts playing
+          videoRef.current!.style.opacity = '1';
+        }).catch(() => {});
       }
     }, 1000);
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(scrollTimer);
+      clearTimeout(videoTimer);
+    };
   }, []);
 
   return (
@@ -29,7 +38,7 @@ export default function Hero() {
       ref={heroRef}
       className="flex flex-col items-center justify-center bg-[var(--color-background-brand)]"
     >
-      <div className="flex flex-col items-center w-full gap-[var(--spacing-xl)] py-[var(--spacing-6xl)] px-[var(--spacing-xl)] max-w-[1600px]">
+      <div className="flex flex-col items-center w-full gap-[var(--spacing-xs)] py-[var(--spacing-6xl)] px-[var(--spacing-xl)] max-w-[1600px]">
         <div className="w-full flex justify-center items-left">
           <div className="flex flex-col items-start gap-[var(--spacing-s)]">
             <h1 className="text-[clamp(100px,calc(100px+(50*(100vw-1025px)/415)),200px)] font-black leading-none tracking-[0.005em] text-white transition-all duration-300 ease-in-out">
@@ -75,15 +84,14 @@ export default function Hero() {
               duration: 0.5,
               ease: [0.33, 1, 0.68, 1],
             }}
-            className="w-[clamp(300px,60vw,1000px)]"
+            className="w-[clamp(800px,calc(800px+0.723*(100vw-1025px)),1445px)]"
           >
             <video
               ref={videoRef}
-              className="w-full h-full object-cover rounded-lg"
+              className="w-full h-full object-cover rounded-lg opacity-0 transition-opacity duration-500"
               muted
               loop
               playsInline
-              autoPlay
             >
               <source
                 src="/MainAnimation.mp4"
