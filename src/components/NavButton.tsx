@@ -84,7 +84,7 @@ export default function NavButton({
       w-[360px]
       py-[var(--spacing-m)] px-[var(--spacing-s)]
       hover:text-[var(--color-content-brand)]
-      active:text-[var(--color-content-brand-pressed)]
+      active:text-[var(--color-content-brand)]
     `,
     tertiary: `
       text-[var(--color-content-primary)]
@@ -96,15 +96,18 @@ export default function NavButton({
       justify-center
       items-center
       hover:text-[var(--color-content-brand)]
-      active:text-[var(--color-content-brand-pressed)]
     `,
   };
 
   // Active state classes for navigation
-  const activeClasses = isActive ? `
+  const activeClasses = isActive ? (variant === 'secondary' ? `
+    active:text-[var(--color-content-brand)]
+  ` : variant === 'primary' ? `
     text-[var(--color-content-brand)]
     bg-[var(--color-background-hover)]
-  ` : '';
+  ` : `
+    text-[var(--color-content-brand)]
+  `) : '';
 
   // Initial load classes (for homepage hero state) - for primary and tertiary variants
   const initialLoadClasses = isInitialLoad && (variant === 'primary' || variant === 'tertiary') ? `

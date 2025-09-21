@@ -1,7 +1,8 @@
 "use client";
 import Link from "next/link";
 import React, { forwardRef } from "react";
-import Image from "next/image";       
+import Image from "next/image";
+import { usePathname } from "next/navigation";
 import NavButton from "./NavButton";
 import ExitButton from "./ExitButton";
 
@@ -15,6 +16,7 @@ interface MobileMenuProps {
 
 const MobileMenu = forwardRef<HTMLDivElement, MobileMenuProps>(
   ({ isOpen, expandedStates, onToggleExpanded, onCloseAll }, ref) => {
+    const pathname = usePathname();
     if (!isOpen) return null;
 
     return (
@@ -51,14 +53,16 @@ const MobileMenu = forwardRef<HTMLDivElement, MobileMenuProps>(
               >
                 Projects
               </NavButton>
-              <div className={`ml-4 space-y-2 ${expandedStates.isMobileProjectsExpanded ? 'block' : 'hidden'}`}>
-                <a
+              <div className={`${expandedStates.isMobileProjectsExpanded ? 'block' : 'hidden'} space-y-[var(--spacing-m)]`}>
+                <NavButton
+                  variant="secondary"
                   href="/projects/84th-street-mural"
                   onClick={onCloseAll}
-                  className="block py-1 text-gray-600 hover:text-gray-900"
+                  className="font-normal"
+                  isActive={pathname === "/projects/84th-street-mural"}
                 >
                   84th St Mural
-                </a>
+                </NavButton>
               </div>
             </div>
 
@@ -74,21 +78,25 @@ const MobileMenu = forwardRef<HTMLDivElement, MobileMenuProps>(
               >
                 Get to know us
               </NavButton>
-              <div className={`ml-4 space-y-2 ${expandedStates.isMobileAboutExpanded ? 'block' : 'hidden'}`}>
-                <a
+              <div className={`${expandedStates.isMobileAboutExpanded ? 'block' : 'hidden'} space-y-[var(--spacing-m)]`}>
+                <NavButton
+                  variant="secondary"
                   href="/get-to-know-us/what-inspires-us"
                   onClick={onCloseAll}
-                  className="block py-1 text-gray-600 hover:text-gray-900"
+                  className="font-normal"
+                  isActive={pathname === "/get-to-know-us/what-inspires-us"}
                 >
                   What inspires us
-                </a>
-                <a
+                </NavButton>
+                <NavButton
+                  variant="secondary"
                   href="/get-to-know-us/meet-jh-mural-team"
                   onClick={onCloseAll}
-                  className="block py-1 text-gray-600 hover:text-gray-900"
+                  className="font-normal"
+                  isActive={pathname === "/get-to-know-us/meet-jh-mural-team"}
                 >
                   Meet JH Mural Team
-                </a>
+                </NavButton>
               </div>
             </div>
 
@@ -104,28 +112,34 @@ const MobileMenu = forwardRef<HTMLDivElement, MobileMenuProps>(
               >
                 Get Involved
               </NavButton>
-              <div className={`ml-4 space-y-2 ${expandedStates.isMobileGetInvolvedExpanded ? 'block' : 'hidden'}`}>
-                <a
+              <div className={`${expandedStates.isMobileGetInvolvedExpanded ? 'block' : 'hidden'} space-y-[var(--spacing-m)]`}>
+                <NavButton
+                  variant="secondary"
                   href="/get-involved/make-a-donation"
                   onClick={onCloseAll}
-                  className="block py-1 text-gray-600 hover:text-gray-900"
+                  className="font-normal"
+                  isActive={pathname === "/get-involved/make-a-donation"}
                 >
                   Make a donation
-                </a>
-                <a
+                </NavButton>
+                <NavButton
+                  variant="secondary"
                   href="/get-involved/partners-and-supporters"
                   onClick={onCloseAll}
-                  className="block py-1 text-gray-600 hover:text-gray-900"
+                  className="font-normal"
+                  isActive={pathname === "/get-involved/partners-and-supporters"}
                 >
                   Partners & Supporters
-                </a>
-                <a
+                </NavButton>
+                <NavButton
+                  variant="secondary"
                   href="/get-involved/volunteer-with-us"
                   onClick={onCloseAll}
-                  className="block py-1 text-gray-600 hover:text-gray-900"
+                  className="font-normal"
+                  isActive={pathname === "/get-involved/volunteer-with-us"}
                 >
                   Volunteer with us
-                </a>
+                </NavButton>
               </div>
             </div>
           </div>

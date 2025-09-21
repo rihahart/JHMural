@@ -20,15 +20,23 @@ export default function MobileNavbar() {
 
 
   const handleToggleExpanded = (itemName: "Projects" | "Get to know us" | "Get Involved") => {
-    // Close all other sections first
+    // Check if the clicked section is already open
+    const isCurrentlyOpen = 
+      (itemName === "Projects" && isMobileProjectsExpanded) ||
+      (itemName === "Get Involved" && isMobileGetInvolvedExpanded) ||
+      (itemName === "Get to know us" && isMobileAboutExpanded);
+    
+    // Close all sections first
     setIsMobileProjectsExpanded(false);
     setIsMobileGetInvolvedExpanded(false);
     setIsMobileAboutExpanded(false);
     
-    // Then toggle the selected section
-    if (itemName === "Projects") setIsMobileProjectsExpanded(true);
-    else if (itemName === "Get Involved") setIsMobileGetInvolvedExpanded(true);
-    else if (itemName === "Get to know us") setIsMobileAboutExpanded(true);
+    // If the clicked section was not open, open it
+    if (!isCurrentlyOpen) {
+      if (itemName === "Projects") setIsMobileProjectsExpanded(true);
+      else if (itemName === "Get Involved") setIsMobileGetInvolvedExpanded(true);
+      else if (itemName === "Get to know us") setIsMobileAboutExpanded(true);
+    }
   };
 
   const handleCloseAll = () => {
