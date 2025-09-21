@@ -2,43 +2,59 @@
 
 import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
+import HeroMobile from "./HeroMobile";
 
 export default function Hero() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
   const videoRef = useRef<HTMLVideoElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
   const words = ["WE", "PAINT", "MURALS"];
 
   useEffect(() => {
-    const scrollTimer = setTimeout(() => {
-      // Scroll a bit higher to show more content
-      window.scrollTo({ 
-        top: 280, // Scroll higher to show more content
-        behavior: "smooth" 
-      });
-    }, 1000);
+    // Only apply scroll and video effects on desktop (lg and up)
+    if (typeof window !== 'undefined' && window.innerWidth >= 1024) {
+      const scrollTimer = setTimeout(() => {
+        // Scroll a bit higher to show more content
+        window.scrollTo({ 
+          top: 280, // Scroll higher to show more content
+          behavior: "smooth" 
+        });
+      }, 1000);
 
-    // Start video 1 second earlier (at 1s instead of 2s)
-    const videoTimer = setTimeout(() => {
-      if (videoRef.current) {
-        videoRef.current.play().then(() => {
-          // Fade in video when it starts playing
-          videoRef.current!.style.opacity = '1';
-        }).catch(() => {});
-      }
-    }, 1000);
+      // Start video 1 second earlier (at 1s instead of 2s)
+      const videoTimer = setTimeout(() => {
+        if (videoRef.current) {
+          videoRef.current.play().then(() => {
+            // Fade in video when it starts playing
+            videoRef.current!.style.opacity = '1';
+          }).catch(() => {});
+        }
+      }, 1000);
 
-    return () => {
-      clearTimeout(scrollTimer);
-      clearTimeout(videoTimer);
-    };
+      return () => {
+        clearTimeout(scrollTimer);
+        clearTimeout(videoTimer);
+      };
+    }
   }, []);
 
   return (
-    <div
-      ref={heroRef}
-      className="flex flex-col items-center justify-center bg-[var(--color-background-brand)]"
-    >
-      <div className="flex flex-col items-center w-full gap-[var(--spacing-xs)] py-[var(--spacing-6xl)] px-[var(--spacing-xl)] max-w-[1600px]">
+    <>
+      {/* Mobile Hero - only on homepage */}
+      {isHome && (
+        <div className="lg:hidden">
+          <HeroMobile />
+        </div>
+      )}
+      
+      {/* Desktop Hero */}
+      <div
+        ref={heroRef}
+        className="hidden lg:flex flex-col items-center justify-center bg-[var(--color-background-brand)]"
+      >
+        <div className="flex flex-col items-center w-full gap-[var(--spacing-xs)] mt-[var(--spacing-6xl)] px-[var(--spacing-xl)] max-w-[1600px]">
         <div className="w-full flex justify-center items-left">
           <div className="flex flex-col items-start gap-[var(--spacing-s)]">
             <h1 className="text-[clamp(100px,calc(100px+(50*(100vw-1025px)/415)),200px)] font-black leading-none tracking-[0.005em] text-white transition-all duration-300 ease-in-out">
@@ -101,6 +117,7 @@ export default function Hero() {
           </motion.div>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }

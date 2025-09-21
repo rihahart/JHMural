@@ -23,7 +23,7 @@ export default function MobileNavbar() {
   const mobileMenuRef = useRef<HTMLDivElement | null>(null);
   const lastYRef = useRef(0);
 
-  // Scroll detection and initial load state management
+  // Initial load state management - only change on scroll
   useEffect(() => {
     if (!isHome) {
       setIsInitialLoad(false);
@@ -32,17 +32,19 @@ export default function MobileNavbar() {
 
     const onScroll = () => {
       const y = window.scrollY;
-      if (isInitialLoad && y > 80) setIsInitialLoad(false);
+      if (y > 80) {
+        setIsInitialLoad(false);
+      } else if (y <= 80) {
+        setIsInitialLoad(true);
+      }
       lastYRef.current = y;
     };
 
     const opts: AddEventListenerOptions = { passive: true };
     window.addEventListener("scroll", onScroll, opts);
-    const t = setTimeout(() => setIsInitialLoad(false), 2000);
 
     return () => {
       window.removeEventListener("scroll", onScroll, opts);
-      clearTimeout(t);
     };
   }, [isHome, isInitialLoad]);
 

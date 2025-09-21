@@ -12,7 +12,7 @@ export default function HeroMobile() {
     const timer = setTimeout(() => {
       // Scroll just enough to hide navbar but keep all blue content visible
       window.scrollTo({ 
-        top: 85, // Just past navbar height (~80px) to hide it cleanly
+        top: 200, // Just past navbar height (~80px) to hide it cleanly
         behavior: "smooth" 
       });
 
@@ -27,12 +27,12 @@ export default function HeroMobile() {
   return (
     <div
       ref={heroRef}
-      className="flex flex-col items-center justify-center bg-[var(--color-background-brand)] px-6 pt-12 pb-16 md:pt-16"
+      className="flex flex-col items-center justify-center bg-[var(--color-background-brand)]"
     >
-      <div className="flex flex-col items-center w-full gap-8 max-w-[1200px]">
-        <div className="w-full flex justify-center">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-black leading-none tracking-[0.005em] text-white transition-all duration-300 ease-in-out">
+      <div className="flex flex-col items-center self-stretch mt-[var(--spacing-4xl)] px-[var(--spacing-xl)] w-full gap-[var(--spacing-lg)] max-w-[1200px]">
+        <div className="w-full flex justify-center items-center">
+          <div className="text-left">
+            <h1 className="text-[clamp(82px,calc(82px+(78*(100vw-393px)/375)),160px)] font-bold leading-none tracking-[0.005em] text-white transition-all duration-300 ease-in-out">
               {words.map((word, i) => (
                 <motion.span
                   key={i}
@@ -58,9 +58,9 @@ export default function HeroMobile() {
                 duration: 0.5,
                 ease: [0.33, 1, 0.68, 1],
               }}
-              className="text-xl md:text-2xl font-medium text-white mt-2"
+              className="text-[clamp(24px,calc(24px+(26*(100vw-393px)/375)),50px)] font-medium text-white mt-2"
             >
-              on lonely walls of Jackson Heights, Queens.
+              on lonely walls of Jackson Heights, Queens
             </motion.p>
           </div>
         </div>
@@ -75,11 +75,11 @@ export default function HeroMobile() {
               duration: 0.5,
               ease: [0.33, 1, 0.68, 1],
             }}
-            className="w-[clamp(300px,60vw,1000px)]"
+            className="w-[clamp(345px,calc(345px+(100vw-345px)),645px)]"
           >
             <video
               ref={videoRef}
-              className="w-full h-full object-cover rounded-lg"
+              className="w-full h-full object-cover"
               muted
               loop
               playsInline
