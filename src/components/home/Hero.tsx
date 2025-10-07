@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 
 export default function Hero() {
   const pathname = usePathname();
-  const isHome = pathname === "/";
   const videoRef = useRef<HTMLVideoElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
   const words = ["WE", "PAINT", "MURALS"];
@@ -61,8 +60,9 @@ export default function Hero() {
       return () => {
         clearTimeout(scrollTimer);
         clearTimeout(videoTimer);
-        if (videoRef.current) {
-          videoRef.current.removeEventListener('loadeddata', setupVideoLoop);
+        const video = videoRef.current;
+        if (video) {
+          video.removeEventListener('loadeddata', setupVideoLoop);
         }
       };
     }

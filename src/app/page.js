@@ -8,7 +8,7 @@ import MissionStatement from "@/components/home/MissionStatement";
 import MissionStatementMobile from "@/components/home/MissionStatementMobile";
 
 export default function Home() {
-  const { isMobile, isTablet, isDesktop, screenSize } = useMobileDetection();
+  const { isMobile, isTablet } = useMobileDetection();
  
   if (isMobile) {
     return (

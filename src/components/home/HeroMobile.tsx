@@ -49,8 +49,9 @@ export default function HeroMobile() {
 
     return () => {
       clearTimeout(timer);
-      if (videoRef.current) {
-        videoRef.current.removeEventListener('loadeddata', setupVideoLoop);
+      const video = videoRef.current;
+      if (video) {
+        video.removeEventListener('loadeddata', setupVideoLoop);
       }
     };
   }, []);
