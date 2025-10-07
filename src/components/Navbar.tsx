@@ -280,7 +280,7 @@ export default function Navbar() {
               variant="primary"
               size="large"
               trailingIcon="/flower.svg"
-              className="h-full px-[var(--spacing-lg)] text-xl flex items-center"
+              className="h-full px-[var(--spacing-lg)] text-xl flex items-center !rounded-none"
             >
               Donate
             </Button>

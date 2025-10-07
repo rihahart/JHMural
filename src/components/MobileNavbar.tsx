@@ -124,7 +124,7 @@ export default function MobileNavbar() {
                 variant="primary"
                 size="small"
                 trailingIcon="/flower.svg"
-                className="py-[var(--spacing-xl)] px-[var(--spacing-xl)] text-xl flex items-center"
+                className="py-[var(--spacing-xl)] px-[var(--spacing-xl)] text-xl flex items-center !rounded-none"
               >
                 Donate
               </Button>

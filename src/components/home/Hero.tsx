@@ -3,7 +3,6 @@
 import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
-import HeroMobile from "./HeroMobile";
 
 export default function Hero() {
   const pathname = usePathname();
@@ -71,14 +70,7 @@ export default function Hero() {
 
   return (
     <>
-      {/* Mobile Hero - only on homepage */}
-      {isHome && (
-        <div className="lg:hidden">
-          <HeroMobile />
-        </div>
-      )}
-      
-      {/* Desktop Hero */}
+     
       <div
         ref={heroRef}
         className="hidden lg:flex flex-col items-center justify-center bg-[var(--color-background-brand)]"
@@ -144,7 +136,7 @@ export default function Hero() {
             </video>
           </motion.div>
         </div>
-      </div>
+        </div>
       </div>
     </>
   );

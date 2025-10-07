@@ -1,7 +1,7 @@
 "use client";
 
-import MeetOurFounders from "../../components/JHMuralteam/meetOurFounders";
-import CoFounderInfo from "../../components/JHMuralteam/coFounderInfo";
+import MeetOurFounders from "@/components/JHMuralteam/meetOurFounders";
+import CoFounderInfo from "@/components/JHMuralteam/coFounderInfo";
 
 export default function MeetTheTeam() {
   return (

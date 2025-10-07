@@ -56,13 +56,13 @@ export default function Button({
       px-[var(--spacing-m)] py-[var(--spacing-m)]
       text-lg
       leading-[var(--line-height-text-lg)]
-      rounded-none
+      rounded-sm
     `,
     large: `
       px-[var(--spacing-lg)] py-[var(--spacing-lg)]
       text-xl
       leading-[var(--line-height-text-xl)]
-      rounded-none
+      rounded-sm
     `,
   };
 
@@ -76,11 +76,11 @@ export default function Button({
       active:bg-[var(--color-background-brand-pressed)]
     `,
     'primary-inverse': `
-      bg-[var(--color-background-primary)]
-      text-[var(--color-content-brand)]
-      hover:bg-[var(--color-background-hover)]
+      bg-[var(--color-background-inverse)]
+      text-[var(--color-content-primary-inverse)]
+      hover:bg-[var(--color-background-inverse-hover)]
       hover:shadow-[0_4px_15px_rgba(0,0,0,0.1)]
-      active:text-[var(--color-content-primary)]
+      active:bg-[var(--color-background-inverse-pressed)]
     `,
     secondary: `
       bg-[var(--color-background-primary)]

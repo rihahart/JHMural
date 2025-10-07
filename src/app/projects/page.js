@@ -1,6 +1,6 @@
 "use client";
 
-import useWindowWidth from "../_utilities/useWindowWidth";
+import useWindowWidth from "@/app/_utilities/useWindowWidth";
 
 export default function Projects() {
   const windowWidth = useWindowWidth();
