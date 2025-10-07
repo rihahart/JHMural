@@ -10,9 +10,9 @@ export default function MissionStatementMobile() {
 
   return (
     <div className=" flex flex-col items-center justify-center gap-[var(--spacing-2xl)] w-full mx-auto">
-       <div className="text-[clamp(20px,calc(20px+(8*(100vw-393px)/375)),28px)] leading-[50px] font-semibold">
+       <div className="text-[clamp(24px,calc(24px+(8*(100vw-393px)/375)),32px)] leading-[50px] font-bold">
        {" "}  We partner with ARTISTS, {" "}
-       <span className="inline-block w-[clamp(40px,calc(50px+(10*(100vw-393px)/375)),75px)] aspect-square">
+       <span className="inline-block w-[clamp(50px,calc(50px+25*(100vw-393px)/375),75px)] aspect-square">
   <Image 
     src="/MissionStatementPhotos/KidsArtClass.png"
     alt="Kids in free Art Class provided by the JH Mural Project"
@@ -22,7 +22,7 @@ export default function MissionStatementMobile() {
   />
 </span>
           {" "} paint MURALS in public spaces, {" "}
-          <span className="inline-block w-[clamp(40px,calc(50px+(10*(100vw-393px)/375)),75px)] aspect-square">
+              <span className="inline-block w-[clamp(50px,calc(50px+25*(100vw-393px)/375),75px)] aspect-square">
             <Image
               src="/MissionStatementPhotos/MuralWall.png"
               alt="Mural Wall illustration"
@@ -32,7 +32,7 @@ export default function MissionStatementMobile() {
             />
           </span>
           {" "} bring CREATIVITY and JOY, {" "}
-          <span className="inline-block w-[clamp(40px,calc(50px+(10*(100vw-393px)/375)),75px)] aspect-square">
+          <span className="inline-block w-[clamp(50px,calc(50px+25*(100vw-393px)/375),75px)] aspect-square">
             <Image
               src="/MissionStatementPhotos/KidsJoyfullyDrawing.png"
               alt="Kids looking at the camera and smiling"
@@ -42,7 +42,7 @@ export default function MissionStatementMobile() {
             />
           </span>
           {" "} and create an open-air public art gallery {" "}
-          <span className="inline-block w-[clamp(40px,calc(50px+(10*(100vw-393px)/375)),75px)] aspect-square">
+            <span className="inline-block w-[clamp(50px,calc(50px+25*(100vw-393px)/375),75px)] aspect-square">
             <Image
               src="/MissionStatementPhotos/AccessForAll.png"
               alt="Illustration with rainbow and flowers"
