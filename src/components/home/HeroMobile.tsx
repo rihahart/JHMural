@@ -9,6 +9,7 @@ export default function HeroMobile() {
   const words = ["WE", "PAINT", "MURALS"];
 
   useEffect(() => {
+    const video = videoRef.current;
     const timer = setTimeout(() => {
       // Scroll just enough to hide navbar but keep all blue content visible
       window.scrollTo({ 
@@ -16,15 +17,14 @@ export default function HeroMobile() {
         behavior: "smooth" 
       });
 
-      if (videoRef.current) {
-        videoRef.current.play().catch(() => {});
+      if (video) {
+        video.play().catch(() => {});
       }
     }, 1000);
 
     // Set up video loop for last 3 seconds
     const setupVideoLoop = () => {
-      if (videoRef.current) {
-        const video = videoRef.current;
+      if (video) {
         
         const handleEnded = () => {
           // Jump to 1 second before the end and play
@@ -39,17 +39,16 @@ export default function HeroMobile() {
     };
 
     // Set up the loop after video loads
-    if (videoRef.current) {
-      if (videoRef.current.readyState >= 3) {
+    if (video) {
+      if (video.readyState >= 3) {
         setupVideoLoop();
       } else {
-        videoRef.current.addEventListener('loadeddata', setupVideoLoop);
+        video.addEventListener('loadeddata', setupVideoLoop);
       }
     }
 
     return () => {
       clearTimeout(timer);
-      const video = videoRef.current;
       if (video) {
         video.removeEventListener('loadeddata', setupVideoLoop);
       }
