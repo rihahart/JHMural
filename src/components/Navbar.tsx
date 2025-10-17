@@ -193,7 +193,7 @@ export default function Navbar() {
         z-50 hidden lg:block
       `}
     >
-      <div className="w-full mx-auto flex items-center justify-between py-[var(--spacing-m)] px-[var(--spacing-xl)] lg:px-[var(--spacing-4xl)]" style={{ maxWidth: 'clamp(1000px, calc(1250px + (100vw - 1440px) * 0.7), 1600px)' }}>
+      <div className="w-full mx-auto flex items-center justify-between py-[var(--spacing-m)]" style={{ maxWidth: 'clamp(1000px, calc(1250px + (100vw - 1440px) * 0.7), 1600px)' }}>
         <div className="flex items-end gap-[var(--spacing-2xl)]">
           <Link href="/" className="flex items-center flex-shrink-0" aria-label="Home">
             <Image

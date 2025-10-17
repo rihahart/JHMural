@@ -60,7 +60,7 @@ export default function Button({
     `,
     large: `
       px-[var(--spacing-lg)] py-[var(--spacing-lg)]
-      text-xl
+      text-3xl
       leading-[var(--line-height-text-xl)]
       rounded-sm
     `,
@@ -72,29 +72,28 @@ export default function Button({
       bg-[var(--color-background-brand)]
       text-white
       hover:bg-[var(--color-background-brand-hover)]
-      hover:shadow-[0_8px_25px_rgba(25,120,216,0.3)]
+      ${size === 'large' ? 'hover:shadow-[0_8px_25px_rgba(25,120,216,0.3)]' : 'hover:shadow-[0_4px_15px_rgba(25,120,216,0.2)]'}
       active:bg-[var(--color-background-brand-pressed)]
     `,
     'primary-inverse': `
       bg-[var(--color-background-inverse)]
       text-[var(--color-content-primary-inverse)]
       hover:bg-[var(--color-background-inverse-hover)]
-      hover:shadow-[0_4px_15px_rgba(0,0,0,0.1)]
+      ${size === 'large' ? 'hover:shadow-[0_8px_25px_rgba(0,0,0,0.15)]' : 'hover:shadow-[0_4px_15px_rgba(0,0,0,0.1)]'}
       active:bg-[var(--color-background-inverse-pressed)]
     `,
     secondary: `
       bg-[var(--color-background-primary)]
-      text-[var(--color-content-brand)]
-      border border-[var(--color-border-brand)]
+      text-[var(--color-content-primary)]
+      border border-[var(--color-border-secondary)]
       hover:bg-[var(--color-background-hover)]
-      hover:border-[var(--color-border-focus)]
-      hover:shadow-[0_4px_15px_rgba(25,120,216,0.15)]
+      ${size === 'large' ? 'hover:shadow-[0_8px_25px_rgba(25,120,216,0.2)]' : 'hover:shadow-[0_4px_15px_rgba(25,120,216,0.15)]'}
     `,
     tertiary: `
       bg-[var(--color-background-primary)]
       text-[var(--color-content-secondary)]
       hover:bg-[var(--color-background-hover)]
-      hover:shadow-[0_2px_10px_rgba(0,0,0,0.08)]
+      ${size === 'large' ? 'hover:shadow-[0_4px_15px_rgba(0,0,0,0.12)]' : 'hover:shadow-[0_2px_10px_rgba(0,0,0,0.08)]'}
     `,
   };
 
@@ -118,26 +117,50 @@ export default function Button({
         mr-[var(--spacing-s)]
         transition-all duration-200 ease-in-out
         align-middle
-        ${variant === 'primary' && trailingIcon !== '/flower.svg' && leadingIcon !== '/flower.svg' ? 'brightness-0 invert group-hover:scale-110' : 'group-hover:scale-110'}
-        ${trailingIcon === '/flower.svg' || leadingIcon === '/flower.svg' ? 'group-hover:brightness-[1.2] group-hover:saturate-150' : ''}
+        ${variant === 'primary' || variant === 'primary-inverse' ? 'brightness-0 invert group-hover:scale-110' : variant === 'secondary' ? 'brightness-0 group-hover:scale-110' : 'group-hover:scale-110'}
+        ${trailingIcon === '/flower.svg' || leadingIcon === '/flower.svg' ? 'group-hover:scale-110' : ''}
       `}
     />
   );
 
   const TrailingIcon = trailingIcon && showTrailingIcon && (
-    <Image
-      src={trailingIcon}
-      alt=""
-      width={24}
-      height={24}
-      className={`
-        ${size === 'small' ? 'w-4 h-4' : 'w-4 h-4'}
-        ml-[var(--spacing-xs)]
-        transition-all duration-200 ease-in-out
-        ${variant === 'primary' && trailingIcon !== '/flower.svg' && leadingIcon !== '/flower.svg' ? 'brightness-0 invert group-hover:scale-110' : 'group-hover:scale-110'}
-        ${trailingIcon === '/flower.svg' || leadingIcon === '/flower.svg' ? 'group-hover:brightness-[1.2] group-hover:saturate-150' : ''}
-      `}
-    />
+    variant === 'secondary' ? (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth="1.5"
+        stroke="currentColor"
+        className={`
+          ${size === 'small' ? 'w-4 h-4' : 'w-6 h-6'}
+          ml-[var(--spacing-xs)]
+            translate-y-[1px]
+          transition-all duration-200 ease-in-out
+          group-hover:scale-110
+        `}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
+        />
+      </svg>
+    ) : (
+      <Image
+        src={trailingIcon}
+        alt=""
+        width={24}
+        height={24}
+        className={`
+          ${size === 'small' ? 'w-4 h-4' : 'w-4 h-4'}
+          ml-[var(--spacing-xs)]
+            translate-y-[.5px]
+          transition-all duration-200 ease-in-out
+          ${variant === 'primary' || variant === 'primary-inverse' ? 'brightness-0 invert group-hover:scale-110' : 'group-hover:scale-110'}
+          ${trailingIcon === '/flower.svg' || leadingIcon === '/flower.svg' ? 'group-hover:scale-110' : ''}
+        `}
+      />
+    )
   );
 
   // Render as link if href is provided

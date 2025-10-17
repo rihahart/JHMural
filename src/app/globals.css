@@ -273,6 +273,21 @@
     font-weight: var(--font-weight-bold);
   }
 
+  .hero-heading-responsive {
+    font-family: var(--font-family-base);
+    font-size: clamp(var(--font-size-heading-5xl), calc(var(--font-size-heading-5xl) + (var(--font-size-hero-heading) - var(--font-size-heading-5xl)) * ((100vw - 1025px) / (1600px - 1025px))), var(--font-size-hero-heading));
+    line-height: var(--line-height-hero-heading);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .gap-responsive {
+    gap: clamp(var(--spacing-4xl), calc(var(--spacing-4xl) + (var(--spacing-7xl) - var(--spacing-4xl)) * ((100vw - 1025px) / (1600px - 1025px))), var(--spacing-7xl));
+  }
+
+  .gap-responsive-desktop {
+    gap: clamp(32px, calc(32px + 16px * ((100vw - 1025px) / 575px)), 48px);
+  }
+
   .heading-5xl-bold {
     font-size: var(--font-size-heading-5xl);
     line-height: var(--line-height-heading-5xl);
@@ -777,4 +792,17 @@
   button {
     transition: transform 0.1s ease;
   }
+}
+
+/* Font utility classes */
+.font-cubano-sharp {
+  font-family: var(--font-family-sharp);
+}
+
+.font-cubano {
+  font-family: var(--font-family-display);
+}
+
+.font-base {
+  font-family: var(--font-family-base);
 }

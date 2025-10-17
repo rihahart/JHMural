@@ -1,32 +1,49 @@
 "use client";
 
 import React from "react";
+import useMobileDetection from "@/app/_utilities/useMobileDetection";
+import OurStory from "@/components/getToKnowUs/whatInsipresUS/OurStory";
 
 export default function WhatInspiresUs() {
-  return (
-    <div className="flex w-full max-w-[1600px] px-4 sm:px-6 lg:px-8 pt-[var(--spacing-xl)] pb-[var(--spacing-7xl)] flex-col items-center gap-12 lg:gap-20 min-h-screen mx-auto">
-      {/* Mission and Vision Sections */}
-      <div className="w-full max-w-4xl space-y-8 lg:space-y-12">
-        {/* Mission Section */}
-        <div id="mission" className="text-center space-y-3 lg:space-y-4 scroll-mt-24">
-          <h2 className="text-2xl lg:text-4xl font-black text-[var(--color-brand-600)]">
-            Mission
-          </h2>
-          <p className="text-base lg:text-xl text-[var(--color-content-primary)] leading-relaxed">
-            The JH Mural Project aims to collaborate with local artists to transform spaces along the Roosevelt Avenue Corridor and throughout Jackson Heights. We want to create large-scale murals and create an open-air, public art gallery for the community.
-          </p>
-        </div>
+  const { isMobile, isTablet } = useMobileDetection();
 
-        {/* Our Vision Section */}
-        <div id="our-vision" className="text-center space-y-3 lg:space-y-4 scroll-mt-24">
-          <h2 className="text-2xl lg:text-4xl font-black text-[var(--color-brand-600)]">
-            Our Vision
-          </h2>
-          <p className="text-base lg:text-xl text-[var(--color-content-primary)] leading-relaxed">
-            Revitalize public spaces, cultivate creativity, build social connections, and inspire the children of the community.
-          </p>
-        </div>
+  if (isMobile) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <h1 
+          className="font-bold"
+          style={{
+            fontSize: 'clamp(48px, calc(48px + 56px * ((100vw - 768px) / 512px)), 104px)',
+            fontFamily: 'var(--font-family-base)',
+            lineHeight: 'var(--line-height-hero-heading)'
+          }}
+        >
+          Our Story
+        </h1>
       </div>
+    );
+  }
+
+  if (isTablet) {
+    return (
+      <div className="flex flex-col align-center self-stretch max-w-[1600px] mx-auto py-[var(--spacing-7xl)] px-[var(--spacing-4xl)] gap-[var(--spacing-7xl)]">
+        <h1 
+          className="font-bold self-stretch"
+          style={{
+            fontSize: 'clamp(48px, calc(48px + 56px * ((100vw - 768px) / 512px)), 104px)',
+            fontFamily: 'var(--font-family-base)',
+            lineHeight: 'var(--line-height-hero-heading)'
+          }}
+        >
+          Our Story
+        </h1>
+      </div>
+    );
+  }
+
+  return (
+    <div  className="flex flex-col align-center self-stretch max-w-[1600px] mx-auto py-[var(--spacing-7xl)] px-[var(--spacing-4xl)]">
+     <OurStory />
     </div>
   );
 }
