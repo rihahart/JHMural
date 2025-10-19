@@ -43,7 +43,7 @@ export default function MissionStatement() {
          <BorderlessButton
            variant="primary"
            size="large"
-           href="/get-to-know-us/meet-jh-mural-team"
+           href="/get-to-know-us/what-inspires-us"
            trailingIcon="/arrow-right.svg"
            className="font-base translate-y-[-2px]">
            Get to know us 

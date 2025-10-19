@@ -12,6 +12,8 @@ export default function useMobileDetection() {
       setScreenSize('mobile');
     } else if (windowWidth <= 1024) {
       setScreenSize('tablet');
+    } else if (windowWidth <= 1440) {
+      setScreenSize('desktop1440px');
     } else {
       setScreenSize('desktop');
     }
@@ -20,6 +22,7 @@ export default function useMobileDetection() {
   return {
     isMobile: screenSize === 'mobile',
     isTablet: screenSize === 'tablet',
+    isDesktop1440px: screenSize === 'desktop1440px',
     isDesktop: screenSize === 'desktop',
     screenSize
   };

@@ -7,7 +7,7 @@ import BorderlessButton from "../ButtonCollection/BorderlessButton";
 export default function MissionStatementMobile() {
   return (
     <div className="flex flex-col items-center justify-center w-full mx-auto">
-      <div className="text-[clamp(26px,calc(26px+(14*(100vw-393px)/375)),40px)] leading-[clamp(45px,calc(45px+(15*(100vw-393px)/375)),60px)] logo-mobile-text-3xl-regular text-left">
+      <div className="text-[clamp(26px,calc(26px+(18*(100vw-393px)/375)),44px)] leading-[clamp(45px,calc(45px+(15*(100vw-393px)/375)),60px)] logo-mobile-text-3xl-regular text-left">
         {" "}We partner with artists,{" "}
         <span className="inline-block relative w-[clamp(34px,calc(10px+(10*(100vw-393px)/375)),44px)] translate-y-[4px] aspect-square">
           <Image
@@ -41,7 +41,7 @@ export default function MissionStatementMobile() {
           <BorderlessButton
             variant="primary"
             size="small"
-            href="/get-to-know-us/meet-jh-mural-team"
+            href="/get-to-know-us/what-inspires-us"
             trailingIcon="/arrow-right.svg"
             className="font-base translate-y-[-2px]">
             Get to know us

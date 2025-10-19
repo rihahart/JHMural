@@ -271,33 +271,73 @@
   
   /* Typography Desktop */
 
+  .hero-2xl {
+    font-size: var(--font-size-18xl);
+    line-height: var(--line-height-17xl);
+    font-weight: var(--font-weight-bold);
+    font-family: var(--font-family-base);
+  }
+
+  .hero-xl {
+    font-size: var(--font-size-17xl);
+    line-height: var(--line-height-17xl);
+    font-weight: var(--font-weight-bold);
+    font-family: var(--font-family-base);
+  }
+
+  .hero-lg {
+    font-size: var(--font-size-16xl);
+    line-height: var(--line-height-16xl);
+    font-weight: var(--font-weight-bold);
+    font-family: var(--font-family-base);
+  }
+
+  .hero-m {
+    font-size: var(--font-size-15xl);
+    line-height: var(--line-height-15xl);
+    font-weight: var(--font-weight-bold);
+    font-family: var(--font-family-base);
+  }
  
+  .hero-s {
+    font-size: var(--font-size-14xl);
+    line-height: var(--line-height-14xl);
+    font-weight: var(--font-weight-bold);
+    font-family: var(--font-family-base);
+  }
+
+  .hero-xs {
+    font-size: var(--font-size-13xl);
+    line-height: var(--line-height-13xl);
+    font-weight: var(--font-weight-bold);
+    font-family: var(--font-family-base);
+  }
   .web-heading-5xl-bold {
     font-size: var(--font-size-12xl);
     line-height: var(--line-height-12xl);
     font-weight: var(--font-weight-bold);
-    font-family: var(--font-family-display);
+    font-family: var(--font-family-base);
   }
 
   .web-heading-5xl-semibold {
     font-size: var(--font-size-12xl);
     line-height: var(--line-height-12xl);
     font-weight: var(--font-weight-semibold);
-    font-family: var(--font-family-display);
+    font-family: var(--font-family-base);
   }
 
   .mobile-heading-5xl-bold {
     font-size: var(--font-size-8xl);
     line-height: var(--line-height-8xl);
     font-weight: var(--font-weight-bold);
-    font-family: var(--font-family-display);
+    font-family: var(--font-family-base);
   }
 
   .mobile-heading-5xl-semibold {
     font-size: var(--font-size-8xl);
     line-height: var(--line-height-8xl);
     font-weight: var(--font-weight-semibold);
-    font-family: var(--font-family-display);
+    font-family: var(--font-family-base);
   }
 
 
@@ -306,28 +346,28 @@
     font-size: var(--font-size-11xl);
     line-height: var(--line-height-11xl);
     font-weight: var(--font-weight-bold);
-    font-family: var(--font-family-display);
+    font-family: var(--font-family-base);
   }
 
   .web-heading-4xl-semibold {
     font-size: var(--font-size-11xl);
     line-height: var(--line-height-11xl);  
     font-weight: var(--font-weight-semibold); 
-    font-family: var(--font-family-display);
+    font-family: var(--font-family-base);
   }
 
   .mobile-heading-4xl-bold {
     font-size: var(--font-size-6xl);
     line-height: var(--line-height-7xl);
     font-weight: var(--font-weight-bold);
-    font-family: var(--font-family-display);
+    font-family: var(--font-family-base);
   }
 
   .mobile-heading-4xl-semibold {
     font-size: var(--font-size-6xl);
     line-height: var(--line-height-7xl);
     font-weight: var(--font-weight-semibold);
-    font-family: var(--font-family-display);
+    font-family: var(--font-family-base);
   }
 
 
@@ -335,28 +375,28 @@
     font-size: var(--font-size-10xl);
     line-height: var(--line-height-10xl);
     font-weight: var(--font-weight-bold);
-    font-family: var(--font-family-display);
+    font-family: var(--font-family-base);
   }
 
   .web-heading-3xl-semibold {
     font-size: var(--font-size-10xl);
     line-height: var(--line-height-10xl);
     font-weight: var(--font-weight-semibold); 
-    font-family: var(--font-family-display);
+    font-family: var(--font-family-base);
   }
 
   .mobile-heading-3xl-bold {
     font-size: var(--font-size-3xl);
     line-height: var(--line-height-5xl);
     font-weight: var(--font-weight-bold);
-    font-family: var(--font-family-display);
+    font-family: var(--font-family-base);
   }
 
   .mobile-heading-3xl-semibold {
     font-size: var(--font-size-3xl);
     line-height: var(--line-height-5xl);
     font-weight: var(--font-weight-semibold); 
-    font-family: var(--font-family-display);
+    font-family: var(--font-family-base);
   }
 
 
@@ -365,28 +405,28 @@
     font-size: var(--font-size-9xl);
     line-height: var(--line-height-9xl);
     font-weight: var(--font-weight-bold);
-    font-family: var(--font-family-display);
+    font-family: var(--font-family-base);
   }
 
   .web-heading-2xl-semibold {
     font-size: var(--font-size-9xl);
     line-height: var(--line-height-9xl);
     font-weight: var(--font-weight-semibold); 
-    font-family: var(--font-family-display);
+    font-family: var(--font-family-base);
   }
 
   .mobile-heading-2xl-bold {
     font-size: var(--font-size-2xl);
     line-height: var(--line-height-4xl);
     font-weight: var(--font-weight-bold);
-    font-family: var(--font-family-display);
+    font-family: var(--font-family-base);
   }
 
   .mobile-heading-2xl-semibold {
     font-size: var(--font-size-2xl);
     line-height: var(--line-height-4xl);
     font-weight: var(--font-weight-semibold);
-    font-family: var(--font-family-display);
+    font-family: var(--font-family-base);
   }
 
 
@@ -394,14 +434,14 @@
     font-size: var(--font-size-8xl);
     line-height: var(--line-height-8xl);
     font-weight: var(--font-weight-bold); 
-    font-family: var(--font-family-display);
+    font-family: var(--font-family-base);
   }
 
   .web-heading-xl-semibold {
     font-size: var(--font-size-8xl);
     line-height: var(--line-height-8xl);
     font-weight: var(--font-weight-semibold);
-    font-family: var(--font-family-display);
+    font-family: var(--font-family-base);
   }
 
 
@@ -409,7 +449,7 @@
     font-size: var(--font-size-xl);
     line-height: var(--line-height-3xl);
     font-weight: var(--font-weight-bold);
-    font-family: var(--font-family-display);
+    font-family: var(--font-family-base);
   }
 
 
@@ -417,7 +457,7 @@
     font-size: var(--font-size-xl);
     line-height: var(--line-height-3xl);
     font-weight: var(--font-weight-semibold);
-    font-family: var(--font-family-display);
+    font-family: var(--font-family-base);
   }
 
 
@@ -426,14 +466,14 @@
     font-size: var(--font-size-6xl);
     line-height: var(--line-height-7xl);
     font-weight: var(--font-weight-bold); 
-    font-family: var(--font-family-display);
+    font-family: var(--font-family-base);
   }
 
   .web-heading-lg-semibold {
     font-size: var(--font-size-6xl);
     line-height: var(--line-height-7xl);
     font-weight: var(--font-weight-semibold);   
-    font-family: var(--font-family-display);
+    font-family: var(--font-family-base);
   }
 
 
@@ -441,14 +481,14 @@
     font-size: var(--font-size-lg);
     line-height: var(--line-height-2xl);
     font-weight: var(--font-weight-bold); 
-    font-family: var(--font-family-display);
+    font-family: var(--font-family-base);
   }
 
   .mobile-heading-lg-semibold {
     font-size: var(--font-size-lg);
     line-height: var(--line-height-2xl);
     font-weight: var(--font-weight-semibold);   
-    font-family: var(--font-family-display);
+    font-family: var(--font-family-base);
   }
 
 
@@ -456,14 +496,14 @@
     font-size: var(--font-size-3xl);
     line-height: var(--line-height-5xl);
     font-weight: var(--font-weight-bold);
-    font-family: var(--font-family-display);
+    font-family: var(--font-family-base);
   }
 
   .web-heading-m-semibold {
     font-size: var(--font-size-3xl);
     line-height: var(--line-height-5xl);
     font-weight: var(--font-weight-semibold);
-    font-family: var(--font-family-display);
+    font-family: var(--font-family-base);
   }
 
 
@@ -471,14 +511,14 @@
     font-size: var(--font-size-m);
     line-height: var(--line-height-xl);
     font-weight: var(--font-weight-bold);
-    font-family: var(--font-family-display);
+    font-family: var(--font-family-base);
   }
 
   .mobile-heading-m-semibold {
     font-size: var(--font-size-m);
     line-height: var(--line-height-xl);
     font-weight: var(--font-weight-semibold);
-    font-family: var(--font-family-display);
+    font-family: var(--font-family-base);
   }
 
 
@@ -487,28 +527,28 @@
     font-size: var(--font-size-2xl);
     line-height: var(--line-height-4xl);
     font-weight: var(--font-weight-bold); 
-    font-family: var(--font-family-display);
+    font-family: var(--font-family-base);
   }
 
   .web-heading-s-semibold {
     font-size: var(--font-size-2xl);
     line-height: var(--line-height-4xl);
     font-weight: var(--font-weight-semibold);
-    font-family: var(--font-family-display);
+    font-family: var(--font-family-base);
   }
 
   .mobile-heading-s-bold {
     font-size: var(--font-size-s);
     line-height: var(--line-height-m);
     font-weight: var(--font-weight-bold); 
-    font-family: var(--font-family-display);
+    font-family: var(--font-family-base);
   }
 
   .mobile-heading-s-semibold {
     font-size: var(--font-size-s);
     line-height: var(--line-height-m);
     font-weight: var(--font-weight-semibold);
-    font-family: var(--font-family-display);
+    font-family: var(--font-family-base);
   }
 
 
@@ -516,28 +556,28 @@
     font-size: var(--font-size-lg);
     line-height: var(--line-height-2xl);
     font-weight: var(--font-weight-bold);
-    font-family: var(--font-family-display);
+    font-family: var(--font-family-base);
   }
 
   .web-heading-xs-semibold {
     font-size: var(--font-size-lg);
     line-height: var(--line-height-2xl);
     font-weight: var(--font-weight-semibold);
-    font-family: var(--font-family-display);
+    font-family: var(--font-family-base);
   }
 
   .mobile-heading-xs-bold {
     font-size: var(--font-size-xs);
     line-height: var(--line-height-s);
     font-weight: var(--font-weight-bold);
-    font-family: var(--font-family-display);
+    font-family: var(--font-family-base);
   }
 
   .mobile-heading-xs-semibold {
     font-size: var(--font-size-xs);
     line-height: var(--line-height-s);
     font-weight: var(--font-weight-semibold);
-    font-family: var(--font-family-display);
+    font-family: var(--font-family-base);
   }
 
 
