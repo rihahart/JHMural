@@ -1,16 +1,17 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
-import Button from "../Button";
+import Image from "next/image";   
+import Button from "../ButtonCollection/BorderlessButton";
+import BorderlessButton from "../ButtonCollection/BorderlessButton";
 
 
 export default function MissionStatement() {
   return (
     <div className="flex flex-col items-center justify-start  align-center gap-[var(--spacing-xl)] max-w-[1600px] mx-auto">
-        <p className="text-[clamp(40px,calc(40px+(14*(100vw-1025px)/575)),54px)] font-regular leading-[86px] font-cubano text-center">
+        <p className="text-[clamp(40px,calc(40px+(14*(100vw-1025px)/575)),54px)] font-regular leading-[86px] logo-web-text-3xl-regular text-left">
         We partner with artists,{" "}
-        <span className="inline-block w-[clamp(40px,calc(40px+(14*(100vw-1025px)/575)),54px)] aspect-square translate-y-[5px]">
+        <span className="inline-block w-[clamp(44px,calc(44px+(10*(100vw-1025px)/575)),54px)] aspect-square translate-y-[5px]">
           <Image
             src="/MissionStatementPhotos/KidsArtClass.png"
             alt="Kids in free Art Class provided by the JH Mural Project"
@@ -20,7 +21,7 @@ export default function MissionStatement() {
         </span>{" "}
         paint murals,{" "}
         <span
-           className="inline-block w-[clamp(40px,calc(40px+(14*(100vw-1025px)/575)),54px)] aspect-square translate-y-[5px]">
+           className="inline-block w-[clamp(44px,calc(44px+(10*(100vw-1025px)/575)),54px)] aspect-square translate-y-[5px]">
            <Image
              src="/MissionStatementPhotos/AccessForAll.png"
              alt="Illustration with rainbow and flowers"
@@ -29,7 +30,7 @@ export default function MissionStatement() {
            />
         </span>{" "}
         & bring joy{" "}
-        <span className="inline-block w-[clamp(40px,calc(40px+(14*(100vw-1025px)/575)),54px)] aspect-square translate-y-[5px]">
+        <span className="inline-block w-[clamp(44px,calc(44px+(10*(100vw-1025px)/575)),54px)] aspect-square translate-y-[5px]">
           <Image
             src="/MissionStatementPhotos/KidsJoyfullyDrawing.png"
             alt="Kids looking at the camera and smiling"
@@ -38,17 +39,17 @@ export default function MissionStatement() {
           />
         </span>{" "}
         
-        to our community.{" "}
+        <span className="mr-[var(--spacing-m)]">to our community.</span>{" "}
         <span className="inline-block">
-         <Button
-           variant="secondary"
+         <BorderlessButton
+           variant="primary"
            size="large"
            href="/get-to-know-us/meet-jh-mural-team"
            trailingIcon="/arrow-right.svg"
-           className="border-none font-base translate-y-[-5px]">
+           className="font-base translate-y-[-2px]">
            Get to know us 
-         </Button>
-         </span>          
+         </BorderlessButton>
+         </span>
         </p>
     </div>
   );

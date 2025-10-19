@@ -3,7 +3,7 @@ import Link from "next/link";
 import React, { forwardRef } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import NavButton from "./NavButton";
+import NavButton from "./ButtonCollection/NavButton";
 import ExitButton from "./ExitButton";
 
 

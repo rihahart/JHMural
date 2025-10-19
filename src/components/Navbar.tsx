@@ -3,8 +3,8 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Button from "./Button";
-import NavButton from "./NavButton";
+import Button from "./ButtonCollection/Button";
+import NavButton from "./ButtonCollection/NavButton";
 import WebMenu from "./WebMenu";
 
 const HOVER_CLOSE_DELAY = 150; // ms

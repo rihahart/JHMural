@@ -14,7 +14,7 @@ export default function Home() {
     return (
       <div className="w-full min-h-screen">
         <HeroMobile />
-     <div className="flex flex-col items-center py-[var(--spacing-4xl)] px-[var(--spacing-xl)] gap-[var(--spacing-4xl)] justify-center">
+     <div className="flex flex-col items-center py-[var(--spacing-xl)] px-[var(--spacing-lg)] gap-[var(--spacing-4xl)] justify-center">
       <MissionStatementMobile />
      </div>
       </div>
@@ -25,7 +25,7 @@ export default function Home() {
     return (
       <div className="w-full min-h-screen">
         <HeroMobile />
-        <div className="flex flex-col items-center py-[var(--spacing-4xl)] px-[var(--spacing-xl)] gap-[var(--spacing-4xl)] justify-center">
+        <div className="flex flex-col items-center py-[var(--spacing-2xl)] px-[var(--spacing-lg)] gap-[var(--spacing-4xl)] justify-center">
           <MissionStatementMobile />
         </div>
         
@@ -37,7 +37,7 @@ export default function Home() {
   return (
     <div className="w-full min-h-screen">
       <Hero />
-    <div className="flex flex-col items-center justify-center py-[var(--spacing-7xl)] px-[var(--spacing-4xl)]">
+    <div className="flex flex-col items-center justify-center py-[var(--spacing-4xl)] px-[var(--spacing-2xl)]">
       <MissionStatement />
 
     </div>
