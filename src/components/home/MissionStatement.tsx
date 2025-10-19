@@ -2,7 +2,6 @@
 
 import React from "react";
 import Image from "next/image";   
-import Button from "../ButtonCollection/BorderlessButton";
 import BorderlessButton from "../ButtonCollection/BorderlessButton";
 
 
