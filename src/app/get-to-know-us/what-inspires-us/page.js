@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import useMobileDetection from "@/app/_utilities/useMobileDetection";
+import DecorativeDivider from "@/components/getToKnowUs/DecorativeDivider";
 
 export default function WhatInspiresUs() {
   const { isMobile, isTablet, isDesktop1440px } = useMobileDetection();
@@ -22,6 +23,7 @@ export default function WhatInspiresUs() {
             <h1 className="mobile-heading-5xl-bold text-[var(--color-content-primary)]">Our mission and vision</h1>
             <p className="mobile-text-m-regular text-[var(--color-content-primary)]">We want to collaborate with local artists to transform spaces along the Roosevelt Avenue Corridor and throughout Jackson Heights. We want to revitalize public spaces, cultivate creativity, build social connections, and inspire the children of the community.</p>
           </div>
+          <DecorativeDivider />
         </div>
       </div>
     );
@@ -42,6 +44,7 @@ export default function WhatInspiresUs() {
             <h1 className="web-heading-4xl-bold text-[var(--color-content-primary)] w-1/2 ">Our mission and vision</h1>
             <p className="web-text-m-regular text-[var(--color-content-primary)] w-1/2">We want to collaborate with local artists to transform spaces along the Roosevelt Avenue Corridor and throughout Jackson Heights. We want to revitalize public spaces, cultivate creativity, build social connections, and inspire the children of the community.</p>
           </div>
+          <DecorativeDivider />
         </div>
       </div>
     );
@@ -60,6 +63,7 @@ export default function WhatInspiresUs() {
               <h1 className="hero-xs text-[var(--color-content-primary)] w-1/2">Our mission and vision</h1>
               <p className="web-text-xl-regular text-[var(--color-content-primary)] w-1/2">We want to collaborate with local artists to transform spaces along the Roosevelt Avenue Corridor and throughout Jackson Heights. We want to revitalize public spaces, cultivate creativity, build social connections, and inspire the children of the community. </p>
           </div>
+          <DecorativeDivider />
         </div>
       </div>
     );
@@ -79,10 +83,8 @@ export default function WhatInspiresUs() {
         <h1 className="hero-s text-[var(--color-content-primary)] w-1/2">Our mission and vision</h1>
         <p className="web-text-2xl-regular text-[var(--color-content-primary)] w-1/2">We want to collaborate with local artists to transform spaces along the Roosevelt Avenue Corridor and throughout Jackson Heights. We want to revitalize public spaces, cultivate creativity, build social connections, and inspire the children of the community.</p>
        </div>
-        <div>
-         
-
-        </div>
+       <DecorativeDivider />
+       
       </div>
     </div>
   );
