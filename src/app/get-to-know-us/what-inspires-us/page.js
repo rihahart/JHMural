@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import useMobileDetection from "@/app/_utilities/useMobileDetection";
 import DecorativeDivider from "@/components/getToKnowUs/DecorativeDivider";
+import MuralImpact from "@/components/getToKnowUs/MuralImpact";
 
 export default function WhatInspiresUs() {
   const { isMobile, isTablet, isDesktop1440px } = useMobileDetection();
@@ -24,6 +25,7 @@ export default function WhatInspiresUs() {
             <p className="mobile-text-m-medium text-[var(--color-content-primary)]">We want to collaborate with local artists to transform spaces along the Roosevelt Avenue Corridor and throughout Jackson Heights. We want to revitalize public spaces, cultivate creativity, build social connections, and inspire the children of the community.</p>
           </div>
           <DecorativeDivider />
+          <MuralImpact />
         </div>
       </div>
     );
@@ -45,6 +47,7 @@ export default function WhatInspiresUs() {
             <p className="web-text-m-medium text-[var(--color-content-primary)] w-1/2">We want to collaborate with local artists to transform spaces along the Roosevelt Avenue Corridor and throughout Jackson Heights. We want to revitalize public spaces, cultivate creativity, build social connections, and inspire the children of the community.</p>
           </div>
           <DecorativeDivider />
+          <MuralImpact />
         </div>
       </div>
     );
@@ -64,6 +67,7 @@ export default function WhatInspiresUs() {
               <p className="web-text-xl-medium text-[var(--color-content-primary)] w-1/2">We want to collaborate with local artists to transform spaces along the Roosevelt Avenue Corridor and throughout Jackson Heights. We want to revitalize public spaces, cultivate creativity, build social connections, and inspire the children of the community. </p>
           </div>
           <DecorativeDivider />
+          <MuralImpact />
         </div>
       </div>
     );
@@ -84,7 +88,7 @@ export default function WhatInspiresUs() {
         <p className="web-text-2xl-medium text-[var(--color-content-primary)] w-1/2">We want to collaborate with local artists to transform spaces along the Roosevelt Avenue Corridor and throughout Jackson Heights. We want to revitalize public spaces, cultivate creativity, build social connections, and inspire the children of the community.</p>
        </div>
        <DecorativeDivider />
-       
+       <MuralImpact />
       </div>
     </div>
   );
