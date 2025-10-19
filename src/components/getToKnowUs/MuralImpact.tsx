@@ -14,6 +14,11 @@ export default function MuralImpact() {
         <div className="flex flex-col items-center py-[var(--spacing-xl)] px-[var(--spacing-lg)] gap-[var(--spacing-4xl)] justify-center">
           {muralImpactData.map((item, index) => (
             <div key={index} className="flex flex-col items-center gap-[var(--spacing-xl)]">
+               <div className="flex flex-col items-start gap-[var(--spacing-xl)]">
+                <h2 className="mobile-heading-5xl-bold text-[var(--color-content-primary)]">{item.title}</h2>
+                <p className="mobile-text-m-regular text-[var(--color-content-primary)]">{item.description}</p>
+               </div>
+
               <div className="w-full">
                 <Image 
                   src={item.photo.src} 
@@ -22,15 +27,14 @@ export default function MuralImpact() {
                   height={400} 
                   className="w-full h-auto object-cover"
                 />
-              </div>
-              <div className="flex flex-col items-start gap-[var(--spacing-xl)]">
-                <h2 className="mobile-heading-xl-bold text-[var(--color-content-primary)]">{item.title}</h2>
-                <p className="mobile-text-m-regular text-[var(--color-content-primary)]">{item.description}</p>
-                <div className="flex justify-between w-full">
+                 <div className="flex justify-between w-full">
                   <span className="mobile-text-s-regular text-[var(--color-content-secondary)]">{item.photoCredit}</span>
                   <span className="mobile-text-s-regular text-[var(--color-content-secondary)]">{item.artistCredit}</span>
                 </div>
               </div>
+              
+               
+          
             </div>
           ))}
         </div>
@@ -45,7 +49,7 @@ export default function MuralImpact() {
           {muralImpactData.map((item, index) => (
             <div key={index} className="flex flex-col items-center gap-[var(--spacing-2xl)]">
               <div className="flex flex-col items-start py-[var(--spacing-2xl)] px-[var(--spacing-lg)] gap-[var(--spacing-lg)]">
-                <h2 className="mobile-heading-5xl-bold text-[var(--color-content-primary)]">{item.title}</h2>
+                <h2 className="web-heading-4xl-bold text-[var(--color-content-primary)]">{item.title}</h2>
                 <p className="mobile-text-m-medium text-[var(--color-content-primary)]">{item.description}</p>
               </div>
               <div className="w-full">
@@ -88,7 +92,7 @@ export default function MuralImpact() {
                 </div>
               </div>
               <div className="w-[45%] flex flex-col items-start gap-[var(--spacing-xl)]">
-                <h2 className="web-heading-2xl-bold text-[var(--color-content-primary)]">{item.title}</h2>
+                <h2 className="web-heading-4xl-bold text-[var(--color-content-primary)]">{item.title}</h2>
                 <p className="web-text--regular text-[var(--color-content-primary)]">{item.description}</p>
                
               </div>
