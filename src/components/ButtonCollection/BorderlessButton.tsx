@@ -41,7 +41,6 @@ export default function BorderlessButton({
   const baseClasses = `
     group inline-flex items-center justify-center
     transition-all duration-200 ease-in-out
-    font-[var(--font-weight-semibold)]
     rounded-none
     gap-[var(--spacing-xs)]
     ${fullWidth ? 'w-full' : ''}

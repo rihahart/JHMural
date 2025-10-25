@@ -3,8 +3,8 @@
 import React from "react";
 import Image from "next/image";
 import useMobileDetection from "@/app/_utilities/useMobileDetection";
-import DecorativeDivider from "@/components/getToKnowUs/DecorativeDivider";
-import MuralImpact from "@/components/getToKnowUs/MuralImpact";
+import DecorativeDivider from "@/components/getToKnowUs/whatInsipresUS/DecorativeDivider";
+import MuralImpact from "@/components/getToKnowUs/whatInsipresUS/MuralImpact";
 
 export default function WhatInspiresUs() {
   const { isMobile, isTablet, isDesktop1440px } = useMobileDetection();

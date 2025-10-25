@@ -54,14 +54,12 @@ export default function Button({
   const sizeClasses = {
     small: `
       px-[var(--spacing-m)] py-[var(--spacing-m)]
-      text-lg-semibold
-      leading-[var(--line-height-text-lg)]
+      web-text-lg-black
       rounded-sm
     `,
     large: `
       px-[var(--spacing-lg)] py-[var(--spacing-lg)]
-      text-3xl-semibold
-      leading-[var(--line-height-text-xl)]
+      web-text-3xl-black
       rounded-sm
     `,
   };
