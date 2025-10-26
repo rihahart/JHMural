@@ -17,7 +17,7 @@ export default function PartnersAndSupporters() {
           if (entry.isIntersecting && !hasPlayed) {
             setHasPlayed(true);
             const video = entry.target.querySelector('video');
-            if (video) {
+            if (video && video.paused) {
               video.play().catch((error) => {
                 console.error("Video playback failed:", error);
               });
@@ -26,7 +26,7 @@ export default function PartnersAndSupporters() {
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.5, rootMargin: '0px' }
     );
 
     if (componentRef.current) {
@@ -52,6 +52,7 @@ export default function PartnersAndSupporters() {
               className="w-full h-auto object-cover"
               loop={false}
               muted
+              preload="none"
             />
           </div>
             <div className="flex flex-col items-start gap-[var(--spacing-2xl)]">
@@ -157,6 +158,7 @@ export default function PartnersAndSupporters() {
             className="w-full h-auto object-cover"
             loop={false}
             muted
+            preload="none"
           />
         </div>
         <div className="w-[35%] flex flex-col items-start align-stretch px-[var(--spacing-lg)] gap-[var(--spacing-2xl)]">
