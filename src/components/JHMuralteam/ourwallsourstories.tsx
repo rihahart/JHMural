@@ -25,7 +25,7 @@ export default function OurWallsOurStories() {
               className="w-full h-full object-cover"
             />
           </div>
-          <p className=" mobile-text-2xl-semibold text-[var(--color-yellow-300)]"> We’re growing our team! Join us in bringing color and creativity to Jackson Heights!
+          <p className=" mobile-text-m-semibold text-[var(--color-yellow-300)]"> We’re growing our team! Join us in bringing color and creativity to Jackson Heights!
       </p>
       <Button
         variant="secondary"
@@ -45,25 +45,11 @@ export default function OurWallsOurStories() {
   if (isTablet) {
     return (
       <div className="w-full bg-[var(--color-orange-500)]">
-        <div className="flex flex-col items-center gap-[var(--spacing-6xl)] py-[var(--spacing-4xl)] px-[var(--spacing-4xl)]">
-          <div className="flex flex-col items-start align-stretch gap-[var(--spacing-xl)]">
+        <div className="flex flex-col items-center py-[var(--spacing-4xl)] px-[var(--spacing-4xl)]">
+          <div className="flex flex-col items-start align-stretch gap-[var(--spacing-4xl)]">
             <h2 className="logo-web-heading-3xl text-[var(--color-yellow-300)]">
               Our Walls. Our Stories. Our Home.
             </h2>
-            <p className=" web-text-lg-semibold text-[var(--color-yellow-300)]"> We’re growing our team! Join us in bringing color and creativity to Jackson Heights!
-        </p>
-        <Button
-          variant="secondary"
-          size="small"
-          href="/get-involved/partners-and-supporters"
-          trailingIcon="/arrow-right.svg"
-          className="font-base translate-y-[-2px]">
-          Get involved
-        </Button>
-        </div>
-          
-          
-          <div className="flex flex-col gap-[var(--spacing-xl)] w-full max-w-4xl">
             <div className=" w-full h-full overflow-hidden">
               <Image
                 src="/MeetJHMuralTeam/ArtFundRecipient.png"
@@ -73,7 +59,22 @@ export default function OurWallsOurStories() {
                 className="w-full h-full object-cover"
               />
             </div>
-          </div>
+        <div className="flex flex-col items-start align-stretch gap-[var(--spacing-xl)]">
+        <p className=" web-text-m-semibold text-[var(--color-yellow-300)]"> We’re growing our team! Join us in bringing color and creativity to Jackson Heights!
+        </p>
+        <Button
+          variant="secondary"
+          size="small"
+          href="/get-involved/partners-and-supporters"
+          trailingIcon="/arrow-right.svg"
+          className="font-base translate-y-[-2px]">
+          Get involved
+        </Button>
+
+        </div>
+
+        </div>
+          
         </div>
       </div>
     );

@@ -6,8 +6,8 @@ export default function CoFounderInfo() {
     <div className="flex flex-col items-center justify-center gap-12 lg:gap-20 w-full max-w-6xl">
       
       {/* Suzanne Card */}
-      <div className="flex flex-col lg:flex-row w-full bg-[var(--color-background-notice-subtle)] rounded-lg overflow-hidden">
-        <div className="relative w-full lg:w-1/2 h-64 lg:h-96">
+      <div className="flex flex-col w-full overflow-hidden">
+        <div className="relative w-full h-64 lg:h-96">
           <Image
             src="/Suzanne.jpeg"
             alt="Suzanne"
@@ -17,7 +17,7 @@ export default function CoFounderInfo() {
           />
         </div>
 
-        <div className="flex flex-col justify-center gap-4 lg:gap-6 p-6 lg:p-8 lg:w-1/2">
+        <div className="flex flex-col justify-center gap-4 lg:gap-6 p-6 lg:p-8 w-full">
           <h3 className="text-[var(--color-content-primary)] text-2xl lg:text-3xl font-black">Suzanne Adler</h3>
           <p className="text-[var(--color-content-primary)] text-base lg:text-xl leading-relaxed">
             Suzanne Adler is a resident of Jackson Heights and a long time fan of murals and community art. She is a co-founder of The Arc Residential Team at Compass.
@@ -26,8 +26,8 @@ export default function CoFounderInfo() {
       </div>
 
       {/* Riha Card */}
-      <div className="flex flex-col lg:flex-row-reverse w-full bg-[var(--color-background-notice-subtle)] rounded-lg overflow-hidden">
-        <div className="relative w-full lg:w-1/2 h-64 lg:h-96">
+      <div className="flex flex-col w-full overflow-hidden">
+        <div className="relative w-full h-64 lg:h-96">
           <Image
             src="/Riha.jpg"
             alt="Riha"
@@ -37,10 +37,10 @@ export default function CoFounderInfo() {
           />
         </div>
 
-        <div className="flex flex-col justify-center gap-4 lg:gap-6 p-6 lg:p-8 lg:w-1/2">
+        <div className="flex flex-col justify-center gap-4 lg:gap-6 p-6 lg:p-8 w-full">
           <h3 className="text-[var(--color-content-primary)] text-2xl lg:text-3xl font-black">Riha Hart</h3>
           <p className="text-[var(--color-content-primary)] text-base lg:text-xl leading-relaxed">
-            Riha is a proud Queens native and currently lives in Jackson Heights. She is the founding tech and design lead for Everest Federal Credit Union (EFCU), the first Nepalese-American credit union. There, she oversees the bank&apos;s tech team and leads the brand strategy.
+          Riha Hart is a designer, developer, and project manager who leads JH Mural’s creative direction. She oversees branding, grant writing, and artist collaborations blending visual storytelling with technology to bring public art projects to life.  A Queens native, Riha draws inspiration from the borough’s vibrant diversity.
           </p>
         </div>
       </div>

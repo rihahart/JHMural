@@ -93,7 +93,7 @@ export default function MuralImpact() {
               </div>
               <div className="w-[45%] flex flex-col items-start gap-[var(--spacing-xl)]">
                 <h2 className="web-heading-4xl-bold text-[var(--color-content-primary)]">{item.title}</h2>
-                <p className="web-text--regular text-[var(--color-content-primary)]">{item.description}</p>
+                <p className="web-text-xl-regular text-[var(--color-content-primary)]">{item.description}</p>
                
               </div>
             </div>

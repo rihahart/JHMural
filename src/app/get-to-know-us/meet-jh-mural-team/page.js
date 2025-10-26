@@ -6,6 +6,7 @@ import CoFounderInfo from "@/components/JHMuralteam/coFounderInfo";
 import DecorativeDivider from "@/components/getToKnowUs/DecorativeDivider";
 import BorderlessButton from "@/components/ButtonCollection/BorderlessButton";
 import OurWallsOurStories from "@/components/JHMuralteam/ourwallsourstories";
+import PartnersAndSupporters from "@/components/JHMuralteam/partners-and-supporters";
 
 
 export default function MeetJHMuralTeam() {
@@ -28,6 +29,8 @@ export default function MeetJHMuralTeam() {
          </BorderlessButton>
           </div>
           <OurWallsOurStories />
+          <DecorativeDivider />
+          <PartnersAndSupporters />
           <DecorativeDivider />
           <CoFounderInfo />
         </div>
@@ -53,6 +56,8 @@ export default function MeetJHMuralTeam() {
           </div>
           <OurWallsOurStories />
           <DecorativeDivider />
+          <PartnersAndSupporters />
+          <DecorativeDivider />
           <CoFounderInfo />
         </div>
       </div>
@@ -77,6 +82,8 @@ export default function MeetJHMuralTeam() {
           </div>
           <OurWallsOurStories />
           <DecorativeDivider />
+          <PartnersAndSupporters />
+          <DecorativeDivider />
           <CoFounderInfo />
         </div>
       </div>
@@ -99,6 +106,8 @@ export default function MeetJHMuralTeam() {
          </BorderlessButton>
         </div>
         <OurWallsOurStories />
+        <DecorativeDivider />
+        <PartnersAndSupporters />
         <DecorativeDivider />
         <CoFounderInfo />
       </div>
