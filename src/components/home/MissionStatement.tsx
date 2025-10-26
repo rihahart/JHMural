@@ -8,7 +8,7 @@ import BorderlessButton from "../ButtonCollection/BorderlessButton";
 export default function MissionStatement() {
   return (
     <div className="flex flex-col items-center justify-start  align-center gap-[var(--spacing-xl)] max-w-[1600px] mx-auto">
-        <p className="text-[clamp(40px,calc(40px+(14*(100vw-1025px)/575)),54px)] font-regular leading-[86px] logo-web-text-3xl-regular text-left">
+        <p className="text-[clamp(40px,calc(40px+(14*(100vw-1025px)/575)),54px)] leading-[86px] text-left" style={{ fontFamily: 'var(--font-family-sharp)' }}>
         We partner with artists,{" "}
         <span className="inline-block w-[clamp(44px,calc(44px+(10*(100vw-1025px)/575)),54px)] aspect-square translate-y-[5px]">
           <Image
