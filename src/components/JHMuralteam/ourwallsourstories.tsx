@@ -30,10 +30,10 @@ export default function OurWallsOurStories() {
       <Button
         variant="secondary"
         size="small"
-        href="/get-involved/partners-and-supporters"
+        href="/get-involved/volunteer-with-us"
         trailingIcon="/arrow-right.svg"
         className="font-base translate-y-[-2px]">
-        Get involved
+        Volunteer with us
       </Button>
       </div>
       </div>
@@ -65,10 +65,10 @@ export default function OurWallsOurStories() {
         <Button
           variant="secondary"
           size="small"
-          href="/get-involved/partners-and-supporters"
+          href="/get-involved/volunteer-with-us"
           trailingIcon="/arrow-right.svg"
           className="font-base translate-y-[-2px]">
-          Get involved
+          Volunteer with us
         </Button>
 
         </div>
@@ -107,10 +107,10 @@ export default function OurWallsOurStories() {
         <Button
           variant="secondary"
           size="small"
-          href="/get-involved/partners-and-supporters"
+          href="/get-involved/volunteer-with-us"
           trailingIcon="/arrow-right.svg"
           className="font-base translate-y-[-2px]">
-          Get involved
+          Volunteer with us
         </Button>
         </div>
       </div>
@@ -149,10 +149,10 @@ export default function OurWallsOurStories() {
         <Button
           variant="secondary"
           size="small"
-          href="/get-involved/partners-and-supporters"
+          href="/get-involved/volunteer-with-us"
           trailingIcon="/arrow-right.svg"
           className="font-base translate-y-[-2px]">
-          Get involved
+          Volunteer with us
         </Button>
         </div>
       </div>
