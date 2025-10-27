@@ -67,7 +67,7 @@ export default function Navbar() {
       hasDropdown: true,
       submenu: [
         { name: "Make a donation", href: "/get-involved/make-a-donation" },
-        { name: "Partners & Supporters", href: "/get-involved/partners-and-supporters" },
+        { name: "Partner with us", href: "/get-involved/partner-with-us" },
         { name: "Volunteer with us", href: "/get-involved/volunteer-with-us" },
       ],
     },

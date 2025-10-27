@@ -7,7 +7,7 @@ import JoinSupporters from "@/components/supporters/JoinSupporters";
 import OrganizationSupporters from "@/components/supporters/OrganizationSupporters";
 import SupportersHero from "@/components/supporters/SupportersHero";
 
-export default function PartnersAndSupporters() {
+export default function PartnerWithUs() {
   return (
     <div className="w-full min-h-screen">
       <SupportersHero />
@@ -18,3 +18,4 @@ export default function PartnersAndSupporters() {
     </div>
   );
 }
+

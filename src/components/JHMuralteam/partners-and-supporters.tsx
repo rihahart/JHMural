@@ -64,7 +64,7 @@ export default function PartnersAndSupporters() {
               <BorderlessButton
                 variant="primary"
                 size="small"
-                href="/get-involved/partners-and-supporters"
+                href="/get-involved/partner-with-us"
                 trailingIcon="/arrow-right.svg"
                 className="font-base translate-y-[-2px]">
                 Sponsor a wall
@@ -99,7 +99,7 @@ export default function PartnersAndSupporters() {
           <BorderlessButton
             variant="primary"
             size="large"
-            href="/get-involved/partners-and-supporters"
+            href="/get-involved/partner-with-us"
             trailingIcon="/arrow-right.svg"
             className="font-black text-3xl">
             Sponsor a wall
@@ -134,7 +134,7 @@ export default function PartnersAndSupporters() {
             <BorderlessButton
               variant="primary"
               size="large"
-              href="/get-involved/partners-and-supporters"
+              href="/get-involved/partner-with-us"
               trailingIcon="/arrow-right.svg"
               className="font-base translate-y-[-2px]">
               Sponsor a wall
@@ -171,7 +171,7 @@ export default function PartnersAndSupporters() {
           <BorderlessButton
             variant="primary"
             size="large"
-            href="/get-involved/partners-and-supporters"
+            href="/get-involved/partner-with-us"
             trailingIcon="/arrow-right.svg"
             className="font-base translate-y-[-2px]">
             Sponsor a wall

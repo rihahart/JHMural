@@ -22,7 +22,7 @@ export default function MeetJHMuralTeam() {
               <BorderlessButton
            variant="primary"
            size="small"
-           href="/get-involved/partners-and-supporters"
+           href="/get-involved/partner-with-us"
            trailingIcon="/arrow-right.svg"
            className="font-base translate-y-[-2px]">
            Get involved
@@ -48,7 +48,7 @@ export default function MeetJHMuralTeam() {
             <BorderlessButton
            variant="primary"
            size="large"
-           href="/get-involved/partners-and-supporters"
+           href="/get-involved/partner-with-us"
            trailingIcon="/arrow-right.svg"
            className="font-base translate-y-[-2px]">
            Get involved
@@ -74,7 +74,7 @@ export default function MeetJHMuralTeam() {
             <BorderlessButton
            variant="primary"
            size="large"
-           href="/get-involved/partners-and-supporters"
+           href="/get-involved/partner-with-us"
            trailingIcon="/arrow-right.svg"
            className="font-base translate-y-[-2px]">
            Get involved
@@ -99,7 +99,7 @@ export default function MeetJHMuralTeam() {
           <BorderlessButton
            variant="primary"
            size="large"
-           href="/get-involved/partners-and-supporters"
+           href="/get-involved/partner-with-us"
            trailingIcon="/arrow-right.svg"
            className="font-base translate-y-[-2px]">
            Get involved

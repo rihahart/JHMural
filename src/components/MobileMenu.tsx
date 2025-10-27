@@ -129,7 +129,7 @@ const MobileMenu = forwardRef<HTMLDivElement, MobileMenuProps>(
                   className="font-normal"
                   isActive={pathname === "/get-involved/partners-and-supporters"}
                 >
-                  Partners & Supporters
+                  Partner with us
                 </NavButton>
                 <NavButton
                   variant="secondary"
