@@ -48,7 +48,7 @@ export default function PartnersAndSupporters() {
           <div className="w-full overflow-hidden flex items-center justify-center">
             <video
               ref={videoRef}
-              src="/MeetJHMuralTeam/SponsersMobile.mp4"
+              src="/MeetJHMuralTeam/Sponsers.mp4"
               className="w-full h-auto max-w-full object-cover"
               loop={false}
               muted
