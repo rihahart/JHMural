@@ -45,7 +45,7 @@ export default function PartnersAndSupporters() {
           <h2 className="logo-mobile-heading-5xl text-[var(--color-content-primary)]">
             Partners & Supporters
           </h2>
-          <div className="w-full overflow-hidden flex items-center justify-center">
+          <div className="w-full h-[auto] flex items-center justify-center">
             <video
               ref={videoRef}
               src="/MeetJHMuralTeam/Sponsers.mp4"
