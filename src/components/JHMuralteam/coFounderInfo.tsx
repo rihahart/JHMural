@@ -9,8 +9,8 @@ export default function CoFounderInfo() {
 
   if (isMobile) {
     return (
-      <div className="flex flex-col items-center justify-center gap-[var(--spacing-4xl)] w-full">
-        <h2 className="mobile-heading-5xl-bold text-[var(--color-content-primary)] text-left w-full">
+      <div className="flex flex-col justify-center gap-[var(--spacing-4xl)] w-full">
+        <h2 className="mobile-heading-5xl-bold text-[var(--color-content-primary)] w-full">
           Behind the scenes team
         </h2>
         {coFounderData.map((founder) => (
@@ -42,8 +42,8 @@ export default function CoFounderInfo() {
 
   if (isTablet) {
     return (
-      <div className="flex flex-col items-center gap-[var(--spacing-6xl)] w-full h-auto">
-        <h2 className="web-heading-5xl-bold text-[var(--color-content-primary)] text-left w-full px-[var(--spacing-4xl)]">
+      <div className="flex flex-col gap-[var(--spacing-6xl)] w-full h-auto">
+        <h2 className="web-heading-5xl-bold text-[var(--color-content-primary)]">
           Behind the scenes team
         </h2>
         {coFounderData.map((founder) => (
@@ -75,7 +75,7 @@ export default function CoFounderInfo() {
 
   if (isDesktop1440px) {
     return (
-      <div className="flex flex-col items-center gap-[var(--spacing-6xl)] w-full">
+      <div className="flex flex-col items-start gap-[var(--spacing-6xl)] w-full">
       <h2 className="web-heading-5xl-bold text-[var(--color-content-primary)]">
         Behind the scenes team
       </h2>  
