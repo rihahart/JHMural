@@ -42,21 +42,23 @@ export default function PartnersAndSupporters() {
     return (
       <div ref={componentRef} className="flex flex-col items-center gap-[var(--spacing-2xl)]">
         <div className="flex flex-col items-start align-stretch gap-[var(--spacing-2xl)]">
-          <h2 className="logo-mobile-heading-5xl text-[var(--color-content-primary)]">
-            Partners & Supporters
+          <h2 className="mobile-heading-5xl-bold text-[var(--color-content-primary)]">
+            Our Community Partners & Supporters
           </h2>
-          <div className="w-full h-[auto] flex items-center justify-center">
+          <div className="w-full flex items-center justify-center">
             <video
               ref={videoRef}
-              src="/MeetJHMuralTeam/Sponsers.mp4"
-              className="w-full h-auto max-w-full object-cover"
+              src="/MeetJHMuralTeam/SponsersMobile.mp4"
+              className="w-full h-auto object-cover"
               loop={false}
               muted
+              playsInline
+              controls={false}
             />
           </div>
             <div className="flex flex-col items-start gap-[var(--spacing-2xl)]">
-              <p className="mobile-text-lg-semibold text-[var(--color-content-primary)]">
-                We are deeply grateful to the community partners, sponsors, and supporters who make our work possible. Their generosity helps us bring color and connection to Jackson Heights. We&apos;re always looking to partner with local businesses, community programs, and organizations that care about Jackson Heights. Your support helps us create public art that uplifts our neighborhood.
+              <p className="mobile-text-lg-medium text-[var(--color-content-primary)]">
+                We are grateful to the community partners, sponsors, and supporters who make our work possible. Their generosity helps us bring color and connection to Jackson Heights. We&apos;re always looking to partner with local businesses, community programs, and organizations that care about Jackson Heights. Your support helps us create public art that uplifts our neighborhood.
               </p>
               <BorderlessButton
                 variant="primary"
@@ -91,7 +93,7 @@ export default function PartnersAndSupporters() {
 
         <div className="flex flex-col items-start gap-[var(--spacing-xl)]">
           <p className="web-text-lg-regular text-[var(--color-content-primary)]">
-            We are deeply grateful to the community partners, sponsors, and supporters who make our work possible. Their generosity helps us bring color and connection to Jackson Heights. We&apos;re always looking to partner with local businesses, community programs, and organizations that care about Jackson Heights. Your support helps us create public art that uplifts our neighborhood.
+            We are grateful to the community partners, sponsors, and supporters who make our work possible. Their generosity helps us bring color and connection to Jackson Heights. We&apos;re always looking to partner with local businesses, community programs, and organizations that care about Jackson Heights. Your support helps us create public art that uplifts our neighborhood.
           </p>
           <BorderlessButton
             variant="primary"
@@ -126,7 +128,7 @@ export default function PartnersAndSupporters() {
           <div className="w-[35%] flex flex-col items-start align-stretch  px-[var(--spacing-lg)] gap-[var(--spacing-2xl)]">
            
             <p className="web-text-lg-regular text-[var(--color-content-primary)]">
-              We are deeply grateful to the community partners, sponsors, and supporters who make our work possible. Their generosity helps us bring color and connection to Jackson Heights. We&apos;re always looking to partner with local businesses, community programs, and organizations that care about Jackson Heights. Your support helps us create public art that uplifts our neighborhood.
+              We are grateful to the community partners, sponsors, and supporters who make our work possible. Their generosity helps us bring color and connection to Jackson Heights. We&apos;re always looking to partner with local businesses, community programs, and organizations that care about Jackson Heights. Your support helps us create public art that uplifts our neighborhood.
             </p>
             <BorderlessButton
               variant="primary"
@@ -163,7 +165,7 @@ export default function PartnersAndSupporters() {
         <div className="w-[35%] flex flex-col items-start align-stretch px-[var(--spacing-lg)] gap-[var(--spacing-2xl)]">
           
           <p className="web-text-lg-regular text-[var(--color-content-primary)]">
-            We are deeply grateful to the community partners, sponsors, and supporters who make our work possible. Their generosity helps us bring color and connection to Jackson Heights. We&apos;re always looking to partner with local businesses, community programs, and organizations that care about Jackson Heights. Your support helps us create public art that uplifts our neighborhood.
+            We are grateful to the community partners, sponsors, and supporters who make our work possible. Their generosity helps us bring color and connection to Jackson Heights. We&apos;re always looking to partner with local businesses, community programs, and organizations that care about Jackson Heights. Your support helps us create public art that uplifts our neighborhood.
           </p>
           <BorderlessButton
             variant="primary"

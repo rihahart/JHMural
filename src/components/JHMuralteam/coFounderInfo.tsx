@@ -9,13 +9,13 @@ export default function CoFounderInfo() {
 
   if (isMobile) {
     return (
-      <div className="flex flex-col items-center justify-center gap-12 w-full max-w-6xl">
-        <h2 className="mobile-heading-5xl-bold text-[var(--color-content-primary)]">
+      <div className="flex flex-col items-center justify-center gap-[var(--spacing-4xl)] w-full">
+        <h2 className="mobile-heading-5xl-bold text-[var(--color-content-primary)] text-left w-full">
           Behind the scenes team
         </h2>
         {coFounderData.map((founder) => (
-          <div key={founder.id} className="flex flex-col w-full overflow-hidden">
-            <div className="relative w-full h-64">
+          <div key={founder.id} className="flex flex-col w-full gap-[var(--spacing-s)] overflow-hidden">
+            <div className="relative w-full h-[200px]">
               <Image
                 src={founder.image}
                 alt={founder.name}
@@ -25,10 +25,12 @@ export default function CoFounderInfo() {
               />
             </div>
 
-            <div className="flex flex-col justify-center gap-4 p-6 w-full">
-              <h3 className="text-[var(--color-content-primary)] text-2xl font-black">{founder.name}</h3>
-              <p className="text-[var(--color-content-primary)] text-xl font-semibold">{founder.title}</p>
-              <p className="text-[var(--color-content-primary)] text-base leading-relaxed">
+            <div className="flex flex-col justify-center gap-[var(--spacing-lg)] py-[var(--spacing-lg)] w-full">
+              <div className="flex flex-col items-start gap-[var(--spacing-xs)]">
+                <h3 className=" mobile-heading-4xl-bold text-[var(--color-content-primary)]">{founder.name}</h3>
+                <p className="mobile-text-lg-semibold text-[var(--color-content-secondary)]">{founder.title}</p>
+              </div>
+              <p className="mobile-text-lg-medium  text-[var(--color-content-primary)]">
                 {founder.description}
               </p>
             </div>
@@ -41,12 +43,12 @@ export default function CoFounderInfo() {
   if (isTablet) {
     return (
       <div className="flex flex-col items-center gap-[var(--spacing-6xl)] w-full h-auto">
-        <h2 className="web-heading-5xl-bold text-[var(--color-content-primary)] text-left w-full">
+        <h2 className="web-heading-5xl-bold text-[var(--color-content-primary)] text-left w-full px-[var(--spacing-4xl)]">
           Behind the scenes team
         </h2>
         {coFounderData.map((founder) => (
           <div key={founder.id} className="flex flex-col w-full py-[var(--spacing-xl)] gap-[var(--spacing-m)] overflow-hidden h-auto">
-            <div className="relative w-full h-[400px]">
+            <div className="relative w-full h-[300px]">
               <Image
                 src={founder.image}
                 alt={founder.name}
@@ -56,7 +58,7 @@ export default function CoFounderInfo() {
               />
             </div>
 
-            <div className="flex flex-col px-[var(--spacing-lg)] items-start border-1 border-[var(--color-background-primary)] py-[var(--spacing-2xl)] gap-[var(--spacing-xl)]">
+            <div className="flex flex-col px-[var(--spacing-lg)] items-start  py-[var(--spacing-2xl)] gap-[var(--spacing-xl)]">
                   <div className="flex flex-col items-start gap-[var(--spacing-xs)]">
                   <h3 className="web-heading-xl-bold text-[var(--color-content-primary)]">{founder.name}</h3>
                   <p className="web-text-lg-semibold text-[var(--color-content-secondary)]">{founder.title}</p>
