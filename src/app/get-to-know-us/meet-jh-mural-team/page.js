@@ -22,7 +22,7 @@ export default function MeetJHMuralTeam() {
               <BorderlessButton
            variant="primary"
            size="small"
-           href="/getinvolved/partners-and-supporters"
+           href="/get-involved/partners-and-supporters"
            trailingIcon="/arrow-right.svg"
            className="font-base translate-y-[-2px]">
            Get involved
