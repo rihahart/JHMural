@@ -54,6 +54,7 @@ export default function PartnersAndSupporters() {
               muted
               playsInline
               controls={false}
+              preload="none"
             />
           </div>
             <div className="flex flex-col items-start gap-[var(--spacing-2xl)]">
