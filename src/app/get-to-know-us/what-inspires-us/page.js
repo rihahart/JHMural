@@ -17,8 +17,8 @@ export default function WhatInspiresUs() {
             <h1 className= "hero-xs text-[var(--color-content-primary)]">What inspires us</h1>
             <p className="web-text-m-semibold text-[var(--color-content-primary)]">When longtime resident Suzanne Adler, walked past the graffiti-covered wall at 84th and Roosevelt, she didn&apos;t see blight, she saw possibility. Soon after, she met Riha Hart, a younger neighbor with deep local roots, who was dreaming of ways to bring more public art to our community. Together, they founded the Jackson Heights Mural Project.</p>
           </div>
-          <div>
-            <Image src="/SuzanneRiha.png" alt="Suzanne Riha" width={1600} height={1600} />
+          <div className="relative w-full overflow-hidden h-[250px]">
+            <Image src="/SuzanneRiha.png" alt="Suzanne Riha" fill className="object-cover object-center" />
           </div>
            <div className="flex flex-col items-start gap-[var(--spacing-xl)]">
             <h1 className="mobile-heading-5xl-bold text-[var(--color-content-primary)]">Our mission and vision</h1>
@@ -39,8 +39,8 @@ export default function WhatInspiresUs() {
             <h1 className="hero-s text-[var(--color-content-primary)]">What inspires us</h1>
             <p className="web-text-m-semibold text-[var(--color-content-primary)]">When longtime resident Suzanne Adler, walked past the graffiti-covered wall at 84th and Roosevelt, she didn&apos;t see blight, she saw possibility. Soon after, she met Riha Hart, a younger neighbor with deep local roots, who was dreaming of ways to bring more public art to our community. Together, they founded the Jackson Heights Mural Project.</p>
           </div>
-          <div >
-            <Image src="/SuzanneRiha.png" alt="Suzanne Riha" width={1024} height={1024} />
+          <div className="relative w-full overflow-hidden h-[400px]">
+            <Image src="/SuzanneRiha.png" alt="Suzanne Riha" fill className="object-cover object-center" />
           </div>
            <div className="flex items-center align-stretch justify-center gap-[var(--spacing-6xl)]">
             <h1 className="web-heading-4xl-bold text-[var(--color-content-primary)] w-1/2 ">Our mission and vision</h1>
@@ -57,12 +57,14 @@ export default function WhatInspiresUs() {
     return (
       <div className="w-full min-h-screen">
         <div className="flex flex-col mx-auto items-start justify-center py-[var(--spacing-8xl)] px-[var(--spacing-6xl)] gap-[var(--spacing-8xl)]">
-          <div className="flex flex-col items-start align-stretch gap-[var(--spacing-xl)]">
+          <div className="flex flex-col items-start  align-stretch gap-[var(--spacing-xl)]">
           <h1 className="hero-lg text-[var(--color-content-primary)]">What inspires us</h1>
           <p className="web-text-xl-semibold text-[var(--color-content-primary)]">When longtime resident Suzanne Adler, walked past the graffiti-covered wall at 84th and Roosevelt, she didn&apos;t see blight, she saw possibility. Soon after, she met Riha Hart, a younger neighbor with deep local roots, who was dreaming of ways to bring more public art to our community. Together, they founded the Jackson Heights Mural Project.</p>
           </div>
-          <Image src="/SuzanneRiha.png" alt="Suzanne Riha" width={1200} height={1200} />
-           <div className="flex items-center align-stretch justify-center max-w-[1400px] gap-[var(--spacing-8xl)]">
+          <div className="relative w-full overflow-hidden h-[500px]">
+            <Image src="/SuzanneRiha.png" alt="Suzanne Riha" fill className="object-cover object-center" />
+           </div>
+          <div className="flex items-center align-stretch justify-center max-w-[1400px] gap-[var(--spacing-8xl)]">
               <h1 className="hero-xs text-[var(--color-content-primary)] w-1/2">Our mission and vision</h1>
               <p className="web-text-xl-medium text-[var(--color-content-primary)] w-1/2">We want to collaborate with local artists to transform spaces along the Roosevelt Avenue Corridor and throughout Jackson Heights. We want to revitalize public spaces, cultivate creativity, build social connections, and inspire the children of the community. </p>
           </div>
@@ -80,8 +82,8 @@ export default function WhatInspiresUs() {
         <h1 className="hero-2xl text-[var(--color-content-primary)]">What inspires us</h1>
         <p className="web-text-2xl-semibold text-[var(--color-content-primary)]">When longtime resident Suzanne Adler, walked past the graffiti-covered wall at 84th and Roosevelt, she didn&apos;t see blight, she saw possibility. Soon after, she met Riha Hart, a younger neighbor with deep local roots, who was dreaming of ways to bring more public art to our community. Together, they founded the Jackson Heights Mural Project.</p>
        </div>
-       <div>
-        <Image src="/SuzanneRiha.png" alt="Suzanne Riha" width={1600} height={1600} />
+       <div className="relative w-full overflow-hidden h-[600px]">
+        <Image src="/SuzanneRiha.png" alt="Suzanne Riha" fill className="object-cover object-center" />
        </div>
        <div className="flex justify-center align-stretch items-center max-w-[1600px] gap-[var(--spacing-8xl)]">
         <h1 className="hero-s text-[var(--color-content-primary)] w-1/2">Our mission and vision</h1>

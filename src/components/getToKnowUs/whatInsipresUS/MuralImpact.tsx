@@ -11,7 +11,7 @@ export default function MuralImpact() {
   if (isMobile) {
     return (
       <div className="w-full min-h-screen">
-        <div className="flex flex-col items-center py-[var(--spacing-xl)] px-[var(--spacing-lg)] gap-[var(--spacing-4xl)] justify-center">
+        <div className="flex flex-col items-center py-[var(--spacing-xl)] gap-[var(--spacing-4xl)] justify-center">
           {muralImpactData.map((item, index) => (
             <div key={index} className="flex flex-col items-center gap-[var(--spacing-xl)]">
                <div className="flex flex-col items-start gap-[var(--spacing-xl)]">
@@ -45,7 +45,7 @@ export default function MuralImpact() {
   if (isTablet) {
     return (
       <div className="w-full min-h-screen">
-        <div className="flex flex-col items-center py-[var(--spacing-xl)] px-[var(--spacing-lg)] gap-[var(--spacing-6xl)] justify-center">
+        <div className="flex flex-col items-center py-[var(--spacing-xl)] gap-[var(--spacing-6xl)] justify-center">
           {muralImpactData.map((item, index) => (
             <div key={index} className="flex flex-col items-center gap-[var(--spacing-2xl)]">
               <div className="flex flex-col items-start py-[var(--spacing-2xl)] px-[var(--spacing-lg)] gap-[var(--spacing-lg)]">
@@ -75,7 +75,7 @@ export default function MuralImpact() {
   if (isDesktop1440px) {
     return (
       <div className="w-full min-h-screen">
-        <div className="flex flex-col items-center py-[var(--spacing-8xl)] px-[var(--spacing-6xl)] gap-[var(--spacing-8xl)] justify-center">
+        <div className="flex flex-col items-center py-[var(--spacing-8xl)] [var(--spacing-6xl)] gap-[var(--spacing-8xl)] justify-center">
           {muralImpactData.map((item, index) => (
             <div key={index} className="flex items-start gap-[var(--spacing-2xl)] max-w-[1440px]">
               <div className="w-[55%]">
@@ -106,7 +106,7 @@ export default function MuralImpact() {
   // Desktop (1440px+)
   return (
     <div className="w-full min-h-screen">
-      <div className="flex flex-col items-center py-[var(--spacing-xl)] px-[var(--spacing-xl)] gap-[var(--spacing-6xl)] justify-center">
+      <div className="flex flex-col items-center py-[var(--spacing-xl)] gap-[var(--spacing-6xl)] justify-center">
         {muralImpactData.map((item, index) => (
             <div key={index} className="flex items-start gap-[var(--spacing-8xl)] max-w-[1600px]">
             <div className="w-[65%]">

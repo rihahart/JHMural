@@ -55,6 +55,8 @@ export default function DecorativeDivider() {
     );
   }
 
+  
+
   if (isDesktop1440px) {
     return (
         <div className="relative flex items-center justify-center w-full max-w-[1600px] gap-[var(--spacing-lg)]">

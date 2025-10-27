@@ -52,7 +52,6 @@ export default function PartnersAndSupporters() {
               className="w-full h-auto object-cover"
               loop={false}
               muted
-              preload="none"
             />
           </div>
             <div className="flex flex-col items-start gap-[var(--spacing-2xl)]">
@@ -76,22 +75,22 @@ export default function PartnersAndSupporters() {
   if (isTablet) {
     return (
       <div ref={componentRef} className=" flex flex-col items-center gap-[var(--spacing-8xl)]">
-        <div className="web-heading-4xl-bold text-[var(--color-content-primary)]">
+        <div className="web-heading-4xl-bold text-left text-[var(--color-content-primary)]">
           Our community partners & supporters
         </div>
 
         <div className="flex items-center justify-center">
           <video
             ref={videoRef}
-            src="/MeetJHMuralTeam/SponsersMobile.mp4"
-            className="w-full h-auto object-cover"
+            src="/MeetJHMuralTeam/Sponsers.mp4"
+            className="w-full h-[auto] object-cover"
             loop={false}
             muted
           />
         </div>
 
         <div className="flex flex-col items-start gap-[var(--spacing-xl)]">
-          <p className="web-text-lg-semibold text-[var(--color-content-primary)]">
+          <p className="web-text-lg-regular text-[var(--color-content-primary)]">
             We are deeply grateful to the community partners, sponsors, and supporters who make our work possible. Their generosity helps us bring color and connection to Jackson Heights. We&apos;re always looking to partner with local businesses, community programs, and organizations that care about Jackson Heights. Your support helps us create public art that uplifts our neighborhood.
           </p>
           <BorderlessButton
@@ -131,7 +130,7 @@ export default function PartnersAndSupporters() {
             </p>
             <BorderlessButton
               variant="primary"
-              size="small"
+              size="large"
               href="/get-involved/partners-and-supporters"
               trailingIcon="/arrow-right.svg"
               className="font-base translate-y-[-2px]">
@@ -168,7 +167,7 @@ export default function PartnersAndSupporters() {
           </p>
           <BorderlessButton
             variant="primary"
-            size="small"
+            size="large"
             href="/get-involved/partners-and-supporters"
             trailingIcon="/arrow-right.svg"
             className="font-base translate-y-[-2px]">
