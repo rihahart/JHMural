@@ -40,7 +40,7 @@ export default function CoFounderInfo() {
                           href={founder.arcLink.url} 
                           target="_blank" 
                           rel="noopener noreferrer" 
-                          className="text-[var(--color-content-primary)]"
+                          className="underline text-[var(--color-content-primary)]"
                         >
                           Arc Residential Team
                         </a>
@@ -90,7 +90,7 @@ export default function CoFounderInfo() {
                           href={founder.arcLink.url} 
                           target="_blank" 
                           rel="noopener noreferrer" 
-                          className="text-[var(--color-content-primary)]"
+                          className="underline text-[var(--color-content-primary)]"
                         >
                           Arc Residential Team
                         </a>
@@ -113,7 +113,7 @@ export default function CoFounderInfo() {
       <h2 className="web-heading-5xl-bold text-[var(--color-content-primary)]">
         Behind the scenes team
       </h2>  
-      <div className="flex items-start gap-[var(--spacing-6xl)] w-full h-[600px]">
+      <div className="flex items-start gap-[var(--spacing-6xl)] w-full h-[650px]">
         <>
           {coFounderData.map((founder, index) => (
             <React.Fragment key={founder.id}>
@@ -144,7 +144,7 @@ export default function CoFounderInfo() {
                           href={founder.arcLink.url} 
                           target="_blank" 
                           rel="noopener noreferrer" 
-                          className="text-[var(--color-content-primary)]"
+                          className="underline text-[var(--color-content-primary)]"
                         >
                           Arc Residential Team
                         </a>
@@ -174,7 +174,7 @@ export default function CoFounderInfo() {
       <h2 className="hero-xs text-[var(--color-content-primary)]">
         Behind the scenes team
       </h2>  
-      <div className="flex items-start gap-[var(--spacing-6xl)] w-full h-[650px]">
+      <div className="flex items-start gap-[var(--spacing-6xl)] w-full h-[700px]">
         <>
           {coFounderData.map((founder, index) => (
             <React.Fragment key={founder.id}>
@@ -205,7 +205,7 @@ export default function CoFounderInfo() {
                           href={founder.arcLink.url} 
                           target="_blank" 
                           rel="noopener noreferrer" 
-                          className="text-[var(--color-content-primary)]"
+                          className="underline text-[var(--color-content-primary)]"
                         >
                           Arc Residential Team
                         </a>
