@@ -9,9 +9,10 @@ export const coFounderData = [
   {
     id: 2,
     name: "Suzanne Adler",
-    title: "Co-founder & title",
+    title: "Co-founder & Mother of Murals ",
     image: "/Suzanne.jpeg",
-    description: "Suzanne Adler is a resident of Jackson Heights and a long time fan of murals and community art. She is a co-founder of The Arc Residential Team at Compass."
+    description: "Suzanne Adler is the hype person behind the Jackson Heights Mural Project. Her imagination and her ability to connect with different people in the community were instrumental in getting this project off the ground. Long time admirer of street art and eternal optimist, Suzanne is able to see beauty everywhere. This is why she can imagine Roosevelt Avenue as someday becoming a destination for public art. When she's not scouting for new mural spots or making stuff happen, Suzanne leads the Arc Residential Team at Compass and lives with her family in the historic district.",
+    arcLink: { text: "Arc Residential Team", url: "https://arcresidentialteam.com" } 
   }
 ];
 

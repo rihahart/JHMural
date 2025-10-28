@@ -31,7 +31,24 @@ export default function CoFounderInfo() {
                 <p className="mobile-text-lg-semibold text-[var(--color-content-secondary)]">{founder.title}</p>
               </div>
               <p className="mobile-text-lg-medium  text-[var(--color-content-primary)]">
-                {founder.description}
+                {founder.description.split('Arc Residential Team').map((part, i, arr) => 
+                  i === arr.length - 1 ? part : (
+                    <React.Fragment key={i}>
+                      {part}
+                          {founder.arcLink && (
+                        <a 
+                          href={founder.arcLink.url} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="text-[var(--color-content-primary)]"
+                        >
+                          Arc Residential Team
+                        </a>
+                      )}
+                      {!founder.arcLink && 'Arc Residential Team'}
+                    </React.Fragment>
+                  )
+                )}
               </p>
             </div>
           </div>
@@ -64,7 +81,24 @@ export default function CoFounderInfo() {
                   <p className="web-text-lg-semibold text-[var(--color-content-secondary)]">{founder.title}</p>
                   </div>
                   <p className="web-text-lg-regular text-[var(--color-content-primary)]">
-                    {founder.description}
+                    {founder.description.split('Arc Residential Team').map((part, i, arr) => 
+                      i === arr.length - 1 ? part : (
+                        <React.Fragment key={i}>
+                          {part}
+                          {founder.arcLink && (
+                        <a 
+                          href={founder.arcLink.url} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="text-[var(--color-content-primary)]"
+                        >
+                          Arc Residential Team
+                        </a>
+                      )}
+                          {!founder.arcLink && 'Arc Residential Team'}
+                        </React.Fragment>
+                      )
+                    )}
                   </p>
                 </div>
           </div>
@@ -101,7 +135,24 @@ export default function CoFounderInfo() {
                   <p className="web-text-lg-semibold text-[var(--color-content-secondary)]">{founder.title}</p>
                   </div>
                   <p className="web-text-lg-regular text-[var(--color-content-primary)]">
-                    {founder.description}
+                    {founder.description.split('Arc Residential Team').map((part, i, arr) => 
+                      i === arr.length - 1 ? part : (
+                        <React.Fragment key={i}>
+                          {part}
+                          {founder.arcLink && (
+                        <a 
+                          href={founder.arcLink.url} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="text-[var(--color-content-primary)]"
+                        >
+                          Arc Residential Team
+                        </a>
+                      )}
+                          {!founder.arcLink && 'Arc Residential Team'}
+                        </React.Fragment>
+                      )
+                    )}
                   </p>
                 </div>
                 </div>
@@ -145,7 +196,24 @@ export default function CoFounderInfo() {
                   <p className="web-text-lg-semibold text-[var(--color-content-secondary)]">{founder.title}</p>
                   </div>
                   <p className="web-text-lg-regular text-[var(--color-content-primary)]">
-                    {founder.description}
+                    {founder.description.split('Arc Residential Team').map((part, i, arr) => 
+                      i === arr.length - 1 ? part : (
+                        <React.Fragment key={i}>
+                          {part}
+                          {founder.arcLink && (
+                        <a 
+                          href={founder.arcLink.url} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="text-[var(--color-content-primary)]"
+                        >
+                          Arc Residential Team
+                        </a>
+                      )}
+                          {!founder.arcLink && 'Arc Residential Team'}
+                        </React.Fragment>
+                      )
+                    )}
                   </p>
                 </div>
                 </div>
