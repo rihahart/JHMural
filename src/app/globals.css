@@ -907,6 +907,13 @@
     font-family: var(--font-family-base);
   }
 
+  .mobile-text-m-black {
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-2xl);
+    font-weight: var(--font-weight-black);
+    font-family: var(--font-family-base);
+  }
+
   .mobile-text-m-semibold {
     font-size: var(--font-size-lg);
     line-height: var(--line-height-2xl);
