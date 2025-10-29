@@ -25,8 +25,8 @@ export default function ArtistInfo() {
           <div className="w-full h-[4px] bg-[var(--color-content-primary)]"></div>
           <div className="flex flex-col items-start align-stretch gap-[var(--spacing-2xl)]">
             <h2 className="mobile-heading-5xl-bold text-[var(--color-content-primary)]">{title}</h2>
-            <p className="mobile-text-m-semibold text-[var(--color-content-primary)]">{subtitle}</p>
-            <p className="mobile-text-m-black text-[var(--color-content-primary)]">&ldquo;{artistStatement}&rdquo;</p>
+            <p className="mobile-text-lg-semibold text-[var(--color-content-primary)]">{subtitle}</p>
+            <p className="mobile-text-lg-black text-[var(--color-content-primary)]">&ldquo;{artistStatement}&rdquo;</p>
           </div>
         </div>
       </div>
