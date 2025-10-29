@@ -25,7 +25,7 @@ export default function OurWallsOurStories() {
               className="w-full h-full object-cover"
             />
           </div>
-          <p className=" mobile-text-m-semibold text-[var(--color-yellow-300)]"> We’re growing our team! Join us in bringing color and creativity to Jackson Heights!
+          <p className=" mobile-text-2xl-semibold text-[var(--color-yellow-300)]"> We’re growing our team! Join us in bringing color and creativity to Jackson Heights!
       </p>
       <Button
         variant="secondary"
@@ -60,7 +60,7 @@ export default function OurWallsOurStories() {
               />
             </div>
         <div className="flex flex-col items-start align-stretch gap-[var(--spacing-xl)]">
-        <p className=" web-text-m-semibold text-[var(--color-yellow-300)]"> We’re growing our team! Join us in bringing color and creativity to Jackson Heights!
+        <p className=" web-text-xl-semibold text-[var(--color-yellow-300)]"> We’re growing our team! Join us in bringing color and creativity to Jackson Heights!
         </p>
         <Button
           variant="secondary"
@@ -101,7 +101,7 @@ export default function OurWallsOurStories() {
         </h1>
         </div>
         <div className="flex flex-col align-stretch items-start gap-[var(--spacing-2xl)]">
-        <p className=" web-text-xl-regular text-[var(--color-yellow-300)]">
+        <p className=" web-text-2xl-semibold text-[var(--color-yellow-300)]">
         We’re growing our team! Join us in bringing color and creativity to Jackson Heights!
         </p>
         <Button
@@ -143,7 +143,7 @@ export default function OurWallsOurStories() {
         </h1>
         </div>
         <div className="flex flex-col items-start gap-[var(--spacing-2xl)]">
-        <p className="web-text-2xl-medium text-[var(--color-yellow-300)]">
+        <p className="web-text-3xl-semibold text-[var(--color-yellow-300)]">
         We’re growing our team! Join us in bringing color and creativity to Jackson Heights!
         </p>
         <Button
