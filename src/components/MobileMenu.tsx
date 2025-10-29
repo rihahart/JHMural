@@ -124,10 +124,10 @@ const MobileMenu = forwardRef<HTMLDivElement, MobileMenuProps>(
                 </NavButton>
                 <NavButton
                   variant="secondary"
-                  href="/get-involved/partners-and-supporters"
+                  href="/get-involved/partner-with-us"
                   onClick={onCloseAll}
                   className="font-normal"
-                  isActive={pathname === "/get-involved/partners-and-supporters"}
+                  isActive={pathname === "/get-involved/partner-with-us"}
                 >
                   Partner with us
                 </NavButton>
