@@ -15,7 +15,7 @@ export default function HeroBanner() {
         <div className="flex flex-col items-center gap-[var(--spacing-2xl)] py-[var(--spacing-2xl)] px-[var(--spacing-lg)]">
           <div className="flex flex-col items-start align-stretch gap-[var(--spacing-2xl)]">
         
-            <h2 className="mobile-heading-4xl-bold text-[var(--color-content-primary)]">{topTitle}</h2>
+            <h2 className="mobile-heading-5xl-bold text-[var(--color-content-primary)]">{topTitle}</h2>
             <h2 className="hero-xs text-[var(--color-content-primary)]">{title}</h2>
         
             <p className="mobile-text-m-semibold text-[var(--color-content-primary)]">{subtitle}</p>
@@ -61,7 +61,7 @@ export default function HeroBanner() {
     return (
       <div className="w-full bg-[var(--color-yellow-500)]">
         <div className="flex items-stretch w-full max-w-[1400px] mx-auto gap-[var(--spacing-6xl)] py-[var(--spacing-6xl)] px-[var(--spacing-6xl)]">
-          <div className="flex flex-col items-start w-1/2 gap-[var(--spacing-2xl)]">
+          <div className="flex flex-col items-start w-1/2 gap-[var(--spacing-6xl)]">
             <h2 className="web-heading-2xl-bold text-[var(--color-content-primary)]">{topTitle}</h2>
             <h2 className="hero-lg text-[var(--color-content-primary)]">{title}</h2>
             <p className="web-text-2xl-regular text-[var(--color-content-primary)]">{subtitle}</p>
