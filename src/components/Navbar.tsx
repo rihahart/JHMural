@@ -31,7 +31,8 @@ export default function Navbar() {
 
   // Menus
   const [isProjectsDropdownOpen, setIsProjectsDropdownOpen] = useState(false);
-  const [isGetInvolvedDropdownOpen, setIsGetInvolvedDropdownOpen] = useState(false);
+  const [isGetInvolvedDropdownOpen, setIsGetInvolvedDropdownOpen] =
+    useState(false);
   const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
 
   const lastYRef = useRef(0);
@@ -41,7 +42,10 @@ export default function Navbar() {
 
   const hoverEnabled = useMemo(() => {
     if (typeof window === "undefined") return false;
-    return window.matchMedia?.("(hover: hover) and (pointer: fine)")?.matches ?? false;
+    return (
+      window.matchMedia?.("(hover: hover) and (pointer: fine)")?.matches ??
+      false
+    );
   }, []);
 
   const navItems: Array<{
@@ -59,7 +63,10 @@ export default function Navbar() {
       hasDropdown: true,
       submenu: [
         { name: "What inspires us", href: "/get-to-know-us/what-inspires-us" },
-        { name: "Meet JH Mural Team", href: "/get-to-know-us/meet-jh-mural-team" },
+        {
+          name: "Meet JH Mural Team",
+          href: "/get-to-know-us/meet-jh-mural-team",
+        },
       ],
     },
     {
@@ -74,8 +81,10 @@ export default function Navbar() {
   ];
 
   const sectionIsActive = (item: { submenu?: { href: string }[] }) => {
-    if (!pathname || typeof window === 'undefined') return false;
-    return item.submenu?.some((s) => s.href && pathname.startsWith(s.href)) ?? false;
+    if (!pathname || typeof window === "undefined") return false;
+    return (
+      item.submenu?.some((s) => s.href && pathname.startsWith(s.href)) ?? false
+    );
   };
 
   // Scroll show/hide + hero color: ONLY on home
@@ -180,24 +189,51 @@ export default function Navbar() {
   };
 
   // Check if any menu is open
-  const isAnyMenuOpen = isProjectsDropdownOpen || isGetInvolvedDropdownOpen || isAboutDropdownOpen;
+  const isAnyMenuOpen =
+    isProjectsDropdownOpen || isGetInvolvedDropdownOpen || isAboutDropdownOpen;
 
   return (
     <div
       className={`
         w-full fixed top-0 left-0 right-0
         transition-all duration-300 ease-in-out
-        ${isHome ? (isVisible ? "translate-y-0" : "-translate-y-full") : "translate-y-0"}
-        ${isAnyMenuOpen ? "bg-[var(--color-background-hover)]" : (isHome && isInitialLoad ? "bg-[var(--color-background-brand)]" : "bg-[var(--color-background-primary)]")}
+        ${
+          isHome
+            ? isVisible
+              ? "translate-y-0"
+              : "-translate-y-full"
+            : "translate-y-0"
+        }
+        ${
+          isAnyMenuOpen
+            ? "bg-[var(--color-background-hover)]"
+            : isHome && isInitialLoad
+            ? "bg-[var(--color-background-brand)]"
+            : "bg-[var(--color-background-primary)]"
+        }
         ${isHome && isInitialLoad && !isAnyMenuOpen ? "" : "shadow-lg"}
         z-50 hidden lg:block
       `}
     >
-      <div className="w-full mx-auto flex items-center justify-between py-[var(--spacing-m)]" style={{ maxWidth: 'clamp(1000px, calc(1250px + (100vw - 1440px) * 0.7), 1600px)' }}>
+      <div
+        className="w-full mx-auto flex items-center justify-between py-[var(--spacing-m)]"
+        style={{
+          maxWidth:
+            "clamp(1000px, calc(1250px + (100vw - 1440px) * 0.7), 1600px)",
+        }}
+      >
         <div className="flex items-end gap-[var(--spacing-2xl)]">
-          <Link href="/" className="flex items-center flex-shrink-0" aria-label="Home">
+          <Link
+            href="/"
+            className="flex items-center flex-shrink-0"
+            aria-label="Home"
+          >
             <Image
-              src={isHome && isInitialLoad && !isAnyMenuOpen ? "/Secondary Logo.svg" : "/logo.svg"}
+              src={
+                isHome && isInitialLoad && !isAnyMenuOpen
+                  ? "/Secondary Logo.svg"
+                  : "/logo.svg"
+              }
               alt="Logo"
               width={108}
               height={81}
@@ -273,8 +309,9 @@ export default function Navbar() {
         {/* Right cluster */}
         <div className="flex items-stretch gap-[var(--spacing-m)] h-full">
           <div className="hidden sm:block h-full">
+            {/* TODO: Add Stripe checkout URL from environment variable hardcoded for now */}
             <Button
-              href="https://www.gofundme.com/f/donate-to-help-us-put-a-beautiful-mural-in-jackson-heights"
+              href="https://donate.stripe.com/eVqaEY2iV7kk8KI0273ks00"
               target="_blank"
               rel="noopener noreferrer"
               variant="primary"
