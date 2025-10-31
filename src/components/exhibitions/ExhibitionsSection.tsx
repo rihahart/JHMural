@@ -36,58 +36,63 @@ export default function ExhibitionsSection() {
       const data = responseData.data; // Extract the data array from the response
 
       // Map the API response to our Exhibition interface
-      const formattedExhibitions = data.map((item: any) => {
-        const startDate = new Date(item.attributes.start_time);
+      const formattedExhibitions = data.map(
+        (item: {
+          id: string;
+          attributes: { start_time: string; title: string; url: string };
+        }) => {
+          const startDate = new Date(item.attributes.start_time);
 
-        console.log("Raw start_time:", item.attributes.start_time);
-        console.log("Parsed startDate:", startDate);
+          console.log("Raw start_time:", item.attributes.start_time);
+          console.log("Parsed startDate:", startDate);
 
-        // Get day of week abbreviation
-        const dayOfWeek = startDate
-          .toLocaleDateString("en-US", {
-            weekday: "short",
-          })
-          .toUpperCase();
+          // Get day of week abbreviation
+          const dayOfWeek = startDate
+            .toLocaleDateString("en-US", {
+              weekday: "short",
+            })
+            .toUpperCase();
 
-        // Get date with month
-        const month = startDate
-          .toLocaleDateString("en-US", {
-            month: "short",
-          })
-          .toUpperCase();
-        const day = startDate.getDate();
-        const date = `${month} ${day}`;
+          // Get date with month
+          const month = startDate
+            .toLocaleDateString("en-US", {
+              month: "short",
+            })
+            .toUpperCase();
+          const day = startDate.getDate();
+          const date = `${month} ${day}`;
 
-        // Check if it's midnight (meaning no specific time set)
-        const hours = startDate.getHours();
-        const minutes = startDate.getMinutes();
-        const isAllDay = hours === 0 && minutes === 0;
+          // Check if it's midnight (meaning no specific time set)
+          const hours = startDate.getHours();
+          const minutes = startDate.getMinutes();
+          const isAllDay = hours === 0 && minutes === 0;
 
-        // Get time or show "Opens 10:00 AM" as default museum hours
-        const startTime = isAllDay
-          ? "Opens 10:00 AM"
-          : startDate.toLocaleTimeString("en-US", {
-              hour: "numeric",
-              minute: "2-digit",
-              hour12: true,
-            });
+          // Get time or show "Opens 10:00 AM" as default museum hours
+          const startTime = isAllDay
+            ? "Opens 10:00 AM"
+            : startDate.toLocaleTimeString("en-US", {
+                hour: "numeric",
+                minute: "2-digit",
+                hour12: true,
+              });
 
-        console.log("Exhibition:", item.attributes.title);
-        console.log("  dayOfWeek:", dayOfWeek);
-        console.log("  date:", date);
-        console.log("  startTime:", startTime);
-        console.log("---");
+          console.log("Exhibition:", item.attributes.title);
+          console.log("  dayOfWeek:", dayOfWeek);
+          console.log("  date:", date);
+          console.log("  startTime:", startTime);
+          console.log("---");
 
-        return {
-          id: item.id,
-          title: item.attributes.title,
-          location: "Whitney Museum of American Art",
-          dayOfWeek: dayOfWeek,
-          date: date,
-          startTime: startTime,
-          url: `https://whitney.org${item.attributes.url}`,
-        };
-      });
+          return {
+            id: item.id,
+            title: item.attributes.title,
+            location: "Whitney Museum of American Art",
+            dayOfWeek: dayOfWeek,
+            date: date,
+            startTime: startTime,
+            url: `https://whitney.org${item.attributes.url}`,
+          };
+        }
+      );
 
       // Show only the first 5 exhibitions
       setExhibitions(formattedExhibitions.slice(0, 5));

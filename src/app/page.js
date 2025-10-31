@@ -7,7 +7,6 @@ import useMobileDetection from "./_utilities/useMobileDetection";
 import MissionStatement from "@/components/home/MissionStatement";
 import MissionStatementMobile from "@/components/home/MissionStatementMobile";
 import ExhibitionsSection from "@/components/exhibitions/ExhibitionsSection";
-import Image from "next/image";
 
 export default function Home() {
   const { isMobile, isTablet } = useMobileDetection();
@@ -42,7 +41,7 @@ export default function Home() {
         <hr></hr>
         <div className="w-full flex flex-col items-center gap-12">
           <h1 className="hero-lg text-[var(--color-content-primary)] py-8 px-4">
-            What's On: NYC Art Exhibitions
+            What&apos;s On: NYC Art Exhibitions
           </h1>
           <ExhibitionsSection />
         </div>
