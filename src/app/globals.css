@@ -332,6 +332,13 @@
     font-family: var(--font-family-base);
   }
 
+  .mobile-heading-5xl-black {
+    font-size: var(--font-size-8xl);
+    line-height: var(--line-height-8xl);
+    font-weight: var(--font-weight-black);
+    font-family: var(--font-family-base);
+  }
+
   .mobile-heading-5xl-semibold {
     font-size: var(--font-size-8xl);
     line-height: var(--line-height-8xl);
@@ -345,6 +352,13 @@
     font-size: var(--font-size-11xl);
     line-height: var(--line-height-11xl);
     font-weight: var(--font-weight-bold);
+    font-family: var(--font-family-base);
+  }
+
+  .web-heading-4xl-black {
+    font-size: var(--font-size-11xl);
+    line-height: var(--line-height-11xl);
+    font-weight: var(--font-weight-black);
     font-family: var(--font-family-base);
   }
 

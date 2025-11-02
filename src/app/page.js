@@ -9,7 +9,7 @@ import MissionStatementMobile from "@/components/home/MissionStatementMobile";
 import ExhibitionsSection from "@/components/exhibitions/ExhibitionsSection";
 
 export default function Home() {
-  const { isMobile, isTablet } = useMobileDetection();
+  const { isMobile, isTablet, isDesktop1440px } = useMobileDetection();
 
   if (isMobile) {
     return (
@@ -17,6 +17,12 @@ export default function Home() {
         <HeroMobile />
         <div className="flex flex-col items-center py-[var(--spacing-3xl)] px-[var(--spacing-lg)] gap-[var(--spacing-4xl)] justify-center">
           <MissionStatementMobile />
+        <div className="flex flex-col gap-[var(--spacing-xl)] justify-center items-start w-full">
+              <h1 className="mobile-heading-5xl-black  text-[var(--color-content-primary)]">
+                What&apos;s On: NYC Art Exhibitions
+              </h1>
+              <ExhibitionsSection />
+            </div>   
         </div>
       </div>
     );
@@ -26,8 +32,39 @@ export default function Home() {
     return (
       <div className="w-full min-h-screen">
         <HeroMobile />
-        <div className="flex flex-col items-center py-[var(--spacing-6xl)] px-[var(--spacing-4xl)] gap-[var(--spacing-6xl)] justify-center">
+        <div className="flex flex-col items-center py-[var(--spacing-xl)] px-[var(--spacing-xl)] gap-[var(--spacing-4xl)] justify-center">
           <MissionStatementMobile />
+        
+            <div className="flex flex-col gap-[var(--spacing-4xl)] justify-center items-center py-[var(--spacing-xl)] px-[var(--spacing-xl)] w-fit">
+              <h1 className="hero-xs text-[var(--color-content-primary)]">
+                What&apos;s On: NYC Art Exhibitions
+              </h1>
+              <ExhibitionsSection />
+            </div>
+          </div>
+        </div>
+    
+    );
+  }
+
+  if (isDesktop1440px) {
+    return (
+      <div className="w-full min-h-screen">
+        <Hero />
+        <div className="flex flex-col max-w-[1600px] mx-auto items-center justify-center py-[var(--spacing-8xl)] px-[var(--spacing-6xl)] gap-[var(--spacing-8xl)]">
+          <MissionStatement />
+          <hr></hr>
+          <div className="w-full flex max-w-[1600px] mx-auto items-start justify-start gap-[var(--spacing-8xl)]">
+            {/* Left side: Empty for now */}
+            <div className="flex-1 min-w-0"></div>
+            {/* Right side: Exhibitions Section */}
+            <div className="flex-1 flex flex-col gap-[var(--spacing-4xl)] justify-center items-center py-[var(--spacing-xl)] px-[var(--spacing-xl)] min-w-0">
+              <h1 className="hero-s text-[var(--color-content-primary)]">
+                What&apos;s On: NYC Art Exhibitions
+              </h1>
+              <ExhibitionsSection />
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -36,15 +73,20 @@ export default function Home() {
   return (
     <div className="w-full min-h-screen">
       <Hero />
-      <div className="flex flex-col items-center justify-center py-[var(--spacing-8xl)] px-[var(--spacing-6xl)] gap-[var(--spacing-8xl)]">
+      <div className="flex flex-col max-w-[1600px] mx-auto items-center justify-center py-[var(--spacing-8xl)] px-[var(--spacing-6xl)] gap-[var(--spacing-8xl)]">
         <MissionStatement />
         <hr></hr>
-        <div className="w-full flex flex-col items-center gap-12">
-          <h1 className="hero-lg text-[var(--color-content-primary)] py-8 px-4">
-            What&apos;s On: NYC Art Exhibitions
-          </h1>
-          <ExhibitionsSection />
-        </div>
+          <div className="w-full flex max-w-[1600px] mx-auto items-start justify-start gap-[var(--spacing-8xl)]">
+            {/* Left side: Empty for now */}
+            <div className="flex-1 min-w-0"></div>
+            {/* Right side: Exhibitions Section */}
+            <div className="flex-1 flex flex-col gap-[var(--spacing-6xl)] justify-center items-center py-[var(--spacing-2xl)] px-[var(--spacing-2xl)] min-w-0">
+              <h1 className="hero-lg text-[var(--color-content-primary)]">
+                What&apos;s On: NYC Art Exhibitions
+              </h1>
+              <ExhibitionsSection />
+            </div>
+          </div>
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import useMobileDetection from "@/app/_utilities/useMobileDetection";
 
 interface Exhibition {
   id: string | number;
@@ -17,31 +18,88 @@ interface ExhibitionBoxProps {
 }
 
 export default function ExhibitionBox({ exhibition }: ExhibitionBoxProps) {
-  return (
-    <div className="flex border items-center border-[#656666] p-3">
-      {/* Left side: Black box with day and date */}
-      <div className="w-[150px] h-[150px] bg-black flex flex-col items-center justify-center text-white">
-        <div className="text-[40px] font-bold uppercase tracking-wider mb-3 text-white">
-          {exhibition.dayOfWeek}
-        </div>
-        <div className="text-[32px] font-bold text-white tracking-wide">
-          {exhibition.date}
+  const { isMobile, isTablet, isDesktop1440px } = useMobileDetection();
+
+  if (isMobile) {
+    return (
+      <div className="flex flex-col border border-[var(--color-border-primary)] w-full">
+        {/* Exhibition details */}
+        <div className=" px-[var(--spacing-m)] py-[var(--spacing-m)] flex flex-col justify-center gap-[var(--spacing-m)] w-full min-w-0">
+          <h3 className="mobile-heading-2xl-bold text-[var(--color-content-primary)] truncate w-full">
+            {exhibition.title}
+          </h3>
+           <div className="flex flex-col gap-[var(--spacing-xs)]">
+             <p className="mobile-text-m-medium text-[var(--color-content-primary)] break-words">
+               {exhibition.startTime}
+             </p>
+             <p className="mobile-text-m-medium text-[var(--color-content-primary)] break-words">
+               {exhibition.location}
+             </p>
+           </div>
         </div>
       </div>
+    );
+  }
 
-      {/* Right side: Exhibition details */}
-      <div className="p-6 flex flex-col justify-center bg-white">
-        <h3 className="text-[40px] font-bold text-gray-900 mb-4 break-words">
-          {exhibition.title}
-        </h3>
-        <p className="text-gray-700 mb-2 break-words">
-          <span className="font-semibold block mb-1">Location:</span>
-          {exhibition.location}
-        </p>
-        <p className="text-gray-700 break-words">
-          <span className="font-semibold block mb-1">Time:</span>
+  if (isTablet) {
+    return (
+      <div className="flex border items-center border-[var(--color-border-primary)] gap-[var(--spacing-2xl)] px-[var(--spacing-lg)] py-[var(--spacing-lg)] w-full">
+        {/* Exhibition details */}
+        <div className="flex flex-col justify-center items-start gap-[var(--spacing-m)] w-full min-w-0">
+          <h3 className="web-heading-m-bold text-[var(--color-content-primary)] truncate w-full">
+            {exhibition.title}
+          </h3>
+          <div className="flex flex-col gap-[var(--spacing-xs)]">
+            <p className="web-text-m-medium text-[var(--color-content-primary)] break-words">
+              {exhibition.startTime}
+            </p>
+            <p className="web-text-m-medium text-[var(--color-content-primary)] break-words">
+              {exhibition.location}
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (isDesktop1440px) {
+    return (
+      <div className="flex border items-center border-[var(--color-border-primary)] gap-[var(--spacing-2xl)]  px-[var(--spacing-lg)] py-[var(--spacing-lg)] w-full">
+        {/* Exhibition details */}
+        <div className="flex flex-col justify-center items-start gap-[var(--spacing-m)] w-full min-w-0">
+          <h3 className="web-heading-m-bold text-[var(--color-content-primary)] truncate w-full">
+            {exhibition.title}
+          </h3>
+          <div className="flex flex-col gap-[var(--spacing-xs)]">
+          <p className="web-text-m-medium text-[var(--color-content-primary)] break-words">
+            {exhibition.startTime}
+          </p>
+          <p className="web-text-m-medium text-[var(--color-content-primary)] break-words">
+            {exhibition.location}
+          </p>
+          </div>
+          </div>
+        </div>
+    );
+  }
+
+  // Desktop (1440px+)
+  return (
+    <div className="w-full flex border items-center border-[var(--color-border-primary)] min-w-0">
+      {/* Exhibition details */}
+      <div className=" flex flex-col px-[var(--spacing-xl)] py-[var(--spacing-m)] gap-[var(--spacing-lg)] justify-center w-full min-w-0">
+          <h3 className="web-heading-lg-bold text-gray-900 truncate w-full">
+            {exhibition.title}
+          </h3>
+        <div className="flex flex-col gap-[var(--spacing-xs)]">
+        <p className="web-text-lg-medium text-[var(--color-content-primary)] break-words">
           {exhibition.startTime}
         </p>
+        <p className="web-text-lg-medium text-[var(--color-content-primary)] break-words">
+          {exhibition.location}
+          </p>
+        </div>
+       
       </div>
     </div>
   );
