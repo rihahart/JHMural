@@ -180,6 +180,7 @@ export default function ExhibitionsSection() {
 
       // Show only the first 5 exhibitions, remove originalStartTime and originalEndTime from final objects
       const finalExhibitions = exhibitionsToShow.slice(0, 5).map((item: Exhibition & { originalStartTime: string; originalEndTime: string | null }) => {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { originalStartTime, originalEndTime, ...rest } = item;
         return rest;
       });
