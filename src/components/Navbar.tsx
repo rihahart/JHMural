@@ -2,7 +2,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Button from "./ButtonCollection/Button";
 import NavButton from "./ButtonCollection/NavButton";
 import WebMenu from "./WebMenu";
@@ -11,6 +11,7 @@ const HOVER_CLOSE_DELAY = 150; // ms
 
 export default function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
   const isHome = pathname === "/";
 
   const [isInitialLoad, setIsInitialLoad] = useState(isHome);
@@ -34,6 +35,7 @@ export default function Navbar() {
   const [isGetInvolvedDropdownOpen, setIsGetInvolvedDropdownOpen] =
     useState(false);
   const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
+  const [isGetInvolvedHovered, setIsGetInvolvedHovered] = useState(false);
 
   const lastYRef = useRef(0);
   const desktopNavRef = useRef<HTMLDivElement | null>(null);
@@ -69,19 +71,23 @@ export default function Navbar() {
         },
       ],
     },
-    {
-      name: "Get Involved",
-      hasDropdown: true,
-      submenu: [
-        { name: "Make a donation", href: "/get-involved/make-a-donation" },
-        { name: "Partner with us", href: "/get-involved/partner-with-us" },
-        { name: "Volunteer with us", href: "/get-involved/volunteer-with-us" },
-      ],
-    },
+
+   {
+    name: "Get Involved",
+    hasDropdown: false,
+    submenu: [{ name: "Get Involved", href: "/get-involved" }
+    ],
+   }
   ];
 
-  const sectionIsActive = (item: { submenu?: { href: string }[] }) => {
+  const sectionIsActive = (item: { submenu?: { href: string }[]; hasDropdown?: boolean }) => {
     if (!pathname || typeof window === "undefined") return false;
+    // For items without dropdown, check if pathname exactly matches the submenu href
+    if (item.hasDropdown === false && item.submenu && item.submenu.length > 0) {
+      const href = item.submenu[0].href;
+      return pathname === href || pathname === `${href}/`;
+    }
+    // For dropdown items, check if pathname starts with any submenu href
     return (
       item.submenu?.some((s) => s.href && pathname.startsWith(s.href)) ?? false
     );
@@ -222,10 +228,10 @@ export default function Navbar() {
             "clamp(1000px, calc(1250px + (100vw - 1440px) * 0.7), 1600px)",
         }}
       >
-        <div className="flex items-end gap-[var(--spacing-2xl)]">
+        <div className="flex items-center gap-[var(--spacing-2xl)]">
           <Link
             href="/"
-            className="flex items-center flex-shrink-0"
+            className="flex items-end flex-shrink-0"
             aria-label="Home"
           >
             <Image
@@ -250,14 +256,54 @@ export default function Navbar() {
               const active = sectionIsActive(item);
               const isOpen =
                 (item.name === "Projects" && isProjectsDropdownOpen) ||
-                (item.name === "Get Involved" && isGetInvolvedDropdownOpen) ||
                 (item.name === "Get to know us" && isAboutDropdownOpen);
 
+              // Render as direct link if hasDropdown is false
+              if (item.hasDropdown === false && item.submenu && item.submenu.length > 0) {
+                const href = item.submenu[0].href;
+                const isHovered = item.name === "Get Involved" && isGetInvolvedHovered;
+                return (
+                  <div key={item.name} className="relative">
+                    <NavButton
+                      variant="tertiary"
+                      isActive={active || isHovered}
+                      isInitialLoad={isHome && isInitialLoad && !isAnyMenuOpen}
+                      trailingIcon="/flower.svg"
+                      onClick={() => {
+                        router.push(href);
+                      }}
+                      onMouseEnter={() => {
+                        if (item.name === "Get Involved") {
+                          setIsGetInvolvedHovered(true);
+                        }
+                      }}
+                      onMouseLeave={() => {
+                        if (item.name === "Get Involved") {
+                          setIsGetInvolvedHovered(false);
+                        }
+                      }}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" || e.key === " ") {
+                          e.preventDefault();
+                          router.push(href);
+                        }
+                      }}
+                      role="button"
+                      tabIndex={0}
+                      className="group"
+                    >
+                      {item.name}
+                    </NavButton>
+                  </div>
+                );
+              }
+
+              // Render as dropdown if hasDropdown is true
               return (
                 <div key={item.name} className="relative">
                   <NavButton
                     variant="tertiary"
-                    isActive={active}
+                    isActive={active || isOpen}
                     isInitialLoad={isHome && isInitialLoad && !isAnyMenuOpen}
                     trailingIcon="/flower.svg"
                     onClick={() => toggleMenu(item.name)}
@@ -280,7 +326,7 @@ export default function Navbar() {
                     tabIndex={0}
                     aria-haspopup="menu"
                     aria-expanded={isOpen}
-                    className="group"
+                      className="group"
                   >
                     {item.name}
                   </NavButton>
@@ -289,7 +335,7 @@ export default function Navbar() {
                   <WebMenu
                     ref={menuElRef}
                     isOpen={isOpen}
-                    submenu={item.submenu}
+                    submenu={item.submenu || []}
                     onMenuEnter={() => {
                       if (!hoverEnabled) return;
                       clearCloseTimer();

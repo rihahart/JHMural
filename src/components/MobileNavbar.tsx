@@ -17,7 +17,6 @@ export default function MobileNavbar() {
   // Mobile menu state
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileProjectsExpanded, setIsMobileProjectsExpanded] = useState(false);
-  const [isMobileGetInvolvedExpanded, setIsMobileGetInvolvedExpanded] = useState(false);
   const [isMobileAboutExpanded, setIsMobileAboutExpanded] = useState(false);
 
   const mobileMenuRef = useRef<HTMLDivElement | null>(null);
@@ -48,22 +47,19 @@ export default function MobileNavbar() {
     };
   }, [isHome, isInitialLoad]);
 
-  const handleToggleExpanded = (itemName: "Projects" | "Get to know us" | "Get Involved") => {
+  const handleToggleExpanded = (itemName: "Projects" | "Get to know us") => {
     // Check if the clicked section is already open
     const isCurrentlyOpen = 
       (itemName === "Projects" && isMobileProjectsExpanded) ||
-      (itemName === "Get Involved" && isMobileGetInvolvedExpanded) ||
       (itemName === "Get to know us" && isMobileAboutExpanded);
     
     // Close all sections first
     setIsMobileProjectsExpanded(false);
-    setIsMobileGetInvolvedExpanded(false);
     setIsMobileAboutExpanded(false);
     
     // If the clicked section was not open, open it
     if (!isCurrentlyOpen) {
       if (itemName === "Projects") setIsMobileProjectsExpanded(true);
-      else if (itemName === "Get Involved") setIsMobileGetInvolvedExpanded(true);
       else if (itemName === "Get to know us") setIsMobileAboutExpanded(true);
     }
   };
@@ -71,7 +67,6 @@ export default function MobileNavbar() {
   const handleCloseAll = () => {
     setIsMobileMenuOpen(false);
     setIsMobileProjectsExpanded(false);
-    setIsMobileGetInvolvedExpanded(false);
     setIsMobileAboutExpanded(false);
   };
 
@@ -118,7 +113,7 @@ export default function MobileNavbar() {
           <div className="flex items-center gap-[var(--spacing-xl)]">
             <div className="h-fill">
               <Button
-                href="https://www.gofundme.com/f/donate-to-help-us-put-a-beautiful-mural-in-jackson-heights"
+                href="https://donate.stripe.com/eVqaEY2iV7kk8KI0273ks00"
                 target="_blank"
                 rel="noopener noreferrer"
                 variant="primary"
@@ -145,7 +140,6 @@ export default function MobileNavbar() {
           isOpen={isMobileMenuOpen}
           expandedStates={{
             isMobileProjectsExpanded,
-            isMobileGetInvolvedExpanded,
             isMobileAboutExpanded,
           }}
           onToggleExpanded={handleToggleExpanded}

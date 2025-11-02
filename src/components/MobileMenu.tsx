@@ -9,8 +9,8 @@ import ExitButton from "./ExitButton";
 
 interface MobileMenuProps {
   isOpen: boolean;
-  expandedStates: { isMobileProjectsExpanded: boolean; isMobileGetInvolvedExpanded: boolean; isMobileAboutExpanded: boolean };
-  onToggleExpanded: (itemName: "Projects" | "Get to know us" | "Get Involved") => void;
+  expandedStates: { isMobileProjectsExpanded: boolean; isMobileAboutExpanded: boolean };
+  onToggleExpanded: (itemName: "Projects" | "Get to know us") => void;
   onCloseAll: () => void;
 }
 
@@ -104,43 +104,14 @@ const MobileMenu = forwardRef<HTMLDivElement, MobileMenuProps>(
             <div className="flex flex-col items-start gap-[var(--spacing-m)] border-b border-b-[var(--color-border-disabled)] w-full">
               <NavButton
                 variant="primary"
-                onClick={() => onToggleExpanded("Get Involved")}
-                isActive={expandedStates.isMobileGetInvolvedExpanded}
+                href="/get-involved"
+                onClick={onCloseAll}
                 trailingIcon="/flower.svg"
-                aria-expanded={expandedStates.isMobileGetInvolvedExpanded}
+                isActive={pathname === "/get-involved"}
                 className="w-full"
               >
                 Get Involved
               </NavButton>
-              <div className={`${expandedStates.isMobileGetInvolvedExpanded ? 'block' : 'hidden'} space-y-[var(--spacing-m)]`}>
-                <NavButton
-                  variant="secondary"
-                  href="/get-involved/make-a-donation"
-                  onClick={onCloseAll}
-                  className="font-normal"
-                  isActive={pathname === "/get-involved/make-a-donation"}
-                >
-                  Make a donation
-                </NavButton>
-                <NavButton
-                  variant="secondary"
-                  href="/get-involved/partner-with-us"
-                  onClick={onCloseAll}
-                  className="font-normal"
-                  isActive={pathname === "/get-involved/partner-with-us"}
-                >
-                  Partner with us
-                </NavButton>
-                <NavButton
-                  variant="secondary"
-                  href="/get-involved/volunteer-with-us"
-                  onClick={onCloseAll}
-                  className="font-normal"
-                  isActive={pathname === "/get-involved/volunteer-with-us"}
-                >
-                  Volunteer with us
-                </NavButton>
-              </div>
             </div>
           </div>
       </div>
