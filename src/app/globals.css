@@ -1371,5 +1371,22 @@
   button {
     transition: transform 0.1s ease;
   }
+
+  /* Mission Statement Animation */
+  @keyframes flyInFromBottomLeft {
+    from {
+      opacity: 0;
+      transform: translate(-100px, 100px);
+    }
+    to {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+  }
+
+  .mission-statement-animate {
+    opacity: 0;
+    animation: flyInFromBottomLeft 0.4s ease-out forwards;
+  }
 }
 
