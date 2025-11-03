@@ -18,7 +18,7 @@ export default function Home() {
         <div className="flex flex-col items-center py-[var(--spacing-3xl)] px-[var(--spacing-lg)] gap-[var(--spacing-4xl)] justify-center">
           <MissionStatementMobile />
         <div className="flex flex-col gap-[var(--spacing-xl)] justify-center items-start w-full">
-              <h1 className="mobile-heading-5xl-black  text-[var(--color-content-primary)]">
+              <h1 className="hero-xs text-[var(--color-content-primary)]">
                 What&apos;s On: NYC Art Exhibitions
               </h1>
               <ExhibitionsSection />
