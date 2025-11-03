@@ -9,8 +9,8 @@ interface NavButtonProps {
   rel?: string;
   disabled?: boolean;
   className?: string;
-  leadingIcon?: string;
-  trailingIcon?: string;
+  leadingIcon?: string | React.ReactNode;
+  trailingIcon?: string | React.ReactNode;
   showLeadingIcon?: boolean;
   showTrailingIcon?: boolean;
   children: React.ReactNode;
@@ -129,27 +129,33 @@ export default function NavButton({
 
   // Icon elements - using exact same pattern as Button component
   const LeadingIcon = leadingIcon && showLeadingIcon && (
-    <Image
-      src={leadingIcon}
-      alt=""
-      width={24}
-      height={24}
-      className={`
-        w-6 h-6
-        mr-[var(--spacing-s)]
-        transition-all duration-200 ease-in-out
-        align-middle
-        translate-y-[3px]
-        inline-block
-        shrink-0
-        ${variant === 'primary' && trailingIcon !== '/flower.svg' && leadingIcon !== '/flower.svg' ? 'brightness-0 invert group-hover:scale-110' : 'group-hover:scale-110'}
-        ${trailingIcon === '/flower.svg' || leadingIcon === '/flower.svg' ? 'group-hover:brightness-[1.2] group-hover:saturate-150' : ''}
-      `}
-    />
+    typeof leadingIcon === 'string' ? (
+      <Image
+        src={leadingIcon}
+        alt=""
+        width={24}
+        height={24}
+        className={`
+          w-6 h-6
+          mr-[var(--spacing-s)]
+          transition-all duration-200 ease-in-out
+          align-middle
+          translate-y-[3px]
+          inline-block
+          shrink-0
+          ${variant === 'primary' && trailingIcon !== '/flower.svg' && leadingIcon !== '/flower.svg' ? 'brightness-0 invert group-hover:scale-110' : 'group-hover:scale-110'}
+          ${trailingIcon === '/flower.svg' || leadingIcon === '/flower.svg' ? 'group-hover:brightness-[1.2] group-hover:saturate-150' : ''}
+        `}
+      />
+    ) : (
+      <span className="mr-[var(--spacing-s)] inline-block shrink-0">
+        {leadingIcon}
+      </span>
+    )
   );
 
   const TrailingIcon = trailingIcon && showTrailingIcon && (
-    variant === 'tertiary' ? (
+    typeof trailingIcon === 'string' && variant === 'tertiary' ? (
       <Image
         src={trailingIcon}
         alt=""
@@ -166,6 +172,10 @@ export default function NavButton({
           filter: 'brightness(0) saturate(100%) invert(20%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%)'
         }}
       />
+    ) : typeof trailingIcon !== 'string' ? (
+      <span className="ml-[var(--spacing-m)] inline-block shrink-0">
+        {trailingIcon}
+      </span>
     ) : (
       <svg
         xmlns="http://www.w3.org/2000/svg"

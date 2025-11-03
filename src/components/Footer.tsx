@@ -1,65 +1,281 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
+import NavButton from "./ButtonCollection/NavButton";
+import Button from "./ButtonCollection/Button";
+import useMobileDetection from "@/app/_utilities/useMobileDetection";
+import { FaInstagram, FaFacebook } from "react-icons/fa";
 
 export default function Footer() {
+  const { isMobile, isTablet, isDesktop1440px } = useMobileDetection();
+
+  if (isMobile) {
+    return (
+      <footer className="bg-[var(--color-border-tertiary)]">
+        <div className="mx-auto py-[var(--spacing-xl)] px-[var(--spacing-lg)]">
+          <div className="flex flex-col items-start justify-between gap-[var(--spacing-xl)] h-full">
+            <Button
+              href="https://donate.stripe.com/eVqaEY2iV7kk8KI0273ks00"
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="primary"
+              size="large"
+              trailingIcon="/flower.svg"
+              className="px-[var(--spacing-lg)] text-xl flex items-center !rounded-none w-fit"
+            >
+              Donate
+            </Button>
+            <div className="flex-1 h-full">
+              <Image
+                src="/Footer/Donate.png"
+                alt="Donate to JH Mural Project"
+                width={600}
+                height={400}
+                className="w-full h-auto object-contain"
+              />
+            </div>
+            <div className="flex flex-col border-t-[4px] border-[var(--color-content-secondary)] w-full">
+              <NavButton
+                variant="secondary"
+                href="https://www.instagram.com/jhmuralproject"
+                target="_blank"
+                rel="noopener noreferrer"
+                trailingIcon={<FaInstagram className="w-6 h-6" />}
+                className="w-full"
+              >
+                Follow us on instagram
+              </NavButton>
+              <div className="border-t border-[var(--color-border-primary)] my-0"></div>
+              <NavButton
+                variant="secondary"
+                href="https://www.facebook.com/people/Jackson-Heights-Mural-Project/61563349293857/"
+                target="_blank"
+                rel="noopener noreferrer"
+                trailingIcon={<FaFacebook className="w-6 h-6" />}
+                className="w-full"
+              >
+                Follow us on facebook
+              </NavButton>
+              <div className="border-t border-[var(--color-border-primary)] "></div>
+              <NavButton
+                variant="secondary"
+                href="/get-involved"
+                trailingIcon="/arrow-right.svg"
+                className="w-full"
+              >
+                Get involved
+              </NavButton>
+            </div>
+          </div>
+        </div>
+      </footer>
+    );
+  }
+
+  if (isTablet) {
+    return (
+      <footer className="bg-[var(--color-border-tertiary)]">
+        <div className="mx-auto py-[var(--spacing-6xl)] px-[var(--spacing-6xl)]">
+          <div className="flex flex-col items-center justify-between gap-[var(--spacing-2xl)] h-full">
+            <div className="flex items-start gap-[var(--spacing-2xl)]">
+              <div className="w-[60%]">
+                <Image
+                  src="/Footer/Donate.png"
+                  alt="Donate to JH Mural Project"
+                  width={600}
+                  height={400}
+                  className="w-full h-auto object-contain"
+                />
+              </div>
+              <Button
+                href="https://donate.stripe.com/eVqaEY2iV7kk8KI0273ks00"
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="primary"
+                size="large"
+                trailingIcon="/flower.svg"
+                className="px-[var(--spacing-lg)] text-xl flex items-center !rounded-none w-fit ml-auto"
+              >
+                Donate
+              </Button>
+            </div>
+
+            <div className="flex flex-col border-t-[4px] border-[var(--color-content-secondary)] w-full">
+              <NavButton
+                variant="secondary"
+                href="https://www.instagram.com/jhmuralproject"
+                target="_blank"
+                rel="noopener noreferrer"
+                trailingIcon={<FaInstagram className="w-6 h-6" />}
+                className="w-full"
+              >
+                Follow us on instagram
+              </NavButton>
+              <div className="border-t border-[var(--color-border-primary)] my-0"></div>
+              <NavButton
+                variant="secondary"
+                href="https://www.facebook.com/people/Jackson-Heights-Mural-Project/61563349293857/"
+                target="_blank"
+                rel="noopener noreferrer"
+                trailingIcon={<FaFacebook className="w-6 h-6" />}
+                className="w-full"
+              >
+                Follow us on facebook
+              </NavButton>
+              <div className="border-t border-[var(--color-border-primary)] "></div>
+              <NavButton
+                variant="secondary"
+                href="/get-involved"
+                trailingIcon="/arrow-right.svg"
+                className="w-full"
+              >
+                Get involved
+              </NavButton>
+            </div>
+          </div>
+        </div>
+      </footer>
+    );
+  }
+
+  // Desktop (1440px+) - Two column layout with Donate image and links
+  if (isDesktop1440px) {
+    return (
+      <footer className="bg-[var(--color-border-tertiary)]">
+        <div className="max-w-[1600px] mx-auto py-[var(--spacing-6xl)] px-[var(--spacing-6xl)]">
+          <div className="flex items-start justify-between gap-[var(--spacing-8xl)] h-full">
+            {/* Left Section - Donate Image */}
+            <div className="flex-1 h-full">
+              <Image
+                src="/Footer/Donate.png"
+                alt="Donate to JH Mural Project"
+                width={600}
+                height={400}
+                className="w-full h-auto object-contain"
+              />
+            </div>
+
+            {/* Right Section - Links */}
+            <div className="flex flex-col items-end py-[var(--spacing-xl)] px-[var(--spacing-xl)] gap-[var(--spacing-6xl)] border-[var(--color-content-secondary)] flex-1 min-w-0 h-full">
+              {/* Donate Button */}
+              <Button
+                href="https://donate.stripe.com/eVqaEY2iV7kk8KI0273ks00"
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="primary"
+                size="large"
+                trailingIcon="/flower.svg"
+                className="px-[var(--spacing-lg)] text-xl flex items-center !rounded-none w-fit"
+              >
+                Donate
+              </Button>
+
+              {/* Social Links with NavButton secondary */}
+              <div className="flex flex-col border-t-[4px] border-[var(--color-content-secondary)] w-full">
+                <NavButton
+                  variant="secondary"
+                  href="https://www.instagram.com/jhmuralproject"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  trailingIcon={<FaInstagram className="w-6 h-6" />}
+                  className="w-full"
+                >
+                  Follow us on instagram
+                </NavButton>
+                <div className="border-t border-[var(--color-border-primary)] my-0"></div>
+                <NavButton
+                  variant="secondary"
+                  href="https://www.facebook.com/people/Jackson-Heights-Mural-Project/61563349293857/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  trailingIcon={<FaFacebook className="w-6 h-6" />}
+                  className="w-full"
+                >
+                  Follow us on facebook
+                </NavButton>
+                <div className="border-t border-[var(--color-border-primary)] "></div>
+                <NavButton
+                  variant="secondary"
+                  href="/get-involved"
+                  trailingIcon="/arrow-right.svg"
+                  className="w-full"
+                >
+                  Get involved
+                </NavButton>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    );
+  }
+
+  // Desktop (1440px+)
   return (
-    <footer className="bg-[var(--color-neutral-800)] py-8 lg:py-10">
-      <div className="max-w-[1200px] mx-auto px-6 lg:px-[var(--spacing-8xl)]">
-        <div className="flex flex-col items-center space-y-6">
-          {/* Social Media Icons */}
-          <div className="flex items-center space-x-6">
-            {/* Instagram */}
-            <a
-              href="https://www.instagram.com/jhmuralproject"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 bg-[var(--color-neutral-700)] hover:bg-[var(--color-brand-600)] rounded-full flex items-center justify-center transition-all duration-300 group"
-              aria-label="Follow us on Instagram"
-            >
-              <svg 
-                className="w-5 h-5 text-[var(--color-content-primary-inverse)] group-hover:scale-110 transition-transform duration-300" 
-                fill="currentColor" 
-                viewBox="0 0 24 24"
-              >
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-              </svg>
-            </a>
-
-            {/* Facebook */}
-            <a
-              href="https://www.facebook.com/people/Jackson-Heights-Mural-Project/61563349293857/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 bg-[var(--color-neutral-700)] hover:bg-[var(--color-brand-600)] rounded-full flex items-center justify-center transition-all duration-300 group"
-              aria-label="Follow us on Facebook"
-            >
-              <svg 
-                className="w-5 h-5 text-[var(--color-content-primary-inverse)] group-hover:scale-110 transition-transform duration-300" 
-                fill="currentColor" 
-                viewBox="0 0 24 24"
-              >
-                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-              </svg>
-            </a>
-
-            {/* Email */}
-            <a
-              href="mailto:jhmuralproject@gmail.com"
-              className="w-10 h-10 bg-[var(--color-neutral-700)] hover:bg-[var(--color-brand-600)] rounded-full flex items-center justify-center transition-all duration-300 group"
-              aria-label="Email us"
-            >
-              <svg 
-                className="w-5 h-5 text-[var(--color-content-primary-inverse)] group-hover:scale-110 transition-transform duration-300" 
-                fill="none" 
-                stroke="currentColor" 
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 7.89a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-            </a>
+    <footer className="bg-[var(--color-border-tertiary)]">
+      <div className="max-w-[1600px] mx-auto py-[var(--spacing-6xl)] px-[var(--spacing-6xl)]">
+        <div className="flex items-start justify-between gap-[var(--spacing-8xl)] h-full">
+          {/* Left Section - Donate Image */}
+          <div className="flex-1 h-full">
+            <Image
+              src="/Footer/Donate.png"
+              alt="Donate to JH Mural Project"
+              width={600}
+              height={400}
+              className="w-full h-auto object-contain"
+            />
           </div>
 
+          {/* Right Section - Links */}
+          <div className="flex flex-col items-end py-[var(--spacing-xl)] px-[var(--spacing-xl)] gap-[var(--spacing-6xl)] border-[var(--color-content-secondary)] flex-1 min-w-0 h-full">
+            {/* Donate Button */}
+            <Button
+              href="https://donate.stripe.com/eVqaEY2iV7kk8KI0273ks00"
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="primary"
+              size="large"
+              trailingIcon="/flower.svg"
+              className="px-[var(--spacing-lg)] text-xl flex items-center !rounded-none w-fit"
+            >
+              Donate
+            </Button>
+
+            {/* Social Links with NavButton secondary */}
+            <div className="flex flex-col border-t-[4px] border-[var(--color-content-secondary)] w-full">
+              <NavButton
+                variant="secondary"
+                href="https://www.instagram.com/jhmuralproject"
+                target="_blank"
+                rel="noopener noreferrer"
+                trailingIcon={<FaInstagram className="w-6 h-6" />}
+                className="w-full"
+              >
+                Follow us on instagram
+              </NavButton>
+              <div className="border-t border-[var(--color-border-primary)] my-0"></div>
+              <NavButton
+                variant="secondary"
+                href="https://www.facebook.com/people/Jackson-Heights-Mural-Project/61563349293857/"
+                target="_blank"
+                rel="noopener noreferrer"
+                trailingIcon={<FaFacebook className="w-6 h-6" />}
+                className="w-full"
+              >
+                Follow us on facebook
+              </NavButton>
+              <div className="border-t border-[var(--color-border-primary)] "></div>
+              <NavButton
+                variant="secondary"
+                href="/get-involved"
+                trailingIcon="/arrow-right.svg"
+                className="w-full"
+              >
+                Get involved
+              </NavButton>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
