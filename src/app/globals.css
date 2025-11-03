@@ -269,8 +269,8 @@
   
   /* Typography Desktop */
 
-  .hero-2xl {
-    font-size: var(--font-size-18xl);
+  .hero-xs {
+    font-size: 60px;
     line-height: var(--line-height-17xl);
     font-weight: var(--font-weight-bold);
     font-family: var(--font-family-base);
