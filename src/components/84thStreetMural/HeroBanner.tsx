@@ -68,7 +68,7 @@ export default function HeroBanner() {
           <div className="flex flex-col items-start w-1/2 gap-[var(--spacing-6xl)]">
             <div className="flex flex-col items-start gap-[var(--spacing-xl)]"> 
                 <h2 className="web-heading-lg-semibold text-[var(--color-content-primary)]">{topTitle}</h2>
-                <h2 className="hero-lg text-[var(--color-content-primary)]">{title}</h2>
+                <h2 className="hero-m text-[var(--color-content-primary)]">{title}</h2>
             </div>
             <p className="web-text-2xl-regular text-[var(--color-content-primary)]">{subtitle}</p>
           </div>
@@ -94,7 +94,7 @@ export default function HeroBanner() {
         <div className="flex flex-col items-start w-1/2 gap-[var(--spacing-6xl)]">
          <div className="flex flex-col items-start gap-[var(--spacing-xl)]">
           <h2 className="web-heading-xl-semibold text-[var(--color-content-primary)]">{topTitle}</h2>
-          <h2 className="hero-2xl text-[var(--color-content-primary)]">{title}</h2>
+          <h2 className="hero-lg text-[var(--color-content-primary)]">{title}</h2>
          </div>
           <p className="web-text-2xl-regular text-[var(--color-content-primary)]">{subtitle}</p> 
         </div>

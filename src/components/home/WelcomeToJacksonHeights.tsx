@@ -41,9 +41,9 @@ export default function WelcomeToJacksonHeights() {
 
   if (isTablet) {
     return (
-      <div className="w-full flex flex-col bg-[var(--color-yellow-500)] h-[600]">
+      <div className="w-full flex flex-col bg-[var(--color-yellow-500)]">
         <div className="flex flex-col items-start px-[var(--spacing-2xl)] py-[var(--spacing-2xl)] gap-[var(--spacing-xl)]">
-          <h1 className="hero-xs text-[var(--color-content-primary)]">
+          <h1 className="hero-s text-[var(--color-content-primary)]">
             Welcome to Jackson Heights
           </h1>
           <BorderlessButton
@@ -103,7 +103,7 @@ export default function WelcomeToJacksonHeights() {
   return (
     <div className="w-full flex flex-col bg-[var(--color-yellow-500)]">
       <div className="flex flex-col items-start px-[var(--spacing-3xl)] py-[var(--spacing-3xl)] gap-[var(--spacing-2xl)]">
-        <h1 className="hero-xs font-bold text-[var(--color-content-primary)]">
+        <h1 className="hero-s text-[var(--color-content-primary)]">
           Welcome to Jackson Heights
         </h1>
         <BorderlessButton

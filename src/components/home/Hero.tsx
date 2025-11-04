@@ -102,7 +102,7 @@ export default function Hero() {
               }}
               className="text-[clamp(32px,calc(32px+(16*(100vw-1025px)/415)),64px)] font-semibold text-[var(--color-content-primary-inverse)] mt-2"
             >
-              on lonely walls of Jackson Heights, Queens.
+              on lonely walls of Jackson Heights, Queens
             </motion.p>
           </div>
         </div>

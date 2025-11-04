@@ -303,13 +303,6 @@
     font-weight: var(--font-weight-bold);
     font-family: var(--font-family-base);
   }
-
-  .hero-xs {
-    font-size: var(--font-size-13xl);
-    line-height: var(--line-height-13xl);
-    font-weight: var(--font-weight-bold);
-    font-family: var(--font-family-base);
-  }
   
   .web-heading-5xl-bold {
     font-size: var(--font-size-12xl);
