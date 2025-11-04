@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
+// import Image from "next/image";
 import BorderlessButton from "../ButtonCollection/BorderlessButton";
 
 export default function MissionStatementMobile() {
