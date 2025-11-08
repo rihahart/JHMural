@@ -36,7 +36,7 @@
   --color-blue-600: #307df2;
   --color-blue-700: #2664c1;
   --color-blue-800: #0f3b7c;
-  --color-blue-900: #133260;
+  --color-blue-900: #133261;
 
   /* Orange Colors */
   --color-orange-100: #feede8;
@@ -48,15 +48,21 @@
   --color-orange-700: #942D0D;
 
   /* Red Colors */
-  --color-red-100: #ffebee;
-  --color-red-200: #ffcdd2;
-  --color-red-300: #ef9a9a;
-  --color-red-400: #e57373;
-  --color-red-500: #f44336;
-  --color-red-600: #e53935;
-  --color-red-700: #d32f2f;
-  --color-red-800: #c62828;
-  --color-red-900: #b71c1c;
+  --color-red-100: #fdcecf;
+  --color-red-200: #fa9d9f;
+  --color-red-300: #f86d70;
+  --color-red-400: #f53c40;
+  --color-red-500: #c31800;
+  --color-red-600: #92070a;
+
+  /* Pink Colors */
+  --color-pink-100: #ffe5ee;
+  --color-pink-200: #ffb0cd;
+  --color-pink-300: #fb8bb5;
+  --color-pink-400: #fa649c;
+  --color-pink-500: #f93d83;
+  --color-pink-600: #b22f60;
+
 
   /* Green Colors */
   --color-green-100: #bdfbef;
@@ -68,6 +74,16 @@
   --color-green-700: #388e3c;
   --color-green-800: #032922;
  
+  /* Purple Colors */
+  --color-purple-100: #AFBAE0;
+  --color-purple-200: #B4AFE0;
+  --color-purple-300: #BCB0FF;
+  --color-purple-400: #C9B4F2;
+  --color-purple-500: #A37EF2;
+  --color-purple-600: #A675EA;
+  --color-purple-700: #7E7FF2;
+  --color-purple-800: #7C60B8;
+  --color-purple-900: #7D74BC;
 
   /* Yellow Colors */
   --color-yellow-100: #FFFEF7;
@@ -1388,6 +1404,28 @@
   .mission-statement-animate {
     opacity: 0;
     animation: flyInFromBottomLeft 0.4s ease-out forwards;
+  }
+
+  @keyframes sparkle {
+    0%, 100% {
+      filter: brightness(1) drop-shadow(0 0 0px rgba(255, 255, 255, 0));
+    }
+    50% {
+      filter: brightness(1.3) drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+    }
+  }
+
+  .sparkle-text {
+    animation: sparkle 2s ease-in-out infinite;
+    background: linear-gradient(90deg, 
+      var(--color-purple-500) 0%, 
+      var(--color-pink-400) 25%, 
+      var(--color-orange-400) 50%, 
+      var(--color-blue-500) 75%, 
+      var(--color-green-300) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }
 

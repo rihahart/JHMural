@@ -16,7 +16,7 @@ export default function MuralImpact() {
             <div key={index} className="flex flex-col items-center gap-[var(--spacing-xl)]">
                <div className="flex flex-col items-start gap-[var(--spacing-xl)]">
                 <h2 className="mobile-heading-5xl-bold text-[var(--color-content-primary)]">{item.title}</h2>
-                <p className="mobile-text-m-regular text-[var(--color-content-primary)]">{item.description}</p>
+                <p className="mobile-text-lg-medium text-[var(--color-content-primary)]">{item.description}</p>
                </div>
 
               <div className="w-full">
@@ -50,7 +50,7 @@ export default function MuralImpact() {
             <div key={index} className="flex flex-col items-center gap-[var(--spacing-2xl)]">
               <div className="flex flex-col items-start py-[var(--spacing-2xl)] px-[var(--spacing-lg)] gap-[var(--spacing-lg)]">
                 <h2 className="web-heading-4xl-bold text-[var(--color-content-primary)]">{item.title}</h2>
-                <p className="mobile-text-m-medium text-[var(--color-content-primary)]">{item.description}</p>
+                <p className="web-text-lg-regular text-[var(--color-content-primary)]">{item.description}</p>
               </div>
               <div className="w-full">
                 <Image
@@ -124,7 +124,7 @@ export default function MuralImpact() {
             </div>
             <div className="w-[35%] flex flex-col items-start align-stretch py-[var(--spacing-lg)] px-[var(--spacing-lg)] gap-[var(--spacing-2xl)]">
               <h2 className="web-heading-4xl-bold text-[var(--color-content-primary)]">{item.title}</h2>
-              <p className="web-text-xl-regular text-[var(--color-content-primary)]">{item.description}</p> 
+              <p className="web-text-2xl-regular text-[var(--color-content-primary)]">{item.description}</p> 
             </div>
           </div>
         ))}
