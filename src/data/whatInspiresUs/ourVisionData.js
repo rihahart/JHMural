@@ -1,6 +1,6 @@
 export const ourVisionData = {
   title: "Our mission and vision",
-  description: "We want to collaborate with local artists to transform spaces along the Roosevelt Avenue Corridor and throughout Jackson Heights. We want to revitalize public spaces, cultivate creativity, build social connections, and inspire the children of the community."
+  description: "This is Jackson Heights. The most diverse community on earth. Here, every blank wall is an opportunity to change the world. That's why we built The Jackson Heights Mural Project. This is our chance to add color to the concrete. To turn blight into beauty. Apathy into pride. And turn walls into windows that show the world what unity looks like. We paint because we believe in this place. Because our children deserve a more colorful future. Because art reminds us who we are and who we can be."
 };
 
 export default ourVisionData;
