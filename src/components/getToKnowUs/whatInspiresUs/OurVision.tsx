@@ -46,7 +46,7 @@ export default function OurVision() {
               </NavButton>
               </div>  
           </div>
-          <h2 className="mobile-text-lg-black sparkle-text">{subtitle}</h2>
+          <h2 className="mobile-text-2xl-black sparkle-text">{subtitle}</h2>
         </div>
     );
   }
