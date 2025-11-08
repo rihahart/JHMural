@@ -2,11 +2,11 @@
 
 import React from "react";
 import useMobileDetection from "@/app/_utilities/useMobileDetection";
-import missionVisionData from "@/data/whatInspiresUs/missionVisionData";
+import ourVisionData from "@/data/whatInspiresUs/ourVisionData";
 
-export default function MissionVision() {
+export default function OurVision() {
   const { isMobile, isTablet, isDesktop1440px } = useMobileDetection();
-  const { title, description } = missionVisionData;
+  const { title, description } = ourVisionData;
 
   if (isMobile) {
     return (

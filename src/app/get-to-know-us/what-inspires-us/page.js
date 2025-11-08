@@ -5,7 +5,7 @@ import Image from "next/image";
 import useMobileDetection from "@/app/_utilities/useMobileDetection";
 import DecorativeDivider from "@/components/getToKnowUs/whatInspiresUs/DecorativeDivider";
 import MuralImpact from "@/components/getToKnowUs/whatInspiresUs/MuralImpact";
-import MissionVision from "@/components/getToKnowUs/whatInspiresUs/MissionVision";
+import OurVision from "@/components/getToKnowUs/whatInspiresUs/OurVision";
 
 export default function WhatInspiresUs() {
   const { isMobile, isTablet, isDesktop1440px } = useMobileDetection();
@@ -21,7 +21,7 @@ export default function WhatInspiresUs() {
           <div className="relative w-full overflow-hidden h-[250px]">
             <Image src="/SuzanneRiha.png" alt="Suzanne Riha" fill className="object-cover object-center" />
           </div>
-          <MissionVision />
+          <OurVision />
           <DecorativeDivider />
           <MuralImpact />
         </div>
@@ -40,7 +40,7 @@ export default function WhatInspiresUs() {
           <div className="relative w-full overflow-hidden h-[400px]">
             <Image src="/SuzanneRiha.png" alt="Suzanne Riha" fill className="object-cover object-center" />
           </div>
-          <MissionVision />
+          <OurVision />
           <DecorativeDivider />
           <MuralImpact />
         </div>
@@ -59,7 +59,7 @@ export default function WhatInspiresUs() {
           <div className="relative w-full overflow-hidden h-[500px]">
             <Image src="/SuzanneRiha.png" alt="Suzanne Riha" fill className="object-cover object-center" />
            </div>
-          <MissionVision />
+          <OurVision />
           <DecorativeDivider />
           <MuralImpact />
         </div>
@@ -77,7 +77,7 @@ export default function WhatInspiresUs() {
        <div className="relative w-full overflow-hidden h-[600px]">
         <Image src="/SuzanneRiha.png" alt="Suzanne Riha" fill className="object-cover object-center" />
        </div>
-       <MissionVision />
+       <OurVision />
        <DecorativeDivider />
        <MuralImpact />
       </div>
