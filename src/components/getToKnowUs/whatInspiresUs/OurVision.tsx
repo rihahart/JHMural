@@ -58,6 +58,8 @@ export default function OurVision() {
                 href="https://www.instagram.com/jhmuralproject"
                 trailingIcon="/arrow-right.svg"
                 className="w-full"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Share our story
               </NavButton>
