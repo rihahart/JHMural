@@ -1,0 +1,45 @@
+"use client";
+
+import React from "react";
+import useMobileDetection from "@/app/_utilities/useMobileDetection";
+import missionVisionData from "@/data/whatInspiresUs/missionVisionData";
+
+export default function MissionVision() {
+  const { isMobile, isTablet, isDesktop1440px } = useMobileDetection();
+  const { title, description } = missionVisionData;
+
+  if (isMobile) {
+    return (
+      <div className="flex flex-col items-start gap-[var(--spacing-xl)]">
+        <h1 className="mobile-heading-5xl-bold text-[var(--color-content-primary)]">{title}</h1>
+        <p className="mobile-text-m-medium text-[var(--color-content-primary)]">{description}</p>
+      </div>
+    );
+  }
+
+  if (isTablet) {
+    return (
+      <div className="flex items-center align-stretch justify-center gap-[var(--spacing-6xl)]">
+        <h1 className="web-heading-4xl-bold text-[var(--color-content-primary)] w-1/2 ">{title}</h1>
+        <p className="web-text-m-medium text-[var(--color-content-primary)] w-1/2">{description}</p>
+      </div>
+    );
+  }
+
+  if (isDesktop1440px) {
+    return (
+      <div className="flex items-center align-stretch justify-center max-w-[1400px] gap-[var(--spacing-8xl)]">
+        <h1 className="hero-xs text-[var(--color-content-primary)] w-1/2">{title}</h1>
+        <p className="web-text-xl-medium text-[var(--color-content-primary)] w-1/2">{description}</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex justify-center align-stretch items-center max-w-[1600px] gap-[var(--spacing-8xl)]">
+      <h1 className="hero-s text-[var(--color-content-primary)] w-1/2">{title}</h1>
+      <p className="web-text-2xl-medium text-[var(--color-content-primary)] w-1/2">{description}</p>
+    </div>
+  );
+}
+
