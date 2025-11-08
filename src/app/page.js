@@ -8,7 +8,7 @@ import MissionStatement from "@/components/home/MissionStatement";
 import MissionStatementMobile from "@/components/home/MissionStatementMobile";
 import ExhibitionsSection from "@/components/exhibitions/ExhibitionsSection";
 import WelcomeToJacksonHeights from "@/components/home/WelcomeToJacksonHeights";
-import DecorativeDivider from "@/components/getToKnowUs/DecorativeDivider";
+import DecorativeDivider from "@/components/getToKnowUs/whatInspiresUs/DecorativeDivider";
 
 export default function Home() {
   const { isMobile, isTablet, isDesktop1440px } = useMobileDetection();
