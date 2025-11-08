@@ -201,6 +201,7 @@
   --line-height-15xl: 104px;
   --line-height-16xl: 112px;
   --line-height-17xl: 120px;
+  --line-height-18xl: 128px;
 
   
 
@@ -269,9 +270,9 @@
   
   /* Typography Desktop */
 
-  .hero-xs {
-    font-size: 60px;
-    line-height: var(--line-height-17xl);
+  .hero-2xl {
+    font-size: var(--font-size-18xl);
+    line-height: var(--line-height-18xl);
     font-weight: var(--font-weight-bold);
     font-family: var(--font-family-base);
   }
@@ -300,6 +301,13 @@
   .hero-s {
     font-size: var(--font-size-14xl);
     line-height: var(--line-height-14xl);
+    font-weight: var(--font-weight-bold);
+    font-family: var(--font-family-base);
+  }
+
+  .hero-xs {
+    font-size: var(--font-size-13xl);
+    line-height: var(--line-height-13xl);
     font-weight: var(--font-weight-bold);
     font-family: var(--font-family-base);
   }

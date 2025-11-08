@@ -93,7 +93,7 @@ export default function MobileNavbar() {
           transition-all duration-300 ease-in-out
           translate-y-0
           ${isHome && isInitialLoad ? "bg-[var(--color-background-brand)]" : "bg-[var(--color-background-primary)]"}
-          ${isHome && isInitialLoad ? "" : "shadow-lg"}
+          ${isHome && isInitialLoad ? "" : "shadow-xs"}
           z-50 block lg:hidden
         `}
       >

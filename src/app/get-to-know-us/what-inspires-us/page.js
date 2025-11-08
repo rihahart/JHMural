@@ -15,7 +15,7 @@ export default function WhatInspiresUs() {
         <div className="flex flex-col items-center py-[var(--spacing-3xl)] px-[var(--spacing-lg)] gap-[var(--spacing-4xl)] justify-center">
           <div className="flex flex-col items-start align-stretch gap-[var(--spacing-xl)]">
             <h1 className= "hero-xs text-[var(--color-content-primary)]">What inspires us</h1>
-            <p className="web-text-m-semibold text-[var(--color-content-primary)]">When longtime resident Suzanne Adler, walked past the graffiti-covered wall at 84th and Roosevelt, she didn&apos;t see blight, she saw possibility. Soon after, she met Riha Hart, a younger neighbor with deep local roots, who was dreaming of ways to bring more public art to our community. Together, they founded the Jackson Heights Mural Project.</p>
+            <p className="mobile-text-lg-semibold text-[var(--color-content-primary)]">When longtime resident Suzanne Adler, walked past the graffiti-covered wall at 84th and Roosevelt, she didn&apos;t see blight, she saw possibility. Soon after, she met Riha Hart, a younger neighbor with deep local roots, who was dreaming of ways to bring more public art to our community. Together, they founded the Jackson Heights Mural Project.</p>
           </div>
           <div className="relative w-full overflow-hidden h-[250px]">
             <Image src="/SuzanneRiha.png" alt="Suzanne Riha" fill className="object-cover object-center" />

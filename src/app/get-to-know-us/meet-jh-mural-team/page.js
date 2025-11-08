@@ -18,7 +18,7 @@ export default function MeetJHMuralTeam() {
         <div className="flex flex-col items-center py-[var(--spacing-3xl)] px-[var(--spacing-lg)] gap-[var(--spacing-4xl)] justify-center">
           <div className="flex flex-col items-start align-stretch gap-[var(--spacing-xl)]">
             <h1 className="hero-xs text-[var(--color-content-primary)]">Meet JH Mural Team</h1>
-            <p className="web-text-m-semibold text-[var(--color-content-primary)]">The Jackson Heights Mural Project is a local, community-led nonprofit built on the support of people who love Jackson Heights. Our work is made possible through the collective efforts of local artists, nonprofits, sponsors, and neighbors who share a love for our neighborhood and a belief in the power of public art.</p>
+            <p className="mobile-text-lg-semibold text-[var(--color-content-primary)]">The Jackson Heights Mural Project is a local, community-led nonprofit built on the support of people who love Jackson Heights. Our work is made possible through the collective efforts of local artists, nonprofits, sponsors, and neighbors who share a love for our neighborhood and a belief in the power of public art.</p>
               <BorderlessButton
            variant="primary"
            size="small"

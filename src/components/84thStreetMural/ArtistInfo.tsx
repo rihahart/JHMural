@@ -13,13 +13,13 @@ export default function ArtistInfo() {
     return (
       <div className="w-full">
         <div className="flex flex-col items-center gap-[var(--spacing-2xl)]">
-          <div className="w-full h-full overflow-hidden">
+          <div className="relative w-full h-[400px]">
             <Image 
               src={image} 
               alt="Noah Bassman, artist behind the Jackson Heights Mural" 
-              width={768} 
-              height={400} 
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
+              unoptimized
             />
           </div>
           <div className="w-full h-[4px] bg-[var(--color-content-primary)]"></div>
@@ -36,15 +36,15 @@ export default function ArtistInfo() {
   if (isTablet) {
     return (
       <div className="w-full">
-        <div className="flex flex-col items-center py-[var(--spacing-4xl)] px-[var(--spacing-4xl)]">
-          <div className="flex flex-col items-start align-stretch gap-[var(--spacing-2xl)]">
-            <div className="w-full h-full overflow-hidden">
+        <div className="flex flex-col items-center py-[var(--spacing-4xl)]">
+          <div className="flex flex-col items-start align-stretch gap-[var(--spacing-2xl)] w-full">
+            <div className="relative w-full flex-1 min-h-[600px]">
               <Image
                 src={image}
                 alt="Noah Bassman, artist behind the Jackson Heights Mural"
-                width={768}
-                height={400}
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
+                unoptimized
               />
             </div>
             <div className="w-full h-[4px] min-h-[4px] bg-[var(--color-content-primary)]"></div>
@@ -62,8 +62,8 @@ export default function ArtistInfo() {
   if (isDesktop1440px) {
     return (
       <div className="w-full">
-        <div className="flex items-center w-full max-w-[1400px] mx-auto gap-[var(--spacing-2xl)]">
-          <div className="w-1/2 flex flex-col overflow-hidden">
+        <div className="flex items-start w-full max-w-[1400px] mx-auto gap-[var(--spacing-2xl)]">
+          <div className="w-1/2 flex flex-col items-center py-[var(--spacing-xl)] overflow-hidden">
             <Image 
               src={image} 
               alt="Noah Bassman, artist behind the Jackson Heights Mural" 
@@ -86,8 +86,8 @@ export default function ArtistInfo() {
   // Desktop (1440px+)
   return (
     <div className="w-full">
-      <div className="flex items-center w-full max-w-[1600px] mx-auto gap-[var(--spacing-2xl)]">
-        <div className="w-1/2 flex flex-col overflow-hidden">
+      <div className="flex items-start w-full max-w-[1600px] mx-auto gap-[var(--spacing-2xl)]">
+        <div className="w-1/2 flex flex-col items-center py-[var(--spacing-xl)] overflow-hidden">
           <Image 
             src={image} 
             alt="Noah Bassman, artist behind the Jackson Heights Mural" 
@@ -97,7 +97,7 @@ export default function ArtistInfo() {
           />
         </div>
         <div className="w-[4px]  flex-shrink-0 bg-[var(--color-content-primary)]" style={{ alignSelf: 'stretch' }}></div>
-        <div className="flex flex-col items-center w-1/2 gap-[var(--spacing-2xl)] py-[var(--spacing-xl)] px-[var(--spacing-xl)]">
+        <div className="flex flex-col items-start w-1/2 gap-[var(--spacing-2xl)] py-[var(--spacing-xl)] px-[var(--spacing-xl)]">
           <h2 className="web-heading-4xl-bold text-[var(--color-content-primary)]">{title}</h2>
           <p className="web-text-2xl-regular text-[var(--color-content-primary)]">{subtitle}</p>
           <p className="web-text-2xl-black text-[var(--color-content-primary)]">&ldquo;{artistStatement}&rdquo;</p>

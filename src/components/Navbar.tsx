@@ -217,7 +217,7 @@ export default function Navbar() {
             ? "bg-[var(--color-background-brand)]"
             : "bg-[var(--color-background-primary)]"
         }
-        ${isHome && isInitialLoad && !isAnyMenuOpen ? "" : "shadow-lg"}
+        ${isHome && isInitialLoad && !isAnyMenuOpen ? "" : "shadow-xs"}
         z-50 hidden lg:block
       `}
     >
