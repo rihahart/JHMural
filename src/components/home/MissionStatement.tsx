@@ -9,9 +9,9 @@ export default function MissionStatement() {
     <div className="flex flex-col items-center justify-start  align-center gap-[var(--spacing-xl)] max-w-[1600px] mx-auto">
       <div
         className="text-[clamp(40px,calc(40px+(14*(100vw-1025px)/575)),54px)] leading-[86px] text-left"
-        style={{ fontFamily: "var(--font-family-sharp)" }}
+        style={{ fontFamily: "var(--font-family-base)", fontWeight: "var(--font-weight-bold)",  }}
       >
-        We partner with artists,{" "}
+        This is {" "}
         {/* <span className="inline-block w-[clamp(44px,calc(44px+(10*(100vw-1025px)/575)),54px)] aspect-square translate-y-[5px]">
           <Image
             src="/MissionStatementPhotos/KidsArtClass.png"
@@ -20,7 +20,7 @@ export default function MissionStatement() {
             className="object-contain"
           />
         </span> */}{" "}
-        paint murals{" "}
+        <span className="sparkle-primary">Jackson Heights</span>.{" "}
         {/* <span className="inline-block w-[clamp(44px,calc(44px+(10*(100vw-1025px)/575)),54px)] aspect-square translate-y-[5px]">
           <Image
             src="/MissionStatementPhotos/AccessForAll.png"
@@ -29,7 +29,7 @@ export default function MissionStatement() {
             className="object-contain"
           />
         </span> */}{" "}
-        & bring joy{" "}
+        The most{" "}
         {/* <span className="inline-block w-[clamp(44px,calc(44px+(10*(100vw-1025px)/575)),54px)] aspect-square translate-y-[5px]">
           <Image
             src="/MissionStatementPhotos/KidsJoyfullyDrawing.png"
@@ -38,14 +38,18 @@ export default function MissionStatement() {
             className="object-contain"
           />
         </span> */}{" "}
-        <span className="mr-[var(--spacing-m)]">to our community.</span>{" "}
+        <span className="sparkle-primary">diverse community</span>{" "}
+        on earth. Here, every{" "}
+        blank wall{" "}
+        is an opportunity to{" "}
+        <span className="sparkle-primary">change the world</span>.{" "}
         <span className="inline-block">
           <BorderlessButton
             variant="primary"
             size="large"
             href="/get-to-know-us/what-inspires-us"
             trailingIcon="/arrow-right.svg"
-            className="font-base translate-y-[-2px]"
+            className="font-base"
           >
             Get to know us
           </BorderlessButton>
