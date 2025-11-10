@@ -1343,8 +1343,8 @@
   }
 
   .logo-hero-xs {
-    font-size: var(--font-size-13xl);
-    line-height: var(--line-height-13xl);
+    font-size: var(--font-size-12xl);
+    line-height: var(--line-height-12xl);
     font-weight: var(--font-weight-regular);
     font-family: var(--font-family-sharp);
     letter-spacing: var(--letter-spacing-s);
