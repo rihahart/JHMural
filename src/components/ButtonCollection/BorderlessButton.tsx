@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 interface ButtonProps {
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "primary-inverse";
   size?: "small" | "large";
   href?: string;
   target?: string;
@@ -69,6 +69,10 @@ export default function BorderlessButton({
       bg-none
       text-[var(--color-content-brand)]
     `,
+    "primary-inverse": `
+      bg-none
+      text-[var(--color-content-primary-inverse)]
+    `,
   };
 
   // Combine all classes
@@ -96,6 +100,8 @@ export default function BorderlessButton({
             ? "brightness-0"
             : variant === "secondary"
             ? "brightness-0 saturate-100 hue-rotate-[200deg]"
+            : variant === "primary-inverse"
+            ? "brightness-0 invert"
             : ""
         }
       `}
@@ -139,8 +145,8 @@ export default function BorderlessButton({
           ${
             variant === "primary"
               ? "brightness-0"
-              : variant === "secondary"
-              ? "brightness-0 saturate-100 hue-rotate-[200deg]"
+              : variant === "primary-inverse"
+              ? "brightness-0 invert"
               : ""
           }
         `}
@@ -163,7 +169,7 @@ export default function BorderlessButton({
           {children}
           <span
             className={`absolute bottom-0 left-0 w-full h-0.5 bg-[var(--color-content-${
-              variant === "primary" ? "primary" : "brand"
+              variant === "primary" ? "primary" : variant === "primary-inverse" ? "primary-inverse" : "brand"
             })] transition-all duration-300 ease-in-out transform -translate-x-full group-hover:translate-x-0 group-active:translate-x-0`}
           ></span>
         </span>
@@ -185,7 +191,7 @@ export default function BorderlessButton({
         {children}
         <span
           className={`absolute bottom-0 left-0 w-full h-0.5 bg-[var(--color-content-${
-            variant === "primary" ? "primary" : "brand"
+            variant === "primary" ? "primary" : variant === "primary-inverse" ? "primary-inverse" : "brand"
           })] transition-all duration-300 ease-in-out transform -translate-x-full group-hover:translate-x-0 group-active:translate-x-0`}
         ></span>
       </span>
