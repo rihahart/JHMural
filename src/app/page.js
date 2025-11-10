@@ -9,6 +9,7 @@ import MissionStatementMobile from "@/components/home/MissionStatementMobile";
 import ExhibitionsSection from "@/components/exhibitions/ExhibitionsSection";
 import WelcomeToJacksonHeights from "@/components/home/WelcomeToJacksonHeights";
 import DecorativeDivider from "@/components/getToKnowUs/whatInspiresUs/DecorativeDivider";
+import VolunteerWithUs from "@/components/home/VolunteerWithUs";
 
 export default function Home() {
   const { isMobile, isTablet, isDesktop1440px } = useMobileDetection();
@@ -21,6 +22,7 @@ export default function Home() {
           <MissionStatementMobile />
           <DecorativeDivider />
           <WelcomeToJacksonHeights />
+          <VolunteerWithUs />
         <div className="flex flex-col gap-[var(--spacing-xl)] justify-center items-start w-full">
               <h1 className="hero-xs text-[var(--color-content-primary)]">
                 What&apos;s On: NYC Art Exhibitions
@@ -41,6 +43,7 @@ export default function Home() {
           <MissionStatementMobile />
           <DecorativeDivider />
           <WelcomeToJacksonHeights />
+          <VolunteerWithUs />
             <div className="flex flex-col gap-[var(--spacing-4xl)] justify-center items-center py-[var(--spacing-xl)] px-[var(--spacing-xl)] w-fit">
               <h1 className="hero-xs text-[var(--color-content-primary)]">
                 What&apos;s On: NYC Art Exhibitions
@@ -62,8 +65,9 @@ export default function Home() {
           <DecorativeDivider />
           <div className="w-full flex max-w-[1600px] mx-auto items-start justify-start gap-[var(--spacing-8xl)]">
   
-            <div className="flex-1 gap-[var(--spacing-6xl)] min-w-0">
+            <div className="flex-1 flex flex-col gap-[var(--spacing-6xl)] min-w-0">
               <WelcomeToJacksonHeights />
+              <VolunteerWithUs />
             </div>
             
             <div className="flex-1 flex flex-col gap-[var(--spacing-4xl)] justify-center items-center py-[var(--spacing-xl)] px-[var(--spacing-xl)] min-w-0">
@@ -86,8 +90,9 @@ export default function Home() {
         <DecorativeDivider />
           <div className="w-full flex max-w-[1600px] mx-auto items-start justify-start gap-[var(--spacing-8xl)]">
             {/* Left side: Empty for now */}
-            <div className="flex-1 gap-[var(--spacing-6xl)] min-w-0">
+            <div className="flex-1 flex flex-col gap-[var(--spacing-8xl)] min-w-0">
               <WelcomeToJacksonHeights />
+              <VolunteerWithUs />
             </div>
             {/* Right side: Exhibitions Section */}
             <div className="flex-1 flex flex-col gap-[var(--spacing-6xl)] justify-center items-center py-[var(--spacing-2xl)] px-[var(--spacing-2xl)] min-w-0">
