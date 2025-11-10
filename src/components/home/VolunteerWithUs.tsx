@@ -14,7 +14,7 @@ export default function VolunteerWithUs() {
     return (
       <div className="w-full flex flex-col bg-[var(--color-blue-600)]">
         <div className="flex flex-col items-start px-[var(--spacing-xl)] py-[var(--spacing-xl)] gap-[var(--spacing-lg)]">
-          <h1 className="logo-mobile-heading-4xl text-[var(--color-content-primary-inverse)]">
+          <h1 className="logo-mobile-heading-5xl text-[var(--color-content-primary-inverse)]">
             {title}
           </h1>
           <BorderlessButton
