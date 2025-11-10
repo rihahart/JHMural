@@ -1,7 +1,7 @@
 const jobDescriptionsData = [
   {
     id: 1,
-    title: "Volunteer coordinator",
+    title: "General volunteer",
     description: "We're finalizing our volunteer roles. In the meantime, sign up as a general volunteer. We're looking for volunteers with good vibes and a love for Jackson Heights!"
   },
   // Add more job descriptions here in the future
