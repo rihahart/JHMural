@@ -168,9 +168,13 @@ export default function BorderlessButton({
         <span className="relative overflow-hidden">
           {children}
           <span
-            className={`absolute bottom-0 left-0 w-full h-0.5 bg-[var(--color-content-${
-              variant === "primary" ? "primary" : variant === "primary-inverse" ? "primary-inverse" : "brand"
-            })] transition-all duration-300 ease-in-out transform -translate-x-full group-hover:translate-x-0 group-active:translate-x-0`}
+            className={`absolute bottom-0 left-0 w-full h-0.5 transition-all duration-300 ease-in-out transform -translate-x-full group-hover:translate-x-0 group-active:translate-x-0 ${
+              variant === "primary" 
+                ? "bg-[var(--color-content-primary)]" 
+                : variant === "primary-inverse" 
+                ? "bg-[var(--color-content-primary-inverse)]" 
+                : "bg-[var(--color-content-brand)]"
+            }`}
           ></span>
         </span>
         {TrailingIcon}
@@ -190,9 +194,13 @@ export default function BorderlessButton({
       <span className="relative overflow-hidden">
         {children}
         <span
-          className={`absolute bottom-0 left-0 w-full h-0.5 bg-[var(--color-content-${
-            variant === "primary" ? "primary" : variant === "primary-inverse" ? "primary-inverse" : "brand"
-          })] transition-all duration-300 ease-in-out transform -translate-x-full group-hover:translate-x-0 group-active:translate-x-0`}
+          className={`absolute bottom-0 left-0 w-full h-0.5 transition-all duration-300 ease-in-out transform -translate-x-full group-hover:translate-x-0 group-active:translate-x-0 ${
+            variant === "primary" 
+              ? "bg-[var(--color-content-primary)]" 
+              : variant === "primary-inverse" 
+              ? "bg-[var(--color-content-primary-inverse)]" 
+              : "bg-[var(--color-content-brand)]"
+          }`}
         ></span>
       </span>
       {TrailingIcon}
