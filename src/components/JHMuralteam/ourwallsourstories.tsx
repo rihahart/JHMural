@@ -25,15 +25,17 @@ export default function OurWallsOurStories() {
               className="w-full h-full object-cover"
             />
           </div>
-          <p className=" mobile-text-2xl-semibold text-[var(--color-yellow-300)]"> We’re growing our team! Join us in bringing color and creativity to Jackson Heights!
+          <p className=" mobile-text-2xl-semibold text-[var(--color-yellow-300)]">Join us in bringing color and creativity to Jackson Heights!
       </p>
       <Button
         variant="secondary"
         size="small"
-        href="/get-involved/volunteer-with-us"
+        href="https://www.instagram.com/jhmuralproject"
+        target="_blank"
+        rel="noopener noreferrer"
         trailingIcon="/arrow-right.svg"
         className="font-base translate-y-[-2px]">
-        Volunteer with us
+        Connect with us
       </Button>
       </div>
       </div>
@@ -60,15 +62,17 @@ export default function OurWallsOurStories() {
               />
             </div>
         <div className="flex flex-col items-start align-stretch gap-[var(--spacing-xl)]">
-        <p className=" web-text-xl-semibold text-[var(--color-yellow-300)]"> We’re growing our team! Join us in bringing color and creativity to Jackson Heights!
+        <p className=" web-text-xl-semibold text-[var(--color-yellow-300)]">Join us in bringing color and creativity to Jackson Heights!
         </p>
         <Button
           variant="secondary"
           size="small"
-          href="/get-involved/volunteer-with-us"
+          href="https://www.instagram.com/jhmuralproject"
+          target="_blank"
+          rel="noopener noreferrer"
           trailingIcon="/arrow-right.svg"
           className="font-base translate-y-[-2px]">
-          Volunteer with us
+          Connect with us
         </Button>
 
         </div>
@@ -102,15 +106,17 @@ export default function OurWallsOurStories() {
         </div>
         <div className="flex flex-col align-stretch items-start gap-[var(--spacing-2xl)]">
         <p className=" web-text-2xl-semibold text-[var(--color-yellow-300)]">
-        We’re growing our team! Join us in bringing color and creativity to Jackson Heights!
+        Join us in bringing color and creativity to Jackson Heights!
         </p>
         <Button
           variant="secondary"
           size="small"
-          href="/get-involved/volunteer-with-us"
+          href="https://www.instagram.com/jhmuralproject"
+          target="_blank"
+          rel="noopener noreferrer"
           trailingIcon="/arrow-right.svg"
           className="font-base translate-y-[-2px]">
-          Volunteer with us
+          Connect with us
         </Button>
         </div>
       </div>
@@ -144,15 +150,17 @@ export default function OurWallsOurStories() {
         </div>
         <div className="flex flex-col items-start gap-[var(--spacing-2xl)]">
         <p className="web-text-3xl-semibold text-[var(--color-yellow-300)]">
-        We’re growing our team! Join us in bringing color and creativity to Jackson Heights!
+        Join us in bringing color and creativity to Jackson Heights!
         </p>
         <Button
           variant="secondary"
           size="small"
-          href="/get-involved/volunteer-with-us"
+          href="https://www.instagram.com/jhmuralproject"
+          target="_blank"
+          rel="noopener noreferrer"
           trailingIcon="/arrow-right.svg"
           className="font-base translate-y-[-2px]">
-          Volunteer with us
+          Connect with us
         </Button>
         </div>
       </div>

@@ -36,8 +36,8 @@ module.exports = {
       animation: {
         'menu-in': 'menu-in 400ms cubic-bezier(.22,.61,.36,1) forwards',
         'menu-out': 'menu-out 160ms cubic-bezier(.4,0,.2,1) forwards',
-        'down-in': 'down-in 220ms cubic-bezier(.22,.61,.36,1) forwards',
-        'down-out': 'down-out 300ms cubic-bezier(.4,0,.2,1) forwards',
+        'down-in': 'down-in 600ms cubic-bezier(0.4, 0, 0.2, 1) forwards',
+        'down-out': 'down-out 600ms cubic-bezier(0.4, 0, 0.2, 1) forwards',
         'slide-in-right': 'slide-in-right 600ms cubic-bezier(.22,.61,.36,1) forwards',
         'slide-out-right': 'slide-out-right 600ms cubic-bezier(.4,0,.2,1) forwards',
       },

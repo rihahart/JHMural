@@ -61,7 +61,7 @@ const MobileMenu = forwardRef<HTMLDivElement, MobileMenuProps>(
                   className="font-normal"
                   isActive={pathname === "/projects/84th-street-mural"}
                 >
-                  84th St Mural
+                  84th st mural
                 </NavButton>
               </div>
             </div>
@@ -95,7 +95,7 @@ const MobileMenu = forwardRef<HTMLDivElement, MobileMenuProps>(
                   className="font-normal"
                   isActive={pathname === "/get-to-know-us/meet-jh-mural-team"}
                 >
-                  Meet JH Mural Team
+                  Meet JH mural team
                 </NavButton>
               </div>
             </div>
@@ -110,7 +110,7 @@ const MobileMenu = forwardRef<HTMLDivElement, MobileMenuProps>(
                 isActive={pathname === "/get-involved"}
                 className="w-full"
               >
-                Get Involved
+                Get involved
               </NavButton>
             </div>
           </div>

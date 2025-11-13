@@ -51,14 +51,14 @@ export default function Navbar() {
   }, []);
 
   const navItems: Array<{
-    name: "Projects" | "Get to know us" | "Get Involved";
+    name: "Projects" | "Get to know us" | "Get involved";
     hasDropdown?: boolean;
     submenu: { name: string; href: string }[];
   }> = [
     {
       name: "Projects",
       hasDropdown: true,
-      submenu: [{ name: "84th St Mural", href: "/projects/84th-street-mural" }],
+      submenu: [{ name: "84th st mural", href: "/projects/84th-street-mural" }],
     },
     {
       name: "Get to know us",
@@ -66,16 +66,16 @@ export default function Navbar() {
       submenu: [
         { name: "What inspires us", href: "/get-to-know-us/what-inspires-us" },
         {
-          name: "Meet JH Mural Team",
+          name: "Meet JH mural team",
           href: "/get-to-know-us/meet-jh-mural-team",
         },
       ],
     },
 
    {
-    name: "Get Involved",
+    name: "Get involved",
     hasDropdown: false,
-    submenu: [{ name: "Get Involved", href: "/get-involved" }
+    submenu: [{ name: "Get involved", href: "/get-involved" }
     ],
    }
   ];
@@ -172,18 +172,18 @@ export default function Navbar() {
     }, HOVER_CLOSE_DELAY);
   };
 
-  const openMenu = (name: "Projects" | "Get to know us" | "Get Involved") => {
+  const openMenu = (name: "Projects" | "Get to know us" | "Get involved") => {
     setIsProjectsDropdownOpen(name === "Projects");
-    setIsGetInvolvedDropdownOpen(name === "Get Involved");
+    setIsGetInvolvedDropdownOpen(name === "Get involved");
     setIsAboutDropdownOpen(name === "Get to know us");
   };
 
-  const toggleMenu = (name: "Projects" | "Get to know us" | "Get Involved") => {
+  const toggleMenu = (name: "Projects" | "Get to know us" | "Get involved") => {
     if (name === "Projects") {
       setIsProjectsDropdownOpen((v) => !v);
       setIsGetInvolvedDropdownOpen(false);
       setIsAboutDropdownOpen(false);
-    } else if (name === "Get Involved") {
+    } else if (name === "Get involved") {
       setIsGetInvolvedDropdownOpen((v) => !v);
       setIsProjectsDropdownOpen(false);
       setIsAboutDropdownOpen(false);
@@ -261,7 +261,7 @@ export default function Navbar() {
               // Render as direct link if hasDropdown is false
               if (item.hasDropdown === false && item.submenu && item.submenu.length > 0) {
                 const href = item.submenu[0].href;
-                const isHovered = item.name === "Get Involved" && isGetInvolvedHovered;
+                const isHovered = item.name === "Get involved" && isGetInvolvedHovered;
                 return (
                   <div key={item.name} className="relative">
                     <NavButton
@@ -273,12 +273,12 @@ export default function Navbar() {
                         router.push(href);
                       }}
                       onMouseEnter={() => {
-                        if (item.name === "Get Involved") {
+                        if (item.name === "Get involved") {
                           setIsGetInvolvedHovered(true);
                         }
                       }}
                       onMouseLeave={() => {
-                        if (item.name === "Get Involved") {
+                        if (item.name === "Get involved") {
                           setIsGetInvolvedHovered(false);
                         }
                       }}

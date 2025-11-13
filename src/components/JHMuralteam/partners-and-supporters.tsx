@@ -59,15 +59,15 @@ export default function PartnersAndSupporters() {
           </div>
             <div className="flex flex-col items-start gap-[var(--spacing-2xl)]">
               <p className="mobile-text-lg-medium text-[var(--color-content-primary)]">
-                We are grateful to the community partners, sponsors, and supporters who make our work possible. Their generosity helps us bring color and connection to Jackson Heights. We&apos;re always looking to partner with local businesses, community programs, and organizations that care about Jackson Heights. Your support helps us create public art that uplifts our neighborhood.
+                We are grateful to the community partners, sponsors, and supporters who make our work possible. Their generosity helps us bring color and connection to Jackson Heights. We&apos;re always looking to partner with local businesses, community programs, and organizations that care about Jackson Heights. Your support helps us create public art that uplifts our neighborhood. If you are interested in sponsoring a wall, please reach out our team.
               </p>
               <BorderlessButton
                 variant="primary"
                 size="small"
-                href="/get-involved/partner-with-us"
+                href="mailto:jhmuralproject@gmail.com?subject=Interested%20in%20Sponsoring%20a%20Wall"
                 trailingIcon="/arrow-right.svg"
                 className="font-base translate-y-[-2px]">
-                Sponsor a wall
+                Email us
               </BorderlessButton>
             </div>
         </div>
@@ -94,15 +94,15 @@ export default function PartnersAndSupporters() {
 
         <div className="flex flex-col items-start gap-[var(--spacing-xl)]">
           <p className="web-text-lg-regular text-[var(--color-content-primary)]">
-            We are grateful to the community partners, sponsors, and supporters who make our work possible. Their generosity helps us bring color and connection to Jackson Heights. We&apos;re always looking to partner with local businesses, community programs, and organizations that care about Jackson Heights. Your support helps us create public art that uplifts our neighborhood.
+            We are grateful to the community partners, sponsors, and supporters who make our work possible. Their generosity helps us bring color and connection to Jackson Heights. We&apos;re always looking to partner with local businesses, community programs, and organizations that care about Jackson Heights. Your support helps us create public art that uplifts our neighborhood. If you are interested in sponsoring a wall, please reach out our team.
           </p>
           <BorderlessButton
             variant="primary"
             size="large"
-            href="/get-involved/partner-with-us"
+            href="mailto:jhmuralproject@gmail.com?subject=Interested%20in%20Sponsoring%20a%20Wall"
             trailingIcon="/arrow-right.svg"
             className="font-black text-3xl">
-            Sponsor a wall
+            Email us
           </BorderlessButton>
         </div>
       </div>
@@ -129,15 +129,15 @@ export default function PartnersAndSupporters() {
           <div className="w-[35%] flex flex-col items-start align-stretch  px-[var(--spacing-lg)] gap-[var(--spacing-2xl)]">
            
             <p className="web-text-lg-regular text-[var(--color-content-primary)]">
-              We are grateful to the community partners, sponsors, and supporters who make our work possible. Their generosity helps us bring color and connection to Jackson Heights. We&apos;re always looking to partner with local businesses, community programs, and organizations that care about Jackson Heights. Your support helps us create public art that uplifts our neighborhood.
+              We are grateful to the community partners, sponsors, and supporters who make our work possible. Their generosity helps us bring color and connection to Jackson Heights. We&apos;re always looking to partner with local businesses, community programs, and organizations that care about Jackson Heights. Your support helps us create public art that uplifts our neighborhood. If you are interested in sponsoring a wall, please reach out our team.
             </p>
             <BorderlessButton
               variant="primary"
               size="large"
-              href="/get-involved/partner-with-us"
+              href="mailto:jhmuralproject@gmail.com?subject=Interested%20in%20Sponsoring%20a%20Wall"
               trailingIcon="/arrow-right.svg"
               className="font-base translate-y-[-2px]">
-              Sponsor a wall
+              Email us
             </BorderlessButton>
           </div>
         </div>
@@ -166,15 +166,15 @@ export default function PartnersAndSupporters() {
         <div className="w-[35%] flex flex-col items-start align-stretch px-[var(--spacing-lg)] gap-[var(--spacing-2xl)]">
           
           <p className="web-text-lg-regular text-[var(--color-content-primary)]">
-            We are grateful to the community partners, sponsors, and supporters who make our work possible. Their generosity helps us bring color and connection to Jackson Heights. We&apos;re always looking to partner with local businesses, community programs, and organizations that care about Jackson Heights. Your support helps us create public art that uplifts our neighborhood.
+            We are grateful to the community partners, sponsors, and supporters who make our work possible. Their generosity helps us bring color and connection to Jackson Heights. We&apos;re always looking to partner with local businesses, community programs, and organizations that care about Jackson Heights. Your support helps us create public art that uplifts our neighborhood. If you are interested in sponsoring a wall, please reach out our team.
           </p>
           <BorderlessButton
             variant="primary"
             size="large"
-            href="/get-involved/partner-with-us"
+            href="mailto:jhmuralproject@gmail.com?subject=Interested%20in%20Sponsoring%20a%20Wall"
             trailingIcon="/arrow-right.svg"
             className="font-base translate-y-[-2px]">
-            Sponsor a wall
+            Email us
           </BorderlessButton>
         </div>
       </div>

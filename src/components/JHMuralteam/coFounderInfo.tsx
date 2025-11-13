@@ -113,7 +113,7 @@ export default function CoFounderInfo() {
       <h2 className="web-heading-5xl-bold text-[var(--color-content-primary)]">
         Behind the scenes team
       </h2>  
-      <div className="flex items-start gap-[var(--spacing-6xl)] w-full h-[650px]">
+      <div className="flex items-start gap-[var(--spacing-6xl)] w-full">
         <>
           {coFounderData.map((founder, index) => (
             <React.Fragment key={founder.id}>
@@ -158,7 +158,7 @@ export default function CoFounderInfo() {
                 </div>
               </div>
               {index < coFounderData.length - 1 && (
-                <div className="border-l-4 border-[var(--color-content-primary)] h-[650px]" />
+                <div className="border-l-4 border-[var(--color-content-primary)] self-stretch" />
               )}
             </React.Fragment>
           ))}
@@ -174,7 +174,7 @@ export default function CoFounderInfo() {
       <h2 className="hero-xs text-[var(--color-content-primary)]">
         Behind the scenes team
       </h2>  
-      <div className="flex items-start gap-[var(--spacing-6xl)] w-full h-[700px]">
+      <div className="flex items-start gap-[var(--spacing-6xl)] w-full">
         <>
           {coFounderData.map((founder, index) => (
             <React.Fragment key={founder.id}>
@@ -219,7 +219,7 @@ export default function CoFounderInfo() {
                 </div>
               </div>
               {index < coFounderData.length - 1 && (
-                <div className="border-l-4 border-[var(--color-content-primary)] h-[650px]" />
+                <div className="border-l-4 border-[var(--color-content-primary)] self-stretch" />
               )}
             </React.Fragment>
           ))}

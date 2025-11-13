@@ -44,7 +44,7 @@ export default function Footer() {
                 trailingIcon={<FaInstagram className="w-6 h-6" />}
                 className="w-full"
               >
-                Follow us on instagram
+                Follow us on Instagram
               </NavButton>
               <div className="border-t border-[var(--color-border-primary)] my-0"></div>
               <NavButton
@@ -55,7 +55,7 @@ export default function Footer() {
                 trailingIcon={<FaFacebook className="w-6 h-6" />}
                 className="w-full"
               >
-                Follow us on facebook
+                Follow us on Facebook
               </NavButton>
               <div className="border-t border-[var(--color-border-primary)] "></div>
               <NavButton
@@ -110,7 +110,7 @@ export default function Footer() {
                 trailingIcon={<FaInstagram className="w-6 h-6" />}
                 className="w-full"
               >
-                Follow us on instagram
+                Follow us on Instagram
               </NavButton>
               <div className="border-t border-[var(--color-border-primary)] my-0"></div>
               <NavButton
@@ -121,7 +121,7 @@ export default function Footer() {
                 trailingIcon={<FaFacebook className="w-6 h-6" />}
                 className="w-full"
               >
-                Follow us on facebook
+                Follow us on Facebook
               </NavButton>
               <div className="border-t border-[var(--color-border-primary)] "></div>
               <NavButton
@@ -181,7 +181,7 @@ export default function Footer() {
                   trailingIcon={<FaInstagram className="w-6 h-6" />}
                   className="w-full"
                 >
-                  Follow us on instagram
+                  Follow us on Instagram
                 </NavButton>
                 <div className="border-t border-[var(--color-border-primary)] my-0"></div>
                 <NavButton
@@ -192,7 +192,7 @@ export default function Footer() {
                   trailingIcon={<FaFacebook className="w-6 h-6" />}
                   className="w-full"
                 >
-                  Follow us on facebook
+                  Follow us on Facebook
                 </NavButton>
                 <div className="border-t border-[var(--color-border-primary)] "></div>
                 <NavButton
@@ -252,7 +252,7 @@ export default function Footer() {
                 trailingIcon={<FaInstagram className="w-6 h-6" />}
                 className="w-full"
               >
-                Follow us on instagram
+                Follow us on Instagram
               </NavButton>
               <div className="border-t border-[var(--color-border-primary)] my-0"></div>
               <NavButton
@@ -263,7 +263,7 @@ export default function Footer() {
                 trailingIcon={<FaFacebook className="w-6 h-6" />}
                 className="w-full"
               >
-                Follow us on facebook
+                Follow us on Facebook
               </NavButton>
               <div className="border-t border-[var(--color-border-primary)] "></div>
               <NavButton
