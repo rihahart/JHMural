@@ -2,7 +2,7 @@
 
 import React from "react";
 import useMobileDetection from "@/app/_utilities/useMobileDetection";
-import CoFounderInfo from "@/components/JHMuralteam/coFounderInfo";
+import EmployeeInfo from "@/components/JHMuralteam/employeeInfo";
 import DecorativeDivider from "@/components/getToKnowUs/whatInspiresUs/DecorativeDivider";
 import BorderlessButton from "@/components/ButtonCollection/BorderlessButton";
 import OurWallsOurStories from "@/components/JHMuralteam/ourwallsourstories";
@@ -32,7 +32,7 @@ export default function MeetJHMuralTeam() {
           <DecorativeDivider />
           <PartnersAndSupporters />
           <DecorativeDivider />
-          <CoFounderInfo />
+          <EmployeeInfo />
         </div>
       </div>
     );
@@ -58,7 +58,7 @@ export default function MeetJHMuralTeam() {
           <DecorativeDivider />
           <PartnersAndSupporters />
           <DecorativeDivider />
-          <CoFounderInfo />
+          <EmployeeInfo />
         </div>
       </div>
     );
@@ -84,7 +84,7 @@ export default function MeetJHMuralTeam() {
           <DecorativeDivider />
           <PartnersAndSupporters />
           <DecorativeDivider />
-          <CoFounderInfo />
+          <EmployeeInfo />
         </div>
       </div>
     );
@@ -109,7 +109,7 @@ export default function MeetJHMuralTeam() {
         <DecorativeDivider />
         <PartnersAndSupporters />
         <DecorativeDivider />
-        <CoFounderInfo />
+        <EmployeeInfo />
       </div>
     </div>
   );

@@ -81,7 +81,7 @@ export default function Navbar() {
   ];
 
   const sectionIsActive = (item: { submenu?: { href: string }[]; hasDropdown?: boolean }) => {
-    if (!pathname || typeof window === "undefined") return false;
+    if (!pathname) return false;
     // For items without dropdown, check if pathname exactly matches the submenu href
     if (item.hasDropdown === false && item.submenu && item.submenu.length > 0) {
       const href = item.submenu[0].href;
