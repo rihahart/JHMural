@@ -5,7 +5,7 @@ import Image from "next/image";
 import NavButton from "./ButtonCollection/NavButton";
 import Button from "./ButtonCollection/Button";
 import useMobileDetection from "@/app/_utilities/useMobileDetection";
-import { FaInstagram, FaFacebook } from "react-icons/fa";
+import { FaInstagram, FaFacebook, FaEnvelope } from "react-icons/fa";
 
 export default function Footer() {
   const { isMobile, isTablet, isDesktop1440px } = useMobileDetection();
@@ -36,6 +36,15 @@ export default function Footer() {
               />
             </div>
             <div className="flex flex-col border-t-[4px] border-[var(--color-content-secondary)] w-full">
+              <NavButton
+                variant="secondary"
+                href="/newsletter"
+                trailingIcon={<FaEnvelope className="w-6 h-6" />}
+                className="w-full"
+              >
+                Join our newsletter
+              </NavButton>
+              <div className="border-t border-[var(--color-border-primary)] my-0"></div>
               <NavButton
                 variant="secondary"
                 href="https://www.instagram.com/jhmuralproject"
@@ -102,6 +111,15 @@ export default function Footer() {
             </div>
 
             <div className="flex flex-col border-t-[4px] border-[var(--color-content-secondary)] w-full">
+              <NavButton
+                variant="secondary"
+                href="/newsletter"
+                trailingIcon={<FaEnvelope className="w-6 h-6" />}
+                className="w-full"
+              >
+                Join our newsletter
+              </NavButton>
+              <div className="border-t border-[var(--color-border-primary)] my-0"></div>
               <NavButton
                 variant="secondary"
                 href="https://www.instagram.com/jhmuralproject"
@@ -175,6 +193,15 @@ export default function Footer() {
               <div className="flex flex-col border-t-[4px] border-[var(--color-content-secondary)] w-full">
                 <NavButton
                   variant="secondary"
+                  href="/newsletter"
+                  trailingIcon={<FaEnvelope className="w-6 h-6" />}
+                  className="w-full"
+                >
+                  Join our newsletter
+                </NavButton>
+                <div className="border-t border-[var(--color-border-primary)] my-0"></div>
+                <NavButton
+                  variant="secondary"
                   href="https://www.instagram.com/jhmuralproject"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -244,6 +271,15 @@ export default function Footer() {
 
             {/* Social Links with NavButton secondary */}
             <div className="flex flex-col border-t-[4px] border-[var(--color-content-secondary)] w-full">
+              <NavButton
+                variant="secondary"
+                href="/newsletter"
+                trailingIcon={<FaEnvelope className="w-6 h-6" />}
+                className="w-full"
+              >
+                Join our newsletter
+              </NavButton>
+              <div className="border-t border-[var(--color-border-primary)] my-0"></div>
               <NavButton
                 variant="secondary"
                 href="https://www.instagram.com/jhmuralproject"

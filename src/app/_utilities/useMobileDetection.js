@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import useWindowWidth from "./useWindowWidth";
 
-export default function useMobileDetection() {
+function useMobileDetection() {
   const windowWidth = useWindowWidth();
   const [screenSize, setScreenSize] = useState('mobile');
 
@@ -27,3 +27,5 @@ export default function useMobileDetection() {
     screenSize
   };
 }
+
+export default useMobileDetection;
