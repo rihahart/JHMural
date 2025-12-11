@@ -296,10 +296,10 @@ export default function Newsletter() {
                     disabled={isSubmitting}
                     variant="primary-inverse"
                     size="small"
-                    trailingIcon="/arrow-right.svg"
+                    trailingIcon={isSubmitting ? <Image src="/flower.svg" alt="loading" width={24} height={24} className="animate-spin" style={{ animationDuration: '2s' }} /> : "/arrow-right.svg"}
                     className="w-full mt-[var(--spacing-lg)] disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    {isSubmitting ? 'Subscribing...' : 'Subscribe'}
+                    Subscribe
                   </Button>
                 </form>
                 <div className="w-full">
@@ -345,10 +345,10 @@ export default function Newsletter() {
                       disabled={isSubmitting}
                       variant="primary-inverse"
                       size="small"
-                      trailingIcon="/arrow-right.svg"
+                      trailingIcon={isSubmitting ? <Image src="/flower.svg" alt="loading" width={24} height={24} className="animate-spin" style={{ animationDuration: '2s' }} /> : "/arrow-right.svg"}
                       className="w-full mt-[var(--spacing-lg)] disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      {isSubmitting ? 'Subscribing...' : 'Subscribe'}
+                      Subscribe
                     </Button>
                   </form>
                 </div>
@@ -390,15 +390,15 @@ export default function Newsletter() {
                 <div className="flex-1">
                   <form onSubmit={handleSubmit} className="flex flex-col gap-[var(--spacing-xl)]">
                     {renderFormFields()}
-                    <Button
+                      <Button
                       type="submit"
                       disabled={isSubmitting}
                       variant="primary-inverse"
                       size="small"
-                      trailingIcon="/arrow-right.svg"
+                      trailingIcon={isSubmitting ? <Image src="/flower.svg" alt="loading" width={24} height={24} className="animate-spin" style={{ animationDuration: '2s' }} /> : "/arrow-right.svg"}
                       className="w-fit mt-[var(--spacing-lg)] disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      {isSubmitting ? 'Subscribing...' : 'Subscribe'}
+                      Subscribe
                     </Button>
                   </form>
                 </div>
@@ -439,16 +439,16 @@ export default function Newsletter() {
               <div className="flex-1">
                 <form onSubmit={handleSubmit} className="flex flex-col gap-[var(--spacing-xl)]">
                   {renderFormFields()}
-                  <Button
-                    type="submit"
-                    disabled={isSubmitting}
-                    variant="primary-inverse"
-                    size="small"
-                    trailingIcon="/arrow-right.svg"
-                    className="w-fit mt-[var(--spacing-lg)] disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    {isSubmitting ? 'Subscribing...' : 'Subscribe'}
-                  </Button>
+                      <Button
+                      type="submit"
+                      disabled={isSubmitting}
+                      variant="primary-inverse"
+                      size="small"
+                      trailingIcon={isSubmitting ? <Image src="/flower.svg" alt="loading" width={24} height={24} className="animate-spin" style={{ animationDuration: '2s' }} /> : "/arrow-right.svg"}
+                      className="w-fit mt-[var(--spacing-lg)] disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      Subscribe
+                    </Button>
                 </form>
               </div>
               <div className="flex-1">

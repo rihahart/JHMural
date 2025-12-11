@@ -11,7 +11,7 @@ interface ButtonProps {
   disabled?: boolean;
   className?: string;
   leadingIcon?: string;
-  trailingIcon?: string;
+  trailingIcon?: string | React.ReactNode;
   showLeadingIcon?: boolean;
   showTrailingIcon?: boolean;
   children: React.ReactNode;
@@ -71,14 +71,12 @@ export default function Button({
       text-white
       hover:bg-[var(--color-background-brand-hover)]
       ${size === 'large' ? 'hover:shadow-[0_8px_25px_rgba(25,120,216,0.3)]' : 'hover:shadow-[0_4px_15px_rgba(25,120,216,0.2)]'}
-      active:bg-[var(--color-background-brand-pressed)]
     `,
     'primary-inverse': `
       bg-[var(--color-background-inverse)]
       text-[var(--color-content-primary-inverse)]
       hover:bg-[var(--color-background-inverse-hover)]
       ${size === 'large' ? 'hover:shadow-[0_8px_25px_rgba(0,0,0,0.15)]' : 'hover:shadow-[0_4px_15px_rgba(0,0,0,0.1)]'}
-      active:bg-[var(--color-background-inverse-pressed)]
     `,
     secondary: `
       bg-[var(--color-background-primary)]
@@ -122,42 +120,48 @@ export default function Button({
   );
 
   const TrailingIcon = trailingIcon && showTrailingIcon && (
-    variant === 'secondary' ? (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth="1.5"
-        stroke="currentColor"
-        className={`
-          ${size === 'small' ? 'w-4 h-4' : 'w-6 h-6'}
-          ml-[var(--spacing-xs)]
-            translate-y-[1px]
-          transition-all duration-200 ease-in-out
-          group-hover:scale-110
-        `}
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
+    typeof trailingIcon === 'string' ? (
+      variant === 'secondary' ? (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth="1.5"
+          stroke="currentColor"
+          className={`
+            ${size === 'small' ? 'w-4 h-4' : 'w-6 h-6'}
+            ml-[var(--spacing-xs)]
+              translate-y-[1px]
+            transition-all duration-200 ease-in-out
+            group-hover:scale-110
+          `}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
+          />
+        </svg>
+      ) : (
+        <Image
+          src={trailingIcon}
+          alt=""
+          width={24}
+          height={24}
+          className={`
+            ${size === 'small' ? 'w-4 h-4' : 'w-4 h-4'}
+            ml-[var(--spacing-xs)]
+              translate-y-[.5px]
+            transition-all duration-200 ease-in-out
+            ${variant === 'primary' || variant === 'primary-inverse' ? 'brightness-0 invert group-hover:scale-110' : 'group-hover:scale-110'}
+            ${trailingIcon === '/flower.svg' || leadingIcon === '/flower.svg' ? 'group-hover:scale-110' : ''}
+          `}
         />
-      </svg>
+      )
     ) : (
-      <Image
-        src={trailingIcon}
-        alt=""
-        width={24}
-        height={24}
-        className={`
-          ${size === 'small' ? 'w-4 h-4' : 'w-4 h-4'}
-          ml-[var(--spacing-xs)]
-            translate-y-[.5px]
-          transition-all duration-200 ease-in-out
-          ${variant === 'primary' || variant === 'primary-inverse' ? 'brightness-0 invert group-hover:scale-110' : 'group-hover:scale-110'}
-          ${trailingIcon === '/flower.svg' || leadingIcon === '/flower.svg' ? 'group-hover:scale-110' : ''}
-        `}
-      />
+      <span className="ml-[var(--spacing-xs)] translate-y-[.5px]">
+        {trailingIcon}
+      </span>
     )
   );
 
