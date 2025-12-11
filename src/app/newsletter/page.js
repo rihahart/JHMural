@@ -276,8 +276,8 @@ export default function Newsletter() {
   // Mobile
   if (isMobile) {
     return (
-      <div className="w-full min-h-screen bg-[var(--color-background-primary)]">
-        <div className="flex flex-col px-[var(--spacing-lg)] py-[var(--spacing-3xl)] gap-[var(--spacing-2xl)]">
+      <div className="w-full min-h-screen bg-[var(--color-background-primary)] flex items-center justify-center">
+        <div className="flex flex-col px-[var(--spacing-lg)] py-[var(--spacing-3xl)] gap-[var(--spacing-2xl)] w-full">
           {!isSubscribed ? (
             <>
               <div className="flex flex-col gap-[var(--spacing-xl)]">
