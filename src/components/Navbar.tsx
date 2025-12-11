@@ -36,6 +36,7 @@ export default function Navbar() {
     useState(false);
   const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
   const [isGetInvolvedHovered, setIsGetInvolvedHovered] = useState(false);
+  const [isNewsletterHovered, setIsNewsletterHovered] = useState(false);
 
   const lastYRef = useRef(0);
   const desktopNavRef = useRef<HTMLDivElement | null>(null);
@@ -51,7 +52,7 @@ export default function Navbar() {
   }, []);
 
   const navItems: Array<{
-    name: "Projects" | "Get to know us" | "Get involved";
+    name: "Projects" | "Get to know us" | "Get involved" | "Join our newsletter";
     hasDropdown?: boolean;
     submenu: { name: string; href: string }[];
   }> = [
@@ -76,6 +77,12 @@ export default function Navbar() {
     name: "Get involved",
     hasDropdown: false,
     submenu: [{ name: "Get involved", href: "/get-involved" }
+    ],
+   },
+   {
+    name: "Join our newsletter",
+    hasDropdown: false,
+    submenu: [{ name: "Join our newsletter", href: "/newsletter" }
     ],
    }
   ];
@@ -172,13 +179,13 @@ export default function Navbar() {
     }, HOVER_CLOSE_DELAY);
   };
 
-  const openMenu = (name: "Projects" | "Get to know us" | "Get involved") => {
+  const openMenu = (name: "Projects" | "Get to know us" | "Get involved" | "Join our newsletter") => {
     setIsProjectsDropdownOpen(name === "Projects");
     setIsGetInvolvedDropdownOpen(name === "Get involved");
     setIsAboutDropdownOpen(name === "Get to know us");
   };
 
-  const toggleMenu = (name: "Projects" | "Get to know us" | "Get involved") => {
+  const toggleMenu = (name: "Projects" | "Get to know us" | "Get involved" | "Join our newsletter") => {
     if (name === "Projects") {
       setIsProjectsDropdownOpen((v) => !v);
       setIsGetInvolvedDropdownOpen(false);
@@ -261,7 +268,8 @@ export default function Navbar() {
               // Render as direct link if hasDropdown is false
               if (item.hasDropdown === false && item.submenu && item.submenu.length > 0) {
                 const href = item.submenu[0].href;
-                const isHovered = item.name === "Get involved" && isGetInvolvedHovered;
+                const isHovered = (item.name === "Get involved" && isGetInvolvedHovered) || 
+                                  (item.name === "Join our newsletter" && isNewsletterHovered);
                 return (
                   <div key={item.name} className="relative">
                     <NavButton
@@ -275,11 +283,15 @@ export default function Navbar() {
                       onMouseEnter={() => {
                         if (item.name === "Get involved") {
                           setIsGetInvolvedHovered(true);
+                        } else if (item.name === "Join our newsletter") {
+                          setIsNewsletterHovered(true);
                         }
                       }}
                       onMouseLeave={() => {
                         if (item.name === "Get involved") {
                           setIsGetInvolvedHovered(false);
+                        } else if (item.name === "Join our newsletter") {
+                          setIsNewsletterHovered(false);
                         }
                       }}
                       onKeyDown={(e) => {
