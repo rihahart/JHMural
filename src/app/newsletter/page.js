@@ -30,6 +30,13 @@ export default function Newsletter() {
     }));
   };
 
+  const handleFocus = (fieldName) => {
+    setErrors(prev => ({
+      ...prev,
+      [fieldName]: ''
+    }));
+  };
+
   const validateForm = () => {
     const newErrors = {
       firstName: '',
@@ -106,6 +113,7 @@ export default function Newsletter() {
           name="firstName"
           value={formData.firstName}
           onChange={handleChange}
+          onFocus={() => handleFocus('firstName')}
           className="w-full px-4 py-3 border-b border-[var(--color-border-primary)] bg-[var(--color-background-hover)] focus:bg-[var(--color-background-notice-subtle)] focus:outline-none rounded-none border-0"
         />
         {errors.firstName && (
@@ -123,6 +131,7 @@ export default function Newsletter() {
           name="lastName"
           value={formData.lastName}
           onChange={handleChange}
+          onFocus={() => handleFocus('lastName')}
           className="w-full px-4 py-3 border-b border-[var(--color-border-primary)] bg-[var(--color-background-hover)] focus:bg-[var(--color-background-notice-subtle)] focus:outline-none rounded-none border-0"
         />
         {errors.lastName && (
@@ -140,6 +149,7 @@ export default function Newsletter() {
           name="email"
           value={formData.email}
           onChange={handleChange}
+          onFocus={() => handleFocus('email')}
           className="w-full px-4 py-3 border-b border-[var(--color-border-primary)] bg-[var(--color-background-hover)] focus:bg-[var(--color-background-notice-subtle)] focus:outline-none rounded-none border-0"
         />
         {errors.email && (
@@ -158,7 +168,7 @@ export default function Newsletter() {
   const renderThankYou = () => (
     <div className="text-center py-[var(--spacing-6xl)]">
       <p className="text-2xl md:text-3xl font-semibold mb-[var(--spacing-4xl)] text-[var(--color-content-primary)]">
-        Thank you for signing up for updates from JH Mural Project!
+        Welcome to the JH Mural Project family!
       </p>
       <Button
         href="https://donate.stripe.com/eVqaEY2iV7kk8KI0273ks00"
