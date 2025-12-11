@@ -4,6 +4,7 @@ import React, { forwardRef } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import NavButton from "./ButtonCollection/NavButton";
+import Button from "./ButtonCollection/Button";
 import ExitButton from "./ExitButton";
 
 
@@ -126,6 +127,21 @@ const MobileMenu = forwardRef<HTMLDivElement, MobileMenuProps>(
               >
                 Join our newsletter
               </NavButton>
+            </div>
+
+            {/* Donate Button */}
+            <div className="w-full pt-[var(--spacing-m)]">
+              <Button
+                href="https://donate.stripe.com/eVqaEY2iV7kk8KI0273ks00"
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="primary"
+                size="small"
+                trailingIcon="/flower.svg"
+                className="w-full py-[var(--spacing-xl)] px-[var(--spacing-xl)] text-xl flex items-center justify-center !rounded-none"
+              >
+                Donate
+              </Button>
             </div>
           </div>
       </div>
