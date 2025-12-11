@@ -138,7 +138,7 @@ const MobileMenu = forwardRef<HTMLDivElement, MobileMenuProps>(
                 variant="primary"
                 size="small"
                 trailingIcon="/flower.svg"
-                className="w-full py-[var(--spacing-xl)] px-[var(--spacing-xl)] text-xl flex items-center justify-center !rounded-none"
+                className="w-fit py-[var(--spacing-xl)] px-[var(--spacing-xl)] text-xl flex items-center justify-center !rounded-none"
               >
                 Donate
               </Button>
