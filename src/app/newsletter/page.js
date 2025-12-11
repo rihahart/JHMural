@@ -165,24 +165,115 @@ export default function Newsletter() {
     </>
   );
 
-  const renderThankYou = () => (
-    <div className="text-center py-[var(--spacing-6xl)]">
-      <p className="text-2xl md:text-3xl font-semibold mb-[var(--spacing-4xl)] text-[var(--color-content-primary)]">
-        Welcome to the JH Mural Project family!
-      </p>
-      <Button
-        href="https://donate.stripe.com/eVqaEY2iV7kk8KI0273ks00"
-        target="_blank"
-        rel="noopener noreferrer"
-        variant="primary"
-        size="large"
-        trailingIcon="/flower.svg"
-        className="px-[var(--spacing-lg)] text-xl flex items-center !rounded-none w-fit mx-auto"
-      >
-        Donate
-      </Button>
-    </div>
-  );
+  const renderThankYou = () => {
+    // Mobile
+    if (isMobile) {
+      return (
+        <>
+          <div className="flex flex-col gap-[var(--spacing-xl)] items-start">
+            <h1 className="mobile-heading-5xl-bold text-[var(--color-content-primary)]">
+              Welcome to the JH Mural Project Family.
+            </h1>
+            <p className="mobile-text-lg-medium text-[var(--color-content-primary)]">
+              We'll keep you in the loop
+            </p>
+            <Button
+              href="https://donate.stripe.com/eVqaEY2iV7kk8KI0273ks00"
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="primary"
+              size="large"
+              trailingIcon="/flower.svg"
+              className="px-[var(--spacing-lg)] text-xl flex items-center !rounded-none w-fit"
+            >
+              Donate
+            </Button>
+         
+        
+          </div>
+        </>
+      );
+    }
+
+    // Tablet
+    if (isTablet) {
+      return (
+        <>
+          <div className="flex flex-col gap-[var(--spacing-2xl)] items-start">
+            <h1 className="web-heading-4xl-bold text-[var(--color-content-primary)]">
+              Welcome to the JH Mural Project Family.
+            </h1>
+            <p className="web-text-lg-medium text-[var(--color-content-primary)]">
+              We'll keep you in the loop
+            </p>
+            <Button
+                href="https://donate.stripe.com/eVqaEY2iV7kk8KI0273ks00"
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="primary"
+                size="large"
+                trailingIcon="/flower.svg"
+                className="px-[var(--spacing-lg)] text-xl flex items-center !rounded-none w-fit"
+              >
+                Donate
+              </Button>
+          </div>
+        </>
+      );
+    }
+
+    // Desktop 1440px
+    if (isDesktop1440px) {
+      return (
+        <>
+          <div className="flex flex-col gap-[var(--spacing-2xl)]">
+            <h1 className="hero-xs text-[var(--color-content-primary)]">
+              Welcome to the JH Mural Project Family.
+            </h1>
+            <p className="web-text-xl-medium text-[var(--color-content-primary)]">
+              We'll keep you in the loop
+            </p>
+            <Button
+                href="https://donate.stripe.com/eVqaEY2iV7kk8KI0273ks00"
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="primary"
+                size="large"
+                trailingIcon="/flower.svg"
+                className="px-[var(--spacing-lg)] text-xl flex items-center !rounded-none w-fit"
+              >
+                Donate
+              </Button>
+          </div>
+        </>
+      );
+    }
+
+    // Desktop 1440px+
+    return (
+      <>
+        <div className="flex flex-col gap-[var(--spacing-2xl)]">
+          <h1 className="hero-s text-[var(--color-content-primary)]">
+            Welcome to the JH Mural Project Family.
+          </h1>
+          <p className="web-text-2xl-medium text-[var(--color-content-primary)]">
+            We'll keep you in the loop
+          </p>
+          <Button
+              href="https://donate.stripe.com/eVqaEY2iV7kk8KI0273ks00"
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="primary"
+              size="large"
+              trailingIcon="/flower.svg"
+              className="px-[var(--spacing-lg)] text-xl flex items-center !rounded-none w-fit"
+            >
+              Donate
+            </Button>
+        </div>
+      </>
+    );
+  };
 
   // Mobile
   if (isMobile) {
