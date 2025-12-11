@@ -169,13 +169,13 @@ export default function Newsletter() {
     // Mobile
     if (isMobile) {
       return (
-        <>
-          <div className="flex flex-col gap-[var(--spacing-xl)] items-start">
+        <div className="flex items-center justify-center min-h-[60vh]">
+          <div className="flex flex-col gap-[var(--spacing-xl)] items-start bg-[var(--color-background-hover)] p-[var(--spacing-2xl)] w-full max-w-[600px] mx-auto">
             <h1 className="mobile-heading-5xl-bold text-[var(--color-content-primary)]">
-              Welcome to the JH Mural Project Family.
+              Welcome to the JH Mural Project family
             </h1>
             <p className="mobile-text-lg-medium text-[var(--color-content-primary)]">
-              We'll keep you in the loop
+              We will keep you updated with the latest news, events, and upcoming mural projects. Continue your support and make a donation to help fund future murals.
             </p>
             <Button
               href="https://donate.stripe.com/eVqaEY2iV7kk8KI0273ks00"
@@ -188,23 +188,21 @@ export default function Newsletter() {
             >
               Donate
             </Button>
-         
-        
           </div>
-        </>
+        </div>
       );
     }
 
     // Tablet
     if (isTablet) {
       return (
-        <>
-          <div className="flex flex-col gap-[var(--spacing-2xl)] items-start">
+        <div className="flex items-center justify-center min-h-[60vh]">
+          <div className="flex flex-col gap-[var(--spacing-2xl)] items-start bg-[var(--color-background-hover)] p-[var(--spacing-4xl)] w-full max-w-[800px] mx-auto">
             <h1 className="web-heading-4xl-bold text-[var(--color-content-primary)]">
-              Welcome to the JH Mural Project Family.
+              Welcome to the JH Mural Project family
             </h1>
             <p className="web-text-lg-medium text-[var(--color-content-primary)]">
-              We'll keep you in the loop
+              We will keep you updated with the latest news, events, and upcoming mural projects. Continue your support and make a donation to help fund future murals.
             </p>
             <Button
                 href="https://donate.stripe.com/eVqaEY2iV7kk8KI0273ks00"
@@ -218,20 +216,20 @@ export default function Newsletter() {
                 Donate
               </Button>
           </div>
-        </>
+        </div>
       );
     }
 
     // Desktop 1440px
     if (isDesktop1440px) {
       return (
-        <>
-          <div className="flex flex-col gap-[var(--spacing-2xl)]">
+        <div className="flex items-center justify-center min-h-[60vh]">
+          <div className="flex flex-col gap-[var(--spacing-2xl)] bg-[var(--color-background-hover)] p-[var(--spacing-5xl)] w-full max-w-[900px] mx-auto">
             <h1 className="hero-xs text-[var(--color-content-primary)]">
-              Welcome to the JH Mural Project Family.
+              Welcome to the JH Mural Project family
             </h1>
             <p className="web-text-xl-medium text-[var(--color-content-primary)]">
-              We'll keep you in the loop
+              We will keep you updated with the latest news, events, and upcoming mural projects. Continue your support and make a donation to help fund future murals.
             </p>
             <Button
                 href="https://donate.stripe.com/eVqaEY2iV7kk8KI0273ks00"
@@ -245,19 +243,19 @@ export default function Newsletter() {
                 Donate
               </Button>
           </div>
-        </>
+        </div>
       );
     }
 
     // Desktop 1440px+
     return (
-      <>
-        <div className="flex flex-col gap-[var(--spacing-2xl)]">
+      <div className="flex items-center justify-center min-h-[60vh]">
+        <div className="flex flex-col gap-[var(--spacing-2xl)] bg-[var(--color-background-hover)] p-[var(--spacing-6xl)] w-full max-w-[1000px] mx-auto">
           <h1 className="hero-s text-[var(--color-content-primary)]">
-            Welcome to the JH Mural Project Family.
+            Welcome to the JH Mural Project family
           </h1>
           <p className="web-text-2xl-medium text-[var(--color-content-primary)]">
-            We'll keep you in the loop
+            We will keep you updated with the latest news, events, and upcoming mural projects. Continue your support and make a donation to help fund future murals.
           </p>
           <Button
               href="https://donate.stripe.com/eVqaEY2iV7kk8KI0273ks00"
@@ -271,7 +269,7 @@ export default function Newsletter() {
               Donate
             </Button>
         </div>
-      </>
+      </div>
     );
   };
 
