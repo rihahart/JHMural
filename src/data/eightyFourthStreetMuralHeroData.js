@@ -1,5 +1,5 @@
 export const eightyFourthStreetMuralHeroData = {
-  title: "\"The JH Mural Project Welcomes you to Jackson Heights\"",
+  title: "\"Jackson Heights in Bloom\"",
   subtitle: "By Noah Bassman",
   image: "/84thStreetMural/Hero Image.jpg"
 };

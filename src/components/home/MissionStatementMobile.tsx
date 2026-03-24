@@ -8,7 +8,7 @@ export default function MissionStatementMobile() {
   return (
     <div className="flex flex-col items-center justify-center w-full mx-auto">
       <div className="text-[clamp(26px,calc(26px+(18*(100vw-393px)/375)),44px)] leading-[clamp(45px,calc(45px+(15*(100vw-393px)/375)),60px)] text-left" style={{ fontFamily: 'var(--font-family-base)', fontWeight: 'var(--font-weight-bold)' }}>
-        This is {" "}
+        We partner  {" "}
         {/* <span className="inline-block relative w-[clamp(34px,calc(10px+(10*(100vw-393px)/375)),44px)] translate-y-[4px] aspect-square">
           <Image
             src="/MissionStatementPhotos/KidsArtClass.png"
@@ -17,7 +17,7 @@ export default function MissionStatementMobile() {
             className="object-contain"
           />
         </span> */}{" "}
-        <span className="sparkle-primary">Jackson Heights</span>.{" "}
+        <span className="sparkle-primary">with artists,</span>{" "}
         {/* <span className="inline-block relative w-[clamp(34px,calc(10px+(10*(100vw-393px)/375)),44px)] translate-y-[4px] aspect-square">
           <Image
             src="/MissionStatementPhotos/AccessForAll.png"
@@ -26,7 +26,7 @@ export default function MissionStatementMobile() {
             className="object-contain"
           />
         </span> */}{" "}
-        The most{" "}
+        paint murals,{" "}
         {/* <span className="inline-block relative w-[clamp(34px,calc(10px+(10*(100vw-393px)/375)),44px)] translate-y-[4px] aspect-square">
           <Image
             src="/MissionStatementPhotos/KidsJoyfullyDrawing.png"
@@ -35,11 +35,10 @@ export default function MissionStatementMobile() {
             className="object-contain"
           />
         </span> */}{" "}
-        <span className="sparkle-primary">diverse community</span>{" "}
-        on earth. Here, every{" "}
-        blank wall{" "}
-        is an opportunity to{" "}
-        <span className="sparkle-primary">change the world</span>.{" "}
+        <span className="sparkle-primary">and bring</span>{" "}
+        creativity{" "}
+        to our{" "}
+        community.{" "}
         <span className="inline-block">
           <BorderlessButton
             variant="primary"
