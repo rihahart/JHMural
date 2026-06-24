@@ -10,8 +10,8 @@ import ExitButton from "./ExitButton";
 
 interface MobileMenuProps {
   isOpen: boolean;
-  expandedStates: { isMobileProjectsExpanded: boolean; isMobileAboutExpanded: boolean };
-  onToggleExpanded: (itemName: "Projects" | "Get to know us") => void;
+  expandedStates: { isMobileProjectsExpanded: boolean };
+  onToggleExpanded: (itemName: "Projects") => void;
   onCloseAll: () => void;
 }
 
@@ -63,40 +63,6 @@ const MobileMenu = forwardRef<HTMLDivElement, MobileMenuProps>(
                   isActive={pathname === "/projects/84th-street-mural"}
                 >
                   84th st mural
-                </NavButton>
-              </div>
-            </div>
-
-            {/* Get to know us container */}
-            <div className="flex flex-col items-start gap-[var(--spacing-m)] border-b border-b-[var(--color-border-disabled)] w-full">
-              <NavButton
-                variant="primary"
-                onClick={() => onToggleExpanded("Get to know us")}
-                isActive={expandedStates.isMobileAboutExpanded}
-                trailingIcon="/flower.svg"
-                aria-expanded={expandedStates.isMobileAboutExpanded}
-                className="w-full"
-              >
-                Get to know us
-              </NavButton>
-              <div className={`${expandedStates.isMobileAboutExpanded ? 'block' : 'hidden'} space-y-[var(--spacing-m)]`}>
-                <NavButton
-                  variant="secondary"
-                  href="/get-to-know-us/what-inspires-us"
-                  onClick={onCloseAll}
-                  className="font-normal"
-                  isActive={pathname === "/get-to-know-us/what-inspires-us"}
-                >
-                  What inspires us
-                </NavButton>
-                <NavButton
-                  variant="secondary"
-                  href="/get-to-know-us/meet-jh-mural-team"
-                  onClick={onCloseAll}
-                  className="font-normal"
-                  isActive={pathname === "/get-to-know-us/meet-jh-mural-team"}
-                >
-                  Meet JH mural team
                 </NavButton>
               </div>
             </div>

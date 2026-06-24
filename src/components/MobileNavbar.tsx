@@ -17,7 +17,6 @@ export default function MobileNavbar() {
   // Mobile menu state
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileProjectsExpanded, setIsMobileProjectsExpanded] = useState(false);
-  const [isMobileAboutExpanded, setIsMobileAboutExpanded] = useState(false);
 
   const mobileMenuRef = useRef<HTMLDivElement | null>(null);
   const lastYRef = useRef(0);
@@ -47,27 +46,15 @@ export default function MobileNavbar() {
     };
   }, [isHome, isInitialLoad]);
 
-  const handleToggleExpanded = (itemName: "Projects" | "Get to know us") => {
-    // Check if the clicked section is already open
-    const isCurrentlyOpen = 
-      (itemName === "Projects" && isMobileProjectsExpanded) ||
-      (itemName === "Get to know us" && isMobileAboutExpanded);
-    
-    // Close all sections first
+  const handleToggleExpanded = (itemName: "Projects") => {
+    const isCurrentlyOpen = itemName === "Projects" && isMobileProjectsExpanded;
     setIsMobileProjectsExpanded(false);
-    setIsMobileAboutExpanded(false);
-    
-    // If the clicked section was not open, open it
-    if (!isCurrentlyOpen) {
-      if (itemName === "Projects") setIsMobileProjectsExpanded(true);
-      else if (itemName === "Get to know us") setIsMobileAboutExpanded(true);
-    }
+    if (!isCurrentlyOpen && itemName === "Projects") setIsMobileProjectsExpanded(true);
   };
 
   const handleCloseAll = () => {
     setIsMobileMenuOpen(false);
     setIsMobileProjectsExpanded(false);
-    setIsMobileAboutExpanded(false);
   };
 
   // Close on route change
@@ -140,7 +127,6 @@ export default function MobileNavbar() {
           isOpen={isMobileMenuOpen}
           expandedStates={{
             isMobileProjectsExpanded,
-            isMobileAboutExpanded,
           }}
           onToggleExpanded={handleToggleExpanded}
           onCloseAll={handleCloseAll}
