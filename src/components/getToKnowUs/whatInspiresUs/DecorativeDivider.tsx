@@ -83,7 +83,7 @@ export default function DecorativeDivider() {
 
   // Desktop (1440px+)
   return (
-    <div className="relative flex items-center justify-center w-full max-w-[1600px] gap-[var(--spacing-lg)]">
+    <div className="relative flex items-center  justify-center w-full max-w-[1600px] gap-[var(--spacing-lg)]">
     {/* left line */}
     <div className="flex-1 h-2 bg-[var(--color-content-positive)]" />
   

@@ -1,6 +1,6 @@
 export const ourVisionData = {
   title: "Our vision",
-  description: "This is Jackson Heights. The most diverse community on earth. Here, every blank wall is an opportunity to change the world. That's why we built The Jackson Heights Mural Project. This is our chance to add color to the concrete. To turn blight into beauty. Apathy into pride. And turn walls into windows that show the world what unity looks like. We paint because we believe in this place. Because our children deserve a more colorful future. Because art reminds us who we are and who we can be.",
+  description: "We believe art belongs on every wall, in every neighborhood. We believe murals should be accessible, not exclusive, simple to start, easier to finish. We support the artists who bring our walls to life, and we stand behind the communities who call those walls home. We build partnerships, not transactions, working hand in hand with local organizations to make public art a shared act, not a solitary one. We started in Jackson Heights,Queens. We are expanding across New York City. And we won't stop there. Because every community, in every city, deserves the chance to turn blight into beauty, and walls into windows. This is what we value. This is who we are.",
   subtitle: "Let's cover Jackson Heights in color",
   subtitleParts: [
     { text: "Let's", color: "var(--color-purple-500)" },
