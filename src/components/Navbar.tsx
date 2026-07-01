@@ -34,6 +34,7 @@ export default function Navbar() {
   const [isProjectsDropdownOpen, setIsProjectsDropdownOpen] = useState(false);
   const [isGetInvolvedDropdownOpen, setIsGetInvolvedDropdownOpen] =
     useState(false);
+  const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
   const [isGetInvolvedHovered, setIsGetInvolvedHovered] = useState(false);
   const [isNewsletterHovered, setIsNewsletterHovered] = useState(false);
 
@@ -51,7 +52,7 @@ export default function Navbar() {
   }, []);
 
   const navItems: Array<{
-    name: "Projects" | "Get involved" | "Join our newsletter";
+    name: "Projects" | "Get to know us" | "Get involved" | "Join our newsletter";
     hasDropdown?: boolean;
     submenu: { name: string; href: string }[];
   }> = [
@@ -59,6 +60,14 @@ export default function Navbar() {
       name: "Projects",
       hasDropdown: true,
       submenu: [{ name: "84th st mural", href: "/projects/84th-street-mural" }],
+    },
+    {
+      name: "Get to know us",
+      hasDropdown: true,
+      submenu: [
+        { name: "What inspires us", href: "/get-to-know-us/what-inspires-us" },
+        { name: "Meet JH mural team", href: "/get-to-know-us/meet-jh-mural-team" },
+      ],
     },
 
    {
@@ -119,6 +128,7 @@ export default function Navbar() {
   useEffect(() => {
     setIsProjectsDropdownOpen(false);
     setIsGetInvolvedDropdownOpen(false);
+    setIsAboutDropdownOpen(false);
   }, [pathname]);
 
   // Outside click: check triggers container AND dropdown menu
@@ -131,6 +141,7 @@ export default function Navbar() {
 
       setIsProjectsDropdownOpen(false);
       setIsGetInvolvedDropdownOpen(false);
+      setIsAboutDropdownOpen(false);
     };
     document.addEventListener("pointerdown", handleOutside, { passive: true });
     return () => document.removeEventListener("pointerdown", handleOutside);
@@ -142,6 +153,7 @@ export default function Navbar() {
       if (e.key === "Escape") {
         setIsProjectsDropdownOpen(false);
         setIsGetInvolvedDropdownOpen(false);
+        setIsAboutDropdownOpen(false);
       }
     };
     document.addEventListener("keydown", onKey);
@@ -160,26 +172,35 @@ export default function Navbar() {
     closeTimerRef.current = setTimeout(() => {
       setIsProjectsDropdownOpen(false);
       setIsGetInvolvedDropdownOpen(false);
+      setIsAboutDropdownOpen(false);
     }, HOVER_CLOSE_DELAY);
   };
 
-  const openMenu = (name: "Projects" | "Get involved" | "Join our newsletter") => {
+  const openMenu = (name: "Projects" | "Get to know us" | "Get involved" | "Join our newsletter") => {
     setIsProjectsDropdownOpen(name === "Projects");
     setIsGetInvolvedDropdownOpen(name === "Get involved");
+    setIsAboutDropdownOpen(name === "Get to know us");
   };
 
-  const toggleMenu = (name: "Projects" | "Get involved" | "Join our newsletter") => {
+  const toggleMenu = (name: "Projects" | "Get to know us" | "Get involved" | "Join our newsletter") => {
     if (name === "Projects") {
       setIsProjectsDropdownOpen((v) => !v);
       setIsGetInvolvedDropdownOpen(false);
+      setIsAboutDropdownOpen(false);
     } else if (name === "Get involved") {
       setIsGetInvolvedDropdownOpen((v) => !v);
       setIsProjectsDropdownOpen(false);
+      setIsAboutDropdownOpen(false);
+    } else {
+      setIsAboutDropdownOpen((v) => !v);
+      setIsProjectsDropdownOpen(false);
+      setIsGetInvolvedDropdownOpen(false);
     }
   };
 
   // Check if any menu is open
-  const isAnyMenuOpen = isProjectsDropdownOpen || isGetInvolvedDropdownOpen;
+  const isAnyMenuOpen =
+    isProjectsDropdownOpen || isGetInvolvedDropdownOpen || isAboutDropdownOpen;
 
   return (
     <div
@@ -237,7 +258,9 @@ export default function Navbar() {
           >
             {navItems.map((item) => {
               const active = sectionIsActive(item);
-              const isOpen = item.name === "Projects" && isProjectsDropdownOpen;
+              const isOpen =
+                (item.name === "Projects" && isProjectsDropdownOpen) ||
+                (item.name === "Get to know us" && isAboutDropdownOpen);
 
               // Render as direct link if hasDropdown is false
               if (item.hasDropdown === false && item.submenu && item.submenu.length > 0) {
