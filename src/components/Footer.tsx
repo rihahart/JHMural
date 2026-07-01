@@ -78,6 +78,9 @@ export default function Footer() {
             </div>
           </div>
         </div>
+        <p className="text-sm text-[var(--color-content-primary)] pt-[var(--spacing-lg)] pb-[var(--spacing-2xl)] px-[var(--spacing-lg)]">
+          Jackson Heights Mural Project Inc. is a federally recognized 501(c)(3) nonprofit organization. Contributions are tax-deductible to the extent permitted by law. EIN: 39-4461083.
+        </p>
       </footer>
     );
   }
@@ -153,6 +156,9 @@ export default function Footer() {
             </div>
           </div>
         </div>
+        <p className=" text-[16px] text-[var(--color-content-primary)] pt-[var(--spacing-lg)] pb-[var(--spacing-2xl)] px-[var(--spacing-6xl)]">
+          Jackson Heights Mural Project Inc. is a federally recognized 501(c)(3) nonprofit organization. Contributions are tax-deductible to the extent permitted by law. EIN: 39-4461083.
+        </p>
       </footer>
     );
   }
@@ -234,6 +240,9 @@ export default function Footer() {
             </div>
           </div>
         </div>
+        <p className="text-center text-[16px] text-[var(--color-content-primary)] pt-[var(--spacing-lg)] pb-[var(--spacing-6xl)] px-[var(--spacing-6xl)]">
+          Jackson Heights Mural Project Inc. is a federally recognized 501(c)(3) nonprofit organization. Contributions are tax-deductible to the extent permitted by law. EIN: 39-4461083.
+        </p>
       </footer>
     );
   }
@@ -314,6 +323,9 @@ export default function Footer() {
           </div>
         </div>
       </div>
+      <p className="text-center text-[18px] text-[var(--color-content-primary)] pt-[var(--spacing-lg)] pb-[var(--spacing-6xl)] px-[var(--spacing-6xl)]">
+        Jackson Heights Mural Project Inc. is a federally recognized 501(c)(3) nonprofit organization. Contributions are tax-deductible to the extent permitted by law. EIN: 39-4461083.
+      </p>
     </footer>
   );
 }
