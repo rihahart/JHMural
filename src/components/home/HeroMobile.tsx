@@ -91,7 +91,7 @@ export default function HeroMobile() {
               }}
               className="text-[clamp(24px,calc(24px+(26*(100vw-393px)/375)),50px)] font-medium text-white mt-2"
             >
-              on lonely walls of Jackson Heights, Queens
+              and Turn Neighborhoods into Open-Air Galleries
             </motion.p>
           </div>
         </div>

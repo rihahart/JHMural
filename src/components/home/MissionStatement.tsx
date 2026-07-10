@@ -11,37 +11,9 @@ export default function MissionStatement() {
         className="text-[clamp(40px,calc(40px+(14*(100vw-1025px)/575)),54px)] leading-[86px] text-left"
         style={{ fontFamily: "var(--font-family-base)", fontWeight: "var(--font-weight-bold)",  }}
       >
-        We partner  {" "}
-        {/* <span className="inline-block w-[clamp(44px,calc(44px+(10*(100vw-1025px)/575)),54px)] aspect-square translate-y-[5px]">
-          <Image
-            src="/MissionStatementPhotos/KidsArtClass.png"
-            alt="Kids in free Art Class provided by the JH Mural Project"
-            fill
-            className="object-contain"
-          />
-        </span> */}{" "}
-        <span className="sparkle-primary">with artists,</span>{" "}
-        {/* <span className="inline-block w-[clamp(44px,calc(44px+(10*(100vw-1025px)/575)),54px)] aspect-square translate-y-[5px]">
-          <Image
-            src="/MissionStatementPhotos/AccessForAll.png"
-            alt="Illustration with rainbow and flowers"
-            fill
-            className="object-contain"
-          />
-        </span> */}{" "}
-        paint murals,{" "}
-        {/* <span className="inline-block w-[clamp(44px,calc(44px+(10*(100vw-1025px)/575)),54px)] aspect-square translate-y-[5px]">
-          <Image
-            src="/MissionStatementPhotos/KidsJoyfullyDrawing.png"
-            alt="Kids looking at the camera and smiling"
-            fill
-            className="object-contain"
-          />
-        </span> */}{" "}
-        <span className="sparkle-primary">and bring</span>{" "}
-        creativity{" "}
-        to our{" "}
-        community.{" "}
+        JH Mural Project is a nonprofit that partners with{" "}
+        <span className="sparkle-primary">local artists</span>{" "}
+        to bring murals to neighborhoods that have historically been overlooked.{" "}
         <span className="inline-block">
           <BorderlessButton
             variant="primary"
