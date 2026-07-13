@@ -86,17 +86,17 @@ export default function Footer() {
       <DesktopOnly>
         <footer className="bg-[var(--color-border-tertiary)]">
           <div className="max-w-[1600px] mx-auto py-[var(--spacing-6xl)] px-[var(--spacing-6xl)]">
-            <div className="flex items-start justify-between gap-[var(--spacing-8xl)] h-full">
-              <div className="flex-1 h-full">
+            <div className="flex items-stretch gap-[var(--spacing-6xl)]">
+              <div className="flex-1 min-w-0">
                 <Image
                   src="/Footer/Donate.png"
                   alt="Donate to JH Mural Project"
                   width={600}
                   height={400}
-                  className="w-full h-auto object-contain"
+                  className="w-auto h-auto max-w-full object-contain"
                 />
               </div>
-              <div className="flex flex-col items-end py-[var(--spacing-xl)] px-[var(--spacing-xl)] gap-[var(--spacing-6xl)] border-[var(--color-content-secondary)] flex-1 min-w-0 h-full">
+              <div className="flex flex-col items-end justify-between flex-1 min-w-0">
                 <Button
                   href="https://donate.stripe.com/eVqaEY2iV7kk8KI0273ks00"
                   target="_blank"
@@ -108,12 +108,12 @@ export default function Footer() {
                 >
                   Donate
                 </Button>
-                <div className="flex flex-col border-t-[4px] border-[var(--color-content-secondary)] w-full">
+                <div className="flex flex-col border-t-[4px] border-[var(--color-content-secondary)] w-full self-stretch">
                   <NavButton
                     variant="secondary"
                     href="/newsletter"
                     trailingIcon={<FaEnvelope className="w-6 h-6" />}
-                    className="w-full"
+                    className="!w-full !py-[var(--spacing-lg)] !px-[var(--spacing-m)] justify-between items-center self-stretch"
                   >
                     Join our newsletter
                   </NavButton>
@@ -124,7 +124,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     trailingIcon={<FaInstagram className="w-6 h-6" />}
-                    className="w-full"
+                    className="!w-full !py-[var(--spacing-lg)] !px-[var(--spacing-m)] justify-between items-center self-stretch"
                   >
                     Follow us on Instagram
                   </NavButton>
@@ -135,7 +135,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     trailingIcon={<FaFacebook className="w-6 h-6" />}
-                    className="w-full"
+                    className="!w-full !py-[var(--spacing-lg)] !px-[var(--spacing-m)] justify-between items-center self-stretch"
                   >
                     Follow us on Facebook
                   </NavButton>
@@ -144,7 +144,7 @@ export default function Footer() {
                     variant="secondary"
                     href="/get-involved"
                     trailingIcon="/arrow-right.svg"
-                    className="w-full"
+                    className="!w-full !py-[var(--spacing-lg)] !px-[var(--spacing-m)] justify-between items-center self-stretch"
                   >
                     Get involved
                   </NavButton>

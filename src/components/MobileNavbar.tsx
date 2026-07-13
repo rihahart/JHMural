@@ -16,7 +16,7 @@ export default function MobileNavbar() {
 
   // Mobile menu state
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isMobileProjectsExpanded, setIsMobileProjectsExpanded] = useState(false);
+  const [isMobileMuralsExpanded, setIsMobileMuralsExpanded] = useState(false);
   const [isMobileAboutExpanded, setIsMobileAboutExpanded] = useState(false);
 
   const mobileMenuRef = useRef<HTMLDivElement | null>(null);
@@ -47,23 +47,23 @@ export default function MobileNavbar() {
     };
   }, [isHome, isInitialLoad]);
 
-  const handleToggleExpanded = (itemName: "Projects" | "Get to know us") => {
+  const handleToggleExpanded = (itemName: "Murals" | "Get to know us") => {
     const isCurrentlyOpen =
-      (itemName === "Projects" && isMobileProjectsExpanded) ||
+      (itemName === "Murals" && isMobileMuralsExpanded) ||
       (itemName === "Get to know us" && isMobileAboutExpanded);
 
-    setIsMobileProjectsExpanded(false);
+    setIsMobileMuralsExpanded(false);
     setIsMobileAboutExpanded(false);
 
     if (!isCurrentlyOpen) {
-      if (itemName === "Projects") setIsMobileProjectsExpanded(true);
+      if (itemName === "Murals") setIsMobileMuralsExpanded(true);
       else if (itemName === "Get to know us") setIsMobileAboutExpanded(true);
     }
   };
 
   const handleCloseAll = () => {
     setIsMobileMenuOpen(false);
-    setIsMobileProjectsExpanded(false);
+    setIsMobileMuralsExpanded(false);
     setIsMobileAboutExpanded(false);
   };
 
@@ -136,7 +136,7 @@ export default function MobileNavbar() {
           ref={mobileMenuRef}
           isOpen={isMobileMenuOpen}
           expandedStates={{
-            isMobileProjectsExpanded,
+            isMobileMuralsExpanded,
             isMobileAboutExpanded,
           }}
           onToggleExpanded={handleToggleExpanded}

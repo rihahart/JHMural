@@ -10,8 +10,8 @@ import ExitButton from "./ExitButton";
 
 interface MobileMenuProps {
   isOpen: boolean;
-  expandedStates: { isMobileProjectsExpanded: boolean; isMobileAboutExpanded: boolean };
-  onToggleExpanded: (itemName: "Projects" | "Get to know us") => void;
+  expandedStates: { isMobileMuralsExpanded: boolean; isMobileAboutExpanded: boolean };
+  onToggleExpanded: (itemName: "Murals" | "Get to know us") => void;
   onCloseAll: () => void;
 }
 
@@ -42,19 +42,19 @@ const MobileMenu = forwardRef<HTMLDivElement, MobileMenuProps>(
           
           {/* Menu content */}
           <div className="flex flex-col items-start gap-[var(--spacing-m)] border-t-4 border-t-[var(--color-content-secondary)]">
-            {/* Projects container */}
+            {/* Murals container */}
             <div className="flex flex-col items-start gap-[var(--spacing-m)] border-b border-b-[var(--color-border-disabled)] w-full">
               <NavButton
                 variant="primary"
-                onClick={() => onToggleExpanded("Projects")}
-                isActive={expandedStates.isMobileProjectsExpanded}
+                onClick={() => onToggleExpanded("Murals")}
+                isActive={expandedStates.isMobileMuralsExpanded}
                 trailingIcon="/flower.svg"
-                aria-expanded={expandedStates.isMobileProjectsExpanded}
+                aria-expanded={expandedStates.isMobileMuralsExpanded}
                 className="w-full"
               >
-                Projects
+                Murals
               </NavButton>
-              <div className={`${expandedStates.isMobileProjectsExpanded ? 'block' : 'hidden'} space-y-[var(--spacing-m)]`}>
+              <div className={`${expandedStates.isMobileMuralsExpanded ? 'block' : 'hidden'} space-y-[var(--spacing-m)]`}>
                 <NavButton
                   variant="secondary"
                   href="/projects/84th-street-mural"
@@ -99,20 +99,6 @@ const MobileMenu = forwardRef<HTMLDivElement, MobileMenuProps>(
                   Meet JH mural team
                 </NavButton>
               </div>
-            </div>
-
-            {/* Get Involved container */}
-            <div className="flex flex-col items-start gap-[var(--spacing-m)] border-b border-b-[var(--color-border-disabled)] w-full">
-              <NavButton
-                variant="primary"
-                href="/get-involved"
-                onClick={onCloseAll}
-                trailingIcon="/flower.svg"
-                isActive={pathname === "/get-involved"}
-                className="w-full"
-              >
-                Get involved
-              </NavButton>
             </div>
 
             {/* Join our newsletter container */}

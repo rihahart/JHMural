@@ -11,7 +11,7 @@ const HOVER_CLOSE_DELAY = 150; // ms
 
 const navItems: NavItem[] = [
   {
-    name: "Projects",
+    name: "Murals",
     hasDropdown: true,
     submenu: [{ name: "84th st mural", href: "/projects/84th-street-mural" }],
   },
@@ -22,11 +22,6 @@ const navItems: NavItem[] = [
       { name: "What inspires us", href: "/get-to-know-us/what-inspires-us" },
       { name: "Meet JH mural team", href: "/get-to-know-us/meet-jh-mural-team" },
     ],
-  },
-  {
-    name: "Get involved",
-    hasDropdown: false,
-    submenu: [{ name: "Get involved", href: "/get-involved" }],
   },
   {
     name: "Join our newsletter",
@@ -58,9 +53,7 @@ export default function Navbar() {
   const [isVisible, setIsVisible] = useState(true);
 
   // Menus
-  const [isProjectsDropdownOpen, setIsProjectsDropdownOpen] = useState(false);
-  const [isGetInvolvedDropdownOpen, setIsGetInvolvedDropdownOpen] =
-    useState(false);
+  const [isMuralsDropdownOpen, setIsMuralsDropdownOpen] = useState(false);
   const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
   const [hoveredItem, setHoveredItem] = useState<NavName | null>(null);
 
@@ -120,8 +113,7 @@ export default function Navbar() {
 
   // Close all menus on route change
   useEffect(() => {
-    setIsProjectsDropdownOpen(false);
-    setIsGetInvolvedDropdownOpen(false);
+    setIsMuralsDropdownOpen(false);
     setIsAboutDropdownOpen(false);
   }, [pathname]);
 
@@ -133,8 +125,7 @@ export default function Navbar() {
       if (desktopNavRef.current?.contains(target)) return;
       if (menuElRef.current?.contains(target)) return;
 
-      setIsProjectsDropdownOpen(false);
-      setIsGetInvolvedDropdownOpen(false);
+      setIsMuralsDropdownOpen(false);
       setIsAboutDropdownOpen(false);
     };
     document.addEventListener("pointerdown", handleOutside, { passive: true });
@@ -145,8 +136,7 @@ export default function Navbar() {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        setIsProjectsDropdownOpen(false);
-        setIsGetInvolvedDropdownOpen(false);
+        setIsMuralsDropdownOpen(false);
         setIsAboutDropdownOpen(false);
       }
     };
@@ -164,37 +154,28 @@ export default function Navbar() {
   const scheduleClose = () => {
     clearCloseTimer();
     closeTimerRef.current = setTimeout(() => {
-      setIsProjectsDropdownOpen(false);
-      setIsGetInvolvedDropdownOpen(false);
+      setIsMuralsDropdownOpen(false);
       setIsAboutDropdownOpen(false);
     }, HOVER_CLOSE_DELAY);
   };
 
   const openMenu = (name: NavName) => {
-    setIsProjectsDropdownOpen(name === "Projects");
-    setIsGetInvolvedDropdownOpen(name === "Get involved");
+    setIsMuralsDropdownOpen(name === "Murals");
     setIsAboutDropdownOpen(name === "Get to know us");
   };
 
   const toggleMenu = (name: NavName) => {
-    if (name === "Projects") {
-      setIsProjectsDropdownOpen((v) => !v);
-      setIsGetInvolvedDropdownOpen(false);
-      setIsAboutDropdownOpen(false);
-    } else if (name === "Get involved") {
-      setIsGetInvolvedDropdownOpen((v) => !v);
-      setIsProjectsDropdownOpen(false);
+    if (name === "Murals") {
+      setIsMuralsDropdownOpen((v) => !v);
       setIsAboutDropdownOpen(false);
     } else {
       setIsAboutDropdownOpen((v) => !v);
-      setIsProjectsDropdownOpen(false);
-      setIsGetInvolvedDropdownOpen(false);
+      setIsMuralsDropdownOpen(false);
     }
   };
 
   // Check if any menu is open
-  const isAnyMenuOpen =
-    isProjectsDropdownOpen || isGetInvolvedDropdownOpen || isAboutDropdownOpen;
+  const isAnyMenuOpen = isMuralsDropdownOpen || isAboutDropdownOpen;
 
   return (
     <div
@@ -256,7 +237,7 @@ export default function Navbar() {
                 item={item}
                 active={sectionIsActive(item)}
                 isOpen={
-                  (item.name === "Projects" && isProjectsDropdownOpen) ||
+                  (item.name === "Murals" && isMuralsDropdownOpen) ||
                   (item.name === "Get to know us" && isAboutDropdownOpen)
                 }
                 isInitialLoad={isHome && isAtTop && !isAnyMenuOpen}

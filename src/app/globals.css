@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+@theme {
+  --breakpoint-lg: 64rem; /* 1024px */
+  --breakpoint-xl: 90rem; /* 1440px */
+}
+
 :root {
   
 
@@ -252,12 +257,6 @@
   --radius-lg: 16px;
   --radius-pill: 999px;
   --radius-circle: 50%;
-
-  /* Breakpoints */
-  --breakpoint-xl: 1440px;
-  --breakpoint-lg: 1024px;
-  --breakpoint-md: 768px;
-  --breakpoint-sm: 393px;
 }
 
 @layer base {
