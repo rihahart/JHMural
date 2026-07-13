@@ -1,22 +1,11 @@
 "use client";
 
-import { motion } from "framer-motion";
 import useMobileDetection from "@/app/_utilities/useMobileDetection";
 
 type Token =
   | { type: "word"; text: string }
   | { type: "sparkle"; text: string }
   | { type: "img"; src: string; w?: string; h?: string; fit?: string };
-
-const container = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.04 } },
-};
-
-const item = {
-  hidden: { y: 18, opacity: 0 },
-  visible: { y: 0, opacity: 1, transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] } },
-};
 
 export default function MissionStatementMobile() {
   const { isTablet } = useMobileDetection();
@@ -55,18 +44,13 @@ export default function MissionStatementMobile() {
 
   return (
     <div className="flex flex-col items-center justify-center w-full mx-auto">
-      <motion.div
+      <div
         className="text-left"
         style={{ fontFamily: "var(--font-family-display)", fontSize, lineHeight }}
-        variants={container}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "0px 0px -150px 0px" }}
       >
         {tokens.map((token, i) => (
-          <motion.span
+          <span
             key={i}
-            variants={item}
             style={{ display: "inline-block", marginRight: "0.25em" }}
           >
             {token.type === "word" && token.text}
@@ -86,9 +70,9 @@ export default function MissionStatementMobile() {
                 }}
               />
             )}
-          </motion.span>
+          </span>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 }
