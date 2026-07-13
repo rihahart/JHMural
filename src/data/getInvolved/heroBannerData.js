@@ -1,7 +1,7 @@
 const heroBannerData = {
-  title: "Volunteer with us",
+  title: "WHAT INSPIRES US",
   image: "/GetInvovled/VolunteerWithUs.jpg",
-  imageAlt: "Volunteer with us"
+  imageAlt: "WHAT INSPIRES US"
 };
 
 export default heroBannerData;

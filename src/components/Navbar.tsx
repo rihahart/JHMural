@@ -15,6 +15,7 @@ export default function Navbar() {
   const isHome = pathname === "/";
 
   const [isInitialLoad, setIsInitialLoad] = useState(isHome);
+  const [isAtTop, setIsAtTop] = useState(true);
 
   // ensure initial-load styling only for homepage and clear after a short delay
   useEffect(() => {
@@ -111,6 +112,7 @@ export default function Navbar() {
       if (y === 0 || y < lastYRef.current) setIsVisible(true);
       else if (y > 80) setIsVisible(false);
       if (isInitialLoad && y > 80) setIsInitialLoad(false);
+      setIsAtTop(y === 0);
       lastYRef.current = y;
     };
 
@@ -217,11 +219,11 @@ export default function Navbar() {
         ${
           isAnyMenuOpen
             ? "bg-[var(--color-background-hover)]"
-            : isHome && isInitialLoad
+            : isHome && isAtTop
             ? "bg-[var(--color-background-brand)]"
             : "bg-[var(--color-background-primary)]"
         }
-        ${isHome && isInitialLoad && !isAnyMenuOpen ? "" : "shadow-xs"}
+        ${isHome && isAtTop && !isAnyMenuOpen ? "" : "shadow-xs"}
         z-50 hidden lg:block
       `}
     >
@@ -240,7 +242,7 @@ export default function Navbar() {
           >
             <Image
               src={
-                isHome && isInitialLoad && !isAnyMenuOpen
+                isHome && isAtTop && !isAnyMenuOpen
                   ? "/Secondary Logo.svg"
                   : "/logo.svg"
               }
@@ -272,7 +274,7 @@ export default function Navbar() {
                     <NavButton
                       variant="tertiary"
                       isActive={active || isHovered}
-                      isInitialLoad={isHome && isInitialLoad && !isAnyMenuOpen}
+                      isInitialLoad={isHome && isAtTop && !isAnyMenuOpen}
                       trailingIcon="/flower.svg"
                       onClick={() => {
                         router.push(href);
@@ -313,7 +315,7 @@ export default function Navbar() {
                   <NavButton
                     variant="tertiary"
                     isActive={active || isOpen}
-                    isInitialLoad={isHome && isInitialLoad && !isAnyMenuOpen}
+                    isInitialLoad={isHome && isAtTop && !isAnyMenuOpen}
                     trailingIcon="/flower.svg"
                     onClick={() => toggleMenu(item.name)}
                     onMouseEnter={() => {
@@ -369,7 +371,7 @@ export default function Navbar() {
               href="https://donate.stripe.com/eVqaEY2iV7kk8KI0273ks00"
               target="_blank"
               rel="noopener noreferrer"
-              variant="primary"
+              variant={isHome && isAtTop && !isAnyMenuOpen ? "primary-on-brand" : "primary"}
               size="large"
               trailingIcon="/flower.svg"
               className="h-full px-[var(--spacing-lg)] text-xl flex items-center !rounded-none"

@@ -9,43 +9,27 @@ export default function Hero() {
 
   useEffect(() => {
     const video = videoRef.current;
-    // Only apply scroll and video effects on desktop (lg and up)
     if (typeof window !== 'undefined' && window.innerWidth >= 1024) {
-      const scrollTimer = setTimeout(() => {
-        // Scroll a bit higher to show more content
-        window.scrollTo({ 
-          top: 280, // Scroll higher to show more content
-          behavior: "smooth" 
-        });
-      }, 1000);
-
-      // Start video 1 second earlier (at 1s instead of 2s)
       const videoTimer = setTimeout(() => {
         if (video) {
           video.play().then(() => {
-            // Fade in video when it starts playing
             video.style.opacity = '1';
           }).catch(() => {});
         }
       }, 1000);
 
-      // Set up video loop for last 3 seconds
       const setupVideoLoop = () => {
         if (video) {
-          
           const handleEnded = () => {
-            // Jump to 1 second before the end and play
             if (video.duration) {
               video.currentTime = Math.max(0, video.duration - 1);
               video.play().catch(() => {});
             }
           };
-
           video.addEventListener('ended', handleEnded);
         }
       };
 
-      // Set up the loop after video loads
       if (video) {
         if (video.readyState >= 3) {
           setupVideoLoop();
@@ -55,7 +39,6 @@ export default function Hero() {
       }
 
       return () => {
-        clearTimeout(scrollTimer);
         clearTimeout(videoTimer);
         if (video) {
           video.removeEventListener('loadeddata', setupVideoLoop);

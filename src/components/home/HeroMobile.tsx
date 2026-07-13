@@ -11,12 +11,6 @@ export default function HeroMobile() {
   useEffect(() => {
     const video = videoRef.current;
     const timer = setTimeout(() => {
-      // Scroll just enough to hide navbar but keep all blue content visible
-      window.scrollTo({ 
-        top: 200, // Just past navbar height (~80px) to hide it cleanly
-        behavior: "smooth" 
-      });
-
       if (video) {
         video.play().catch(() => {});
       }

@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 interface ButtonProps {
-  variant?: 'primary' | 'primary-inverse' | 'secondary' | 'tertiary';
+  variant?: 'primary' | 'primary-inverse' | 'primary-on-brand' | 'secondary' | 'tertiary';
   size?: 'small' | 'large';
   href?: string;
   target?: string;
@@ -78,6 +78,12 @@ export default function Button({
       hover:bg-[var(--color-background-inverse-hover)]
       ${size === 'large' ? 'hover:shadow-[0_8px_25px_rgba(0,0,0,0.15)]' : 'hover:shadow-[0_4px_15px_rgba(0,0,0,0.1)]'}
     `,
+    'primary-on-brand': `
+      bg-white
+      text-[var(--color-content-primary)]
+      hover:bg-[var(--color-background-hover)]
+      ${size === 'large' ? 'hover:shadow-[0_8px_25px_rgba(25,120,216,0.3)]' : 'hover:shadow-[0_4px_15px_rgba(25,120,216,0.2)]'}
+    `,
     secondary: `
       bg-[var(--color-background-primary)]
       text-[var(--color-content-primary)]
@@ -113,7 +119,7 @@ export default function Button({
         mr-[var(--spacing-s)]
         transition-all duration-200 ease-in-out
         align-middle
-        ${variant === 'primary' || variant === 'primary-inverse' ? 'brightness-0 invert group-hover:scale-110' : variant === 'secondary' ? 'brightness-0 group-hover:scale-110' : 'group-hover:scale-110'}
+        ${variant === 'primary' || variant === 'primary-inverse' ? 'brightness-0 invert group-hover:scale-110' : variant === 'primary-on-brand' ? 'brightness-0 group-hover:scale-110' : variant === 'secondary' ? 'brightness-0 group-hover:scale-110' : 'group-hover:scale-110'}
         ${trailingIcon === '/flower.svg' || leadingIcon === '/flower.svg' ? 'group-hover:scale-110' : ''}
       `}
     />
@@ -153,7 +159,7 @@ export default function Button({
             ml-[var(--spacing-xs)]
               translate-y-[.5px]
             transition-all duration-200 ease-in-out
-            ${variant === 'primary' || variant === 'primary-inverse' ? 'brightness-0 invert group-hover:scale-110' : 'group-hover:scale-110'}
+            ${variant === 'primary' || variant === 'primary-inverse' ? 'brightness-0 invert group-hover:scale-110' : variant === 'primary-on-brand' ? 'brightness-0 group-hover:scale-110' : 'group-hover:scale-110'}
             ${trailingIcon === '/flower.svg' || leadingIcon === '/flower.svg' ? 'group-hover:scale-110' : ''}
           `}
         />
