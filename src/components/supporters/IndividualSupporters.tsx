@@ -2,38 +2,40 @@
 
 import React from "react";
 
-export default function IndividualSupporters() {
-  const supporters = [
-    "Jonathan Baillie Strong",
-    "Jason Mei",
-    "Storm Hurwitz",
-    "Nancy Ryerson",
-    "Carlos Luna",
-    "Suzanne Adler",
-    "Hunter Kennedy",
-    "Tahima Begum",
-    "Thomas Christmann",
-    "Liat Krawczyk",
-    "Jessie Cozza",
-    "Steven R Rose",
-    "Ernestine Manning",
-    "Kim Cummings",
-    "Jessie Bruah",
-    "Isaac Lyles",
-    "Jonathan Grass",
-    "Daniel Contreras",
-    "Joshua Brustein",
-    "Aideen Kane",
-    "Cordelia Persen",
-    "Joseph Sebring",
-    "William Bruno",
-    "Dewen Kong",
-    "Jeanette Duffy",
-    "Jen Dang"
-  ];
+const SUPPORTERS = [
+  "Jonathan Baillie Strong",
+  "Jason Mei",
+  "Storm Hurwitz",
+  "Nancy Ryerson",
+  "Carlos Luna",
+  "Suzanne Adler",
+  "Hunter Kennedy",
+  "Tahima Begum",
+  "Thomas Christmann",
+  "Liat Krawczyk",
+  "Jessie Cozza",
+  "Steven R Rose",
+  "Ernestine Manning",
+  "Kim Cummings",
+  "Jessie Bruah",
+  "Isaac Lyles",
+  "Jonathan Grass",
+  "Daniel Contreras",
+  "Joshua Brustein",
+  "Aideen Kane",
+  "Cordelia Persen",
+  "Joseph Sebring",
+  "William Bruno",
+  "Dewen Kong",
+  "Jeanette Duffy",
+  "Jen Dang",
+];
 
-  // Remove duplicate "Thomas Christmann" and sort alphabetically
-  const uniqueSupporters = [...new Set(supporters)].sort();
+// Remove duplicates and sort alphabetically (computed once at module load).
+const UNIQUE_SUPPORTERS = [...new Set(SUPPORTERS)].sort();
+
+export default function IndividualSupporters() {
+  const uniqueSupporters = UNIQUE_SUPPORTERS;
 
   return (
     <div className="bg-[var(--color-neutral-200)] px-6 py-16 lg:px-[var(--spacing-8xl)] lg:py-[var(--spacing-6xl)]">
@@ -54,8 +56,8 @@ export default function IndividualSupporters() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-          {uniqueSupporters.map((supporter, index) => (
-            <div key={index} className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 border border-[var(--color-neutral-300)]">
+          {uniqueSupporters.map((supporter) => (
+            <div key={supporter} className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 border border-[var(--color-neutral-300)]">
               <div className="flex items-center gap-3">
                 {/* Avatar placeholder */}
                 <div className="w-10 h-10 bg-[var(--color-brand-600)] rounded-full flex items-center justify-center flex-shrink-0">

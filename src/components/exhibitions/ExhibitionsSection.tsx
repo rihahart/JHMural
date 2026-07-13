@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
+import useSWR from "swr";
 import ExhibitionBox from "./ExhibitionBox";
 
 interface Exhibition {
@@ -13,188 +14,111 @@ interface Exhibition {
   url: string;
 }
 
-export default function ExhibitionsSection() {
-  const [exhibitions, setExhibitions] = useState<Exhibition[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    fetchExhibitions();
-  }, []);
-
-  const fetchExhibitions = async () => {
-    try {
-      setLoading(true);
-
-      const response = await fetch("/api/whitney-exhibitions");
-
-      if (!response.ok) {
-        throw new Error("Failed to fetch exhibitions");
-      }
-
-      const responseData = await response.json();
-      const data = responseData.data; // Extract the data array from the response
-
-      // Map the API response to our Exhibition interface, including original start_time and end_time for sorting
-      const formattedExhibitions = data.map(
-        (item: {
-          id: string;
-          attributes: { 
-            start_time: string; 
-            end_time?: string;
-            title: string; 
-            url: string 
-          };
-        }) => {
-          const startDate = new Date(item.attributes.start_time);
-
-          console.log("Raw start_time:", item.attributes.start_time);
-          console.log("Parsed startDate:", startDate);
-
-          // Get day of week abbreviation
-          const dayOfWeek = startDate
-            .toLocaleDateString("en-US", {
-              weekday: "short",
-            })
-            .toUpperCase();
-
-          // Get date with month
-          const month = startDate
-            .toLocaleDateString("en-US", {
-              month: "short",
-            })
-            .toUpperCase();
-          const day = startDate.getDate();
-          const date = `${month} ${day}`;
-
-          // Calculate date range
-          let dateRange = "Ongoing";
-          try {
-            if (item.attributes.end_time) {
-              const endDate = new Date(item.attributes.end_time);
-              
-              // Check if dates are valid
-              if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
-                console.warn(`Invalid dates for exhibition: ${item.attributes.title}`, startDate, endDate);
-                dateRange = "Ongoing";
-              } else {
-                // Format start date
-                const startMonth = startDate.toLocaleDateString("en-US", { month: "short" });
-                const startDay = startDate.getDate();
-                const startFormatted = `${startMonth} ${startDay}`;
-                
-                // Check if it's a one-day event
-                const startDateOnly = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
-                const endDateOnly = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate());
-                
-                if (startDateOnly.getTime() === endDateOnly.getTime()) {
-                  // One-day event, show only start date
-                  dateRange = startFormatted;
-                } else {
-                  // Multi-day event, show date range
-                  const endMonth = endDate.toLocaleDateString("en-US", { month: "short" });
-                  const endDay = endDate.getDate();
-                  const endFormatted = `${endMonth} ${endDay}`;
-                  
-                  dateRange = `${startFormatted} - ${endFormatted}`;
-                }
-              }
-            } else {
-              // If no end date, show just start date
-              const startMonth = startDate.toLocaleDateString("en-US", { month: "short" });
-              const startDay = startDate.getDate();
-              dateRange = `${startMonth} ${startDay}`;
-            }
-          } catch (err) {
-            console.error(`Error calculating date range for ${item.attributes.title}:`, err);
-            dateRange = "Ongoing";
-          }
-
-          console.log("Exhibition:", item.attributes.title);
-          console.log("  dayOfWeek:", dayOfWeek);
-          console.log("  date:", date);
-          console.log("  dateRange:", dateRange);
-          console.log("---");
-
-          return {
-            id: item.id,
-            title: item.attributes.title,
-            location: "Whitney Museum of American Art",
-            dayOfWeek: dayOfWeek,
-            date: date,
-            startTime: dateRange, // Using startTime field to store date range
-            url: `https://whitney.org${item.attributes.url}`,
-            // Keep original start_time and end_time for filtering and sorting
-            originalStartTime: item.attributes.start_time,
-            originalEndTime: item.attributes.end_time || null,
-          };
-        }
-      );
-
-      // Filter out past exhibitions - show upcoming exhibitions and ongoing exhibitions
-      const now = new Date();
-      const nowDateOnly = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-      
-      console.log("Current date for filtering:", nowDateOnly);
-      console.log("Total exhibitions before filtering:", formattedExhibitions.length);
-      
-      const upcomingExhibitions = formattedExhibitions
-        .filter((item: Exhibition & { originalStartTime: string; originalEndTime: string | null }) => {
-          const startDate = new Date(item.originalStartTime);
-          const startDateOnly = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
-          
-          // If exhibition has an end date, check if it hasn't ended yet
-          if (item.originalEndTime) {
-            const endDate = new Date(item.originalEndTime);
-            const endDateOnly = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate());
-            
-            // Show if exhibition hasn't ended yet (end date is today or in the future)
-            const isActive = endDateOnly >= nowDateOnly;
-            console.log(`Exhibition: ${item.title}, Start: ${startDateOnly.toISOString()}, End: ${endDateOnly.toISOString()}, Now: ${nowDateOnly.toISOString()}, IsActive: ${isActive}`);
-            return isActive;
-          } else {
-            // If no end date, check if start date is today or in the future
-            const isUpcoming = startDateOnly >= nowDateOnly;
-            console.log(`Exhibition: ${item.title}, Start: ${startDateOnly.toISOString()}, Now: ${nowDateOnly.toISOString()}, IsUpcoming: ${isUpcoming}`);
-            return isUpcoming;
-          }
-        })
-        .sort((a: Exhibition & { originalStartTime: string; originalEndTime: string | null }, b: Exhibition & { originalStartTime: string; originalEndTime: string | null }) => {
-          // Sort by end date if available, otherwise by start date
-          const endDateA = a.originalEndTime ? new Date(a.originalEndTime) : new Date(a.originalStartTime);
-          const endDateB = b.originalEndTime ? new Date(b.originalEndTime) : new Date(b.originalStartTime);
-          return endDateA.getTime() - endDateB.getTime(); // Sort by end date: upcoming exhibitions in chronological order
-        });
-      
-      console.log("Filtered upcoming exhibitions count:", upcomingExhibitions.length);
-
-      // If no upcoming exhibitions, show all exhibitions sorted by date (most recent first)
-      const exhibitionsToShow = upcomingExhibitions.length > 0 
-        ? upcomingExhibitions 
-        : formattedExhibitions.sort((a: Exhibition & { originalStartTime: string; originalEndTime: string | null }, b: Exhibition & { originalStartTime: string; originalEndTime: string | null }) => {
-            // Sort by end date if available, otherwise by start date
-            const endDateA = a.originalEndTime ? new Date(a.originalEndTime) : new Date(a.originalStartTime);
-            const endDateB = b.originalEndTime ? new Date(b.originalEndTime) : new Date(b.originalStartTime);
-            return endDateB.getTime() - endDateA.getTime(); // Most recent end date first
-          });
-
-      // Show only the first 5 exhibitions, remove originalStartTime and originalEndTime from final objects
-      const finalExhibitions = exhibitionsToShow.slice(0, 5).map((item: Exhibition & { originalStartTime: string; originalEndTime: string | null }) => {
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const { originalStartTime, originalEndTime, ...rest } = item;
-        return rest;
-      });
-      setExhibitions(finalExhibitions);
-      setError(null);
-    } catch (err) {
-      console.error("Error fetching exhibitions:", err);
-      setError("Unable to load exhibitions at this time.");
-    } finally {
-      setLoading(false);
-    }
+interface WhitneyItem {
+  id: string;
+  attributes: {
+    start_time: string;
+    end_time?: string;
+    title: string;
+    url: string;
   };
+}
 
-  if (loading) {
+type SortableExhibition = Exhibition & {
+  originalStartTime: string;
+  originalEndTime: string | null;
+};
+
+function formatDayLabel(date: Date) {
+  return date.toLocaleDateString("en-US", { weekday: "short" }).toUpperCase();
+}
+
+function formatDateLabel(date: Date) {
+  const month = date.toLocaleDateString("en-US", { month: "short" }).toUpperCase();
+  return `${month} ${date.getDate()}`;
+}
+
+function formatDateRange(startTime: string, endTime?: string) {
+  const startDate = new Date(startTime);
+  const startFormatted = `${startDate.toLocaleDateString("en-US", { month: "short" })} ${startDate.getDate()}`;
+
+  if (!endTime) return startFormatted;
+
+  const endDate = new Date(endTime);
+  if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) return "Ongoing";
+
+  const startDateOnly = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
+  const endDateOnly = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate());
+  if (startDateOnly.getTime() === endDateOnly.getTime()) return startFormatted;
+
+  const endFormatted = `${endDate.toLocaleDateString("en-US", { month: "short" })} ${endDate.getDate()}`;
+  return `${startFormatted} - ${endFormatted}`;
+}
+
+function toDateOnly(value: string) {
+  const d = new Date(value);
+  return new Date(d.getFullYear(), d.getMonth(), d.getDate());
+}
+
+// Pure transform: raw Whitney API payload -> the (max 5) exhibitions we display.
+function formatExhibitions(items: WhitneyItem[]): Exhibition[] {
+  const formatted: SortableExhibition[] = items.map((item) => {
+    const startDate = new Date(item.attributes.start_time);
+    return {
+      id: item.id,
+      title: item.attributes.title,
+      location: "Whitney Museum of American Art",
+      dayOfWeek: formatDayLabel(startDate),
+      date: formatDateLabel(startDate),
+      startTime: formatDateRange(item.attributes.start_time, item.attributes.end_time),
+      url: `https://whitney.org${item.attributes.url}`,
+      originalStartTime: item.attributes.start_time,
+      originalEndTime: item.attributes.end_time || null,
+    };
+  });
+
+  const nowDateOnly = toDateOnly(new Date().toISOString());
+
+  const upcoming = formatted
+    .filter((item) => {
+      const end = item.originalEndTime ? toDateOnly(item.originalEndTime) : toDateOnly(item.originalStartTime);
+      return end >= nowDateOnly;
+    })
+    .sort((a, b) => {
+      const endA = new Date(a.originalEndTime ?? a.originalStartTime).getTime();
+      const endB = new Date(b.originalEndTime ?? b.originalStartTime).getTime();
+      return endA - endB;
+    });
+
+  const toShow =
+    upcoming.length > 0
+      ? upcoming
+      : [...formatted].sort((a, b) => {
+          const endA = new Date(a.originalEndTime ?? a.originalStartTime).getTime();
+          const endB = new Date(b.originalEndTime ?? b.originalStartTime).getTime();
+          return endB - endA;
+        });
+
+  return toShow.slice(0, 5).map(({ originalStartTime: _s, originalEndTime: _e, ...rest }) => rest);
+}
+
+async function exhibitionsFetcher(url: string): Promise<Exhibition[]> {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error("Failed to fetch exhibitions");
+  }
+  const responseData = await response.json();
+  return formatExhibitions(responseData.data ?? []);
+}
+
+export default function ExhibitionsSection() {
+  const { data: exhibitions, error, isLoading, mutate } = useSWR<Exhibition[]>(
+    "/api/whitney-exhibitions",
+    exhibitionsFetcher,
+    { revalidateOnFocus: false }
+  );
+
+  if (isLoading) {
     return (
       <div className="w-full flex justify-center items-center py-12">
         <div className="text-center">
@@ -209,9 +133,10 @@ export default function ExhibitionsSection() {
     return (
       <div className="w-full flex justify-center items-center py-12">
         <div className="text-center text-red-600">
-          <p>{error}</p>
+          <p>Unable to load exhibitions at this time.</p>
           <button
-            onClick={fetchExhibitions}
+            type="button"
+            onClick={() => mutate()}
             className="mt-4 px-4 py-2 bg-gray-900 text-white rounded hover:bg-gray-700 transition"
           >
             Retry
@@ -221,7 +146,7 @@ export default function ExhibitionsSection() {
     );
   }
 
-  if (exhibitions.length === 0) {
+  if (!exhibitions || exhibitions.length === 0) {
     return (
       <div className="w-full flex justify-center items-center py-12">
         <p className="text-gray-600">No exhibitions available at this time.</p>

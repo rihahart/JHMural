@@ -20,6 +20,20 @@ interface ButtonProps {
   fullWidth?: boolean;
 }
 
+// Size classes: large uses text-3xl, small uses text-lg
+const sizeClasses = {
+  small: `
+    px-[var(--spacing-m)] py-[var(--spacing-m)]
+    web-text-lg-black
+    rounded-sm
+  `,
+  large: `
+    px-[var(--spacing-lg)] py-[var(--spacing-lg)]
+    web-text-3xl-black
+    rounded-sm
+  `,
+};
+
 export default function Button({
   variant = 'primary',
   size = 'large',
@@ -49,20 +63,6 @@ export default function Button({
     transform
     active:scale-[0.95] active:translate-y-0
   `;
-
-  // Size classes: large uses text-3xl, small uses text-lg
-  const sizeClasses = {
-    small: `
-      px-[var(--spacing-m)] py-[var(--spacing-m)]
-      web-text-lg-black
-      rounded-sm
-    `,
-    large: `
-      px-[var(--spacing-lg)] py-[var(--spacing-lg)]
-      web-text-3xl-black
-      rounded-sm
-    `,
-  };
 
   // Variant classes
   const variantClasses = {

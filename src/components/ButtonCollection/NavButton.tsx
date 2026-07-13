@@ -27,6 +27,43 @@ interface NavButtonProps {
   'aria-expanded'?: boolean;
 }
 
+// Variant classes - using exact same pattern as Button component
+const variantClasses = {
+  primary: `
+    text-[var(--color-content-primary)]
+    font-[var(--font-weight-semibold)]
+    gap-[var(--spacing-m)]
+    flex
+    text-3xl
+    py-[var(--spacing-lg)] px-[var(--spacing-m)]
+    hover:bg-[var(--color-background-hover)]
+    active:bg-[var(--color-background-hover)]
+
+  `,
+  secondary: `
+    text-[var(--color-content-primary)]
+    font-[var(--font-weight-semibold)]
+    text-2xl
+    w-[360px]
+    flex
+    py-[var(--spacing-m)] 
+    px-[var(--spacing-s)]
+    hover:text-[var(--color-content-brand)]
+    active:text-[var(--color-content-brand)]
+  `,
+  tertiary: `
+    text-[var(--color-content-primary)]
+    font-[var(--font-weight-semibold)]
+    text-2xl
+    gap-[var(--spacing-m)]
+    px-[var(--spacing-m)]
+    flex-col
+    justify-center
+    items-center
+    hover:text-[var(--color-content-brand)]
+  `,
+};
+
 export default function NavButton({
   variant = 'primary',
   href,
@@ -63,43 +100,6 @@ export default function NavButton({
   const sizeClasses = `
     rounded-none
   `;
-
-  // Variant classes - using exact same pattern as Button component
-  const variantClasses = {
-    primary: `
-      text-[var(--color-content-primary)]
-      font-[var(--font-weight-semibold)]
-      gap-[var(--spacing-m)]
-      flex
-      text-3xl
-      py-[var(--spacing-lg)] px-[var(--spacing-m)]
-      hover:bg-[var(--color-background-hover)]
-      active:bg-[var(--color-background-hover)]
-
-    `,
-    secondary: `
-      text-[var(--color-content-primary)]
-      font-[var(--font-weight-semibold)]
-      text-2xl
-      w-[360px]
-      flex
-      py-[var(--spacing-m)] 
-      px-[var(--spacing-s)]
-      hover:text-[var(--color-content-brand)]
-      active:text-[var(--color-content-brand)]
-    `,
-    tertiary: `
-      text-[var(--color-content-primary)]
-      font-[var(--font-weight-semibold)]
-      text-2xl
-      gap-[var(--spacing-m)]
-      px-[var(--spacing-m)]
-      flex-col
-      justify-center
-      items-center
-      hover:text-[var(--color-content-brand)]
-    `,
-  };
 
   // Active state classes for navigation
   const activeClasses = isActive ? (variant === 'secondary' ? `

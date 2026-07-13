@@ -13,6 +13,7 @@ export default function HamburgerMenu({
 
   return (
     <button
+      type="button"
       onClick={onClick}
       className="lg:hidden flex flex-col gap-[var(--spacing-xs)] p-[var(--spacing-s)]"
       aria-label="Toggle menu"

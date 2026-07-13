@@ -20,6 +20,28 @@ interface ButtonProps {
   fullWidth?: boolean;
 }
 
+// Size classes: large uses text-3xl, small uses text-lg
+const sizeClasses = {
+  small: "mobile-text-xl-black",
+  large: "web-text-2xl-black",
+};
+
+// Variant classes
+const variantClasses = {
+  primary: `
+    bg-none
+    text-[var(--color-content-primary)]
+  `,
+  secondary: `
+    bg-none
+    text-[var(--color-content-brand)]
+  `,
+  "primary-inverse": `
+    bg-none
+    text-[var(--color-content-primary-inverse)]
+  `,
+};
+
 export default function BorderlessButton({
   variant = "primary",
   size = "large",
@@ -52,28 +74,6 @@ export default function BorderlessButton({
     transform
     active:scale-[0.95] active:translate-y-0
   `;
-
-  // Size classes: large uses text-3xl, small uses text-lg
-  const sizeClasses = {
-    small: "mobile-text-xl-black",
-    large: "web-text-2xl-black",
-  };
-
-  // Variant classes
-  const variantClasses = {
-    primary: `
-      bg-none
-      text-[var(--color-content-primary)]
-    `,
-    secondary: `
-      bg-none
-      text-[var(--color-content-brand)]
-    `,
-    "primary-inverse": `
-      bg-none
-      text-[var(--color-content-primary-inverse)]
-    `,
-  };
 
   // Combine all classes
   const buttonClasses = `

@@ -1,4 +1,3 @@
-@import url("https://use.typekit.net/yvy5tmy.css");
 @import "tailwindcss";
 
 :root {
@@ -1449,5 +1448,20 @@
     color: var(--color-content-primary);
   }
 
+}
+
+/* Respect the OS "Reduce Motion" accessibility setting (WCAG 2.3.3).
+   Neutralizes CSS animations/transitions/smooth-scroll for users who
+   opt out of motion. Framer Motion is additionally handled via
+   <MotionConfig reducedMotion="user"> in the root layout. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 

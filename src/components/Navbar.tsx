@@ -4,10 +4,36 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import Button from "./ButtonCollection/Button";
-import NavButton from "./ButtonCollection/NavButton";
-import WebMenu from "./WebMenu";
+import DesktopNavItem from "./navbar/DesktopNavItem";
+import type { NavItem, NavName } from "./navbar/types";
 
 const HOVER_CLOSE_DELAY = 150; // ms
+
+const navItems: NavItem[] = [
+  {
+    name: "Projects",
+    hasDropdown: true,
+    submenu: [{ name: "84th st mural", href: "/projects/84th-street-mural" }],
+  },
+  {
+    name: "Get to know us",
+    hasDropdown: true,
+    submenu: [
+      { name: "What inspires us", href: "/get-to-know-us/what-inspires-us" },
+      { name: "Meet JH mural team", href: "/get-to-know-us/meet-jh-mural-team" },
+    ],
+  },
+  {
+    name: "Get involved",
+    hasDropdown: false,
+    submenu: [{ name: "Get involved", href: "/get-involved" }],
+  },
+  {
+    name: "Join our newsletter",
+    hasDropdown: false,
+    submenu: [{ name: "Join our newsletter", href: "/newsletter" }],
+  },
+];
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -36,8 +62,7 @@ export default function Navbar() {
   const [isGetInvolvedDropdownOpen, setIsGetInvolvedDropdownOpen] =
     useState(false);
   const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
-  const [isGetInvolvedHovered, setIsGetInvolvedHovered] = useState(false);
-  const [isNewsletterHovered, setIsNewsletterHovered] = useState(false);
+  const [hoveredItem, setHoveredItem] = useState<NavName | null>(null);
 
   const lastYRef = useRef(0);
   const desktopNavRef = useRef<HTMLDivElement | null>(null);
@@ -51,39 +76,6 @@ export default function Navbar() {
       false
     );
   }, []);
-
-  const navItems: Array<{
-    name: "Projects" | "Get to know us" | "Get involved" | "Join our newsletter";
-    hasDropdown?: boolean;
-    submenu: { name: string; href: string }[];
-  }> = [
-    {
-      name: "Projects",
-      hasDropdown: true,
-      submenu: [{ name: "84th st mural", href: "/projects/84th-street-mural" }],
-    },
-    {
-      name: "Get to know us",
-      hasDropdown: true,
-      submenu: [
-        { name: "What inspires us", href: "/get-to-know-us/what-inspires-us" },
-        { name: "Meet JH mural team", href: "/get-to-know-us/meet-jh-mural-team" },
-      ],
-    },
-
-   {
-    name: "Get involved",
-    hasDropdown: false,
-    submenu: [{ name: "Get involved", href: "/get-involved" }
-    ],
-   },
-   {
-    name: "Join our newsletter",
-    hasDropdown: false,
-    submenu: [{ name: "Join our newsletter", href: "/newsletter" }
-    ],
-   }
-  ];
 
   const sectionIsActive = (item: { submenu?: { href: string }[]; hasDropdown?: boolean }) => {
     if (!pathname) return false;
@@ -178,13 +170,13 @@ export default function Navbar() {
     }, HOVER_CLOSE_DELAY);
   };
 
-  const openMenu = (name: "Projects" | "Get to know us" | "Get involved" | "Join our newsletter") => {
+  const openMenu = (name: NavName) => {
     setIsProjectsDropdownOpen(name === "Projects");
     setIsGetInvolvedDropdownOpen(name === "Get involved");
     setIsAboutDropdownOpen(name === "Get to know us");
   };
 
-  const toggleMenu = (name: "Projects" | "Get to know us" | "Get involved" | "Join our newsletter") => {
+  const toggleMenu = (name: NavName) => {
     if (name === "Projects") {
       setIsProjectsDropdownOpen((v) => !v);
       setIsGetInvolvedDropdownOpen(false);
@@ -258,108 +250,27 @@ export default function Navbar() {
             ref={desktopNavRef}
             className="hidden lg:flex items-center p-[var(--spacing-m)] gap-[var(--spacing-xl)]"
           >
-            {navItems.map((item) => {
-              const active = sectionIsActive(item);
-              const isOpen =
-                (item.name === "Projects" && isProjectsDropdownOpen) ||
-                (item.name === "Get to know us" && isAboutDropdownOpen);
-
-              // Render as direct link if hasDropdown is false
-              if (item.hasDropdown === false && item.submenu && item.submenu.length > 0) {
-                const href = item.submenu[0].href;
-                const isHovered = (item.name === "Get involved" && isGetInvolvedHovered) || 
-                                  (item.name === "Join our newsletter" && isNewsletterHovered);
-                return (
-                  <div key={item.name} className="relative">
-                    <NavButton
-                      variant="tertiary"
-                      isActive={active || isHovered}
-                      isInitialLoad={isHome && isAtTop && !isAnyMenuOpen}
-                      trailingIcon="/flower.svg"
-                      onClick={() => {
-                        router.push(href);
-                      }}
-                      onMouseEnter={() => {
-                        if (item.name === "Get involved") {
-                          setIsGetInvolvedHovered(true);
-                        } else if (item.name === "Join our newsletter") {
-                          setIsNewsletterHovered(true);
-                        }
-                      }}
-                      onMouseLeave={() => {
-                        if (item.name === "Get involved") {
-                          setIsGetInvolvedHovered(false);
-                        } else if (item.name === "Join our newsletter") {
-                          setIsNewsletterHovered(false);
-                        }
-                      }}
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter" || e.key === " ") {
-                          e.preventDefault();
-                          router.push(href);
-                        }
-                      }}
-                      role="button"
-                      tabIndex={0}
-                      className="group"
-                    >
-                      {item.name}
-                    </NavButton>
-                  </div>
-                );
-              }
-
-              // Render as dropdown if hasDropdown is true
-              return (
-                <div key={item.name} className="relative">
-                  <NavButton
-                    variant="tertiary"
-                    isActive={active || isOpen}
-                    isInitialLoad={isHome && isAtTop && !isAnyMenuOpen}
-                    trailingIcon="/flower.svg"
-                    onClick={() => toggleMenu(item.name)}
-                    onMouseEnter={() => {
-                      if (!hoverEnabled) return;
-                      clearCloseTimer();
-                      openMenu(item.name);
-                    }}
-                    onMouseLeave={() => {
-                      if (!hoverEnabled) return;
-                      scheduleClose();
-                    }}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" || e.key === " ") {
-                        e.preventDefault();
-                        toggleMenu(item.name);
-                      }
-                    }}
-                    role="button"
-                    tabIndex={0}
-                    aria-haspopup="menu"
-                    aria-expanded={isOpen}
-                      className="group"
-                  >
-                    {item.name}
-                  </NavButton>
-
-                  {/* Fixed, full-width dropdown */}
-                  <WebMenu
-                    ref={menuElRef}
-                    isOpen={isOpen}
-                    submenu={item.submenu || []}
-                    onMenuEnter={() => {
-                      if (!hoverEnabled) return;
-                      clearCloseTimer();
-                      openMenu(item.name);
-                    }}
-                    onMenuLeave={() => {
-                      if (!hoverEnabled) return;
-                      scheduleClose();
-                    }}
-                  />
-                </div>
-              );
-            })}
+            {navItems.map((item) => (
+              <DesktopNavItem
+                key={item.name}
+                item={item}
+                active={sectionIsActive(item)}
+                isOpen={
+                  (item.name === "Projects" && isProjectsDropdownOpen) ||
+                  (item.name === "Get to know us" && isAboutDropdownOpen)
+                }
+                isInitialLoad={isHome && isAtTop && !isAnyMenuOpen}
+                isHovered={hoveredItem === item.name}
+                hoverEnabled={hoverEnabled}
+                menuRef={menuElRef}
+                onNavigate={(href) => router.push(href)}
+                onToggleMenu={toggleMenu}
+                onOpenMenu={openMenu}
+                onClearCloseTimer={clearCloseTimer}
+                onScheduleClose={scheduleClose}
+                onHoverChange={(value) => setHoveredItem(value ? item.name : null)}
+              />
+            ))}
           </div>
         </div>
 
