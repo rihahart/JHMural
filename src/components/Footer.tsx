@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
 import NavButton from "./ButtonCollection/NavButton";
 import Button from "./ButtonCollection/Button";

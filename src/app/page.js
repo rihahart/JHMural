@@ -43,7 +43,10 @@ export default function Home() {
         />
       </div>
       <div className="flex flex-col gap-[var(--spacing-m)]">
-        <h2 className="mobile-heading-5xl-bold md:web-heading-5xl-bold xl:hero-s text-[var(--color-content-primary)]">
+        <h2
+          className="mobile-heading-5xl-bold md:web-heading-5xl-bold xl:hero-s text-[var(--color-content-primary)]"
+          style={{ fontFamily: "var(--font-family-display)" }}
+        >
           Our values
         </h2>
         <p className="mobile-text-2xl-semibold md:web-text-2xl-semibold xl:web-text-3xl-semibold text-[var(--color-content-primary)]">
