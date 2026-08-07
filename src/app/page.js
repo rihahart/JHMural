@@ -15,11 +15,11 @@ import { DesktopOnly, MobileOnly } from "@/components/responsive/Breakpoint";
 // Mission row: "Our Mission" card (left) + "Roosevelt Ave Project" card (right).
 // Static (no props/state), so it's defined once at module scope.
 const missionRow = (
-  <div className="w-full flex flex-col xl:flex-row items-stretch gap-[var(--spacing-2xl)] md:gap-[var(--spacing-8xl)] min-w-0">
-    <div className="w-full xl:w-[57%] min-w-0">
+  <div className="w-full flex flex-col xl:flex-row items-stretch gap-[var(--spacing-2xl)] xl:gap-[var(--spacing-10xl)] min-w-0">
+    <div className="w-full xl:flex-1 min-w-0 flex">
       <OurMissionCard />
     </div>
-    <div className="w-full xl:w-[43%] min-w-0">
+    <div className="w-full xl:flex-1 min-w-0 flex">
       <RooseveltAveProjectCard />
     </div>
   </div>
@@ -59,7 +59,6 @@ export default function Home() {
 
       <DesktopOnly>
         <div className="flex flex-col max-w-[1600px] mx-auto items-center justify-center px-[var(--spacing-2xl)] py-[var(--spacing-4xl)] lg:px-[var(--spacing-6xl)] lg:py-[var(--spacing-6xl)] gap-[var(--spacing-12xl)]">
-          <DecorativeDivider />
           {missionRow}
           <DecorativeDivider />
           <HomeFeatureCards />

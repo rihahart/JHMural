@@ -4,11 +4,12 @@
 export const homeFeatureCardsData = [
   {
     id: "inaugural-mural",
-    title: "Inaugural Mural",
+    title: '"Jackson Heights in Bloom"',
     description:
       "See where it all began — our first mural at 84th Street and Roosevelt Avenue, painted with and for the Jackson Heights community.",
-    image: "/84thStreetMural/Hero Image.jpg",
-    imageAlt: "Floral mural painted on brick at 84th Street and Roosevelt Avenue",
+    image: "/InugrationalMural.jpg",
+    imageAlt:
+      "Floral mural painted on brick at 84th Street and Roosevelt Avenue",
     href: "/projects/84th-street-mural",
     external: false,
   },
@@ -27,7 +28,7 @@ export const homeFeatureCardsData = [
     title: "Join our newsletter",
     description:
       "Stay in the loop on new murals, events, and volunteer opportunities happening around Jackson Heights.",
-    image: "/newsletter/newsletter.jpeg",
+    image: "/homepage/KidsJoyFullyDrawing.png",
     imageAlt: "Community members gathered in front of a mural",
     href: "/newsletter",
     external: false,
