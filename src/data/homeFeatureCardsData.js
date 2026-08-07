@@ -28,7 +28,7 @@ export const homeFeatureCardsData = [
     title: "Join our newsletter",
     description:
       "Stay in the loop on new murals, events, and volunteer opportunities happening around Jackson Heights.",
-    image: "/homepage/KidsJoyFullyDrawing.png",
+    image: "/homepage/KidsJoyfullyDrawing.png",
     imageAlt: "Community members gathered in front of a mural",
     href: "/newsletter",
     external: false,
