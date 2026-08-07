@@ -5,8 +5,7 @@ import Image from "next/image";
 import BorderlessButton from "../ButtonCollection/BorderlessButton";
 import homeFeatureCardsData from "@/data/homeFeatureCardsData";
 
-// 3-up feature row on the homepage (Figma "Item 2"):
-// Inaugural Mural / Donate / Join our newsletter, with vertical dividers.
+// 3-up feature row on the homepage 
 export default function HomeFeatureCards() {
   return (
     <div className="flex flex-col xl:flex-row w-full gap-[var(--spacing-2xl)] xl:gap-0 xl:divide-x-4 xl:divide-[var(--color-content-secondary)]">
@@ -25,11 +24,11 @@ export default function HomeFeatureCards() {
             />
           </div>
 
-          <h3 className="mobile-heading-5xl-bold md:web-heading-3xl-bold text-[var(--color-content-primary)]">
+          <h3 className="mobile-heading-4xl-bold md:web-heading-2xl-bold text-[var(--color-content-primary)]">
             {card.title}
           </h3>
 
-          <p className="mobile-text-xl-semibold md:web-text-xl-regular text-[var(--color-content-primary)] flex-1">
+          <p className="mobile-text-lg-semibold md:web-text-lg-regular text-[var(--color-content-primary)] flex-1">
             {card.description}
           </p>
 
