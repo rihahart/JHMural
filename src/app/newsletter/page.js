@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Button from "@/components/ButtonCollection/Button";
 import { DesktopOnly, MobileOnly } from "@/components/responsive/Breakpoint";
+import { apiUrl } from "@/app/_utilities/api";
 
 function NewsletterFields({ formData, errors, status, onChange, onFocus }) {
   return (
@@ -212,7 +213,7 @@ export default function Newsletter() {
     }
 
     try {
-      const response = await fetch('/api/newsletter', {
+      const response = await fetch(apiUrl('/newsletter'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -228,7 +229,7 @@ export default function Newsletter() {
         setErrors({ firstName: '', lastName: '', email: '' });
         setIsSubscribed(true);
       } else {
-        setStatus({ type: 'error', message: data.error || 'Failed to subscribe' });
+        setStatus({ type: 'error', message: data.error || data.detail || 'Failed to subscribe' });
       }
     } catch {
       setStatus({ type: 'error', message: 'An unexpected error occurred' });

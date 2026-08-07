@@ -11,7 +11,7 @@ import ExitButton from "./ExitButton";
 interface MobileMenuProps {
   isOpen: boolean;
   expandedStates: { isMobileMuralsExpanded: boolean; isMobileAboutExpanded: boolean };
-  onToggleExpanded: (itemName: "Murals" | "Get to know us") => void;
+  onToggleExpanded: (itemName: "Projects" | "About us") => void;
   onCloseAll: () => void;
 }
 
@@ -42,17 +42,17 @@ const MobileMenu = forwardRef<HTMLDivElement, MobileMenuProps>(
           
           {/* Menu content */}
           <div className="flex flex-col items-start gap-[var(--spacing-m)] border-t-4 border-t-[var(--color-content-secondary)]">
-            {/* Murals container */}
+            {/* Projects container */}
             <div className="flex flex-col items-start gap-[var(--spacing-m)] border-b border-b-[var(--color-border-disabled)] w-full">
               <NavButton
                 variant="primary"
-                onClick={() => onToggleExpanded("Murals")}
+                onClick={() => onToggleExpanded("Projects")}
                 isActive={expandedStates.isMobileMuralsExpanded}
                 trailingIcon="/flower.svg"
                 aria-expanded={expandedStates.isMobileMuralsExpanded}
                 className="w-full"
               >
-                Murals
+                Projects
               </NavButton>
               <div className={`${expandedStates.isMobileMuralsExpanded ? 'block' : 'hidden'} space-y-[var(--spacing-m)]`}>
                 <NavButton
@@ -67,17 +67,17 @@ const MobileMenu = forwardRef<HTMLDivElement, MobileMenuProps>(
               </div>
             </div>
 
-            {/* Get to know us container */}
+            {/* About us container */}
             <div className="flex flex-col items-start gap-[var(--spacing-m)] border-b border-b-[var(--color-border-disabled)] w-full">
               <NavButton
                 variant="primary"
-                onClick={() => onToggleExpanded("Get to know us")}
+                onClick={() => onToggleExpanded("About us")}
                 isActive={expandedStates.isMobileAboutExpanded}
                 trailingIcon="/flower.svg"
                 aria-expanded={expandedStates.isMobileAboutExpanded}
                 className="w-full"
               >
-                Get to know us
+                About us
               </NavButton>
               <div className={`${expandedStates.isMobileAboutExpanded ? 'block' : 'hidden'} space-y-[var(--spacing-m)]`}>
                 <NavButton
@@ -101,17 +101,17 @@ const MobileMenu = forwardRef<HTMLDivElement, MobileMenuProps>(
               </div>
             </div>
 
-            {/* Join our newsletter container */}
+            {/* Get involved container */}
             <div className="flex flex-col items-start gap-[var(--spacing-m)] border-b border-b-[var(--color-border-disabled)] w-full">
               <NavButton
                 variant="primary"
-                href="/newsletter"
+                href="/get-involved"
                 onClick={onCloseAll}
                 trailingIcon="/flower.svg"
-                isActive={pathname === "/newsletter"}
+                isActive={pathname === "/get-involved"}
                 className="w-full"
               >
-                Join our newsletter
+                Get involved
               </NavButton>
             </div>
 

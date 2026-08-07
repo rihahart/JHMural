@@ -29,7 +29,7 @@ const sizeClasses = {
   `,
   large: `
     px-[var(--spacing-lg)] py-[var(--spacing-lg)]
-    web-text-3xl-black
+    web-text-xl-semibold
     rounded-sm
   `,
 };

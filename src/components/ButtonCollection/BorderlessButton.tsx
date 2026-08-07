@@ -23,7 +23,7 @@ interface ButtonProps {
 // Size classes: large uses text-3xl, small uses text-lg
 const sizeClasses = {
   small: "mobile-text-xl-black",
-  large: "web-text-2xl-black",
+  large: "web-text-lg-semibold",
 };
 
 // Variant classes

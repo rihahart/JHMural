@@ -14,19 +14,12 @@ export default function WhatInspiresUs() {
         <div className="flex flex-col items-center py-[var(--spacing-3xl)] px-[var(--spacing-lg)] gap-[var(--spacing-4xl)] justify-center">
           <div className="flex flex-col items-start align-stretch gap-[var(--spacing-xl)]">
             <h1 className="hero-xs text-[var(--color-content-primary)]">
-              What inspires us
+              Our Mission
             </h1>
             <p className="mobile-text-xl-semibold text-[var(--color-content-primary)]">
-              JH Mural Project was born out of Jackson Heights, the most diverse
-              community on earth. Here, every blank wall is an opportunity to
-              change the world. That's why we picked up our brushes. This is our
-              chance to add color to the concrete. To turn blight into beauty.
-              Apathy into pride. And turn walls into windows that show the world
-              what unity looks like. We paint because we believe in this place.
-              Because our children deserve a more colorful future. Because art
-              reminds us who we are and who we can be. We want to carry this
-              diversity, unity, and love far beyond these walls, to all of
-              Queens, and all of New York.
+              We are a non-profit based in Jackson Heights, Queens that partners
+              with artists to bring murals to neighborhoods that have
+              historically been overlooked.
             </p>
           </div>
           <div className="relative w-full overflow-hidden h-[250px]">
@@ -47,7 +40,7 @@ export default function WhatInspiresUs() {
         <div className="flex flex-col max-w-[1600px] mx-auto items-center justify-center py-[var(--spacing-8xl)] px-[var(--spacing-6xl)] gap-[var(--spacing-8xl)]">
           <div className="flex flex-col items-start align-stretch gap-[var(--spacing-2xl)]">
             <h1 className="hero-2xl text-[var(--color-content-primary)]">
-              What inspires us
+              Our Mission
             </h1>
             <p className="web-text-2xl-semibold text-[var(--color-content-primary)]">
               Founded in Jackson Heights, Queens — the most culturally diverse
