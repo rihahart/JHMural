@@ -47,17 +47,17 @@ export default function MobileNavbar() {
     };
   }, [isHome, isInitialLoad]);
 
-  const handleToggleExpanded = (itemName: "Murals" | "Get to know us") => {
+  const handleToggleExpanded = (itemName: "Projects" | "About us") => {
     const isCurrentlyOpen =
-      (itemName === "Murals" && isMobileMuralsExpanded) ||
-      (itemName === "Get to know us" && isMobileAboutExpanded);
+      (itemName === "Projects" && isMobileMuralsExpanded) ||
+      (itemName === "About us" && isMobileAboutExpanded);
 
     setIsMobileMuralsExpanded(false);
     setIsMobileAboutExpanded(false);
 
     if (!isCurrentlyOpen) {
-      if (itemName === "Murals") setIsMobileMuralsExpanded(true);
-      else if (itemName === "Get to know us") setIsMobileAboutExpanded(true);
+      if (itemName === "Projects") setIsMobileMuralsExpanded(true);
+      else if (itemName === "About us") setIsMobileAboutExpanded(true);
     }
   };
 

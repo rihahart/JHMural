@@ -1,0 +1,17 @@
+node_modules/
+.next/
+out/
+dist/
+
+# Secrets & local env
+.env
+.env.local
+
+# VCS / editor / OS
+.git/
+.gitignore
+.DS_Store
+
+Dockerfile
+.dockerignore
+README.md

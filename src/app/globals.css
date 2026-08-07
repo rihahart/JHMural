@@ -130,7 +130,7 @@
   --color-background-pressed: var(--color-neutral-400);
   --color-background-selected: var(--color-brand-400);
   --color-background-disabled: var(--color-neutral-600);
-  --color-background-inverse: var(--color-neutral-800);
+  --color-background-inverse: var(--color-brand-800);
   --color-background-inverse-hover: var(--color-neutral-850);
   --color-background-inverse-pressed: var(--color-neutral-900);
   --color-background-brand: var(--color-brand-700);
@@ -147,7 +147,7 @@
   /* Border Colors */
   --color-border-primary: var(--color-neutral-500);
   --color-border-secondary: var(--color-neutral-400);
-  --color-border-tertiary: var(--color-neutral-300);
+  --color-border-tertiary: #cccccc;
   --color-border-disabled: var(--color-neutral-600);
   --color-border-inverse: var(--color-neutral-100);
   --color-border-brand: var(--color-brand-700);

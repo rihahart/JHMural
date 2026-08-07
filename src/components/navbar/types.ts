@@ -1,7 +1,7 @@
 export type NavName =
-  | "Murals"
-  | "Get to know us"
-  | "Join our newsletter";
+  | "Projects"
+  | "About us"
+  | "Get involved";
 
 export interface NavItem {
   name: NavName;

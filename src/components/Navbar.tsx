@@ -11,12 +11,12 @@ const HOVER_CLOSE_DELAY = 150; // ms
 
 const navItems: NavItem[] = [
   {
-    name: "Murals",
+    name: "Projects",
     hasDropdown: true,
     submenu: [{ name: "84th st mural", href: "/projects/84th-street-mural" }],
   },
   {
-    name: "Get to know us",
+    name: "About us",
     hasDropdown: true,
     submenu: [
       { name: "What inspires us", href: "/get-to-know-us/what-inspires-us" },
@@ -24,9 +24,9 @@ const navItems: NavItem[] = [
     ],
   },
   {
-    name: "Join our newsletter",
+    name: "Get involved",
     hasDropdown: false,
-    submenu: [{ name: "Join our newsletter", href: "/newsletter" }],
+    submenu: [{ name: "Get involved", href: "/get-involved" }],
   },
 ];
 
@@ -160,12 +160,12 @@ export default function Navbar() {
   };
 
   const openMenu = (name: NavName) => {
-    setIsMuralsDropdownOpen(name === "Murals");
-    setIsAboutDropdownOpen(name === "Get to know us");
+    setIsMuralsDropdownOpen(name === "Projects");
+    setIsAboutDropdownOpen(name === "About us");
   };
 
   const toggleMenu = (name: NavName) => {
-    if (name === "Murals") {
+    if (name === "Projects") {
       setIsMuralsDropdownOpen((v) => !v);
       setIsAboutDropdownOpen(false);
     } else {
@@ -182,17 +182,15 @@ export default function Navbar() {
       className={`
         w-full fixed top-0 left-0 right-0
         transition-all duration-300 ease-in-out
-        ${
-          isHome
-            ? isVisible
-              ? "translate-y-0"
-              : "-translate-y-full"
-            : "translate-y-0"
+        ${isHome
+          ? isVisible
+            ? "translate-y-0"
+            : "-translate-y-full"
+          : "translate-y-0"
         }
-        ${
-          isAnyMenuOpen
-            ? "bg-[var(--color-background-hover)]"
-            : isHome && isAtTop
+        ${isAnyMenuOpen
+          ? "bg-[var(--color-background-hover)]"
+          : isHome && isAtTop
             ? "bg-[var(--color-background-brand)]"
             : "bg-[var(--color-background-primary)]"
         }
@@ -237,8 +235,8 @@ export default function Navbar() {
                 item={item}
                 active={sectionIsActive(item)}
                 isOpen={
-                  (item.name === "Murals" && isMuralsDropdownOpen) ||
-                  (item.name === "Get to know us" && isAboutDropdownOpen)
+                  (item.name === "Projects" && isMuralsDropdownOpen) ||
+                  (item.name === "About us" && isAboutDropdownOpen)
                 }
                 isInitialLoad={isHome && isAtTop && !isAnyMenuOpen}
                 isHovered={hoveredItem === item.name}
@@ -260,7 +258,7 @@ export default function Navbar() {
           <div className="hidden sm:block h-full">
             {/* TODO: Add Stripe checkout URL from environment variable hardcoded for now */}
             <Button
-              href="https://donate.stripe.com/eVqaEY2iV7kk8KI0273ks00"
+              href={process.env.NEXT_PUBLIC_STRIPE_CHECKOUT_URL}
               target="_blank"
               rel="noopener noreferrer"
               variant={isHome && isAtTop && !isAnyMenuOpen ? "primary-on-brand" : "primary"}

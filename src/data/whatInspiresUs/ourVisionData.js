@@ -1,5 +1,5 @@
 export const ourVisionData = {
-  title: "Our vision",
+  title: "Our Vision",
   description:
     "We believe art belongs to everyone, but it is not always accessible to everyone. Too often, it is displayed in museums and galleries located in higher-income neighborhoods. Public art bridges this gap by bringing art directly into communities.",
   description2:

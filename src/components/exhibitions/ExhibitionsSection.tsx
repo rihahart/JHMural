@@ -2,128 +2,85 @@
 
 import React from "react";
 import useSWR from "swr";
+import { apiUrl } from "@/app/_utilities/api";
 import ExhibitionBox from "./ExhibitionBox";
 
+interface RecommendedExhibition {
+  id: number;
+  title: string;
+  start_date: string | null;
+  end_date: string | null;
+  location: string | null;
+  image_url: string | null;
+  url: string | null;
+  recommended: boolean;
+}
+
 interface Exhibition {
-  id: string | number;
+  id: number;
   title: string;
   location: string;
-  dayOfWeek: string;
-  date: string;
   startTime: string;
-  url: string;
+  url?: string;
+  image?: string;
+  recommended: boolean;
 }
 
-interface WhitneyItem {
-  id: string;
-  attributes: {
-    start_time: string;
-    end_time?: string;
-    title: string;
-    url: string;
-  };
+function parseDate(value: string): Date {
+  return new Date(`${value}T00:00:00`);
 }
 
-type SortableExhibition = Exhibition & {
-  originalStartTime: string;
-  originalEndTime: string | null;
-};
-
-function formatDayLabel(date: Date) {
-  return date.toLocaleDateString("en-US", { weekday: "short" }).toUpperCase();
-}
-
-function formatDateLabel(date: Date) {
-  const month = date.toLocaleDateString("en-US", { month: "short" }).toUpperCase();
-  return `${month} ${date.getDate()}`;
-}
-
-function formatDateRange(startTime: string, endTime?: string) {
-  const startDate = new Date(startTime);
-  const startFormatted = `${startDate.toLocaleDateString("en-US", { month: "short" })} ${startDate.getDate()}`;
-
-  if (!endTime) return startFormatted;
-
-  const endDate = new Date(endTime);
-  if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) return "Ongoing";
-
-  const startDateOnly = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
-  const endDateOnly = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate());
-  if (startDateOnly.getTime() === endDateOnly.getTime()) return startFormatted;
-
-  const endFormatted = `${endDate.toLocaleDateString("en-US", { month: "short" })} ${endDate.getDate()}`;
-  return `${startFormatted} - ${endFormatted}`;
-}
-
-function toDateOnly(value: string) {
-  const d = new Date(value);
-  return new Date(d.getFullYear(), d.getMonth(), d.getDate());
-}
-
-// Pure transform: raw Whitney API payload -> the (max 5) exhibitions we display.
-function formatExhibitions(items: WhitneyItem[]): Exhibition[] {
-  const formatted: SortableExhibition[] = items.map((item) => {
-    const startDate = new Date(item.attributes.start_time);
-    return {
-      id: item.id,
-      title: item.attributes.title,
-      location: "Whitney Museum of American Art",
-      dayOfWeek: formatDayLabel(startDate),
-      date: formatDateLabel(startDate),
-      startTime: formatDateRange(item.attributes.start_time, item.attributes.end_time),
-      url: `https://whitney.org${item.attributes.url}`,
-      originalStartTime: item.attributes.start_time,
-      originalEndTime: item.attributes.end_time || null,
-    };
+function formatDate(value: string): string {
+  return parseDate(value).toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
   });
-
-  const nowDateOnly = toDateOnly(new Date().toISOString());
-
-  const upcoming = formatted
-    .filter((item) => {
-      const end = item.originalEndTime ? toDateOnly(item.originalEndTime) : toDateOnly(item.originalStartTime);
-      return end >= nowDateOnly;
-    })
-    .sort((a, b) => {
-      const endA = new Date(a.originalEndTime ?? a.originalStartTime).getTime();
-      const endB = new Date(b.originalEndTime ?? b.originalStartTime).getTime();
-      return endA - endB;
-    });
-
-  const toShow =
-    upcoming.length > 0
-      ? upcoming
-      : [...formatted].sort((a, b) => {
-          const endA = new Date(a.originalEndTime ?? a.originalStartTime).getTime();
-          const endB = new Date(b.originalEndTime ?? b.originalStartTime).getTime();
-          return endB - endA;
-        });
-
-  return toShow.slice(0, 5).map(({ originalStartTime: _s, originalEndTime: _e, ...rest }) => rest);
 }
 
-async function exhibitionsFetcher(url: string): Promise<Exhibition[]> {
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error("Failed to fetch exhibitions");
+function formatDateRange(startDate: string | null, endDate: string | null): string {
+  if (startDate && endDate) {
+    if (startDate === endDate) return formatDate(startDate);
+    return `${formatDate(startDate)} - ${formatDate(endDate)}`;
   }
-  const responseData = await response.json();
-  return formatExhibitions(responseData.data ?? []);
+  if (startDate) return `From ${formatDate(startDate)}`;
+  if (endDate) return `Through ${formatDate(endDate)}`;
+  return "Dates to be announced";
 }
 
-export default function ExhibitionsSection() {
+async function recommendationsFetcher(url: string): Promise<Exhibition[]> {
+  const response = await fetch(url);
+  if (!response.ok) throw new Error("Failed to fetch recommendations");
+
+  const recommendations: RecommendedExhibition[] = await response.json();
+  return recommendations.map((item) => ({
+    id: item.id,
+    title: item.title,
+    location: item.location ?? "Location to be announced",
+    startTime: formatDateRange(item.start_date, item.end_date),
+    url: item.url ?? undefined,
+    image: item.image_url ?? undefined,
+    recommended: item.recommended,
+  }));
+}
+
+interface ExhibitionsSectionProps {
+  limit?: number;
+}
+
+export default function ExhibitionsSection({ limit }: ExhibitionsSectionProps = {}) {
   const { data: exhibitions, error, isLoading, mutate } = useSWR<Exhibition[]>(
-    "/api/whitney-exhibitions",
-    exhibitionsFetcher,
-    { revalidateOnFocus: false }
+    apiUrl("/recommendations"),
+    recommendationsFetcher,
+    { revalidateOnFocus: false },
   );
 
   if (isLoading) {
     return (
-      <div className="w-full flex justify-center items-center py-12">
+      <div className="flex w-full items-center justify-center py-12">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading exhibitions...</p>
+          <div className="mx-auto mb-4 h-12 w-12 animate-spin rounded-full border-b-2 border-gray-900" />
+          <p className="text-gray-600">Loading gallery picks...</p>
         </div>
       </div>
     );
@@ -131,13 +88,13 @@ export default function ExhibitionsSection() {
 
   if (error) {
     return (
-      <div className="w-full flex justify-center items-center py-12">
+      <div className="flex w-full items-center justify-center py-12">
         <div className="text-center text-red-600">
-          <p>Unable to load exhibitions at this time.</p>
+          <p>Unable to load gallery picks at this time.</p>
           <button
             type="button"
             onClick={() => mutate()}
-            className="mt-4 px-4 py-2 bg-gray-900 text-white rounded hover:bg-gray-700 transition"
+            className="mt-4 rounded bg-gray-900 px-4 py-2 text-white transition hover:bg-gray-700"
           >
             Retry
           </button>
@@ -146,18 +103,20 @@ export default function ExhibitionsSection() {
     );
   }
 
-  if (!exhibitions || exhibitions.length === 0) {
+  if (!exhibitions?.length) {
     return (
-      <div className="w-full flex justify-center items-center py-12">
-        <p className="text-gray-600">No exhibitions available at this time.</p>
+      <div className="flex w-full items-center justify-center py-12">
+        <p className="text-gray-600">No gallery picks are available right now.</p>
       </div>
     );
   }
 
+  const visible = typeof limit === "number" ? exhibitions.slice(0, limit) : exhibitions;
+
   return (
-    <div className="w-full flex flex-col gap-8 max-w-full">
-      {exhibitions.map((exhibition) => (
-        <ExhibitionBox key={exhibition.id} exhibition={exhibition} />
+    <div className="grid w-full max-w-full grid-cols-1 md:grid-cols-2 xl:grid-cols-3 items-stretch gap-[var(--spacing-xl)] md:gap-[var(--spacing-2xl)]">
+      {visible.map((exhibition, index) => (
+        <ExhibitionBox key={exhibition.id} exhibition={exhibition} index={index} />
       ))}
     </div>
   );
