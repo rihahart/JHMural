@@ -19,7 +19,7 @@ export default function RooseveltAveProjectCard() {
         <BorderlessButton
           variant="primary-inverse"
           size="large"
-          href="/RooseveltAveProject.png"
+          href="/projects/84th-street-mural"
           trailingIcon="/arrow-right.svg"
           className="w-fit"
         >
@@ -29,7 +29,7 @@ export default function RooseveltAveProjectCard() {
 
       <div className="relative w-full h-[240px] md:h-[324px] xl:h-auto xl:flex-1 xl:min-h-[324px] overflow-hidden">
         <Image
-          src="/MuralJH.JPG"
+          src="/RooseveltAveProject.png"
           alt="Mural along Roosevelt Avenue in Jackson Heights"
           fill
           sizes="(max-width: 1440px) 100vw, 600px"
