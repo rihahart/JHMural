@@ -22,7 +22,7 @@ interface ButtonProps {
 
 // Size classes: large uses text-3xl, small uses text-lg
 const sizeClasses = {
-  small: "mobile-text-xl-black",
+  small: "mobile-text-lg-semibold",
   large: "web-text-lg-semibold",
 };
 
@@ -72,7 +72,7 @@ export default function BorderlessButton({
         : "cursor-pointer hover:-translate-y-0.5"
     }
     transform
-    active:scale-[0.95] active:translate-y-0
+    active:translate-y-0
   `;
 
   // Combine all classes
@@ -121,10 +121,9 @@ export default function BorderlessButton({
         stroke="currentColor"
         className={`
           ${size === "small" ? "w-4 h-4" : "w-6 h-6"}
-          ml-[var(--spacing-xs)]
           transition-all duration-200 ease-in-out
         `}
-        style={{ transform: "translateY(2px)" }}
+        style={{ transform: size === "small" ? "translateY(1px)" : "translateY(2px)" }}
       >
         <path
           strokeLinecap="round"
@@ -140,7 +139,6 @@ export default function BorderlessButton({
         height={24}
         className={`
           ${size === "small" ? "w-4 h-4" : "w-4 h-4"}
-          ml-[var(--spacing-xs)]
           transition-all duration-200 ease-in-out
           ${
             variant === "primary"
@@ -150,7 +148,7 @@ export default function BorderlessButton({
               : ""
           }
         `}
-        style={{ transform: "translateY(2px)" }}
+        style={{ transform: size === "small" ? "translateY(1px)" : "translateY(2px)" }}
       />
     ));
 

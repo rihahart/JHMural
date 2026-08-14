@@ -57,12 +57,21 @@ const MobileMenu = forwardRef<HTMLDivElement, MobileMenuProps>(
               <div className={`${expandedStates.isMobileMuralsExpanded ? 'block' : 'hidden'} space-y-[var(--spacing-m)]`}>
                 <NavButton
                   variant="secondary"
-                  href="/projects/84th-street-mural"
+                  href="/projects/RooseveltProject"
                   onClick={onCloseAll}
                   className="font-normal"
-                  isActive={pathname === "/projects/84th-street-mural"}
+                  isActive={pathname === "/projects/RooseveltProject"}
                 >
-                  84th st mural
+                  Roosevelt Ave Project
+                </NavButton>
+                <NavButton
+                  variant="secondary"
+                  href="/projects/jackson-heights-in-bloom"
+                  onClick={onCloseAll}
+                  className="font-normal"
+                  isActive={pathname === "/projects/jackson-heights-in-bloom"}
+                >
+                  Jackson Heights in Bloom
                 </NavButton>
               </div>
             </div>
@@ -82,36 +91,36 @@ const MobileMenu = forwardRef<HTMLDivElement, MobileMenuProps>(
               <div className={`${expandedStates.isMobileAboutExpanded ? 'block' : 'hidden'} space-y-[var(--spacing-m)]`}>
                 <NavButton
                   variant="secondary"
-                  href="/get-to-know-us/what-inspires-us"
+                  href="/about-us/get-to-know-us"
                   onClick={onCloseAll}
                   className="font-normal"
-                  isActive={pathname === "/get-to-know-us/what-inspires-us"}
+                  isActive={pathname === "/about-us/get-to-know-us"}
                 >
-                  What inspires us
+                  Get to know us
                 </NavButton>
                 <NavButton
                   variant="secondary"
-                  href="/get-to-know-us/meet-jh-mural-team"
+                  href="/about-us/meet-jh-mural-team"
                   onClick={onCloseAll}
                   className="font-normal"
-                  isActive={pathname === "/get-to-know-us/meet-jh-mural-team"}
+                  isActive={pathname === "/about-us/meet-jh-mural-team"}
                 >
                   Meet JH mural team
                 </NavButton>
               </div>
             </div>
 
-            {/* Get involved container */}
+            {/* Join newsletter container */}
             <div className="flex flex-col items-start gap-[var(--spacing-m)] border-b border-b-[var(--color-border-disabled)] w-full">
               <NavButton
                 variant="primary"
-                href="/get-involved"
+                href="/newsletter"
                 onClick={onCloseAll}
                 trailingIcon="/flower.svg"
-                isActive={pathname === "/get-involved"}
+                isActive={pathname === "/newsletter"}
                 className="w-full"
               >
-                Get involved
+                Join newsletter
               </NavButton>
             </div>
 

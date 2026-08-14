@@ -249,7 +249,7 @@ export default function Newsletter() {
   );
 
   return (
-    <div className="w-full min-h-screen bg-[var(--color-background-primary)]">
+    <div className="w-full min-h-dvh bg-[var(--color-background-primary)]">
       <MobileOnly>
         <div className="flex items-center justify-center">
           <div className="flex flex-col px-[var(--spacing-lg)] py-[var(--spacing-3xl)] gap-[var(--spacing-2xl)] w-full">

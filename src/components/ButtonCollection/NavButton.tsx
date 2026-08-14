@@ -53,14 +53,14 @@ const variantClasses = {
   `,
   tertiary: `
     text-[var(--color-content-primary)]
-    font-[var(--font-weight-semibold)]
-    text-2xl
+    web-heading-m-semibold
     gap-[var(--spacing-m)]
     px-[var(--spacing-m)]
     flex-col
     justify-center
     items-center
     hover:text-[var(--color-content-brand)]
+    active:text-[var(--color-content-brand)]
   `,
 };
 
@@ -143,7 +143,7 @@ export default function NavButton({
           translate-y-[3px]
           inline-block
           shrink-0
-          ${variant === 'primary' && trailingIcon !== '/flower.svg' && leadingIcon !== '/flower.svg' ? 'brightness-0 invert group-hover:scale-110' : 'group-hover:scale-110'}
+          ${variant === 'primary' && trailingIcon !== '/flower.svg' && leadingIcon !== '/flower.svg' ? 'brightness-0 invert' : ''}
           ${trailingIcon === '/flower.svg' || leadingIcon === '/flower.svg' ? 'group-hover:brightness-[1.2] group-hover:saturate-150' : ''}
         `}
       />
@@ -190,7 +190,6 @@ export default function NavButton({
           shrink-0
           translate-y-[3px]
           transition-all duration-300 ease-in-out
-          group-hover:scale-110
           ${isActive ? 'rotate-90' : 'rotate-0'}
         `}
       >

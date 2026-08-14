@@ -1,21 +1,10 @@
 export const ourVisionData = {
-  title: "Our Vision",
+  title: "What Inspires Us",
   description:
-    "We believe art belongs to everyone, but it is not always accessible to everyone. Too often, it is displayed in museums and galleries located in higher-income neighborhoods. Public art bridges this gap by bringing art directly into communities.",
+    "We believe art belongs to everyone. Art has the power to inspire creativity, bring communities together, and encourage the next generation of artists. Yet access to art is not always equal. Public art helps bridge this gap by making creativity accessible to everyone. ",
   description2:
-    "Founded in Jackson Heights, Queens, JH Mural Project brings murals to neighborhoods that have historically been overlooked, turning graffiti walls into open-air galleries that celebrate the people and communities they serve.",
-  subtitle: "Let's cover Jackson Heights in color",
-  subtitleParts: [
-    { text: "Let's", color: "var(--color-purple-500)" },
-    { text: " " },
-    { text: "cover", color: "var(--color-pink-400)" },
-    { text: " " },
-    { text: "Jackson Heights", color: "var(--color-orange-400)" },
-    { text: " " },
-    { text: "in", color: "var(--color-blue-500)" },
-    { text: " " },
-    { text: "color", color: "var(--color-green-300)" },
-  ],
+    "We create murals in communities where access to art is limited, allowing people to see themselves, their stories, and their culture reflected in the murals throughout their neighborhoods. Through our murals, we hope to help revitalize the community by attracting visitors, increasing foot traffic, supporting local businesses, and inspiring long-term investment in the neighborhood.",
+ 
 };
 
 export default ourVisionData;

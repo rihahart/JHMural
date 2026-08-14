@@ -6,8 +6,8 @@ export const muralImpactData = [
     // TODO: replace with final second-paragraph copy for the community card.
     description2:
       "By bringing color and creativity to the walls of Jackson Heights, we join a global movement that believes art can heal and unite communities.",
-    photoCredit: "Photo by @jacksonheightslifeisgood",
-    artistCredit: "Art by @kirsten.magriani",
+    photoCredit: "@jacksonheightslifeisgood",
+    artistCredit: "Kirsten Magriani",
     photo: {
       src: "/ImpactJH.jpg",
       alt: "Community members and dogs interacting with colorful mural on street barrier in Jackson Heights",
@@ -20,15 +20,14 @@ export const muralImpactData = [
     // TODO: replace with final second-paragraph copy for the Roosevelt Ave card.
     description2:
       "While policing addresses the symptoms, art helps address the spirit, creating a sense of belonging and shared purpose that strengthens the neighborhood from within.",
-    photoCredit: "Photo by @jacksonheightslifeisgood",
-    artistCredit: "Mural by Erick Teran @cityprintsnyc",
+  
     photo: {
-      src: "/MuralJH.JPG",
-      alt: "Jackson Heights mural showing 'THE WHOLE WORLD IN ONE NEIGHBORHOOD' with colorful cityscape",
+      src: "/ImpactonMurals.jpeg",
+      alt: "Kids hugging JH Project Mural named Jackson Heights in Bloom on 84th Street and Roosevelt Ave.",
     },
     cta: {
       label: "Roosevelt Ave Project",
-      href: "/projects/84th-street-mural",
+      href: "/projects/jackson-heights-in-bloom",
     },
   },
 ];

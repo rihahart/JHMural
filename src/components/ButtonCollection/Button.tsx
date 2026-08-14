@@ -24,13 +24,12 @@ interface ButtonProps {
 const sizeClasses = {
   small: `
     px-[var(--spacing-m)] py-[var(--spacing-m)]
-    web-text-lg-black
-    rounded-sm
+    mobile-text-lg-semibold
+   
   `,
   large: `
-    px-[var(--spacing-lg)] py-[var(--spacing-lg)]
-    web-text-xl-semibold
-    rounded-sm
+    px-[var(--spacing-lg)] py-[var(--spacing-m)]
+    web-text-lg-semibold
   `,
 };
 
@@ -59,9 +58,9 @@ export default function Button({
     rounded-none
     gap-[var(--spacing-xs)]
     ${fullWidth ? 'w-full' : ''}
-    ${disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer hover:shadow-lg hover:-translate-y-0.5'}
+    ${disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}
     transform
-    active:scale-[0.95] active:translate-y-0
+    active:translate-y-0
   `;
 
   // Variant classes
@@ -70,32 +69,37 @@ export default function Button({
       bg-[var(--color-background-brand)]
       text-white
       hover:bg-[var(--color-background-brand-hover)]
-      ${size === 'large' ? 'hover:shadow-[0_8px_25px_rgba(25,120,216,0.3)]' : 'hover:shadow-[0_4px_15px_rgba(25,120,216,0.2)]'}
+      active:bg-[var(--color-background-brand-hover)]
     `,
     'primary-inverse': `
       bg-[var(--color-background-inverse)]
       text-[var(--color-content-primary-inverse)]
       hover:bg-[var(--color-background-inverse-hover)]
-      ${size === 'large' ? 'hover:shadow-[0_8px_25px_rgba(0,0,0,0.15)]' : 'hover:shadow-[0_4px_15px_rgba(0,0,0,0.1)]'}
+      active:bg-[var(--color-background-inverse-hover)]
     `,
     'primary-on-brand': `
       bg-white
       text-[var(--color-content-primary)]
-      hover:bg-[var(--color-background-hover)]
-      ${size === 'large' ? 'hover:shadow-[0_8px_25px_rgba(25,120,216,0.3)]' : 'hover:shadow-[0_4px_15px_rgba(25,120,216,0.2)]'}
+      hover:bg-[var(--color-content-primary)]
+      hover:text-[var(--color-content-primary-inverse)]
+      active:bg-[var(--color-content-primary)]
+      active:text-[var(--color-content-primary-inverse)]
     `,
     secondary: `
       bg-[var(--color-background-primary)]
       text-[var(--color-content-primary)]
-      border border-[var(--color-border-secondary)]
-      hover:bg-[var(--color-background-hover)]
-      ${size === 'large' ? 'hover:shadow-[0_8px_25px_rgba(25,120,216,0.2)]' : 'hover:shadow-[0_4px_15px_rgba(25,120,216,0.15)]'}
+      border border-[var(--color-content-primary)]
+      !font-[var(--font-weight-bold)]
+      hover:bg-[var(--color-background-inverse-hover)]
+       hover:text-[var(--color-content-primary-inverse)]
+      active:bg-[var(--color-background-inverse-hover)]
+      active:text-[var(--color-content-primary-inverse)]
     `,
     tertiary: `
       bg-[var(--color-background-primary)]
       text-[var(--color-content-secondary)]
       hover:bg-[var(--color-background-hover)]
-      ${size === 'large' ? 'hover:shadow-[0_4px_15px_rgba(0,0,0,0.12)]' : 'hover:shadow-[0_2px_10px_rgba(0,0,0,0.08)]'}
+      active:bg-[var(--color-background-hover)]
     `,
   };
 
@@ -119,8 +123,8 @@ export default function Button({
         mr-[var(--spacing-s)]
         transition-all duration-200 ease-in-out
         align-middle
-        ${variant === 'primary' || variant === 'primary-inverse' ? 'brightness-0 invert group-hover:scale-110' : variant === 'primary-on-brand' ? 'brightness-0 group-hover:scale-110' : variant === 'secondary' ? 'brightness-0 group-hover:scale-110' : 'group-hover:scale-110'}
-        ${trailingIcon === '/flower.svg' || leadingIcon === '/flower.svg' ? 'group-hover:scale-110' : ''}
+        ${size === 'large' ? 'translate-y-[1px]' : ''}
+        ${variant === 'primary' || variant === 'primary-inverse' ? 'brightness-0 invert' : variant === 'primary-on-brand' ? 'brightness-0 group-hover:invert group-active:invert' : variant === 'secondary' ? 'brightness-0' : ''}
       `}
     />
   );
@@ -137,9 +141,8 @@ export default function Button({
           className={`
             ${size === 'small' ? 'w-4 h-4' : 'w-6 h-6'}
             ml-[var(--spacing-xs)]
-              translate-y-[1px]
+              ${size === 'large' ? 'translate-y-[2px]' : 'translate-y-[1px]'}
             transition-all duration-200 ease-in-out
-            group-hover:scale-110
           `}
         >
           <path
@@ -157,15 +160,14 @@ export default function Button({
           className={`
             ${size === 'small' ? 'w-4 h-4' : 'w-4 h-4'}
             ml-[var(--spacing-xs)]
-              translate-y-[.5px]
+              ${size === 'large' ? 'translate-y-[1.5px]' : 'translate-y-[.5px]'}
             transition-all duration-200 ease-in-out
-            ${variant === 'primary' || variant === 'primary-inverse' ? 'brightness-0 invert group-hover:scale-110' : variant === 'primary-on-brand' ? 'brightness-0 group-hover:scale-110' : 'group-hover:scale-110'}
-            ${trailingIcon === '/flower.svg' || leadingIcon === '/flower.svg' ? 'group-hover:scale-110' : ''}
+            ${variant === 'primary' || variant === 'primary-inverse' ? 'brightness-0 invert' : variant === 'primary-on-brand' ? 'brightness-0 group-hover:invert group-active:invert' : ''}
           `}
         />
       )
     ) : (
-      <span className="ml-[var(--spacing-xs)] translate-y-[.5px]">
+      <span className={`ml-[var(--spacing-xs)] ${size === 'large' ? 'translate-y-[1.5px]' : 'translate-y-[.5px]'}`}>
         {trailingIcon}
       </span>
     )

@@ -13,20 +13,23 @@ const navItems: NavItem[] = [
   {
     name: "Projects",
     hasDropdown: true,
-    submenu: [{ name: "84th st mural", href: "/projects/84th-street-mural" }],
+    submenu: [
+      { name: "Roosevelt Ave Project", href: "/projects/RooseveltProject" },
+      { name: "Jackson Heights in Bloom", href: "/projects/jackson-heights-in-bloom" },
+    ],
   },
   {
     name: "About us",
     hasDropdown: true,
     submenu: [
-      { name: "What inspires us", href: "/get-to-know-us/what-inspires-us" },
-      { name: "Meet JH mural team", href: "/get-to-know-us/meet-jh-mural-team" },
+      { name: "Get to know us", href: "/about-us/get-to-know-us" },
+      { name: "Meet JH mural team", href: "/about-us/meet-jh-mural-team" },
     ],
   },
   {
-    name: "Get involved",
+    name: "Join newsletter",
     hasDropdown: false,
-    submenu: [{ name: "Get involved", href: "/get-involved" }],
+    submenu: [{ name: "Join newsletter", href: "/newsletter" }],
   },
 ];
 
@@ -83,31 +86,24 @@ export default function Navbar() {
     );
   };
 
-  // Scroll show/hide + hero color: ONLY on home
+  // Scroll show/hide (all pages) + hero color/initial-load (home only)
   useEffect(() => {
-    if (!isHome) {
-      // Ensure regular navbar elsewhere
-      setIsVisible(true);
-      setIsInitialLoad(false);
-      return;
-    }
-
     const onScroll = () => {
       const y = window.scrollY;
       if (y === 0 || y < lastYRef.current) setIsVisible(true);
       else if (y > 80) setIsVisible(false);
-      if (isInitialLoad && y > 80) setIsInitialLoad(false);
+      if (isHome && isInitialLoad && y > 80) setIsInitialLoad(false);
       setIsAtTop(y === 0);
       lastYRef.current = y;
     };
 
     const opts: AddEventListenerOptions = { passive: true };
     window.addEventListener("scroll", onScroll, opts);
-    const t = setTimeout(() => setIsInitialLoad(false), 2000);
+    const t = isHome ? setTimeout(() => setIsInitialLoad(false), 2000) : null;
 
     return () => {
       window.removeEventListener("scroll", onScroll, opts);
-      clearTimeout(t);
+      if (t) clearTimeout(t);
     };
   }, [isHome, isInitialLoad]);
 
@@ -182,12 +178,7 @@ export default function Navbar() {
       className={`
         w-full fixed top-0 left-0 right-0
         transition-all duration-300 ease-in-out
-        ${isHome
-          ? isVisible
-            ? "translate-y-0"
-            : "-translate-y-full"
-          : "translate-y-0"
-        }
+        ${isVisible ? "translate-y-0" : "-translate-y-full"}
         ${isAnyMenuOpen
           ? "bg-[var(--color-background-hover)]"
           : isHome && isAtTop
@@ -202,7 +193,7 @@ export default function Navbar() {
         className="w-full mx-auto flex items-center justify-between py-[var(--spacing-m)]"
         style={{
           maxWidth:
-            "clamp(1000px, calc(1250px + (100vw - 1440px) * 0.7), 1600px)",
+            "clamp(1000px, calc(1250px + (100vw - 1440px) * 0.7), 2000px)",
         }}
       >
         <div className="flex items-center gap-[var(--spacing-2xl)]">
@@ -264,7 +255,7 @@ export default function Navbar() {
               variant={isHome && isAtTop && !isAnyMenuOpen ? "primary-on-brand" : "primary"}
               size="large"
               trailingIcon="/flower.svg"
-              className="h-full px-[var(--spacing-lg)] text-xl flex items-center !rounded-none"
+              className="h-full !px-[var(--spacing-xl)] !py-[var(--spacing-xl)] text-xl flex items-center "
             >
               Donate
             </Button>

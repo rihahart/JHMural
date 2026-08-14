@@ -6,19 +6,19 @@ export const homeFeatureCardsData = [
     id: "inaugural-mural",
     title: '"Jackson Heights in Bloom"',
     description:
-      "See where it all began — our first mural at 84th Street and Roosevelt Avenue, painted with and for the Jackson Heights community.",
+      "Located on 84th Street and Roosevelt Avenue, this inaugural mural reflects the heart of Jackson Heights.",
     image: "/InugrationalMural.jpg",
     imageAlt:
       "Floral mural painted on brick at 84th Street and Roosevelt Avenue",
-    href: "/projects/84th-street-mural",
+    href: "/projects/jackson-heights-in-bloom",
     external: false,
   },
   {
     id: "donate",
     title: "Donate",
     description:
-      "Every gift helps us pay local artists and bring more public art to neighborhoods that have historically been overlooked.",
-    image: "/Footer/Donate.png",
+      "Your donations helps us pay local artists and bring more public art to neighborhoods.",
+    image: "/DonateCardImage.png",
     imageAlt: "Illustration inviting you to donate to JH Mural Project",
     href: "https://donate.stripe.com/eVqaEY2iV7kk8KI0273ks00",
     external: true,
@@ -27,9 +27,9 @@ export const homeFeatureCardsData = [
     id: "newsletter",
     title: "Join our newsletter",
     description:
-      "Stay in the loop on new murals, events, and volunteer opportunities happening around Jackson Heights.",
+      "Stay in the loop on the latest news, new murals, events, and volunteer opportunities.",
     image: "/Homepage/KidsJoyfullyDrawing.png",
-    imageAlt: "Community members gathered in front of a mural",
+    imageAlt: "Community members gathered in front of a mural.",
     href: "/newsletter",
     external: false,
   },

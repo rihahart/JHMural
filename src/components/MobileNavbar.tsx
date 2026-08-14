@@ -14,6 +14,9 @@ export default function MobileNavbar() {
   // Initial load state for homepage
   const [isInitialLoad, setIsInitialLoad] = useState(isHome);
 
+  // Scroll show/hide: all pages
+  const [isVisible, setIsVisible] = useState(true);
+
   // Mobile menu state
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileMuralsExpanded, setIsMobileMuralsExpanded] = useState(false);
@@ -22,20 +25,16 @@ export default function MobileNavbar() {
   const mobileMenuRef = useRef<HTMLDivElement | null>(null);
   const lastYRef = useRef(0);
 
-  // Initial load state management - only change on scroll
+  // Scroll show/hide (all pages) + initial-load state (home only)
   useEffect(() => {
-    if (!isHome) {
-      setIsInitialLoad(false);
-      return;
-    }
-
     const onScroll = () => {
       const y = window.scrollY;
-      if (y > 80) {
-        setIsInitialLoad(false);
-      } else if (y <= 80) {
-        setIsInitialLoad(true);
+      if (isHome) {
+        if (y > 80) setIsInitialLoad(false);
+        else setIsInitialLoad(true);
       }
+      if (y === 0 || y < lastYRef.current) setIsVisible(true);
+      else if (y > 80) setIsVisible(false);
       lastYRef.current = y;
     };
 
@@ -45,7 +44,7 @@ export default function MobileNavbar() {
     return () => {
       window.removeEventListener("scroll", onScroll, opts);
     };
-  }, [isHome, isInitialLoad]);
+  }, [isHome]);
 
   const handleToggleExpanded = (itemName: "Projects" | "About us") => {
     const isCurrentlyOpen =
@@ -88,7 +87,7 @@ export default function MobileNavbar() {
         className={`
           w-full fixed top-0 left-0 right-0
           transition-all duration-300 ease-in-out
-          translate-y-0
+          ${isVisible ? "translate-y-0" : "-translate-y-full"}
           ${isHome && isInitialLoad ? "bg-[var(--color-background-brand)]" : "bg-[var(--color-background-primary)]"}
           ${isHome && isInitialLoad ? "" : "shadow-xs"}
           z-50 block lg:hidden
@@ -113,10 +112,10 @@ export default function MobileNavbar() {
                 href="https://donate.stripe.com/eVqaEY2iV7kk8KI0273ks00"
                 target="_blank"
                 rel="noopener noreferrer"
-                variant="primary"
+                variant={isHome && isInitialLoad ? "primary-on-brand" : "primary"}
                 size="small"
                 trailingIcon="/flower.svg"
-                className="py-[var(--spacing-xl)] px-[var(--spacing-xl)] text-xl flex items-center !rounded-none"
+                className="py-[var(--spacing-lg)] px-[var(--spacing-lg)] text-xl flex items-center "
               >
                 Donate
               </Button>

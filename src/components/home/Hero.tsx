@@ -59,7 +59,7 @@ export default function Hero() {
         ref={heroRef}
         className="hidden md:flex flex-col items-center justify-center bg-[var(--color-background-brand)]"
       >
-        <div className="flex flex-col items-center w-full gap-[var(--spacing-xs)] mt-[var(--spacing-6xl)] px-[var(--spacing-xl)] max-w-[1600px]">
+        <div className="flex flex-col items-center w-full gap-[var(--spacing-xs)] mt-[var(--spacing-6xl)] px-[var(--spacing-xl)] max-w-[2000px]">
         <div className="w-full flex justify-center items-left">
           <div className="flex flex-col items-start gap-[var(--spacing-s)]">
             <h1 className="text-[clamp(100px,calc(100px+(50*(100vw-1025px)/415)),200px)] font-black leading-none tracking-[0.005em] text-white transition-all duration-300 ease-in-out">

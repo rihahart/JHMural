@@ -906,6 +906,7 @@
     font-family: var(--font-family-base);
 }
 
+
 @utility web-heading-lg-bold {
 
     font-size: var(--font-size-6xl);
@@ -1846,4 +1847,26 @@
     font-weight: var(--font-weight-regular);
     font-family: var(--font-family-sharp);
     letter-spacing: var(--letter-spacing-s);
+}
+
+@keyframes sparkle-twinkle {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.3) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1) rotate(20deg);
+  }
+}
+
+@utility glimmer-text {
+  position: relative;
+}
+
+@utility sparkle {
+  position: absolute;
+  pointer-events: none;
+  animation: sparkle-twinkle 1.8s ease-in-out infinite;
 }
