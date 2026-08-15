@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import RooseveltAveData from "@/data/RooseveltAveProject/Phase1Info";
+import RooseveltAveData from "@/data/RooseveltAveProject/WhyRooseveltAve";
 import NavButton from "@/components/ButtonCollection/NavButton";
 
 function useWindowWidth() {
@@ -100,9 +100,9 @@ function RooseveltAveButtons({ className = "" }: { className?: string }) {
   );
 }
 
-export default function RooseveltAvePhase1() {
+export default function WhyRooseveltAve() {
   const width = useWindowWidth();
-  const { title, description, description2 } = RooseveltAveData;
+  const { title, description } = RooseveltAveData;
 
   if (width <= 768) {
     return (
@@ -111,12 +111,9 @@ export default function RooseveltAvePhase1() {
             {title}
           </h1>
 
-          <div className="flex flex-col items-start w-full gap-[var(--spacing-lg)] mobile-text-m-medium text-[var(--color-content-primary)">
+          <div className="flex flex-col items-start w-full gap-[var(--spacing-lg)] mobile-text-m-medium text-[var(--color-content-primary)]">
               <p className="mobile-text-m-medium text-[var(--color-content-primary)]">
-                {description} 
-              </p>
-              <p className="mobile-text-m-medium text-[var(--color-content-primary)]">
-                {description2}
+                {description}
               </p>
           </div>
 
@@ -136,9 +133,6 @@ export default function RooseveltAvePhase1() {
           <p className="web-text-m-medium text-[var(--color-content-primary)]">
             {description}
           </p>
-           <p className="web-text-m-medium text-[var(--color-content-primary)]">
-            {description2}
-          </p>
         </div>
          <RooseveltAveButtons />
          <RooseveltAveSubtitle className="web-heading-s-bold w-full" />
@@ -156,9 +150,6 @@ export default function RooseveltAvePhase1() {
         <div className="flex flex-col gap-[var(--spacing-xl)]">
           <p className="web-text-m-medium text-[var(--color-content-primary)]">
             {description}
-          </p>
-          <p className="web-text-m-medium text-[var(--color-content-primary)]">
-            {description2}
           </p>
         </div>
         <RooseveltAveButtons />
@@ -178,9 +169,6 @@ export default function RooseveltAvePhase1() {
         <div className="flex flex-col gap-[var(--spacing-xl)]">
           <p className="web-text-lg-medium text-[var(--color-content-primary)]">
             {description}
-          </p>
-          <p className="web-text-lg-medium text-[var(--color-content-primary)]">
-            {description2}
           </p>
         </div>
         <RooseveltAveButtons />

@@ -23,7 +23,7 @@ function useWindowWidth() {
 
 const ABOUT_US_TITLE = "Jackson Heights in Blooms";
 const ABOUT_US_DESCRIPTION =
-  "Located at 84th Street and Roosevelt Avenue, this inaugural mural reflects the heart of Jackson Heights—a neighborhood where diverse cultures, backgrounds, and experiences come together and support one another. It is a joyful work of art that invites residents and visitors to stop, admire it, take photos, and leave feeling hopeful. The mural was planned with extensive input from community members through a neighborhood survey, ensuring it reflects the voices of the people who live and work here. It is the first mural in our larger Roosevelt Avenue Project, an initiative to transform Roosevelt Avenue, Queens into an open-air gallery.";
+  "Located at 84th Street and Roosevelt Avenue, this inaugural mural reflects the heart of Jackson Heights—a neighborhood where diverse cultures, backgrounds, and experiences come together and support one another. It is a joyful work of art that invites residents and visitors to stop, admire it, take photos, and leave feeling hopeful. The mural was planned input from community members. It is the first mural in our larger Roosevelt Avenue Project, an initiative to transform Roosevelt Avenue, Queens into an open-air gallery.";
 
 export default function EightyFourthStreetMural() {
   const width = useWindowWidth();

@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import DecorativeDivider from "@/components/getToKnowUs/whatInspiresUs/DecorativeDivider";
-import RooseveltAvePhase1 from "@/components/RooseveltAveProject/RooseveltAvePhase1";
+import WhyRooseveltAve from "@/components/RooseveltAveProject/WhyRooseveltAve";
 import JacksonHeightInBloomCard from "@/components/RooseveltAveProject/JacksonHeightInBloomCard";
 
 
@@ -22,7 +22,7 @@ function useWindowWidth() {
 
 const PROJECT_TITLE = "Roosevelt Ave Project";
 const PROJECT_DESCRIPTION =
-  "Roosevelt Ave has experienced many environmental challenges, such as vandalism, graffiti, and crime, that impact local businesses. Unsavory activities negatively impact families and children in the neighborhood. Most community beautification efforts focus on 34th Avenue and 37th Avenue. Roosevelt Avenue is often left to be addressed by people outside the neighborhood through policing and other aggressive measures, which further impact public perception without showing meaningful change. The location offers high visibility due to the constant traffic in the area. It provides an opportunity to create a visual landmark in a very densely populated neighborhood.";
+  "An initiative to transform Roosevelt Ave in Queens into an open-air gallery by filling it with murals.";
 
 export default function RooseveltProject() {
   const width = useWindowWidth();
@@ -49,7 +49,7 @@ export default function RooseveltProject() {
                 </div>
             </div>
            <DecorativeDivider />
-            <RooseveltAvePhase1 />
+            <WhyRooseveltAve />
           <DecorativeDivider />
           <JacksonHeightInBloomCard />
         </div>
@@ -79,7 +79,7 @@ export default function RooseveltProject() {
           </div>
           </div>
              <DecorativeDivider />
-            <RooseveltAvePhase1 />
+              <WhyRooseveltAve />
           <DecorativeDivider />
           <JacksonHeightInBloomCard layout="row" />
         </div>
@@ -109,7 +109,7 @@ export default function RooseveltProject() {
             />
           </div>
             <DecorativeDivider />
-            <RooseveltAvePhase1 />
+            <WhyRooseveltAve />
           <DecorativeDivider />
           <JacksonHeightInBloomCard layout="row" />
         </div>
@@ -139,7 +139,7 @@ export default function RooseveltProject() {
           />
         </div>
           <DecorativeDivider />
-        <RooseveltAvePhase1 />
+        <WhyRooseveltAve />
         <DecorativeDivider />
         <JacksonHeightInBloomCard layout="row" />
       </div>
