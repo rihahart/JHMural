@@ -61,7 +61,7 @@ export default function RooseveltProject() {
     return (
       <div className="w-full min-h-dvh">
         <div className="flex flex-col items-center pt-[var(--spacing-5xl)] pb-[var(--spacing-10xl)] px-[var(--spacing-2xl)] gap-[var(--spacing-6xl)] justify-center">
-          <div className="flex flex-col items-start align-stretch gap-[var(--spacing-2xl)]">
+          <div className="flex flex-col w-full items-start align-stretch gap-[var(--spacing-2xl)]">
             <h1 className="web-heading-3xl-bold text-[var(--color-content-primary)]">
              {PROJECT_TITLE}
             </h1>
@@ -91,7 +91,7 @@ export default function RooseveltProject() {
     return (
       <div className="w-full min-h-dvh">
         <div className="flex flex-col mx-auto items-center justify-center pt-[var(--spacing-7xl)] pb-[var(--spacing-12xl)] px-[var(--spacing-5xl)] gap-[var(--spacing-8xl)]">
-          <div className="flex flex-col items-start align-stretch gap-[var(--spacing-2xl)]">
+          <div className="flex flex-col w-full items-start align-stretch gap-[var(--spacing-2xl)]">
             <h1 className="web-heading-3xl-bold text-[var(--color-content-primary)]">
               {PROJECT_TITLE}
             </h1>
@@ -121,7 +121,7 @@ export default function RooseveltProject() {
   return (
     <div className="w-full min-h-dvh">
       <div className="flex flex-col max-w-[2000px] mx-auto items-center justify-center py-[var(--spacing-8xl)] px-[var(--spacing-6xl)] gap-[var(--spacing-8xl)]">
-        <div className="flex flex-col items-start align-stretch gap-[var(--spacing-2xl)]">
+        <div className="flex flex-col w-full items-start align-stretch gap-[var(--spacing-2xl)]">
           <h1 className="web-heading-4xl-bold text-[var(--color-content-primary)]">
            {PROJECT_TITLE}
           </h1>
