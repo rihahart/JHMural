@@ -1,11 +1,11 @@
 export const muralImpactData = [
   {
-    title: "Mural's impact in a community",
+    title: "Our Approach",
     description:
-      "Murals have proven time and again to be catalysts for positive change. Cities like Philadelphia, Mexico City, and Buenos Aires have seen how public art can help residents reclaim their streets, celebrate local identity, and attract new visitors.",
+      "Unlike most murals designed and painted solely by an artist, our murals are created through community engagement. First, we identify a neighborhood that needs support. Then, we build a network of local partners, including local artists, community leaders, businesses, nonprofits, and city officials.",
     // TODO: replace with final second-paragraph copy for the community card.
     description2:
-      "By bringing color and creativity to the walls of Jackson Heights, we join a global movement that believes art can heal and unite communities.",
+      "We identify community needs by offering free art classes for kids and organizing community events that engage and include residents throughout the process. This allows the community to have a voice in the mural and helps create a project that reflects the neighborhood.",
     photoCredit: "@jacksonheightslifeisgood",
     artistCredit: "Kirsten Magriani",
     photo: {
@@ -14,12 +14,12 @@ export const muralImpactData = [
     },
   },
   {
-    title: "Mural's impact on Roosevelt ave",
+    title: "Our Impact",
     description:
-      "For Roosevelt Avenue residents, who've long dealt with the effects of rising illegal activity, this project offers more than murals. It offers hope.",
+      "When murals are created in collaboration with the community, they reflect the stories, culture, and identity of the people who live there. They bring art and beauty to the neighborhood while also contributing to the economic growth of local businesses.",
     // TODO: replace with final second-paragraph copy for the Roosevelt Ave card.
     description2:
-      "While policing addresses the symptoms, art helps address the spirit, creating a sense of belonging and shared purpose that strengthens the neighborhood from within.",
+      "Our collaborative approach creates a deeper connection between the community and the murals, builds a sense of ownership, discourages vandalism, and supports the preservation of public art.",
   
     photo: {
       src: "/ImpactonMurals.jpeg",

@@ -59,7 +59,7 @@ function VisionButtons({ className = "" }: { className?: string }) {
 
 export default function OurVision() {
   const width = useWindowWidth();
-  const { title, description, description2 } = ourVisionData;
+  const { title, description } = ourVisionData;
 
   if (width <= 768) {
     return (
@@ -70,10 +70,7 @@ export default function OurVision() {
 
           <div className="flex flex-col items-start w-full gap-[var(--spacing-lg)] mobile-text-m-medium text-[var(--color-content-primary)">
               <p className="mobile-text-m-medium text-[var(--color-content-primary)]">
-                {description} 
-              </p>
-              <p className="mobile-text-m-medium text-[var(--color-content-primary)]">
-                {description2}
+                {description}
               </p>
           </div>
 
@@ -92,9 +89,6 @@ export default function OurVision() {
           <p className="web-text-m-medium text-[var(--color-content-primary)]">
             {description}
           </p>
-           <p className="web-text-m-medium text-[var(--color-content-primary)]">
-            {description2}
-          </p>
         </div>
          <VisionButtons />
       </div>
@@ -111,9 +105,6 @@ export default function OurVision() {
         <div className="flex flex-col gap-[var(--spacing-xl)]">
           <p className="web-text-m-medium text-[var(--color-content-primary)]">
             {description}
-          </p>
-          <p className="web-text-m-medium text-[var(--color-content-primary)]">
-            {description2}
           </p>
         </div>
         <VisionButtons />
@@ -132,9 +123,6 @@ export default function OurVision() {
         <div className="flex flex-col gap-[var(--spacing-xl)]">
           <p className="web-text-lg-medium text-[var(--color-content-primary)]">
             {description}
-          </p>
-          <p className="web-text-lg-medium text-[var(--color-content-primary)]">
-            {description2}
           </p>
         </div>
         <VisionButtons />

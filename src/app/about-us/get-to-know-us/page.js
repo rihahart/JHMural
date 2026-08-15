@@ -19,6 +19,10 @@ function useWindowWidth() {
   return width;
 }
 
+const PAGE_TITLE = "About Us";
+const PAGE_DESCRIPTION =
+  "H Mural Project is a non-profit based in Jackson Heights, Queens that partners with local artists to paint murals and turn neighborhoods into open air galleries.";
+
 export default function WhatInspiresUs() {
   const width = useWindowWidth();
 
@@ -28,10 +32,10 @@ export default function WhatInspiresUs() {
         <div className="flex flex-col items-center pt-[var(--spacing-3xl)] pb-[var(--spacing-6xl)] px-[var(--spacing-lg)] gap-[var(--spacing-5xl)] justify-center">
             <div className="flex flex-col items-start align-stretch gap-[var(--spacing-xl)]">
                 <h1 className="mobile-heading-5xl-bold text-[var(--color-content-primary)]">
-                  About Us
+                  {PAGE_TITLE}
                 </h1>
                 <p className="mobile-text-m-medium text-[var(--color-content-primary)]">
-                JH Mural Project is a non-profit based in Jackson Heights, Queens that partners with local artists to paint murals and turn neighborhoods into open air galleries. We identify neighborhoods that need support and bring together local artists, community members, businesses, and city officials to create a series of murals that brighten the neighborhood, bring art and beauty to the community, and contribute to the economic growth of local businesses.
+                  {PAGE_DESCRIPTION}
                 </p>
                 <div className="relative w-full overflow-hidden h-[130px]">
                   <Image
@@ -56,12 +60,12 @@ export default function WhatInspiresUs() {
     return (
       <div className="w-full min-h-dvh">
         <div className="flex flex-col items-center pt-[var(--spacing-5xl)] pb-[var(--spacing-10xl)] px-[var(--spacing-2xl)] gap-[var(--spacing-6xl)] justify-center">
-          <div className="flex flex-col items-start align-stretch gap-[var(--spacing-2xl)]">
+          <div className="flex flex-col w-full items-start align-stretch gap-[var(--spacing-2xl)]">
             <h1 className="web-heading-3xl-bold text-[var(--color-content-primary)]">
-             About Us
+             {PAGE_TITLE}
             </h1>
             <p className="web-text-m-medium text-[var(--color-content-primary)]">
-             JH Mural Project is a non-profit based in Jackson Heights, Queens that partners with local artists to paint murals and turn neighborhoods into open air galleries. We identify neighborhoods that need support and bring together local artists, community members, businesses, and city officials to create a series of murals that brighten the neighborhood, bring art and beauty to the community, and contribute to the economic growth of local businesses.
+             {PAGE_DESCRIPTION}
             </p>
               <div className="relative w-full overflow-hidden h-[250px]">
             <Image
@@ -86,12 +90,12 @@ export default function WhatInspiresUs() {
     return (
       <div className="w-full min-h-dvh">
         <div className="flex flex-col mx-auto items-center justify-center pt-[var(--spacing-7xl)] pb-[var(--spacing-12xl)] px-[var(--spacing-5xl)] gap-[var(--spacing-8xl)]">
-          <div className="flex flex-col items-start align-stretch gap-[var(--spacing-2xl)]">
+          <div className="flex flex-col w-full items-start align-stretch gap-[var(--spacing-2xl)]">
             <h1 className="web-heading-3xl-bold text-[var(--color-content-primary)]">
-              About Us
+              {PAGE_TITLE}
             </h1>
             <p className="web-text-m-medium text-[var(--color-content-primary)]">
-              JH Mural Project is a non-profit based in Jackson Heights, Queens that partners with local artists to paint murals and turn neighborhoods into open air galleries. We identify neighborhoods that need support and bring together local artists, community members, businesses, and city officials to create a series of murals that brighten the neighborhood, bring art and beauty to the community, and contribute to the economic growth of local businesses.
+              {PAGE_DESCRIPTION}
             </p>
           </div>
           <div className="relative w-full overflow-hidden h-[350px]">
@@ -115,12 +119,12 @@ export default function WhatInspiresUs() {
   return (
     <div className="w-full min-h-dvh">
       <div className="flex flex-col max-w-[2000px] mx-auto items-center justify-center py-[var(--spacing-8xl)] px-[var(--spacing-6xl)] gap-[var(--spacing-8xl)]">
-        <div className="flex flex-col items-start align-stretch gap-[var(--spacing-2xl)]">
+        <div className="flex flex-col w-full items-start align-stretch gap-[var(--spacing-2xl)]">
           <h1 className="web-heading-4xl-bold text-[var(--color-content-primary)]">
-            About Us
+            {PAGE_TITLE}
           </h1>
           <p className="web-text-lg-medium text-[var(--color-content-primary)]">
-           JH Mural Project is a non-profit based in Jackson Heights, Queens that partners with local artists to paint murals and turn neighborhoods into open air galleries. We identify neighborhoods that need support and bring together local artists, community members, businesses, and city officials to create a series of murals that brighten the neighborhood, bring art and beauty to the community, and contribute to the economic growth of local businesses.
+           {PAGE_DESCRIPTION}
           </p>
         </div>
         <div className="relative w-full overflow-hidden h-[450px]">
