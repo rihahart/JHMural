@@ -1,25 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import ArtistInfo from "@/components/84thStreetMural/ArtistInfo";
 import DecorativeDivider from "@/components/getToKnowUs/whatInspiresUs/DecorativeDivider";
 import RooseveltAveProjectCard from "@/components/home/RooseveltAveProjectCard";
 import BorderlessButton from "@/components/ButtonCollection/BorderlessButton";
 import PhotoCarousel from "@/components/84thStreetMural/PhotoCarousel";
 import Image from "next/image";
-
-function useWindowWidth() {
-  const [width, setWidth] = useState(0);
-
-  useEffect(() => {
-    const update = () => setWidth(window.innerWidth);
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, []);
-
-  return width;
-}
+import useWindowWidth from "@/app/_utilities/useWindowWidth";
 
 const ABOUT_US_TITLE = "Jackson Heights in Blooms";
 const ABOUT_US_DESCRIPTION =

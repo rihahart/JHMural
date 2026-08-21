@@ -1,23 +1,11 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Image from "next/image";
 import DecorativeDivider from "@/components/getToKnowUs/whatInspiresUs/DecorativeDivider";
 import MuralImpact from "@/components/getToKnowUs/whatInspiresUs/MuralImpact";
 import OurVision from "@/components/getToKnowUs/whatInspiresUs/OurVision";
-
-function useWindowWidth() {
-  const [width, setWidth] = useState(0);
-
-  useEffect(() => {
-    const update = () => setWidth(window.innerWidth);
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, []);
-
-  return width;
-}
+import useWindowWidth from "@/app/_utilities/useWindowWidth";
 
 const PAGE_TITLE = "About Us";
 const PAGE_DESCRIPTION =
