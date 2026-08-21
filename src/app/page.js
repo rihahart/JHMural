@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Hero from "@/components/home/Hero";
 import HeroMobile from "@/components/home/HeroMobile";
 import useFontsReady from "@/app/_utilities/useFontsReady";
@@ -9,19 +8,7 @@ import RooseveltAveProjectCard from "@/components/home/RooseveltAveProjectCard";
 import HomeFeatureCards from "@/components/home/HomeFeatureCards";
 import IndoorGalleryPicks from "@/components/exhibitions/IndoorGalleryPicks";
 import DecorativeDivider from "@/components/getToKnowUs/whatInspiresUs/DecorativeDivider";
-
-function useWindowWidth() {
-  const [width, setWidth] = useState(0);
-
-  useEffect(() => {
-    const update = () => setWidth(window.innerWidth);
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, []);
-
-  return width;
-}
+import useWindowWidth from "@/app/_utilities/useWindowWidth";
 
 export default function Home() {
   const width = useWindowWidth();

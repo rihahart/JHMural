@@ -1,20 +1,8 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import EmployeeInfo from "@/components/JHMuralteam/employeeInfo";
-
-function useWindowWidth() {
-  const [width, setWidth] = useState(0);
-
-  useEffect(() => {
-    const update = () => setWidth(window.innerWidth);
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, []);
-
-  return width;
-}
+import useWindowWidth from "@/app/_utilities/useWindowWidth";
 
 export default function MeetJHMuralTeam() {
   const width = useWindowWidth();

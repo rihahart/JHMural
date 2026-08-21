@@ -110,6 +110,20 @@ const MobileMenu = forwardRef<HTMLDivElement, MobileMenuProps>(
               </div>
             </div>
 
+            {/* Events container */}
+            <div className="flex flex-col items-start gap-[var(--spacing-m)] border-b border-b-[var(--color-border-disabled)] w-full">
+              <NavButton
+                variant="primary"
+                href="/events"
+                onClick={onCloseAll}
+                trailingIcon="/flower.svg"
+                isActive={pathname === "/events"}
+                className="w-full"
+              >
+                Events
+              </NavButton>
+            </div>
+
             {/* Join newsletter container */}
             <div className="flex flex-col items-start gap-[var(--spacing-m)] border-b border-b-[var(--color-border-disabled)] w-full">
               <NavButton

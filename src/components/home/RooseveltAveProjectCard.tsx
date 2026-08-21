@@ -1,21 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import BorderlessButton from "../ButtonCollection/BorderlessButton";
-
-function useWindowWidth() {
-  const [width, setWidth] = useState(0);
-
-  useEffect(() => {
-    const update = () => setWidth(window.innerWidth);
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, []);
-
-  return width;
-}
+import useWindowWidth from "@/app/_utilities/useWindowWidth";
 
 // Right card of the homepage "mission" row (Figma "Roosevelt Ave Project").
 // Brand-blue card: title + blurb + "Learn more" CTA, with a photo beneath.
@@ -47,7 +34,7 @@ export default function RooseveltAveProjectCard({
             Learn more
           </BorderlessButton>
         </div>
-           <div className="relative w-full h-[fill] overflow-hidden">
+           <div className="relative w-full flex-1 overflow-hidden">
             <Image
               src="/RooseveltAveProject.png"
               alt="Mural along Roosevelt Avenue in Jackson Heights"
