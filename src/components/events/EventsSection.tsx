@@ -7,7 +7,7 @@ import useWindowWidth from "@/app/_utilities/useWindowWidth";
 import { getMonthOptions, exhibitionMonthKey } from "@/app/_utilities/eventDates";
 import EventCard from "./EventCard";
 import MonthFilter from "./MonthFilter";
-import BorderlessButton from "../ButtonCollection/BorderlessButton";
+import Button from "../ButtonCollection/Button";
 
 interface Exhibition {
   id: number;
@@ -109,8 +109,8 @@ export default function EventsSection() {
       )}
 
       <div className="flex justify-end">
-        <BorderlessButton
-          variant="primary"
+        <Button
+          variant="secondary"
           size="small"
           disabled={isLastMonth}
           onClick={() => setMonthIndex((i) => Math.min(monthOptions.length - 1, i + 1))}
@@ -118,7 +118,7 @@ export default function EventsSection() {
           className="w-fit"
         >
           See next month
-        </BorderlessButton>
+        </Button>
       </div>
     </div>
   );
