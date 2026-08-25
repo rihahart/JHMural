@@ -48,16 +48,19 @@ export default function EventCard({ exhibition, showDivider = false }: EventCard
       </div>
 
       <div className="flex flex-col gap-[var(--spacing-m)] mt-[var(--spacing-xl)] flex-1">
-        <h3 className="web-heading-s-bold text-[var(--color-content-primary)] min-w-0">
+        <h3
+          className="web-heading-s-bold text-[var(--color-content-primary)] min-w-0"
+          style={{ lineHeight: "30.847px" }}
+        >
           {exhibition.title}
         </h3>
 
         <div className="flex flex-col gap-[var(--spacing-2xs)]">
-          <p className="mobile-text-s-medium text-[var(--color-content-primary)] break-words">
+          <p className="web-text-s-medium text-[var(--color-content-primary)] break-words">
             {formatEventDateRange(exhibition.start_date, exhibition.end_date)}
           </p>
           {exhibition.location && (
-            <p className="mobile-text-s-medium text-[var(--color-content-primary)] break-words">
+            <p className="web-text-s-medium text-[var(--color-content-primary)] break-words">
               {exhibition.location}
             </p>
           )}
