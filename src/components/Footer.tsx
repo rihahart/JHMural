@@ -92,7 +92,7 @@ export default function Footer() {
         </div>
 
         <p className="text-sm text-[var(--color-content-primary)] pt-[var(--spacing-lg)] pb-[var(--spacing-2xl)] px-[var(--spacing-lg)]">
-          Jackson Heights Mural Project Inc. is a federally recognized 501(c)(3) nonprofit organization. Contributions are tax-deductible to the extent permitted by law. EIN: 39-4461083.
+          JH Mural is a DBA of Jackson Heights Mural Project Inc., a federally recognized 501(c)(3) nonprofit organization (EIN: 39-4461083).
         </p>
 
       </footer>
@@ -173,7 +173,7 @@ if (width <= 1200) {
         </div>
 
         <p className="text-sm text-[var(--color-content-primary)] pt-[var(--spacing-lg)] pb-[var(--spacing-2xl)] px-[var(--spacing-lg)]">
-          Jackson Heights Mural Project Inc. is a federally recognized 501(c)(3) nonprofit organization. Contributions are tax-deductible to the extent permitted by law. EIN: 39-4461083.
+          JH Mural is a DBA of Jackson Heights Mural Project Inc., a federally recognized 501(c)(3) nonprofit organization (EIN: 39-4461083).
         </p>
       </footer>
     );
@@ -195,7 +195,7 @@ if (width <= 1200) {
                       className="w-auto h-auto max-w-full object-contain"
                     />
                      <p className=" web-text-s-medium text-[var(--color-content-primary)] py-[var(--spacing-lg)]">
-                       Jackson Heights Mural Project Inc. is a federally recognized 501(c)(3) nonprofit organization. Contributions are tax-deductible to the extent permitted by law. EIN: 39-4461083.
+                       JH Mural is a DBA of Jackson Heights Mural Project Inc., a federally recognized 501(c)(3) nonprofit organization (EIN: 39-4461083).
                     </p>
                   </div>
                   <div className="flex flex-col items-end justify-between flex-1 min-w-0">
@@ -269,7 +269,7 @@ if (width <= 1200) {
                       className="w-auto h-auto  object-contain"
                     />
                      <p className=" web-text-s-medium text-[var(--color-content-primary)] py-[var(--spacing-lg)]">
-                       Jackson Heights Mural Project Inc. is a federally recognized 501(c)(3) nonprofit organization. Contributions are tax-deductible to the extent permitted by law. EIN: 39-4461083.
+                       JH Mural is a DBA of Jackson Heights Mural Project Inc., a federally recognized 501(c)(3) nonprofit organization (EIN: 39-4461083).
                     </p>
                   </div>
                   <div className="flex flex-col items-end justify-between flex-1 max-w-[800px] min-w-0">
