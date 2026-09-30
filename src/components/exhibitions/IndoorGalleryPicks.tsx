@@ -22,9 +22,7 @@ export default function IndoorGalleryPicks() {
       <BorderlessButton
         variant="primary"
         size="large"
-        href="https://whitney.org/exhibitions"
-        target="_blank"
-        rel="noopener noreferrer"
+        href="/events"
         trailingIcon="/arrow-right.svg"
         className="font-base w-fit self-end"
       >
