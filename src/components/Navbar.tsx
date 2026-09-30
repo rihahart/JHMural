@@ -27,6 +27,11 @@ const navItems: NavItem[] = [
     ],
   },
   {
+    name: "Events",
+    hasDropdown: false,
+    submenu: [{ name: "Events", href: "/events" }],
+  },
+  {
     name: "Join newsletter",
     hasDropdown: false,
     submenu: [{ name: "Join newsletter", href: "/newsletter" }],

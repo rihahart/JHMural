@@ -1,19 +1,6 @@
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import BorderlessButton from "../ButtonCollection/BorderlessButton";
-
-function useWindowWidth() {
-  const [width, setWidth] = useState(0);
-
-  useEffect(() => {
-    const update = () => setWidth(window.innerWidth);
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, []);
-
-  return width;
-}
+import useWindowWidth from "@/app/_utilities/useWindowWidth";
 
 const CARD_TITLE = "Jackson Heights in Bloom";
 const CARD_DESCRIPTION =
@@ -51,7 +38,7 @@ export default function JacksonHeightInBloomCard({
           </BorderlessButton>
 
         </div>
-           <div className="relative w-full h-[fill] overflow-hidden">
+           <div className="relative w-full flex-1 overflow-hidden">
             <Image
               src="/InugrationalMural.jpg"
               alt="Inaugural mural at the intersection of 84th Street and Roosevelt Avenue in Jackson Heights"

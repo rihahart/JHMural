@@ -1,24 +1,12 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Image from "next/image";
 import DecorativeDivider from "@/components/getToKnowUs/whatInspiresUs/DecorativeDivider";
 import WhyRooseveltAve from "@/components/RooseveltAveProject/WhyRooseveltAve";
 import JacksonHeightInBloomCard from "@/components/RooseveltAveProject/JacksonHeightInBloomCard";
+import useWindowWidth from "@/app/_utilities/useWindowWidth";
 
-
-function useWindowWidth() {
-  const [width, setWidth] = useState(0);
-
-  useEffect(() => {
-    const update = () => setWidth(window.innerWidth);
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, []);
-
-  return width;
-}
 
 const PROJECT_TITLE = "Roosevelt Ave Project";
 const PROJECT_DESCRIPTION =

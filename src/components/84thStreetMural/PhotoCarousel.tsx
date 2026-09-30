@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import useWindowWidth from "@/app/_utilities/useWindowWidth";
 
 const IMAGES = [
   "/InugrationalMural.jpg",
@@ -16,19 +17,6 @@ const IMAGES = [
 
 const AUTO_ADVANCE_MS = 8000;
 const SWIPE_THRESHOLD_PX = 50;
-
-function useWindowWidth() {
-  const [width, setWidth] = useState(0);
-
-  useEffect(() => {
-    const update = () => setWidth(window.innerWidth);
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, []);
-
-  return width;
-}
 
 function ArrowButton({
   direction,
