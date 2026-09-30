@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import Image from "next/image";
 
 interface MonthOption {
@@ -20,6 +20,7 @@ interface MonthFilterProps {
 export default function MonthFilter({ options, selectedKey, onSelect }: MonthFilterProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
+  const listId = useId();
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const listRef = useRef<HTMLUListElement | null>(null);
   const rootRef = useRef<HTMLDivElement | null>(null);
@@ -89,9 +90,11 @@ export default function MonthFilter({ options, selectedKey, onSelect }: MonthFil
         type="button"
         aria-haspopup="listbox"
         aria-expanded={isOpen}
+        aria-controls={isOpen ? listId : undefined}
+        aria-label={`Filter events by month: ${selected.label}`}
         onClick={() => (isOpen ? close() : open())}
         onKeyDown={handleButtonKeyDown}
-        className="group inline-flex items-center gap-[var(--spacing-m)] w-fit"
+        className="group inline-flex items-center gap-[var(--spacing-m)] w-fit focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-border-brand)]"
       >
         <span className="mobile-heading-5xl-bold text-[var(--color-content-primary)]">
           {selected.label}
@@ -111,6 +114,7 @@ export default function MonthFilter({ options, selectedKey, onSelect }: MonthFil
 
       {isOpen && otherOptions.length > 0 && (
         <ul
+          id={listId}
           ref={listRef}
           role="listbox"
           aria-label="Filter events by month"
@@ -129,7 +133,7 @@ export default function MonthFilter({ options, selectedKey, onSelect }: MonthFil
                 close();
               }}
               onMouseEnter={() => setActiveIndex(index)}
-              className="web-text-3xl-black text-[var(--color-content-primary)] cursor-pointer outline-none w-fit"
+              className="web-text-3xl-black text-[var(--color-content-primary)] cursor-pointer w-fit py-[var(--spacing-s)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-border-brand)] hover:underline"
             >
               {option.label}
             </li>
