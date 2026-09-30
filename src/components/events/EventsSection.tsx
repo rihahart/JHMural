@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import useSWR from "swr";
 import { apiUrl } from "@/app/_utilities/api";
 import useWindowWidth from "@/app/_utilities/useWindowWidth";
-import { getMonthOptions, exhibitionMonthKey } from "@/app/_utilities/eventDates";
+import { getMonthOptions, exhibitionOccursInMonth } from "@/app/_utilities/eventDates";
 import EventCard from "./EventCard";
 import MonthFilter from "./MonthFilter";
 import Button from "../ButtonCollection/Button";
@@ -20,9 +20,11 @@ interface Exhibition {
 }
 
 async function exhibitionsFetcher(url: string): Promise<Exhibition[]> {
-  const response = await fetch(url);
+  const response = await fetch(url, { signal: AbortSignal.timeout(15000) });
   if (!response.ok) throw new Error("Failed to fetch exhibitions");
-  return response.json();
+  const data = await response.json();
+  if (!Array.isArray(data)) throw new Error("Invalid exhibitions response");
+  return data;
 }
 
 export default function EventsSection() {
@@ -41,7 +43,7 @@ export default function EventsSection() {
   const eventsForMonth = useMemo(() => {
     if (!exhibitions) return [];
     return exhibitions
-      .filter((e) => exhibitionMonthKey(e) === selectedMonth.key)
+      .filter((e) => exhibitionOccursInMonth(e, selectedMonth))
       .sort((a, b) => (a.start_date ?? "").localeCompare(b.start_date ?? ""));
   }, [exhibitions, selectedMonth]);
 
@@ -65,31 +67,31 @@ export default function EventsSection() {
       />
 
       {isLoading && (
-        <div className="flex w-full items-center justify-center py-12">
+        <div role="status" className="flex w-full items-center justify-center py-12">
           <div className="text-center">
-            <div className="mx-auto mb-4 h-12 w-12 animate-spin rounded-full border-b-2 border-gray-900" />
+            <div aria-hidden="true" className="mx-auto mb-4 h-12 w-12 animate-spin motion-reduce:animate-none rounded-full border-b-2 border-gray-900" />
             <p className="text-gray-600">Loading events...</p>
           </div>
         </div>
       )}
 
       {error && (
-        <div className="flex w-full items-center justify-center py-12">
+        <div role="alert" className="flex w-full items-center justify-center py-12">
           <div className="text-center text-red-600">
             <p>Unable to load events at this time.</p>
-            <button
-              type="button"
+            <Button
+              size="small"
               onClick={() => mutate()}
-              className="mt-4 rounded bg-gray-900 px-4 py-2 text-white transition hover:bg-gray-700"
+              className="mt-[var(--spacing-lg)] focus-visible:outline-2 focus-visible:outline-offset-4"
             >
               Retry
-            </button>
+            </Button>
           </div>
         </div>
       )}
 
       {!isLoading && !error && eventsForMonth.length === 0 && (
-        <div className="flex w-full items-center justify-center py-12">
+        <div role="status" className="flex w-full items-center justify-center py-12">
           <p className="mobile-text-lg-semibold text-[var(--color-content-secondary)]">
             No events scheduled for {selectedMonth.label}.
           </p>
@@ -102,6 +104,7 @@ export default function EventsSection() {
             <EventCard
               key={exhibition.id}
               exhibition={exhibition}
+              monthStart={`${selectedMonth.key}-01`}
               showDivider={index % columns !== 0}
             />
           ))}
@@ -115,7 +118,7 @@ export default function EventsSection() {
           disabled={isLastMonth}
           onClick={() => setMonthIndex((i) => Math.min(monthOptions.length - 1, i + 1))}
           trailingIcon="/arrow-right.svg"
-          className="w-fit"
+          className="w-fit focus-visible:outline-2 focus-visible:outline-offset-4"
         >
           See next month
         </Button>

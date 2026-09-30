@@ -16,12 +16,14 @@ interface EventExhibition {
 
 interface EventCardProps {
   exhibition: EventExhibition;
+  monthStart: string;
 
   showDivider?: boolean;
 }
 
-export default function EventCard({ exhibition, showDivider = false }: EventCardProps) {
+export default function EventCard({ exhibition, monthStart, showDivider = false }: EventCardProps) {
   const day = exhibition.start_date ? dayOfMonth(exhibition.start_date) : null;
+  const ongoing = exhibition.start_date !== null && exhibition.start_date < monthStart;
 
   return (
     <div
@@ -31,8 +33,8 @@ export default function EventCard({ exhibition, showDivider = false }: EventCard
           : ""
       }`}
     >
-      <span className="mobile-heading-4xl-bold text-[var(--color-content-primary)]">
-        {day !== null ? day : "TBD"}
+      <span className="mobile-heading-4xl-bold flex items-end min-h-[var(--spacing-6xl)] text-[var(--color-content-primary)]">
+        {ongoing ? "Ongoing" : day !== null ? day : "TBD"}
       </span>
 
       <div className="relative w-full h-[139px] mt-[var(--spacing-m)] overflow-hidden bg-[var(--color-neutral-300)]">
@@ -48,16 +50,19 @@ export default function EventCard({ exhibition, showDivider = false }: EventCard
       </div>
 
       <div className="flex flex-col gap-[var(--spacing-m)] mt-[var(--spacing-xl)] flex-1">
-        <h3 className="web-heading-s-bold text-[var(--color-content-primary)] min-w-0">
+        <h2
+          className="web-heading-s-bold text-[var(--color-content-primary)] min-w-0 break-words"
+          style={{ lineHeight: "30.847px" }}
+        >
           {exhibition.title}
-        </h3>
+        </h2>
 
         <div className="flex flex-col gap-[var(--spacing-2xs)]">
-          <p className="mobile-text-s-medium text-[var(--color-content-primary)] break-words">
+          <p className="web-text-s-medium text-[var(--color-content-primary)] break-words">
             {formatEventDateRange(exhibition.start_date, exhibition.end_date)}
           </p>
           {exhibition.location && (
-            <p className="mobile-text-s-medium text-[var(--color-content-primary)] break-words">
+            <p className="web-text-s-medium text-[var(--color-content-primary)] break-words">
               {exhibition.location}
             </p>
           )}
